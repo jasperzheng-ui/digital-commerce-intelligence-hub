@@ -3,12 +3,19 @@
 ---
 
 Title: Walmart Expands Restaurant Delivery with Dunkin’
+
 Category: retail
+
 Company: Walmart / Dunkin’
+
 Source: Walmart 官方新闻中心
+
 Date: 2026-09-03
+
 Link: https://corporate.walmart.com/news/2026/09/walmart-expands-restaurant-delivery-with-dunkin
+
 Keywords: 全渠道零售、末端配送、服务生态、门店网络
+
 Content:
 沃尔玛于9月3日宣布与Inspire Brands合作，将Dunkin’餐饮配送接入Walmart App和网站。计划先从沃尔玛店内的150家Dunkin’餐厅启动，再拓展至全美约1万家店外Dunkin’餐厅中的大多数。符合配送条件的顾客将按地址看到餐饮入口，可选择餐食、定制饮品并完成结账。该合作复用沃尔玛已有的购物入口及末端配送网络，让餐饮与日常零售订单形成更紧密的配送体验。报道披露的是启动与扩展计划，不能表述为所有门店已经上线，也未披露订单增长或盈利改善结果。
 
