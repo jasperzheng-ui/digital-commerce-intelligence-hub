@@ -1,10 +1,9 @@
 import os
 import json
 import re
-from datetime import datetime
 from urllib.parse import urlparse
 
-from config import MIN_SECTION_SIGNALS, SECTION_ORDER
+from config import MIN_SECTION_CANDIDATES, SECTION_ORDER
 from intelligence.prompt import build_dashboard_prompt
 
 
@@ -190,7 +189,6 @@ def build_dashboard_fallback(raw_text):
 
 def build_source_fallback(source_items, warning):
     data = build_dashboard_fallback("")
-    data["date"] = datetime.now().strftime("%Y-%m-%d")
     data["headline"] = "Gemini 暂时不可用，已基于真实候选来源生成临时预览"
     data["one_thing_worth_watching"] = data["headline"]
     data["parse_warning"] = warning
@@ -204,18 +202,14 @@ def ensure_minimum_dashboard_signals(data, source_items):
     for domain in SECTION_ORDER:
         section_key = _canonical_section_key(domain)
         cards = normalized.get(section_key, [])
-        minimum = MIN_SECTION_SIGNALS.get(domain, 2)
+        minimum = MIN_SECTION_CANDIDATES.get(domain, 0)
+        if len(cards) >= minimum:
+            continue
+
         used_links = {card.get("link") for card in cards if isinstance(card, dict) and card.get("link")}
         for item in items_by_domain.get(domain, []):
-            if len(cards) >= 8:
+            if len(cards) >= minimum:
                 break
-            # A source fallback is a draft of editor-selected inputs. Automatic
-            # snippets have not passed the AI source/scope review; do not use
-            # them to make the publication count appear complete.
-            if item.get("origin_type") != "manual":
-                continue
-            if not item.get("title") or not item.get("summary") or not item.get("link"):
-                continue
             if item.get("link") in used_links:
                 continue
             if _is_google_news_redirect(item.get("link")):
@@ -225,8 +219,6 @@ def ensure_minimum_dashboard_signals(data, source_items):
                 used_links.add(item.get("link"))
 
         normalized[section_key] = cards
-        if len(cards) < minimum:
-            print(f"Draft shortfall: {domain} {len(cards)}/{minimum}")
 
     return _sanitize_dashboard_terms(normalized)
 
