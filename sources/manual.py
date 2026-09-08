@@ -62,6 +62,7 @@ def fetch_manual_items(path):
             origin_type="manual",
             priority=3,
         )
+        item["summary"] = body
         item["manual_category"] = entry.get("category", "")
         item["manual_company"] = entry.get("company", "")
         items.append(item)
@@ -75,6 +76,21 @@ def _extract_title(content):
         if cleaned:
             return cleaned[:120]
     return "Manual Digital Commerce Signal"
+
+
+def _clean_manual_content(value):
+    lines = []
+    blank_seen = False
+    for raw_line in str(value).splitlines():
+        line = clean_text(raw_line)
+        if not line:
+            if not blank_seen and lines:
+                lines.append("")
+            blank_seen = True
+            continue
+        lines.append(line)
+        blank_seen = False
+    return "\n".join(lines).strip()
 
 
 def _parse_manual_entries(content):
@@ -122,7 +138,7 @@ def _parse_manual_entry(chunk):
         content_lines.append(line)
 
     if content_lines:
-        entry["content"] = clean_text("\n".join(content_lines))
+        entry["content"] = _clean_manual_content("\n".join(content_lines))
     if not entry.get("title"):
         entry["title"] = _extract_title(chunk)
     return entry
