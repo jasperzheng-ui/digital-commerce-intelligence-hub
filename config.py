@@ -14,6 +14,7 @@ RSS_ITEMS_PER_FEED = 8
 GOOGLE_NEWS_ITEMS_PER_QUERY = 5
 
 SECTION_ORDER = ["platform", "ai", "sports", "retail"]
+MIN_SECTION_SIGNALS = {section: 2 for section in SECTION_ORDER}
 SEARCH_WINDOWS_DAYS = [3, 7, 14]
 MIN_SECTION_CANDIDATES = {
     "platform": 4,
@@ -186,3 +187,4 @@ FILTER_PROFILES = {
         "override_any": ["omnichannel", "digital store", "supply chain", "fulfillment", "rfid", "self-checkout", "self checkout", "inventory", "app", "operations", "全渠道", "供应链", "履约", "库存", "运营效率"] + COMMERCE_RELEVANCE_KEYWORDS,
     },
 }
+
