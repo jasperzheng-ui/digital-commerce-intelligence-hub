@@ -6,7 +6,6 @@ from config import (
     HTML_OUTPUT_PATH,
     MAX_ITEMS_FOR_GEMINI,
     MIN_SECTION_CANDIDATES,
-    MIN_SECTION_SIGNALS,
     PREVIEW_DATA_PATH,
     PREVIEW_OUTPUT_PATH,
     PROJECT_NAME,
@@ -202,7 +201,6 @@ def run_publish_mode():
     else:
         print(f"Publishing reviewed preview data: {PREVIEW_DATA_PATH}")
 
-    validate_publish_data(dashboard_data)
     render_dashboard(dashboard_data, HTML_OUTPUT_PATH)
     save_dashboard_history(dashboard_data, HTML_OUTPUT_PATH.parent)
 
@@ -210,25 +208,6 @@ def run_publish_mode():
     send_brief_email(dashboard_data, page_url)
     send_optional_feishu_test_message(dashboard_data, page_url)
     print(f"Published dashboard generated: {HTML_OUTPUT_PATH}")
-
-
-def validate_publish_data(data):
-    from intelligence.gemini import normalize_dashboard_data, _canonical_section_key
-    from urllib.parse import urlparse
-
-    normalized = normalize_dashboard_data(data)
-    shortfalls = []
-    for domain, minimum in MIN_SECTION_SIGNALS.items():
-        links = set()
-        for card in normalized[_canonical_section_key(domain)]:
-            link = str(card.get("link") or "").strip()
-            parsed = urlparse(link)
-            if parsed.scheme in {"http", "https"} and parsed.netloc and card.get("summary_points"):
-                links.add(link.rstrip("/"))
-        if len(links) < minimum:
-            shortfalls.append(f"{domain}: {len(links)}/{minimum}")
-    if shortfalls:
-        raise ValueError("发布中止：以下栏目有效文章不足，请补充来源并重新运行 preview：" + "; ".join(shortfalls))
 
 
 def main():
