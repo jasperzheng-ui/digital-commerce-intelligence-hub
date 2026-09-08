@@ -65,6 +65,10 @@ def fetch_manual_items(path):
         item["summary"] = body
         item["manual_category"] = entry.get("category", "")
         item["manual_company"] = entry.get("company", "")
+        item["category"] = entry.get("category", "")
+        item["keywords"] = entry.get("keywords", "")
+        item["company"] = entry.get("company", "")
+        item["date"] = entry.get("date", "")
         items.append(item)
 
     return items
@@ -181,6 +185,9 @@ def _parse_manual_date(value):
 
 
 def _infer_domain(category, company, content):
+    explicit = clean_text(category).lower()
+    if explicit in {"platform", "ai", "sports", "retail"}:
+        return explicit
     text = f"{category} {company} {content}".lower()
     if any(word in text for word in ["platform", "平台", "internet giants", "阿里", "alibaba", "淘宝", "天猫", "京东", "jd", "字节", "bytedance", "腾讯", "tencent", "美团", "meituan", "拼多多", "pdd", "小红书"]):
         return "platform"
