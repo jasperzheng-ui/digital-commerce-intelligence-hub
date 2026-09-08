@@ -162,23 +162,8 @@ def _render_section(title, cards, section_type):
 
 def _render_card(card, section_type):
     title = _card_title(card, section_type)
-    fields = _card_body_fields(card, section_type)
-    trend_html = _render_trend_tags(card.get("trend") if isinstance(card, dict) else "")
+    summary_html = _render_summary_points(card, section_type)
     link_html = _render_original_link(card.get("link") if isinstance(card, dict) else "")
-
-    body_html = "\n".join(
-        f"""
-                          <div style="margin-top:14px;">
-                            <div style="color:#6b7280; font-size:11px; line-height:1.4; letter-spacing:.08em; text-transform:uppercase; font-weight:800; margin-bottom:5px;">
-                              {_e(label)}
-                            </div>
-                            <div style="color:#263244; font-size:14px; line-height:1.7;">
-                              {_e(value)}
-                            </div>
-                          </div>"""
-        for label, value in fields
-        if safe_text(value).strip()
-    )
 
     return f"""
                   <tr>
@@ -189,8 +174,7 @@ def _render_card(card, section_type):
                             <h3 style="margin:0; color:#111827; font-size:17px; line-height:1.45; font-weight:750;">
                               {_e(title)}
                             </h3>
-                            {body_html}
-                            {trend_html}
+                            {summary_html}
                             {link_html}
                           </td>
                         </tr>
@@ -199,20 +183,20 @@ def _render_card(card, section_type):
                   </tr>"""
 
 
-def _render_trend_tags(value):
-    tags = _trend_values(value)
-    if not tags:
+def _render_summary_points(card, section_type):
+    points = _summary_points(card, section_type)
+    if not points:
         return ""
-    tag_html = "".join(
-        f"""<span style="display:inline-block; margin:0 7px 7px 0; padding:6px 10px; border-radius:999px; background:#eef4ff; color:#1d4ed8; font-size:12px; line-height:1; font-weight:700;">{_e(tag)}</span>"""
-        for tag in tags
+    items = "".join(
+        f"""<li style="margin:0 0 8px 0; color:#263244; font-size:14px; line-height:1.75;">{_e(point)}</li>"""
+        for point in points
     )
     return f"""
                             <div style="margin-top:14px;">
                               <div style="color:#6b7280; font-size:11px; line-height:1.4; letter-spacing:.08em; text-transform:uppercase; font-weight:800; margin-bottom:8px;">
-                                TREND
+                                摘要要点
                               </div>
-                              <div>{tag_html}</div>
+                              <ul style="margin:0; padding-left:18px;">{items}</ul>
                             </div>"""
 
 
@@ -230,13 +214,11 @@ def _render_original_link(value):
 
 def _format_text_card(index, card, section_type):
     if not isinstance(card, dict):
-        return [f"{index}. News: {safe_text(card)}", "   Why this matters: ", "   Trend: "]
+        return [f"{index}. {safe_text(card)}"]
 
-    fields = _card_body_fields(card, section_type)
     lines = [f"{index}. {_card_title(card, section_type)}"]
-    for label, value in fields:
-        lines.append(f"   {label}: {safe_text(value)}")
-    lines.append(f"   Trend: {', '.join(_trend_values(card.get('trend')))}")
+    for point in _summary_points(card, section_type):
+        lines.append(f"   - {safe_text(point)}")
     link = safe_text(card.get("link")).strip()
     if link:
         lines.append(f"   Read Original: {link}")
@@ -262,6 +244,21 @@ def _card_body_fields(card, section_type):
     return [
         ("NEWS", card.get("news") or ""),
         ("WHY THIS MATTERS", card.get("why_this_matters") or ""),
+    ]
+
+
+def _summary_points(card, section_type):
+    if not isinstance(card, dict):
+        return [safe_text(card)]
+    value = card.get("summary_points")
+    if isinstance(value, list):
+        return [safe_text(item).strip() for item in value if safe_text(item).strip()]
+    if value:
+        return [safe_text(value).strip()]
+    return [
+        safe_text(field_value).strip()
+        for _, field_value in _card_body_fields(card, section_type)
+        if safe_text(field_value).strip()
     ]
 
 
