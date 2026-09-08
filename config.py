@@ -14,6 +14,8 @@ RSS_ITEMS_PER_FEED = 8
 GOOGLE_NEWS_ITEMS_PER_QUERY = 5
 
 SECTION_ORDER = ["platform", "ai", "sports", "retail"]
+# Candidate collection targets and final publication requirements are separate.
+MIN_SECTION_SIGNALS = {section: 2 for section in SECTION_ORDER}
 SEARCH_WINDOWS_DAYS = [3, 7, 14]
 MIN_SECTION_CANDIDATES = {
     "platform": 4,
@@ -105,6 +107,31 @@ EXPANDED_SEARCH_QUERIES = {
 # Backward-compatible alias for older imports.
 GOOGLE_NEWS_QUERIES = SEARCH_QUERIES
 
+# Search the original publisher before falling back to broader discovery.
+SEARCH_QUERIES["platform"][:0] = [
+    "site:jdcorporateblog.com merchant supply chain retail",
+    "site:alizila.com merchants ecommerce",
+    "site:mp.weixin.qq.com 京东黑板报 京东物流 供应链",
+    "site:mp.weixin.qq.com 阿里妈妈数字营销 商家工具",
+]
+SEARCH_QUERIES["ai"][:0] = [
+    "site:aboutamazon.com shopping AI customer service",
+    "site:alibabacloud.com enterprise AI workflow customer case",
+    "site:microsoft.com customers retail AI",
+    "site:accenture.com retail AI research",
+]
+SEARCH_QUERIES["sports"][:0] = [
+    "site:corporate.lululemon.com financial results stores",
+    "site:decathlon-united.media retail digital",
+    "site:adidas-group.com retail results",
+]
+SEARCH_QUERIES["retail"][:0] = [
+    "site:corporate.walmart.com retail delivery operations",
+    "site:nielseniq.com retail report consumer research",
+    "site:mckinsey.com retail consumer research",
+    "site:bain.com retail report",
+]
+
 COMMON_EXCLUDED_KEYWORDS = [
     "retail media", "retail media network", "ad network", "ad tech", "ctv", "ctv advertising", "programmatic",
     "shopper marketing", "media monetization", "advertising roi", "media budget", "ad spend", "brand advertising", "marketing campaign",
@@ -143,6 +170,11 @@ FILTER_PROFILES = {
         "override_any": ["platform capability", "advertising tools", "merchant tools", "platform strategy", "supply chain", "fulfillment", "logistics", "ecommerce", "search", "recommendation", "membership", "平台能力", "广告工具", "平台战略", "商家工具", "供应链", "履约", "物流", "搜索", "推荐", "会员"],
     },
     "ai": {
+        "hard_exclude_any": [
+            "benchmark", "leaderboard", "trillion parameters", "training method",
+            "quantization", "inference framework", "chip specs", "model release",
+            "模型发布", "模型参数", "模型排行榜", "训练方法", "量化算法", "推理框架", "芯片参数",
+        ],
         "include_any": [
             "ai search", "ai shopping", "agent", "customer service", "product understanding", "multimodal", "content generation", "recommendation",
             "membership", "operations automation", "supply chain", "inventory forecasting", "price optimization", "store operations", "enterprise ai",
