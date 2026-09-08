@@ -181,15 +181,6 @@ def _parse_manual_date(value):
 
 
 def _infer_domain(category, company, content):
-    explicit = clean_text(category).lower()
-    aliases = {
-        "platform": "platform", "国内电商平台": "platform", "平台": "platform",
-        "ai": "ai", "ai应用": "ai", "ai for business": "ai",
-        "sports": "sports", "体育与户外": "sports", "运动户外": "sports",
-        "retail": "retail", "传统零售创新": "retail", "零售": "retail",
-    }
-    if explicit in aliases:
-        return aliases[explicit]
     text = f"{category} {company} {content}".lower()
     if any(word in text for word in ["platform", "平台", "internet giants", "阿里", "alibaba", "淘宝", "天猫", "京东", "jd", "字节", "bytedance", "腾讯", "tencent", "美团", "meituan", "拼多多", "pdd", "小红书"]):
         return "platform"
