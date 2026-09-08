@@ -7,14 +7,17 @@ from sources.common import is_within_days, make_item, parse_date, should_keep_se
 def fetch_rss_items(feeds):
     items = []
 
-    for feed_config in feeds:
+    from sources.http_feed import fetch_unique
+    parsed_feeds = fetch_unique([feed['url'] for feed in feeds], {})
+    for feed_config, parsed_feed in zip(feeds, parsed_feeds):
         source = feed_config["source"]
         section = feed_config.get("domain", "retail")
         profile = FILTER_PROFILES.get(section)
         if not profile:
             continue
 
-        parsed_feed = feedparser.parse(feed_config["url"])
+        if parsed_feed is None:
+            continue
 
         for entry in parsed_feed.entries[:RSS_ITEMS_PER_FEED]:
             title = entry.get("title", "")
@@ -42,3 +45,4 @@ def fetch_rss_items(feeds):
             )
 
     return items
+
