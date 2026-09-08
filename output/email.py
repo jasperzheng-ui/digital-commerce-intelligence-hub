@@ -1,4 +1,5 @@
 import os
+import re
 from html import escape
 
 import requests
@@ -162,6 +163,8 @@ def _render_section(title, cards, section_type):
 
 def _render_card(card, section_type):
     title = _card_title(card, section_type)
+    metadata, _ = _card_content(card, section_type)
+    metadata_html = _render_metadata(metadata)
     summary_html = _render_summary_points(card, section_type)
     link_html = _render_original_link(card.get("link") if isinstance(card, dict) else "")
 
@@ -174,6 +177,7 @@ def _render_card(card, section_type):
                             <h3 style="margin:0; color:#111827; font-size:17px; line-height:1.45; font-weight:750;">
                               {_e(title)}
                             </h3>
+                            {metadata_html}
                             {summary_html}
                             {link_html}
                           </td>
@@ -217,8 +221,15 @@ def _format_text_card(index, card, section_type):
         return [f"{index}. {safe_text(card)}"]
 
     lines = [f"{index}. {_card_title(card, section_type)}"]
-    for point in _summary_points(card, section_type):
-        lines.append(f"   - {safe_text(point)}")
+    metadata, points = _card_content(card, section_type)
+    if metadata:
+        lines.append("   文章信息")
+        for label, values in metadata:
+            lines.append(f"   {label}:")
+            lines.extend(f"     - {value}" for value in values)
+    if points:
+        lines.extend(["", "   摘要要点"])
+        lines.extend(f"   - {point}" for point in points)
     link = safe_text(card.get("link")).strip()
     if link:
         lines.append(f"   Read Original: {link}")
@@ -247,19 +258,116 @@ def _card_body_fields(card, section_type):
     ]
 
 
-def _summary_points(card, section_type):
+# Older fallback previews embed these fields in the first summary point.
+_METADATA_LABELS = ("Category", "Keywords", "Company", "Source", "Date")
+_METADATA_FIELD = re.compile(r"(?:^|\s)(Category|Keywords|Company|Source|Date)\s*[:：]\s*", re.I)
+
+
+def _split_metadata_prefix(value):
+    text = safe_text(value).strip()
+    # Only parse an explicit metadata prefix; ordinary prose is left intact.
+    if not re.match(r"^(?:Category|Keywords|Company|Source|Date)\s*[:：]", text, re.I):
+        return {}, text
+    content = re.search(r"(?:^|\s)Content\s*[:：]\s*", text, re.I)
+    header = text[:content.start()] if content else text
+    body = text[content.end():].strip() if content else ""
+    matches = list(_METADATA_FIELD.finditer(header))
+    metadata = {}
+    for index, match in enumerate(matches):
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(header)
+        metadata[match.group(1).lower()] = header[match.end():end].strip()
+    return metadata, body
+
+
+def _body_points(value):
+    # Do not split decimal numbers or domains on a bare period.
+    lines = [line.strip() for line in safe_text(value).splitlines() if line.strip()]
+    if len(lines) <= 1:
+        lines = re.split(r"(?<=[。！？])\s*|(?<=[.!?])\s+(?=[A-Z])", safe_text(value).strip())
+    return [re.sub(r"^(?:[-*•]|\d+[.)、])\s*", "", line).strip()
+            for line in lines if line.strip()]
+
+
+def _metadata_values(label, value):
+    values = value if isinstance(value, list) else [value]
+    result = []
+    for item in values:
+        text = safe_text(item).strip()
+        # Categories and keywords are lists; preserve company/source punctuation.
+        parts = re.split(r"[\n,，、;；|]+", text) if label in {"Category", "Keywords"} else text.splitlines()
+        result.extend(part.strip() for part in parts if part.strip())
+    return result
+
+
+def _card_content(card, section_type):
     if not isinstance(card, dict):
-        return [safe_text(card)]
+        return [], _body_points(card)
     value = card.get("summary_points")
-    if isinstance(value, list):
-        return [safe_text(item).strip() for item in value if safe_text(item).strip()]
-    if value:
-        return [safe_text(value).strip()]
-    return [
-        safe_text(field_value).strip()
-        for _, field_value in _card_body_fields(card, section_type)
-        if safe_text(field_value).strip()
-    ]
+    raw_points = value if isinstance(value, list) else ([value] if value else [])
+    if not raw_points:
+        raw_points = [v for _, v in _card_body_fields(card, section_type) if v]
+    metadata = {}
+    points = []
+    legacy = any(_split_metadata_prefix(p)[0] for p in raw_points)
+    # Recover the full original body when old sentence splitting damaged metadata
+    # (e.g. news.cnmtpt.com) or consumed the six-point limit.
+    for _, raw in _card_body_fields(card, section_type):
+        parsed, body = _split_metadata_prefix(raw)
+        metadata.update(parsed)
+        if legacy and parsed and body:
+            points = _body_points(body)
+            break
+    if not points:
+        for raw in raw_points:
+            parsed, body = _split_metadata_prefix(raw)
+            metadata.update(parsed)
+            points.extend(_body_points(body) if parsed else
+                          [line.strip() for line in safe_text(raw).splitlines() if line.strip()])
+    rows = []
+    for label in _METADATA_LABELS:
+        key = label.lower()
+        explicit = card.get(key) or card.get("manual_" + key) or card.get(label)
+        values = _metadata_values(label, explicit or metadata.get(key, ""))
+        if values:
+            rows.append((label, values))
+    return rows, points
+
+
+def _summary_points(card, section_type):
+    return _card_content(card, section_type)[1]
+
+
+def _render_metadata(rows):
+    if not rows:
+        return ""
+    rendered = []
+    for label, values in rows:
+        if label == "Keywords":
+            value_html = " ".join(
+                '<span style="display:inline-block; margin:0 6px 6px 0; '
+                'padding:4px 9px; background:#eaf0ff; border:1px solid #d5e0fc; '
+                'border-radius:12px; color:#3643ba; font-size:12px; '
+                f'line-height:1.5; white-space:nowrap;">{_e(value)}</span>'
+                for value in values
+            )
+        else:
+            value_html = "".join(
+                f'<div style="margin:0 0 3px 0; line-height:1.65;">{_e(value)}</div>'
+                for value in values
+            )
+        rendered.append(
+            '<tr><td valign="top" width="88" style="padding:6px 10px 6px 0; '
+            'color:#667085; font-size:12px; font-weight:700; line-height:1.65;">'
+            f'{_e(label)}</td><td valign="top" style="padding:6px 0; '
+            f'color:#344054; font-size:13px; overflow-wrap:anywhere;">{value_html}</td></tr>'
+        )
+    return (
+        '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" '
+        'style="margin-top:16px; background:#f5f7fb; border:1px solid #e8edf5; '
+        'border-radius:10px;"><tr><td style="padding:10px 14px;">'
+        '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" '
+        'style="border-collapse:collapse;">' + "".join(rendered) + '</table></td></tr></table>'
+    )
 
 
 def _trend_values(value):
