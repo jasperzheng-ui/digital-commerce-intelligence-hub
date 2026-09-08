@@ -279,6 +279,21 @@ def build_dashboard_html(data, archive_href="./archive/"):
       line-height: 1.62;
     }}
 
+    .summary-list {{
+      margin: 0;
+      padding-left: 1.15em;
+      font-size: 15.5px;
+      line-height: 1.72;
+    }}
+
+    .summary-list li {{
+      margin: 0 0 8px;
+    }}
+
+    .summary-list li:last-child {{
+      margin-bottom: 0;
+    }}
+
     .trend {{
       display: inline-flex;
       width: fit-content;
@@ -418,7 +433,7 @@ def _render_section(section, cards):
 
 def _render_card(card, section_key):
     if isinstance(card, str):
-        card = {"name": "Signal", "news": card, "why_this_matters": "", "trend": "Signal", "link": ""}
+        card = {"name": "Signal", "news": card, "summary_points": [card], "link": ""}
 
     link = safe_text(card.get("link", ""))
     button = (
@@ -427,48 +442,68 @@ def _render_card(card, section_key):
         else '<span class="read-button disabled">暂无原文链接</span>'
     )
 
+    return f"""
+    <article class="card">
+      <h3 class="card-title">{safe_escape(_card_title(card, section_key))}</h3>
+      <div class="field">
+        <div class="field-label">摘要要点</div>
+        {_render_summary_points(card, section_key)}
+      </div>
+      {button}
+    </article>
+    """
+
+
+def _card_title(card, section_key):
+    if not isinstance(card, dict):
+        return card or "Signal"
     if section_key == "ai_technology":
-        return _render_ai_card(card, button)
-
-    return f"""
-    <article class="card">
-      <h3 class="card-title">{safe_escape(card.get("name") or "Signal")}</h3>
-      <div class="field">
-        <div class="field-label">News</div>
-        <p>{safe_escape(card.get("news") or "")}</p>
-      </div>
-      <div class="field">
-        <div class="field-label">Why this matters</div>
-        <p>{safe_escape(card.get("why_this_matters") or "")}</p>
-      </div>
-      <div class="field">
-        <div class="field-label">Trend</div>
-        <span class="trend">{safe_escape(card.get("trend") or "Trend")}</span>
-      </div>
-      {button}
-    </article>
-    """
+        return card.get("title") or card.get("name") or "AI 能力变化"
+    return card.get("name") or card.get("title") or "Signal"
 
 
-def _render_ai_card(card, button):
-    return f"""
-    <article class="card">
-      <h3 class="card-title">{safe_escape(card.get("title") or card.get("name") or "AI 能力变化")}</h3>
-      <div class="field">
-        <div class="field-label">Capability</div>
-        <p>{safe_escape(card.get("capability") or card.get("news") or "")}</p>
-      </div>
-      <div class="field">
-        <div class="field-label">Industry Impact</div>
-        <p>{safe_escape(card.get("industry_impact") or card.get("why_this_matters") or "")}</p>
-      </div>
-      <div class="field">
-        <div class="field-label">Trend</div>
-        <span class="trend">{safe_escape(card.get("trend") or "AI 能力")}</span>
-      </div>
-      {button}
-    </article>
-    """
+def _render_summary_points(card, section_key):
+    points = _summary_points(card, section_key)
+    if not points:
+        return "<p></p>"
+    if len(points) == 1:
+        return f"<p>{safe_escape(points[0])}</p>"
+    rendered = "\n".join(f"<li>{safe_escape(point)}</li>" for point in points)
+    return f'<ul class="summary-list">{rendered}</ul>'
+
+
+def _summary_points(card, section_key):
+    if not isinstance(card, dict):
+        return [safe_text(card)]
+
+    raw_points = card.get("summary_points")
+    if isinstance(raw_points, list):
+        return [safe_text(point).strip() for point in raw_points if safe_text(point).strip()]
+    if raw_points:
+        return _split_points(raw_points)
+
+    if section_key == "ai_technology":
+        values = [
+            card.get("capability") or card.get("news") or "",
+            card.get("industry_impact") or card.get("why_this_matters") or "",
+        ]
+    else:
+        values = [
+            card.get("news") or "",
+            card.get("why_this_matters") or "",
+        ]
+    return [safe_text(value).strip() for value in values if safe_text(value).strip()]
+
+
+def _split_points(value):
+    text = safe_text(value).strip()
+    if not text:
+        return []
+    if isinstance(value, str):
+        parts = [part.strip(" -•\t") for part in text.splitlines() if part.strip(" -•\t")]
+        if len(parts) > 1:
+            return parts
+    return [text]
 
 
 def _render_warning(data):
