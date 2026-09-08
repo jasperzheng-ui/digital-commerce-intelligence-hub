@@ -21,12 +21,22 @@ def collect_information_pool():
     from sources.google_news import fetch_google_news_items
     from sources.manual import fetch_manual_items
     from sources.rss import fetch_rss_items
+    from intelligence.report_quality import eligible, source_rank
 
     items = []
     items.extend(fetch_manual_items(MANUAL_INPUT_PATH))
     items.extend(fetch_rss_items(FEEDS))
-    items.extend(fetch_google_news_items(SEARCH_QUERIES))
+    items = [item for item in items if eligible(item)]
+    items.extend(fetch_google_news_items(SEARCH_QUERIES, existing_items=items))
+    items = [item for item in items if eligible(item)]
+    for item in items:
+        item['priority'] = source_rank(item) * 10 + (3 if item.get('origin_type') == 'manual' else 1)
     return prepare_information_pool(items)
+
+
+def _item_key(item):
+    link = str(item.get('link', '')).strip().split('#', 1)[0]
+    return ('link', link) if link else ('title', str(item.get('title', '')).strip().lower())
 
 
 def prepare_information_pool(items, limit=MAX_ITEMS_FOR_GEMINI):
@@ -40,7 +50,7 @@ def prepare_information_pool(items, limit=MAX_ITEMS_FOR_GEMINI):
         if not title or not summary:
             continue
 
-        dedupe_key = (title.lower(), item.get("link", "").strip())
+        dedupe_key = _item_key(item)
         if dedupe_key in seen:
             continue
         seen.add(dedupe_key)
@@ -64,7 +74,7 @@ def prepare_information_pool(items, limit=MAX_ITEMS_FOR_GEMINI):
     for item in manual_items:
         if len(selected_items) >= limit:
             break
-        key = (item.get("title", "").lower(), item.get("link", "").strip())
+        key = _item_key(item)
         if key in selected_keys:
             continue
         selected_keys.add(key)
@@ -74,7 +84,7 @@ def prepare_information_pool(items, limit=MAX_ITEMS_FOR_GEMINI):
         minimum = MIN_SECTION_CANDIDATES.get(section, 0)
         section_items = [item for item in cleaned_items if item.get("domain") == section]
         for item in section_items[:minimum]:
-            key = (item.get("title", "").lower(), item.get("link", "").strip())
+            key = _item_key(item)
             if key in selected_keys:
                 continue
             selected_keys.add(key)
@@ -83,7 +93,7 @@ def prepare_information_pool(items, limit=MAX_ITEMS_FOR_GEMINI):
     for item in cleaned_items:
         if len(selected_items) >= limit:
             break
-        key = (item.get("title", "").lower(), item.get("link", "").strip())
+        key = _item_key(item)
         if key in selected_keys:
             continue
         selected_keys.add(key)
@@ -157,11 +167,22 @@ def get_dashboard_url(mode):
 
 def generate_dashboard_data():
     from intelligence.gemini import generate_dashboard_data as generate_with_gemini
+    from intelligence.report_quality import eligible, finalize_report, source_rank
+    from time import monotonic
 
+    started = monotonic()
     information_pool = collect_information_pool()
+    information_pool = [i for i in information_pool if eligible(i)]
+    information_pool.sort(key=source_rank, reverse=True)
+    print(f'[collect] {len(information_pool)} usable sources, {monotonic()-started:.1f}s', flush=True)
     if not information_pool:
-        return build_empty_dashboard_data()
-    return generate_with_gemini(information_pool)
+        return finalize_report(None, [])
+    generated = generate_with_gemini(information_pool)
+    if generated.get('parse_warning'):
+        generated = {'parse_warning': generated['parse_warning']}
+    result = finalize_report(generated, information_pool)
+    print(f'[report] {result["quality_status"]}, total={monotonic()-started:.1f}s', flush=True)
+    return result
 
 
 def save_preview_data(data):
@@ -201,6 +222,8 @@ def run_publish_mode():
     else:
         print(f"Publishing reviewed preview data: {PREVIEW_DATA_PATH}")
 
+    from intelligence.report_quality import validate_report
+    validate_report(dashboard_data)
     render_dashboard(dashboard_data, HTML_OUTPUT_PATH)
     save_dashboard_history(dashboard_data, HTML_OUTPUT_PATH.parent)
 
