@@ -14,15 +14,15 @@ def build_dashboard_prompt(items):
 请严格遵守：
 - 只输出合法 JSON，不要输出 Markdown，不要输出解释文字。
 - 禁止生成信息池中不存在的新闻、公司动作、数据、结论或链接。
-- 所有 signal 必须来自 Sectioned Candidate Pool 中的真实 source。自动抓取来源必须使用对应原文链接；manual_sources/daily_input.md 的人工输入如果没有链接，但有清晰标题、公司/主题和内容，也允许输出，link 可以为空。
-- 如果某条自动候选没有可靠来源、缺少原文链接、无法确认事实，必须忽略。人工输入除非明显重复、完全无关或内容不足，否则不要删除。
+- 所有 signal 必须来自 Sectioned Candidate Pool 中的真实 source。自动抓取来源必须使用对应原文链接；人工输入也必须有可追溯的原始文章链接。
+- 如果某条自动候选没有可靠来源、缺少原文链接、无法确认事实，必须忽略。人工输入也必须通过来源、主题和内容质量审核，不合格内容应排除。
 - 如果某个板块没有可靠新闻，返回空数组；允许 Dashboard 出现 empty，不要根据行业常识、历史趋势或推测补充。
 - 按“对 Decathlon China 数字商业团队的参考价值”排序，而不是按发布时间排序。
-- 来源优先级：manual_sources/daily_input.md 中的人工输入新闻来源最高，其次才是 AI 自动抓取的 Google News/RSS/官方 Blog；当 manual input 与自动来源主题重复或冲突时，优先采用 manual input，并只用自动来源作补充验证。
+- 来源优先级按原始发布者判断，与人工输入或自动采集无关：企业官方公众号、官网新闻中心及投资者公告优先；其次是咨询机构、研究机构直接发布的原创报告、调查和行业研究。高质量媒体原创采访仅作补充。转载、聚合、洗稿、无原文或无法确认发布者的文章不计入有效条数。同一事件追溯原文并只保留一条；同等来源质量下优先人工选题。不要仅因域名是公众号或博客就认定为官方，必须核实发布者。企业自述效果须注明“公司披露”，不要写成独立验证结果。
 - 人工输入默认是本期主编选择的高优先级信号。请优先保留并改写人工输入中的有效新闻；不要因为自动新闻更新、更短或有更多链接而替换掉人工输入。
 - 无法明确归类、价值较低或不符合其候选板块要求的新闻直接忽略，不要硬塞。
 - 不要输出 retail_media、marketing、advertising、consumer、opportunity、action 等分类。
-- Link 必须使用信息池中的原始文章链接；自动来源如果没有链接，该 signal 不允许输出。人工输入没有链接时，link 输出为空字符串即可。
+- Link 必须使用信息池中的原始文章链接；自动来源如果没有链接，该 signal 不允许输出。人工输入没有原文链接时不得计入有效文章。
 - 不要输出 news.google.com/rss/articles 这类 Google News 跳转链接；如果自动来源只有 Google News 跳转链接，宁可删除该 signal，除非信息池中有可直接打开的原始来源链接。
 - 不要输出对迪卡侬意味着什么。
 - 不要输出 Direct-to-Consumer 相关英文缩写、该缩写的策略/机会表述、Recommended Actions、Possible Experiment。
@@ -38,8 +38,8 @@ Retail Media、Retail Media Network、Advertising business、Ad tech、CTV adver
 最终只允许输出四个栏目：platform、ai、sports、retail。候选新闻中的 Domain 字段表示检索阶段的目标板块，请优先尊重该字段；只有明显错分时才调整。
 
 分类优先规则：
-1. 国内平台公司新闻优先归入 platform。
-2. 有具体模型、Agent、API、推理、多模态、AI Search、Computer Use、开源模型、推理成本、AI 基础设施变化，并且能解释为“业务可理解的能力变化”的新闻归入 ai。
+1. 人工输入中有效的明确 Category 优先；按主题而非公司名称分类。国内平台的商家工具、履约及供应链等平台能力归 platform；以AI业务应用为核心的文章可归 ai。同一事件不得跨栏重复计数。
+2. AI栏只收录已上线应用、明确试点、真实客户案例或原创应用研究；必须能说明谁在什么业务流程中使用什么工具、改变了什么步骤。纯模型发布、算法、论文、训练、参数、评测、推理优化、芯片、开源框架及研发工具新闻一律排除，不得用一句可能的商业价值将其包装为应用新闻。
 3. 体育、户外、服装品牌相关新闻归入 sports。
 4. Walmart、Costco、Amazon、Zara、Uniqlo 等传统零售创新归入 retail。
 5. 无法明确归类或价值较低的新闻直接忽略。
@@ -47,10 +47,10 @@ Retail Media、Retail Media Network、Advertising business、Ad tech、CTV adver
 栏目定义：
 
 platform / 国内电商平台 / Platform Intelligence
-重点关注阿里巴巴、淘宝、天猫、1688、京东、京东零售、京东物流、抖音电商、字节跳动、拼多多、美团、微信、小红书、快手。重点新闻类型包括新事业部或新业务、平台战略变化、搜索、推荐、会员、商家工具、履约、供应链、物流、即时零售、本地生活、平台开放能力、AI 在平台中的真实落地、组织调整或事业部方向变化。manual_sources/daily_input.md 人工输入优先于 AI 抓取的 Google News/RSS 自动来源；如果人工输入已有高质量平台内容，不需要用低价值自动新闻凑满。不要抓普通促销、明星代言、单纯销售战报、普通营销 Campaign、广告预算新闻。
+重点关注阿里巴巴、淘宝、天猫、1688、京东、京东零售、京东物流、抖音电商、字节跳动、拼多多、美团、微信、小红书、快手。重点新闻类型包括新事业部或新业务、平台战略变化、搜索、推荐、会员、商家工具、履约、供应链、物流、即时零售、本地生活、平台开放能力、AI 在平台中的真实落地、组织调整或事业部方向变化。先按原始发布者的权威性与一手性筛选，同等质量下优先人工选题；如果人工输入已有高质量平台内容，不需要用低价值自动新闻凑满。不要抓普通促销、明星代言、单纯销售战报、普通营销 Campaign、广告预算新闻。
 
 ai / AI for Business / AI Capabilities & Industry Impact
-只保留业务团队能理解、能借鉴的 AI 能力变化。重点关注 AI used in retail、AI shopping、AI customer service、AI search、AI recommendation、AI productivity、AI agent、AI commerce、AI workflow、AI marketing、AI operations、Model routing、Enterprise AI、Business AI adoption。可以关注 OpenAI、Google Gemini、Anthropic Claude、DeepSeek、豆包、字节 Seed、通义千问/Qwen、腾讯混元、Kimi、Manus、Microsoft Copilot、Apple Intelligence、NVIDIA、Hugging Face，但不要收集纯模型发布新闻，例如 Gemini 3、Claude 5、GPT-6、Qwen 4、DeepSeek V4，除非它们明确引入搜索、客服、购物、推荐、运营、企业流程、商品理解、供应链或开发效率等业务能力。不要把模型版本号、模型排行榜、参数规模、Benchmark、论文、训练方法或复杂技术参数作为内容重点。每条 AI 内容必须说明 Capability 和 Industry Impact；如果无法解释新增能力或业务流程影响，直接忽略。
+仅关注AI应用层：购物助手、客户服务、商品搜索、推荐、内容生产、会员运营、营销执行、门店运营、库存预测、供应链、销售流程和办公自动化。候选必须提供明确产品、使用对象和业务流程证据；试点、计划上线和实际部署必须区分。研发层面全部排除，包括模型发布与升级、API或推理性能、训练方法、模型参数、Benchmark、研究论文、芯片和AI基础设施。涉及应用和研发的综合文章，仅保留有充分事实的独立应用案例；不得摘取研发内容。每条须说明业务场景、具体做法和披露的效果；没有效果数据时不要编造。
 
 sports / 体育与户外行业 / Sports & Outdoor
 重点关注 Decathlon、Nike、Adidas、Lululemon、Anta、Li Ning、On Running、Salomon、Columbia、Arc'teryx、Patagonia、Puma、Under Armour、Garmin，以及 Outdoor trends、Sports retail、Fitness、Running、Cycling、Camping、Sports technology、Wearables、Sports equipment。重点新闻类型包括电商、品牌直营、会员、数字化、门店创新、供应链、履约、商品体验、运动消费趋势、行业报告、财报、组织战略、门店扩张、新产品带来的品类或体验变化。普通明星合作、普通赛事赞助和纯广告 Campaign 直接忽略；但如果联名、新品、赞助或内容活动同时涉及会员、App、小程序、社群运营、内容转化、搜索推荐、门店联动、履约供应链、商品体验升级或新人群拓展，可以保留，因为这类信息可能体现运动零售的渠道和用户经营变化。
@@ -67,7 +67,7 @@ JSON schema 必须严格如下：
     {{"name": "公司或主题名称", "summary_points": ["要点1：基于原文说明发生了什么", "要点2：补充关键数据、业务动作或平台能力变化", "要点3：说明这件事反映的行业变化或业务含义"], "link": "原始文章链接"}}
   ],
   "ai": [
-    {{"title": "业务可理解的能力变化，不要写模型版本号", "summary_points": ["要点1：说明AI新增或增强了什么能力", "要点2：说明该能力进入了哪些真实业务流程", "要点3：说明对搜索、客服、运营、内容、供应链、办公或开发效率等场景的影响"], "link": "原始文章链接"}}
+    {{"title": "业务可理解的能力变化，不要写模型版本号", "summary_points": ["要点1：说明AI新增或增强了什么能力", "要点2：说明该能力进入了哪些真实业务流程", "要点3：说明对搜索、客服、运营、内容、供应链、办公等业务场景的影响"], "link": "原始文章链接"}}
   ],
   "sports": [
     {{"name": "公司或主题名称", "summary_points": ["要点1：基于原文说明公司、品牌或行业发生了什么", "要点2：补充关键数据、产品体验、渠道、会员、门店或消费趋势", "要点3：说明这件事反映的体育户外行业变化"], "link": "原始文章链接"}}
@@ -79,6 +79,8 @@ JSON schema 必须严格如下：
 }}
 
 数量要求：
+- 每个栏目至少2篇有效、独立、高质量文章，最多8篇；只有通过来源与主题审核的文章才计数。同一事件的多篇报道仅算1篇。候选充足时必须达到每类2篇；不足时如实输出缺口，不得拿低质量文章凑数，发布前由程序检查。
+- 仅使用最近14天发布的文章；8月底文章用于9月周报时，摘要须标注“近14天补充”，不得冒充本月新闻。
 - platform: 最多 8 条；人工输入质量高时优先人工输入，但必须有真实来源或明确人工输入内容支撑；每条 3-6 个 summary_points，总字数约 500 个中文字，信息复杂时可放宽到 800 个中文字。
 - ai: 最多 8 条；每条 3-6 个 summary_points，总字数约 500 个中文字，信息复杂时可放宽到 800 个中文字，重点是业务可理解的 AI 能力和真实流程影响；纯模型版本、参数或 Benchmark 新闻必须过滤。
 - sports: 最多 8 条；可以使用行业报告、财报、门店扩张、消费趋势、产品体验变化等近 14 天内可靠信息；每条 3-6 个 summary_points，总字数约 500 个中文字，信息复杂时可放宽到 800 个中文字。
