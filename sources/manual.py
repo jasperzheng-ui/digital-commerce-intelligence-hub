@@ -27,6 +27,9 @@ FIELD_ALIASES = {
     "关键词": "keywords",
     "source": "source",
     "来源": "source",
+    "source type": "source_type",
+    "source_type": "source_type",
+    "来源类型": "source_type",
     "date": "date",
     "日期": "date",
 }
@@ -69,6 +72,7 @@ def fetch_manual_items(path):
         item["keywords"] = entry.get("keywords", "")
         item["company"] = entry.get("company", "")
         item["date"] = entry.get("date", "")
+        item["source_type"] = _manual_source_type(entry)
         items.append(item)
 
     return items
@@ -196,3 +200,26 @@ def _infer_domain(category, company, content):
     if any(word in text for word in ["sports", "outdoor", "体育", "户外", "运动", "decathlon", "nike", "adidas", "lululemon", "anta", "li ning", "salomon"]):
         return "sports"
     return "retail"
+
+
+def _manual_source_type(entry):
+    explicit = clean_text(entry.get("source_type", "")).lower()
+    aliases = {
+        "wechat": "wechat", "微信公众号": "wechat", "公众号": "wechat",
+        "other": "other", "其他": "other", "非公众号": "other",
+    }
+    if explicit:
+        return aliases.get(explicit, "invalid")
+    link = clean_text(entry.get("link", "")).lower()
+    return "wechat" if "mp.weixin.qq.com/" in link else "other"
+
+
+def validate_manual_source_mix(items, expected):
+    actual = {kind: sum(item.get("source_type") == kind for item in items)
+              for kind in expected}
+    if len(items) != sum(expected.values()) or actual != expected:
+        raise ValueError(
+            "manual_sources 来源比例不符合要求：需要微信公众号5篇、其他来源3篇，"
+            f"当前微信公众号{actual.get('wechat', 0)}篇、其他{actual.get('other', 0)}篇、"
+            f"总计{len(items)}篇。请为每篇添加 Source Type: wechat 或 Source Type: other。"
+        )
