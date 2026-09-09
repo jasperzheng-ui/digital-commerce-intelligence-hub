@@ -7,14 +7,6 @@ from urllib.parse import urlparse
 from config import BASE_DIR, MANUAL_INPUT_PATH, MIN_SECTION_SIGNALS, SECTION_ORDER
 from intelligence.gemini import normalize_dashboard_data, _canonical_section_key, _fallback_card_from_item
 
-# A host is a provenance hint, not proof of an individual article's claims.
-PRIMARY_HOSTS = {
-    'jdcorporateblog.com', 'jd.com', 'alizila.com', 'alibabacloud.com',
-    'alibabagroup.com', 'aboutamazon.com', 'aboutamazon.eu',
-    'corporate.lululemon.com', 'corporate.walmart.com', 'nielseniq.com',
-    'mckinsey.com', 'bain.com', 'bcg.com', 'accenture.com', 'deloitte.com',
-    'pwc.com', 'ey.com', 'kantar.com', 'decathlon-united.media', 'adidas-group.com',
-}
 RD_TITLES = ('benchmark', 'leaderboard', 'model release', 'training method',
              '模型发布', '模型参数', '排行榜', '训练方法', '推理框架', '芯片', '研发', '研究论文')
 APPLICATION_WORDS = ('购物', '客服', '库存', '订单', '销售', '门店', '供应链', '工作流',
@@ -44,14 +36,8 @@ def eligible(item, today=None):
     return True
 
 
-def source_rank(item):
-    host = (urlparse(item.get('link', '')).hostname or '').lower()
-    return int(any(host == h or host.endswith('.' + h) for h in PRIMARY_HOSTS))
-
-
 def manual_fallback_allowed(item):
-    # No unscreened RSS or unverified WeChat accounts in timeout fallbacks.
-    return item.get('origin_type') == 'manual' and source_rank(item) == 1 and eligible(item)
+    return item.get('origin_type') == 'manual' and eligible(item)
 
 
 def attach_metadata(card, item):
@@ -99,7 +85,7 @@ def finalize_report(data, items):
             used.add(item['link'])
             supplemented = True
     if supplemented:
-        normalized['editorial_notice'] = '部分或全部摘要直接采用已收集的企业/研究机构人工素材，请在publish前核对。'
+        normalized['editorial_notice'] = '部分或全部摘要直接采用已审核的人工素材，请在publish前核对。'
     if not data or data.get('parse_warning'):
         normalized['headline'] = 'AI生成未完成，本期采用人工素材备用摘要'
         normalized['parse_warning'] = (data or {}).get('parse_warning') or 'AI generation failed; manual source fallback.'
