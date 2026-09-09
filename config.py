@@ -15,6 +15,7 @@ GOOGLE_NEWS_ITEMS_PER_QUERY = 5
 
 SECTION_ORDER = ["platform", "ai", "sports", "retail"]
 MIN_SECTION_SIGNALS = {section: 2 for section in SECTION_ORDER}
+MANUAL_SOURCE_MIX = {"wechat": 5, "other": 3}
 SEARCH_WINDOWS_DAYS = [3, 7, 14]
 MIN_SECTION_CANDIDATES = {
     "platform": 4,
