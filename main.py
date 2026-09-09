@@ -17,20 +17,22 @@ REPORT_MODES = {"preview", "publish"}
 
 
 def collect_information_pool():
-    from config import FEEDS, MANUAL_INPUT_PATH, SEARCH_QUERIES
+    from config import FEEDS, MANUAL_INPUT_PATH, MANUAL_SOURCE_MIX, SEARCH_QUERIES
     from sources.google_news import fetch_google_news_items
-    from sources.manual import fetch_manual_items
+    from sources.manual import fetch_manual_items, validate_manual_source_mix
     from sources.rss import fetch_rss_items
-    from intelligence.report_quality import eligible, source_rank
+    from intelligence.report_quality import eligible
 
     items = []
-    items.extend(fetch_manual_items(MANUAL_INPUT_PATH))
+    manual_items = fetch_manual_items(MANUAL_INPUT_PATH)
+    validate_manual_source_mix(manual_items, MANUAL_SOURCE_MIX)
+    items.extend(manual_items)
     items.extend(fetch_rss_items(FEEDS))
     items = [item for item in items if eligible(item)]
     items.extend(fetch_google_news_items(SEARCH_QUERIES, existing_items=items))
     items = [item for item in items if eligible(item)]
     for item in items:
-        item['priority'] = source_rank(item) * 10 + (3 if item.get('origin_type') == 'manual' else 1)
+        item['priority'] = 3 if item.get('origin_type') == 'manual' else item.get('priority', 1)
     return prepare_information_pool(items)
 
 
@@ -167,13 +169,12 @@ def get_dashboard_url(mode):
 
 def generate_dashboard_data():
     from intelligence.gemini import generate_dashboard_data as generate_with_gemini
-    from intelligence.report_quality import eligible, finalize_report, source_rank
+    from intelligence.report_quality import eligible, finalize_report
     from time import monotonic
 
     started = monotonic()
     information_pool = collect_information_pool()
     information_pool = [i for i in information_pool if eligible(i)]
-    information_pool.sort(key=source_rank, reverse=True)
     print(f'[collect] {len(information_pool)} usable sources, {monotonic()-started:.1f}s', flush=True)
     if not information_pool:
         return finalize_report(None, [])
