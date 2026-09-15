@@ -4,11 +4,11 @@
 
 Title: 手机新品首发，京东物流部署过万个前置仓站，加速推动秒送时代新基建落地
 Category: platform
-Company: 京东、京东物流、京东秒送
+Company: 京东物流
 Source: 微信公众号「京东物流黑板报」
 Source Type: wechat
 Date: 2026-09-12
-Link: https://k.sina.com.cn/article_5953189932_162d6782c06704xyw2.html
+Link: https://mp.weixin.qq.com/s/aOm61NkrbytzbnS9AFcMkA
 Keywords: 即时零售、前置仓、仓店协同、履约网络
 Content:
 1. 京东物流披露，针对9月旗舰手机集中上新，在全国部署过万个前置仓站，联动数万家线下门店协同备货，将商品提前放到靠近消费者的位置。
@@ -49,7 +49,7 @@ Content:
 
 Title: Amazon Quick桌面版正式开放，移动端新增跨系统工作动态
 Category: ai
-Company: Amazon、Amazon Quick
+Company: Amazon
 Source: About Amazon
 Source Type: other
 Date: 2026-09-09
@@ -65,7 +65,7 @@ Content:
 
 Title: 新晋运动顶流HYROX，没那么火了吗？
 Category: sports
-Company: HYROX、小红书、运动健身品牌
+Company: 抖音、微信、百度指数、小红书
 Source: 微信公众号「TopKlout克劳锐」
 Source Type: wechat
 Date: 2026-09-07
