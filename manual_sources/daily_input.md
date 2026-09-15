@@ -2,189 +2,122 @@
 
 ---
 
-Title: 外卖大战打了一年半，三家都说自己在好转
-
+Title: 手机新品首发，京东物流部署过万个前置仓站，加速推动秒送时代新基建落地
 Category: platform
-
-Company: 美团、阿里巴巴、京东
-
-Source: 微信公众号「盒饭财经」
-
+Company: 京东、京东物流、京东秒送
+Source: 微信公众号「京东物流黑板报」
 Source Type: wechat
-
-Date: 2026-09-01
-
-Link: https://mp.weixin.qq.com/s?__biz=MzkyODE4ODYxMA==&mid=2247531606&idx=1&sn=1f9bcdbce1885339c4d51e57899047c6&chksm=c3623317f4ba91245f7d265ba4ffc71eb3bbf2112d82d40c08e39e54b4c1e8dd6ec5c38afc70&scene=0&xtrack=1#rd
-
-Keywords: 即时零售、外卖、经营效率、平台协同
-
+Date: 2026-09-12
+Link: https://k.sina.com.cn/article_5953189932_162d6782c06704xyw2.html
+Keywords: 即时零售、前置仓、仓店协同、履约网络
 Content:
-1. 盒饭财经对比三家平台最新财报：美团关注核心本地商业恢复盈利，京东强调新业务减亏，阿里强调即时零售单均经济性改善。
-2. 三种指标的业务范围不同，不能直接比较为外卖利润；尤其京东新业务还包含京喜、海外等业务。
-3. 文章将平台竞争的变化归纳为从补贴争规模转向效率和生态协同。这是作者对财报的解读，不能据此认定外卖竞争已经结束。
-4. 日期采用可核验的转载发布日期，公众号原页在当前环境未能打开；原文链接来自授权转载页。备用阅读：https://www.36kr.com/p/3964326460530181
+1. 京东物流披露，针对9月旗舰手机集中上新，在全国部署过万个前置仓站，联动数万家线下门店协同备货，将商品提前放到靠近消费者的位置。
+2. 这批仓站9月已完成部署，骑手可就近取货，配送过程支持实时追踪；报道中的最快9分钟为最快个案口径，不代表所有地区和订单均可达到。
+3. 文章介绍共享前置仓与自营配送结合的仓配服务。对零售商的启示是，新品即时交付需要选品、库存前置及末端履约协同，不能仅靠增加配送运力。
 
 ---
 
-Title: 马云如何才能拿下即时零售的“大结果”？
-
+Title: 明知“阅后即焚”不温不火，小红书为什么非要试？
 Category: platform
-
-Company: 阿里巴巴、淘宝闪购、天猫超市
-
-Source: 微信公众号「字母榜」
-
+Company: 小红书
+Source: 微信公众号「TopKlout克劳锐」
 Source Type: wechat
-
-Date: 2026-09-02
-
-Link: https://mp.weixin.qq.com/s?__biz=MzI2NjU1MTcwMA==&mid=2247566113&idx=1&sn=782a6d31a5e65975e5dca51c8554ea8c&chksm=eb77d13ab2a4e55ee6e2872f8bb030a30265bc27ed3c0c4d8724aef07767250ef5e6682ea366&scene=0&xtrack=1#rd
-
-Keywords: 即时零售、远近场协同、货盘、仓配网络
-
+Date: 2026-09-08
+Link: https://mp.weixin.qq.com/s/I3nflaUlpkiWxwikFObCxg
+Keywords: 内容平台、用户运营、UGC、粉丝互动、种草
 Content:
-1. 字母榜分析淘宝闪购与传统电商的协同，认为即时零售正承担提升购物频次、推动淘天履约近场化的作用。
-2. 文章梳理近场原生与远近场结合两类模式，以天猫超市的调整说明货盘、仓储和末端配送需要共同改造。
-3. 作者认为，扩张能否持续取决于履约效率、投入纪律和电商生态协同；文中交易规模目标属于未来规划，不能表述为已经实现。
-4. 日期采用可核验的转载发布日期，公众号原页在当前环境未能打开；原文链接来自授权转载页。备用阅读：https://www.36kr.com/p/3966048685366535
+1. 文章梳理小红书内测的“发日常”功能：内容独立展示三天，支持仅粉丝可见及分组权限，也可转为正式笔记；报道时仍处于内测阶段。
+2. 作者认为，降低发布压力有助于让只浏览的用户参与内容生产，并增强创作者与粉丝之间的日常联系；这些属于机制分析，尚无转化率提升的实证。
+3. 对品牌内容运营的启示是，可观察轻量分享与长期笔记如何配合，在真实使用体验和粉丝互动中寻找种草机会，不能将内测功能视为已向全部商家开放。
 
 ---
 
-Title: 运动品牌告别高增长时代
-
-Category: sports
-
-Company: 安踏、李宁、特步、361度
-
-Source: 微信公众号「懒熊体育」
-
-Source Type: wechat
-
-Date: 2026-09-07
-
-Link: https://mp.weixin.qq.com/s?__biz=MzA4MjQzNDYyMQ==&mid=2650509419&idx=1&sn=2149ea14a55a550e589469c09f6220a2&chksm=86d00d8f92f3eb3e191d9d82ed1b8a29a354bd999cdf81956cc855b55b5c90358fd9f9309e9b&scene=0&xtrack=1#rd
-
-Keywords: 运动零售、店效、DTC、电商、渠道调整
-
-Content:
-1. 懒熊体育结合本土运动品牌中报，指出主品牌增长、终端客流与折扣承压，增长表现也因品牌及品类而分化。
-2. 文章披露，安踏主品牌上半年DTC与电商合计占比升至76.9%，并讨论品牌从门店数量扩张转向单店产出和精细化运营。
-3. 作者提出多品牌经营、产品差异化和海外拓展等方向，同时提醒跑步与户外竞争加剧；这些判断属于行业分析，并非已经验证的普遍增长结果。
-4. 日期采用可核验的转载发布日期，公众号原页在当前环境未能打开；原文链接来自授权转载页。备用阅读：https://www.36kr.com/p/3972426730304005
-
----
-
-Title: 最不起眼的饮料配角，成为便利店C位
-
-Category: retail
-
-Company: 便利店、盒马及即时零售平台
-
-Source: 微信公众号「DT商业观察」
-
-Source Type: wechat
-
-Date: 2026-09-07
-
-Link: https://mp.weixin.qq.com/s/ZPa6XEm7zz2k-zvqv0RKfw
-
-Keywords: 品类创新、连带销售、即时零售、冷链
-
-Content:
-1. DT商业观察分析冰杯从饮料配角变成独立商品的过程，消费需求包括随时获得冰饮和自行调配饮品。
-2. 便利店和即时零售平台将冰杯与咖啡液、汽水、果汁等搭配销售，文章认为这有助于形成组合消费场景。
-3. 文章将降价与销量扩大、包装及生产优化、物流成本摊薄联系起来，同时指出冷链管理仍是该品类运营的重要条件。
-4. 日期采用可核验的转载发布日期，公众号原页在当前环境未能打开；原文链接来自授权转载页。备用阅读：https://www.36kr.com/p/3972816468635907
-
----
-
-Title: 转型中的日资零售
-
-Category: retail
-
-Company: 伊藤洋华堂、永旺
-
-Source: 微信公众号「灵兽」
-
-Source Type: wechat
-
-Date: 2026-09-03
-
-Link: https://mp.weixin.qq.com/s?__biz=MzI1OTIyMTg0MQ==&mid=2247534254&idx=1&sn=eecc8db2bcc66691f756c5f24e63f5c0&chksm=eb69966fa1663e781f62356e280155733d1b292cd5aa7eb51bbd96598492abc5d6311a9d77dd&scene=0&xtrack=1#rd
-
-Keywords: 门店转型、商品结构、区域运营、食品零售
-
-Content:
-1. 灵兽对比伊藤洋华堂回到北京望京与永旺退出京津冀超市业务，讨论日资零售在华的门店和区域经营调整。
-2. 望京新店约1500平方米，以生鲜、熟食、烘焙及家庭日用品为重点；该店8月22日已开业，属于文章回顾的经营案例。
-3. 作者指出，缩减门店还涉及采购、仓储和管理成本能否被区域规模支撑；不能将京津冀超市业务退出扩大表述为永旺全面退出中国。
-4. 日期采用可核验的转载发布日期，公众号原页在当前环境未能打开；原文链接来自授权转载页。备用阅读：https://www.36kr.com/p/3966255833865480
-
----
-
-Title: QwenWork接入企业系统，将客户、库存和订单查询纳入AI工作流
-
+Title: Token首次写进险企财报，AI的经营回报怎么算
 Category: ai
-
-Company: 阿里巴巴、QwenWork
-
-Source: Alibaba Cloud
-
-Source Type: other
-
-Date: 2026-09-04
-
-Link: https://www.alibabacloud.com/blog/alibabas-qwenwork-hits-30-million-users-in-first-month-as-enterprise-adoption-surges_603531
-
-Keywords: AI Agent、企业应用、CRM、ERP、工作流
-
+Company: 中国平安、中国人寿、中国人保、新华保险
+Source: 微信公众号「WEMONEY研究室」
+Source Type: wechat
+Date: 2026-09-11
+Link: https://mp.weixin.qq.com/s?__biz=MzIzOTU2MzE0Mg==&mid=2247500399&idx=1&sn=7b0183ec55317cc8b79c1c80d3ea977b&chksm=e823678ee4f9344c0634567070cc53bbe8d44642cccfcd2b1f324987c68033932a171d7bd127&scene=0&xtrack=1#rd
+Keywords: AI应用、客服、营销助手、业务流程、投入产出
 Content:
-1. QwenWork通过钉钉连接企业业务系统，销售人员可用自然语言查询CRM与ERP中的客户、库存和订单信息。
-2. 官方披露，长安汽车在供应商审核与用户调研分析中采用相关工具；供应商审核工作量减少约90%，调研分析从数天缩短至半天，均为特定客户案例的企业披露。
-3. 本条只关注已披露的业务流程应用，不采用模型研发、技术排名或研发场景内容。
+1. 文章对比保险企业披露的AI业务应用，涉及客服坐席、营销计划书生成、理赔处理和销售辅助，重点讨论实际业务成效应如何衡量。
+2. 据文章整理的企业披露，平安AI坐席覆盖81%的客服总服务量，新华保险营销智能助手生成计划书超过400万份；各家统计口径不同，不宜直接横向排名。
+3. 作者区分调用量、辅助销售额与利润贡献：AI参与的销售规模不等于AI新增收入，缺少成本分母也无法计算完整回报。对零售AI项目，可借鉴其思路，分别考察客服解决率、处理工时、转化增量与总成本。
 
 ---
 
-Title: 亚马逊将消息真伪核验纳入购物AI助手
-
+Title: Amazon Quick桌面版正式开放，移动端新增跨系统工作动态
 Category: ai
-
-Company: Amazon、Alexa for Shopping
-
+Company: Amazon、Amazon Quick
 Source: About Amazon
-
 Source Type: other
-
-Date: 2026-09-02
-
-Link: https://www.aboutamazon.com/news/retail/how-to-verify-amazon-messages-alexa-for-shopping
-
-Keywords: AI应用、购物助手、客户服务、消息核验
-
+Date: 2026-09-09
+Link: https://www.aboutamazon.com/news/aws/amazon-quick-desktop-ai-assistant
+Keywords: AI应用、办公助手、工作流、CRM、跨系统协作
 Content:
-1. 亚马逊将消息核验加入购物AI助手，美国用户可提交自称来自亚马逊的邮件、短信或电话信息。
-2. 助手对照亚马逊通信记录给出确认、未匹配或无法确认的结果，并提供后续操作建议；未匹配不能直接等同于已证实诈骗。
-3. 该功能将客户支持与购物安全接入既有对话入口，属于已推出的业务应用；其他地区扩展仍为后续计划。
+1. 亚马逊9月9日更新公告，宣布Amazon Quick桌面应用向macOS和Windows用户正式开放，同时在iOS和Android端增加工作动态信息流。
+2. 新信息流汇集已连接的邮件、消息、CRM和日历等系统中的待办，帮助用户按优先级处理任务；桌面与移动端同步聊天及文件夹。
+3. 官方介绍，智能体可在后台继续执行任务，并把需要人工判断的事项送至手机处理。这是办公流程应用，不代表所有任务无需审批即可自动完成。
+4. 本条日期对应桌面版正式开放及移动信息流更新；页面最初发布于4月28日，不将原有功能重新表述为本周首发。
 
 ---
 
-Title: lululemon发布第二季度业绩，披露门店及库存变化
-
+Title: 新晋运动顶流HYROX，没那么火了吗？
 Category: sports
-
-Company: lululemon
-
-Source: lululemon投资者公告
-
-Source Type: other
-
-Date: 2026-09-03
-
-Link: https://corporate.lululemon.com/newsroom/press-releases/2026/09-03-2026-210528733
-
-Keywords: 运动零售、财报、门店网络、库存管理
-
+Company: HYROX、小红书、运动健身品牌
+Source: 微信公众号「TopKlout克劳锐」
+Source Type: wechat
+Date: 2026-09-07
+Link: https://mp.weixin.qq.com/s?__biz=MzIxNDA5OTgyNA==&mid=2650937645&idx=1&sn=736a5c3ec7099850a30cbc1d5479caa4&chksm=8d4d10bf28cb1072c3f4d44c9562ae0623f62f82baed3e61f40cb350f237f4164953000e4ced&scene=0&xtrack=1#rd
+Keywords: 运动消费、功能性训练、社群运营、内容种草、用户留存
 Content:
-1. lululemon公布截至8月2日的2026财年第二季度业绩：收入约24亿美元，同比下降4%；可比销售额下降9%。
-2. 公司当季净增9家直营门店，期末共825家；库存金额同比下降1%，库存件数下降7%，金额与件数口径需区分。
-3. 管理层表示将加强产品、营销与费用管理；财报发布于9月3日，数据反映季度经营情况，不能表述为本周新增变化。
+1. 克劳锐比较抖音、微信及百度指数，观察到HYROX在8月赛事热度高峰后讨论量回落，同时小红书相关训练内容仍持续更新。
+2. 作者从可量化成绩、团队训练与社交分享分析参与者留存，认为赛事间歇可能解释部分流量波动；这是作者判断，不能据此确认长期需求或装备销售增长。
+3. 对运动零售的启示是，将赛事话题热度与持续训练需求分开观察，结合训练社群、课程参与及装备复购评估品类机会，而不是只依据热搜配置库存。
+
+---
+
+Title: 深度 | 中国新兴品牌SKYPEOPLE如何走到市场面前？
+Category: sports
+Company: SKYPEOPLE天空人
+Source: LADYMAX时尚头条网
+Source Type: other
+Date: 2026-09-09
+Link: https://news.ladymax.cn/202609/09-39756.html
+Keywords: 户外功能服饰、羽绒、场景化商品、门店体验、品牌运营
+Content:
+1. LADYMAX以SKYPEOPLE为案例，分析功能服饰品牌如何把保暖性能转化为消费者能理解的通勤、差旅和周末穿着场景，并逐步扩展全年商品组合。
+2. 文章回顾品牌以温度区间解释羽绒产品选择，以及用三里屯品牌中心店展示产品和品牌理念；门店5月重新亮相、相关系列7月上市，均为回顾案例，不是9月新开店或新发布。
+3. 对运动户外零售的启示是，商品分层应帮助消费者完成场景选择，并让门店体验与线上表达保持一致；文章未提供该品牌销售转化改善的量化证据。
+
+---
+
+Title: 最低调的海外巨头，悄悄卖爆全球，年销超400亿
+Category: retail
+Company: CU、BGF Retail
+Source: 微信公众号「天下网商」
+Source Type: wechat
+Date: 2026-09-13
+Link: https://mp.weixin.qq.com/s?__biz=MzkwNTUxNTE0Ng==&mid=2247696612&idx=1&sn=731094343d02a90bede842a4bc46e0d3&chksm=c132354257e3c8cf44b8413a51c7d8238d8d3199a80340583785f1e92789cde58d0c6641e6ec&scene=0&xtrack=1#rd
+Keywords: 便利店、自有品牌、会员App、商品测试、本地供应链
+Content:
+1. 天下网商结合韩国门店走访，分析CU如何通过鲜食、自有品牌、组合促销和生活服务带动高频到店与连带消费。
+2. 文章介绍先在部分门店测试新品、再依据表现扩大铺货的机制，以及Pocket CU应用推送新品、折扣和会员优惠的运营方式，强调商品反馈与消费者关系的结合。
+3. 作者指出，CU进入中国仍需补齐鲜食生产、配送和商品本地化能力；报道时中国线下首店尚在筹备，不能表述为已开业。中国渠道布局是文中回顾的进展，不是全部发生在本周。
+
+---
+
+Title: 一年少了84家店，Zara反而越卖越猛
+Category: retail
+Company: Inditex、Zara
+Source: LADYMAX时尚头条网
+Source Type: other
+Date: 2026-09-14
+Link: https://news.ladymax.cn/202609/14-39761.html
+Keywords: 全渠道零售、店效、库存协同、门店履约、旗舰店
+Content:
+1. LADYMAX解读Inditex上半年业绩：2月至7月集团销售额同比增长7.6%，期末全球门店5444家、同比减少84家；这组数据为集团口径，不是Zara单品牌口径。
+2. 文章分析集团通过旗舰店升级、搬迁和扩容优化门店网络，并让门店承担品牌体验、自提及线上订单履约等功能，以支持线上线下一体化经营。
+3. 作者将这一变化概括为由门店数量驱动转向单店生产力提升。对零售商的启示是，评估门店应同时考虑销售、体验和履约贡献，不能把关店与业绩增长简单解释为直接因果关系。
+
