@@ -1,4 +1,4 @@
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus, urlparse
 
 from config import (
     EXPANDED_SEARCH_QUERIES,
@@ -15,89 +15,71 @@ GOOGLE_NEWS_RSS_URL = (
 )
 
 
-def fetch_google_news_items(search_queries, existing_items=None):
-    # Query once for the widest window. All recency selection below is local.
-    from sources.http_feed import fetch_unique
-    from sources.common import coerce_datetime
-    from datetime import datetime, timezone, timedelta
-
+def fetch_google_news_items(search_queries, existing_items=None, cache=None, article_cache=None,
+                            targets=None, wechat_needed=0):
+    from sources.http_feed import fetch_unique, enrich_items
+    from intelligence.report_quality import eligible, canonical_link
+    from config import PREFERRED_WECHAT_CHANNELS
+    cache = cache if cache is not None else {}
+    article_cache = article_cache if article_cache is not None else {}
+    targets = targets or MIN_SECTION_CANDIDATES
+    existing_items = existing_items or []
     sections = dict(_iter_section_queries(search_queries))
-    cache = {}
-    raw = {section: [] for section in sections}
-    seen_queries = {section: set() for section in sections}
-    now = datetime.now(timezone.utc)
-    widest = max(SEARCH_WINDOWS_DAYS)
-    existing_links = {s: {i.get('link') for i in (existing_items or [])
-                         if i.get('domain') == s and i.get('link')}
-                      for s in sections}
-
-    def enough(section):
-        links = existing_links[section] | {i['link'] for i in select(section)}
-        return len(links) >= MIN_SECTION_CANDIDATES.get(section, 2)
-
-    def select(section):
-        by_key = {}
-        profile = FILTER_PROFILES.get(section, {})
-        for entry, query in raw[section]:
-            published = parse_date(entry)
-            parsed = coerce_datetime(published)
-            if parsed is None or parsed > now or parsed < now - timedelta(days=widest):
+    selected = {s: [] for s in sections}
+    # Small prioritized batches, not the entire keyword catalogue. This limits work,
+    # never interrupts a running request or fabricates completeness.
+    queues = {}
+    for s, queries in sections.items():
+        channels = PREFERRED_WECHAT_CHANNELS.get(s, [])[:2]
+        targeted = ['site:mp.weixin.qq.com ' + channel for channel in channels]
+        queries = targeted + list(queries)[:2] if wechat_needed else list(queries)[:4]
+        queues[s] = list(dict.fromkeys(' '.join(q.split()).casefold() for q in queries))
+    def enough(s):
+        pool = [i for i in existing_items + selected[s] if i.get('domain') == s]
+        return (len({canonical_link(i['link']) for i in pool}) >= targets.get(s, 8)
+                and len({canonical_link(i['link']) for i in pool if i.get('source_type') == 'wechat'}) >= wechat_needed)
+    def read_batch(batch, feeds):
+        seeds = []
+        for (s, query, url), feed in zip(batch, feeds):
+            if feed is None:
                 continue
-            title = entry.get('title', '')
-            summary = entry.get('summary', '') or entry.get('description', '')
-            if not should_keep_section_item(title, summary, profile):
+            profile = FILTER_PROFILES.get(s, {})
+            for entry in feed.entries[:4]:
+                title, summary = entry.get('title', ''), entry.get('summary', '')
+                if should_keep_section_item(title, summary, profile):
+                    item = _make_google_news_item(entry, query, s, max(SEARCH_WINDOWS_DAYS),
+                                                  score_section_item(title, summary, profile), 2, False)
+                    publisher = entry.get('source') or {}
+                    item['source'] = (publisher.get('title') if isinstance(publisher, dict) else str(publisher)) or urlparse(item['link']).hostname or 'Web source'
+                    seeds.append(item)
+        verified = enrich_items(seeds, article_cache)
+        for item in verified:
+            if eligible(item):
+                s = item['domain']
+                key = canonical_link(item['link'])
+                if key not in {canonical_link(i['link']) for i in existing_items + selected[s]}:
+                    selected[s].append(item)
+    while queues:
+        batch = []
+        for s in list(queues):
+            if enough(s) or not queues[s]:
+                del queues[s]
                 continue
-            score = score_section_item(title, summary, profile)
-            item = _make_google_news_item(entry, query, section, widest, score, 2, False)
-            key = _dedupe_key(item['title'], item['link'])
-            by_key.setdefault(key, item)
-        values = list(by_key.values())
-        for window in sorted(SEARCH_WINDOWS_DAYS):
-            recent = [dict(i, search_window_days=window) for i in values
-                      if coerce_datetime(i['published_date']) >= now - timedelta(days=window)]
-            recent.sort(key=lambda i: (i.get('relevance_score', 0), i.get('published_date', '')), reverse=True)
-            if len(recent) >= MIN_SECTION_CANDIDATES.get(section, 2) or window == widest:
-                return recent[:MAX_SECTION_CANDIDATES.get(section, 8)]
-        return []
-
-    def collect(queries_by_section):
-        queues = {s: iter(q) for s, q in queries_by_section.items()}
-        while queues:
-            batch = []
-            for section in list(queues):
-                if enough(section):
-                    del queues[section]
-                    continue
-                # Two per section per wave: prioritize early queries, avoid
-                # launching an entire catalogue after the pool is sufficient.
-                for _ in range(2):
-                    query = next(queues[section], None)
-                    if query is None:
-                        del queues[section]
-                        break
-                    normalized = ' '.join(query.split()).casefold()
-                    if normalized in seen_queries[section]:
-                        continue
-                    seen_queries[section].add(normalized)
-                    url = GOOGLE_NEWS_RSS_URL.format(query=quote_plus(f'{normalized} when:{widest}d'))
-                    batch.append((section, query, url))
-            if not batch:
-                continue
-            feeds = fetch_unique([url for _, _, url in batch], cache)
-            for (section, query, _), feed in zip(batch, feeds):
-                if feed is not None:
-                    # Keep the returned feed, not only its first five entries:
-                    # a 14-day response must also support local 3/7-day selection.
-                    raw[section].extend((entry, query) for entry in feed.entries)
-        return {s: select(s) for s in sections}
-
-    selected = collect(sections)
-    deficient = {s: EXPANDED_SEARCH_QUERIES.get(s, []) for s in sections
-                 if not enough(s)}
-    if deficient:
-        selected = collect(deficient)
-    print(f'[search] unique requests={len(cache)}, candidates=' + str({s: len(v) for s, v in selected.items()}), flush=True)
-    return [item for section in sections for item in selected[section]]
+            for _ in range(min(2, len(queues[s]))):
+                query = queues[s].pop(0)
+                url = GOOGLE_NEWS_RSS_URL.format(query=quote_plus(query + ' when:14d'))
+                if url not in cache:
+                    batch.append((s, query, url))
+        if not batch:
+            continue
+        read_batch(batch, fetch_unique([x[2] for x in batch], cache))
+        alternate = [(s, q, 'https://www.bing.com/search?format=rss&q=' + quote_plus(q))
+                     for s, q, _ in batch if not enough(s)]
+        alternate = [b for b in alternate if b[2] not in cache]
+        if alternate:
+            read_batch(alternate, fetch_unique([x[2] for x in alternate], cache))
+    print('[search] cached requests=' + str(len(cache)) + ', usable=' + str({s: len(v) for s,v in selected.items()}), flush=True)
+    return [i for s in sections for i in sorted(selected[s], key=lambda i: i.get('relevance_score',0), reverse=True)[:MAX_SECTION_CANDIDATES.get(s,12)]]
 
 
 def _make_google_news_item(entry, query, section, window_days, score, priority, fallback):
