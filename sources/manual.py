@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from urllib.parse import urlparse
 import re
 
 from sources.common import clean_text, make_item
@@ -52,7 +53,7 @@ def fetch_manual_items(path):
         body = _format_manual_summary(entry)
         source = entry.get("source")
         item = make_item(
-            source=f"Manual Input - {source}" if source else "Manual Input",
+            source=source or "人工提供来源",
             title=title,
             summary=body,
             link=entry.get("link", ""),
@@ -214,12 +215,12 @@ def _manual_source_type(entry):
     return "wechat" if "mp.weixin.qq.com/" in link else "other"
 
 
-def validate_manual_source_mix(items, expected):
-    actual = {kind: sum(item.get("source_type") == kind for item in items)
-              for kind in expected}
-    if len(items) != sum(expected.values()) or actual != expected:
-        raise ValueError(
-            "manual_sources 来源比例不符合要求：需要微信公众号5篇、其他来源3篇，"
-            f"当前微信公众号{actual.get('wechat', 0)}篇、其他{actual.get('other', 0)}篇、"
-            f"总计{len(items)}篇。请为每篇添加 Source Type: wechat 或 Source Type: other。"
-        )
+def validate_manual_source_mix(items, expected=None):
+    """Validate editorial fields, not a fixed input count or mix."""
+    invalid = [i.get('title', '') for i in items
+               if i.get('source_type') not in {'wechat', 'other'}
+               or i.get('manual_category') not in {'platform', 'ai', 'sports', 'retail'}
+               or _parse_manual_date(i.get('date')) is None or not i.get('link')
+               or (i.get('source_type') == 'wechat' and urlparse(i.get('link', '')).hostname != 'mp.weixin.qq.com')]
+    if invalid:
+        raise ValueError('人工素材请填写有效日期、Category、Link及Source Type；公众号计数需要微信原文链接：' + '；'.join(invalid))
