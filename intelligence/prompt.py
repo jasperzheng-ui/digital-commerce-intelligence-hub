@@ -9,7 +9,7 @@ def build_dashboard_prompt(items):
 
 项目名称：Digital Commerce Intelligence Hub
 
-你的任务不是写日报文章，也不是替管理层做决策。本产品已经升级为 Weekly Industry Intelligence。自动新闻会在检索阶段按 platform、ai、sports、retail 四个板块分别搜索，并按 3 天、7 天、14 天逐级扩大窗口。你的任务是对各板块候选新闻做二次筛选、去重，并输出适合 Executive Dashboard 展示的结构化分点摘要 JSON。
+你的任务不是写日报文章，也不是替管理层做决策。本产品已经升级为 Weekly Industry Intelligence。自动新闻会在检索阶段按 platform、ai、sports、retail 四个板块分别搜索，每个查询只请求一次14天范围，再在本地筛选3/7/14天窗口。你的任务是对各板块候选新闻做二次筛选、去重，并输出适合 Executive Dashboard 展示的结构化分点摘要 JSON。
 
 请严格遵守：
 - 只输出合法 JSON，不要输出 Markdown，不要输出解释文字。
@@ -18,9 +18,6 @@ def build_dashboard_prompt(items):
 - 如果某条自动候选没有可靠来源、缺少原文链接、无法确认事实，必须忽略。人工输入也必须通过来源、主题和内容质量审核，不合格内容应排除。
 - 如果某个板块没有可靠新闻，返回空数组；允许 Dashboard 出现 empty，不要根据行业常识、历史趋势或推测补充。
 - 按“对 Decathlon China 数字商业团队的参考价值”排序，而不是按发布时间排序。
-- 不按“一手信息、企业官方、公众号、媒体或研究机构”等来源类型预设优先级。只按内容相关性、信息完整度、事实可核验性和对数字商业团队的参考价值筛选与排序。来源不限于微信公众号，也可以采用企业官网、咨询或研究报告、行业媒体、商业媒体及垂直媒体；转载、聚合、洗稿、无原文或无法确认发布者的文章不计入有效条数。同一事件追溯到信息完整且可验证的原文并只保留一条。企业自述效果须注明“公司披露”，媒体或机构推断不得写成已证实事实。
-- 人工输入默认是本期主编选择的高优先级信号。请优先保留并改写人工输入中的有效新闻；不要因为自动新闻更新、更短或有更多链接而替换掉人工输入。
-- manual_sources/daily_input.md 固定保留8篇，来源构成为微信公众号5篇、其他来源3篇。这里的5:3是人工收集池的来源构成要求，不代表公众号文章在内容排序上具有更高优先级；公众号文章必须能核实账号主体和原文链接，每篇人工稿需标注 Source Type: wechat 或 Source Type: other。
 - 无法明确归类、价值较低或不符合其候选板块要求的新闻直接忽略，不要硬塞。
 - 不要输出 retail_media、marketing、advertising、consumer、opportunity、action 等分类。
 - Link 必须使用信息池中的原始文章链接；自动来源如果没有链接，该 signal 不允许输出。人工输入没有原文链接时不得计入有效文章。
@@ -79,13 +76,15 @@ JSON schema 必须严格如下：
   "one_thing_worth_watching": "本周最值得持续观察的一条趋势，不要写成行动建议"
 }}
 
-数量要求：
-- 每个栏目至少2篇有效、独立、高质量文章，最多8篇；只有通过来源与主题审核的文章才计数。同一事件的多篇报道仅算1篇。候选充足时必须达到每类2篇；不足时如实输出缺口，不得拿低质量文章凑数，发布前由程序检查。
+数量与质量审核要求：
+- 本次输出是经审核的候选池，不是最终排版；各类最多保留8条合格候选，供程序从中选3-5篇。平台、运动、零售目标4-5篇，AI目标3-5篇，每类底线3篇。不要为数量降低门槛。
+- 人工和自动素材执行相同审核，不保证保留人工稿。仅返回质量分达到75/100的稿件：业务相关性30分、事实及出处可信度30分、具体动作/数据/流程信息量25分、时效性15分。分数是编辑判断，不是事实真实性认证。
+- 每张卡片额外输出 quality_score（整数）、quality_reason（说明实际证据与不足）、event_key（公司+具体事件+时间，同事件不同报道必须相同）、keywords（3-6个短词数组）、company。这些字段与下方schema字段一起输出，不能遗漏。
+- 只根据候选正文提炼3-6个充分但不重复的要点，维持较长分点摘要；禁止为了字数推演、扩写未经证实的效果。每个数字、落地状态必须在素材中有依据，推断必须标注为作者观点。
+- 不足以支持完整摘要的RSS标题/片段不合格；研发新闻不合格。文章过期、广告软文或同事件重复稿也应排除。
+- 最终整期至少一半来自已核实的公众号。Source Type由程序提供，不得自行判断或篡改。不为了比例保留低质量稿。内容质量相当时，优先可核实的企业官方、权威机构公众号，专业媒体也可使用。
+- 另外输出 rejected_candidates 数组，每项含 link 和 reason，简述未入选候选原因。
 - 仅使用最近14天发布的文章；8月底文章用于9月周报时，摘要须标注“近14天补充”，不得冒充本月新闻。
-- platform: 最多 8 条；人工输入质量高时优先人工输入，但必须有真实来源或明确人工输入内容支撑；每条 3-6 个 summary_points，总字数约 500 个中文字，信息复杂时可放宽到 800 个中文字。
-- ai: 最多 8 条；每条 3-6 个 summary_points，总字数约 500 个中文字，信息复杂时可放宽到 800 个中文字，重点是业务可理解的 AI 能力和真实流程影响；纯模型版本、参数或 Benchmark 新闻必须过滤。
-- sports: 最多 8 条；可以使用行业报告、财报、门店扩张、消费趋势、产品体验变化等近 14 天内可靠信息；每条 3-6 个 summary_points，总字数约 500 个中文字，信息复杂时可放宽到 800 个中文字。
-- retail: 最多 8 条；每条 3-6 个 summary_points，总字数约 500 个中文字，信息复杂时可放宽到 800 个中文字，必须足够完整；严禁 Retail Media。
 - 如果某板块没有可靠新闻，输出空数组 []，不要补齐数量。
 - 排序按对 Decathlon China 数字商业团队的参考价值，不按发布时间。
 
@@ -106,11 +105,12 @@ def _format_information_pool(items):
                     f"Origin Type: {item.get('origin_type', '')}",
                     f"Manual Category: {item.get('manual_category', '')}",
                     f"Manual Company: {item.get('manual_company', '')}",
-                    f"Manual Source Type: {item.get('source_type', '')}",
+                    f"Source Type: {item.get('source_type', '')}",
                     f"Published Date: {item.get('published_date', '')}",
                     f"Search Window Days: {item.get('search_window_days', '')}",
                     f"Title: {item.get('title', '')}",
-                    f"Summary: {item.get('summary', '')}",
+                    f"Content: {item.get('summary', '')}",
+                    f"Content Verified: {item.get('content_verified', item.get('origin_type') == 'manual')}",
                     f"Link: {item.get('link', '')}",
                 ]
             )
