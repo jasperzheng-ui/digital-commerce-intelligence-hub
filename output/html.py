@@ -1,5 +1,6 @@
 from datetime import datetime
 from html import escape
+import re
 
 from utils.date_utils import report_date_parts
 
@@ -397,9 +398,9 @@ def build_dashboard_html(data, archive_href="./archive/"):
       </div>
     </section>
 
-    {_render_sections(data)}
-
     {_render_warning(data)}
+
+    {_render_sections(data)}
   </main>
 </body>
 </html>
@@ -449,9 +450,24 @@ def _render_card(card, section_key):
         <div class="field-label">摘要要点</div>
         {_render_summary_points(card, section_key)}
       </div>
+      {_render_keywords(card)}
       {button}
     </article>
     """
+
+
+def _render_keywords(card):
+    raw = card.get("keywords", [])
+    tags = raw if isinstance(raw, list) else re.split(r"[,，、;；|\n]+", safe_text(raw))
+    tags = list(dict.fromkeys(safe_text(t).strip() for t in tags if safe_text(t).strip()))
+    if not tags:
+        return ""
+    pills = "".join(
+        '<span style="display:inline-block;padding:4px 10px;border-radius:999px;'
+        'background:#eef2ff;color:#3643ba;font-size:12px;overflow-wrap:anywhere;max-width:100%">'
+        + safe_escape(t) + '</span>' for t in tags)
+    return ('<div class="field"><div class="field-label">Keywords</div>'
+            '<div style="display:flex;flex-wrap:wrap;gap:6px">' + pills + '</div></div>')
 
 
 def _card_title(card, section_key):
@@ -507,7 +523,7 @@ def _split_points(value):
 
 
 def _render_warning(data):
-    warning = data.get("parse_warning")
+    warning = data.get("parse_warning") or data.get("editorial_notice")
     if not warning:
         return ""
     return f'<div class="warning">{safe_escape(warning)}</div>'
