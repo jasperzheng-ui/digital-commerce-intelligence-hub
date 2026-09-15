@@ -327,7 +327,10 @@ def _card_content(card, section_type):
     for label in _METADATA_LABELS:
         key = label.lower()
         explicit = card.get(key) or card.get("manual_" + key) or card.get(label)
-        values = _metadata_values(label, explicit or metadata.get(key, ""))
+        value = explicit or metadata.get(key, "")
+        if label == "Source":
+            value = re.sub(r"^Manual Input\s*-\s*", "", safe_text(value), flags=re.I)
+        values = _metadata_values(label, value)
         if values:
             rows.append((label, values))
     return rows, points
