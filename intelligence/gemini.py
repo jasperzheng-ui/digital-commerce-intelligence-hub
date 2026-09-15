@@ -54,12 +54,11 @@ def generate_dashboard_data(items):
             contents=prompt,
         )
     except Exception as exc:
-        return build_source_fallback(
-            items,
-            f"Gemini request failed; rendered source-based fallback content. Error: {exc}",
-        )
+        failed = build_dashboard_fallback("")
+        failed["parse_warning"] = f"Gemini审核请求失败：{type(exc).__name__}。请重新Preview。"
+        return failed
 
-    raw_text = response.text.strip()
+    raw_text = (response.text or "").strip()
     return parse_dashboard_json(raw_text)
 
 
@@ -87,8 +86,10 @@ def normalize_dashboard_data(data):
         "retail_innovation": _filter_reliable_cards(_normalize_cards(_first_section(data, "retail_innovation"))),
         "one_thing_worth_watching": data.get("one_thing_worth_watching") or data.get("headline") or "今日信号已更新",
     }
-    if data.get("parse_warning"):
-        normalized["parse_warning"] = data["parse_warning"]
+    for key in ("parse_warning", "quality_status", "quality_shortfalls", "source_mix",
+                "editorial_notice", "review_version", "rejected_candidates"):
+        if key in data:
+            normalized[key] = data[key]
     return _sanitize_dashboard_terms(normalized)
 
 
@@ -97,6 +98,13 @@ def _first_section(data, canonical_key):
         if data.get(key):
             return data[key]
     return []
+
+
+def _card_metadata(item):
+    fields = ("title", "company", "category", "keywords", "date", "source", "source_type",
+              "origin_type", "quality_score", "quality_reason", "event_key", "review_status",
+              "provenance_url")
+    return {key: item[key] for key in fields if key in item}
 
 
 def _normalize_cards(items):
@@ -117,6 +125,7 @@ def _normalize_cards(items):
 
         cards.append(
             {
+                **_card_metadata(item),
                 "name": item.get("name") or item.get("platform") or item.get("topic") or "Signal",
                 "news": _clean_text(item.get("news") or item.get("signal") or ""),
                 "summary_points": _summary_points(
@@ -158,6 +167,7 @@ def _normalize_ai_cards(items):
         industry_impact = item.get("industry_impact") or item.get("why_this_matters") or item.get("why") or ""
         cards.append(
             {
+                **_card_metadata(item),
                 "name": title,
                 "title": title,
                 "capability": _clean_text(capability),
