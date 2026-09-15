@@ -9,26 +9,28 @@ HTML_OUTPUT_PATH = BASE_DIR / "output" / "index.html"
 PREVIEW_OUTPUT_PATH = BASE_DIR / "output" / "preview" / "index.html"
 PREVIEW_DATA_PATH = BASE_DIR / "output" / "preview" / "data.json"
 
-MAX_ITEMS_FOR_GEMINI = 28
+MAX_ITEMS_FOR_GEMINI = 48
 RSS_ITEMS_PER_FEED = 8
 GOOGLE_NEWS_ITEMS_PER_QUERY = 5
 
 SECTION_ORDER = ["platform", "ai", "sports", "retail"]
-MIN_SECTION_SIGNALS = {section: 2 for section in SECTION_ORDER}
-MANUAL_SOURCE_MIX = {"wechat": 5, "other": 3}
+MIN_SECTION_SIGNALS = {section: 3 for section in SECTION_ORDER}
+TARGET_SECTION_SIGNALS = {"platform": 4, "ai": 3, "sports": 4, "retail": 4}
+MAX_SECTION_SIGNALS = 5
+MIN_WECHAT_SHARE = 0.5
+MIN_QUALITY_SCORE = 75
+# Compatibility for old imports; there is no fixed manual count or input ratio.
+MANUAL_SOURCE_MIX = None
+PREFERRED_WECHAT_CHANNELS = {
+    "platform": ["京东黑板报", "京东物流黑板报", "京东健康黑板报", "京东工业黑板报", "阿里妈妈数字营销", "黄青春频道", "首财"],
+    "ai": ["腾讯研究院", "极客公园", "硬核看板", "Founder Park", "雷锋网", "42章经", "海外独角兽", "AGI接口"],
+    "sports": ["懒熊体育", "体育产业生态圈"],
+    "retail": ["联商网", "LadyMax", "时尚商业Daily", "DT商业观察"],
+}
+RESEARCH_CHANNELS = ["贝恩公司", "艾瑞咨询", "艾瑞消费资讯", "36氪未来消费", "虎嗅APP", "晚点LatePost", "刘润", "商业弧光"]
 SEARCH_WINDOWS_DAYS = [3, 7, 14]
-MIN_SECTION_CANDIDATES = {
-    "platform": 4,
-    "ai": 4,
-    "sports": 3,
-    "retail": 3,
-}
-MAX_SECTION_CANDIDATES = {
-    "platform": 12,
-    "ai": 12,
-    "sports": 10,
-    "retail": 10,
-}
+MIN_SECTION_CANDIDATES = {section: 8 for section in SECTION_ORDER}
+MAX_SECTION_CANDIDATES = {section: 12 for section in SECTION_ORDER}
 
 FEEDS = [
     {"source": "Retail Dive", "url": "https://www.retaildive.com/feeds/news/", "domain": "retail"},
@@ -189,3 +191,11 @@ FILTER_PROFILES = {
     },
 }
 
+
+# Chinese-language candidates must reach editorial review, not be lost to English-only brand filters.
+FILTER_PROFILES["retail"]["include_any"] += [
+    "零售", "便利店", "超市", "百货", "盒马", "沃尔玛", "山姆", "优衣库", "宜家", "永辉", "胖东来", "retail", "grocery"]
+FILTER_PROFILES["retail"]["require_any"] += ["门店", "商品", "自有品牌", "经营", "store", "private label"]
+FILTER_PROFILES["sports"]["include_any"] += ["运动", "健身", "羽绒", "skypeople", "hyrox"]
+FILTER_PROFILES["ai"]["include_any"] += ["人工智能", "智能体", "ai", "千问"]
+FILTER_PROFILES["ai"]["require_any"] += ["工作流", "客服", "办公", "营销"]
