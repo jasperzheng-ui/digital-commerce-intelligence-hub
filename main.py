@@ -191,6 +191,39 @@ def run_preview_mode():
     print(f"Preview dashboard generated: {PREVIEW_OUTPUT_PATH}")
 
 
+def prepare_manual_publish(data):
+    """Check file structure only; editorial selection belongs to Preview."""
+    from intelligence.report_quality import report_shortfalls, source_mix
+    if not isinstance(data, dict):
+        raise ValueError("终稿必须是 JSON 对象，请检查 output/preview/data.json。")
+    try:
+        datetime.strptime(data.get("date", ""), "%Y-%m-%d")
+    except (TypeError, ValueError) as exc:
+        raise ValueError("终稿 date 必须是有效的 YYYY-MM-DD 日期。") from exc
+    sections = ("platform_intelligence", "ai_technology",
+                "sports_outdoor", "retail_innovation")
+    for section in sections:
+        cards = data.get(section)
+        if not isinstance(cards, list):
+            raise ValueError(f"终稿 {section} 必须是文章数组；空板块请填写 []。")
+        for card in cards:
+            if not isinstance(card, dict):
+                raise ValueError(f"终稿 {section} 中的文章必须是 JSON 对象。")
+            points = card.get("summary_points")
+            if points is not None and (not isinstance(points, list)
+                    or not all(isinstance(p, str) for p in points)):
+                raise ValueError(f"终稿 {section} 的 summary_points 必须是文本数组。")
+    # Refresh stale counters after manual deletion without enforcing quotas,
+    # scores, freshness, review_version, or AI review fields.
+    result = dict(data)
+    result["source_mix"] = source_mix(result)
+    result["quality_shortfalls"] = report_shortfalls(result)
+    result["quality_status"] = "manually_approved"
+    result["editorial_notice"] = ""
+    result.pop("parse_warning", None)
+    return result
+
+
 def run_publish_mode():
     from output.archive import save_dashboard_history
     from output.email import send_brief_email
@@ -198,15 +231,14 @@ def run_publish_mode():
 
     dashboard_data = load_preview_data()
     if dashboard_data is None:
-        print("No preview data found. Generating a fresh publish version.")
-        dashboard_data = generate_dashboard_data()
+        raise FileNotFoundError("缺少 output/preview/data.json，请先准备并审核终稿；Publish 不会重新采集或调用 AI。")
     else:
         print(f"Publishing reviewed preview data: {PREVIEW_DATA_PATH}")
 
-    from intelligence.report_quality import validate_report
-    validate_report(dashboard_data)
+    dashboard_data = prepare_manual_publish(dashboard_data)
     render_dashboard(dashboard_data, HTML_OUTPUT_PATH)
     save_dashboard_history(dashboard_data, HTML_OUTPUT_PATH.parent)
+    save_preview_data(dashboard_data)
 
     page_url = get_dashboard_url("publish")
     send_brief_email(dashboard_data, page_url)
