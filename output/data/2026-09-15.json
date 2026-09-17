@@ -1,7 +1,7 @@
 {
   "date": "2026-09-15",
-  "headline": "平台即时履约与AI场景落地提速，零售与体育品牌深化全渠道与服务体验",
-  "platform_intelligence": [
+  "today_focus": "平台即时履约与AI场景落地提速，零售与体育品牌深化全渠道与服务体验",
+  "platform": [
     {
       "company": "京东物流",
       "keywords": [
@@ -90,7 +90,7 @@
       "provenance_url": "https://mp.weixin.qq.com/s/I3nflaUlpkiWxwikFObCxg"
     }
   ],
-  "ai_technology": [
+  "ai": [
     {
       "title": "小红书整合“问一问”与“点点”统一AI服务入口",
       "company": "小红书",
@@ -152,7 +152,7 @@
       "provenance_url": "https://finance.sina.com.cn/tech/roll/2026-09-08/doc-inircmes6063086.shtml"
     }
   ],
-  "sports_outdoor": [
+  "sports": [
     {
       "company": "Keep",
       "keywords": [
@@ -270,7 +270,7 @@
       "provenance_url": "https://news.ladymax.cn/202609/09-39756.html"
     }
   ],
-  "retail_innovation": [
+  "retail": [
     {
       "company": "Inditex",
       "keywords": [
@@ -388,38 +388,5 @@
       "provenance_url": "https://mp.weixin.qq.com/s/2mAtjkU1k1WREriYpkDI3g"
     }
   ],
-  "one_thing_worth_watching": "实体门店正从单纯的销售渠道转型为集成线下沉浸体验、AI设备交互与线上即时履约的前置节点，全渠道效率评估将进一步向单店综合产出倾斜。",
-  "rejected_candidates": [
-    {
-      "link": "https://www.walmart.com/",
-      "reason": "属于通用电商首页抓取与普通促销广告，缺乏具体的数字化创新动作或事实数据。"
-    },
-    {
-      "link": "https://mp.weixin.qq.com/s/MPMFxMKaIOVthuJHuTF8Pw",
-      "reason": "属于历史转型回顾与通用商业评论，缺乏近14天明确的平台上线功能或新业务动作。"
-    },
-    {
-      "link": "https://www.retaildive.com/news/amazon-whole-foods-market-employee-benefits-pay-labor/830296/",
-      "reason": "侧重于前线员工薪酬福利调整，缺乏零售技术、全渠道履约或消费者体验创新相关直接信息。"
-    },
-    {
-      "link": "https://www.retaildive.com/news/kohls-expands-babies-r-us-shops-sephora-falters/830256/",
-      "reason": "侧重于传统百货品牌引流招商调整，缺乏电商及数字商业参考价值。"
-    }
-  ],
-  "review_version": 2,
-  "quality_shortfalls": {
-    "ai": {
-      "actual": 2,
-      "required": 3
-    }
-  },
-  "source_mix": {
-    "total": 13,
-    "wechat": 6,
-    "required_wechat": 7,
-    "shortfall": 1
-  },
-  "quality_status": "manually_approved",
-  "editorial_notice": ""
+  "one_thing_worth_watching": "实体门店正从单纯的销售渠道转型为集成线下沉浸体验、AI设备交互与线上即时履约的前置节点，全渠道效率评估将进一步向单店综合产出倾斜。"
 }
