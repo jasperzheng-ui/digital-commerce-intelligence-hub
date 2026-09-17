@@ -13,6 +13,10 @@ name: Digital Commerce Intelligence Brief
           - publish
           - deploy_only
 
+concurrency:
+  group: intelligence-pages-${{ github.repository }}
+  cancel-in-progress: false
+
 permissions:
   contents: write
   pages: write
@@ -67,7 +71,7 @@ jobs:
             git add output/preview
             COMMIT_MESSAGE="preview: save weekly intelligence preview [skip ci]"
           else
-            git add output/archive output/data output/preview
+            git add output/index.html output/archive output/data output/preview
             BRIEF_DATE=$(ls output/data/*.json | sed 's#.*/##; s#\.json$##' | sort | tail -n 1)
             COMMIT_MESSAGE="archive: publish weekly intelligence for ${BRIEF_DATE} [skip ci]"
           fi
