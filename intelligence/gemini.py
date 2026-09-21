@@ -54,15 +54,15 @@ def generate_dashboard_data(items):
             contents=prompt,
         )
     except Exception as exc:
-    detail = str(exc).replace(api_key, "[REDACTED]")
-    print(
-        f"[gemini-error] model={GEMINI_MODEL}; "
-        f"type={type(exc).__name__}; "
-        f"code={getattr(exc, 'code', 'unknown')}; "
-        f"items={len(items)}; prompt_chars={len(prompt)}; "
-        f"detail={detail[:2000]}",
-        flush=True,
-    )
+        detail = str(exc).replace(api_key, "[REDACTED]")
+        print(
+            f"[gemini-error] model={GEMINI_MODEL}; "
+            f"type={type(exc).__name__}; "
+            f"code={getattr(exc, 'code', 'unknown')}; "
+            f"items={len(items)}; prompt_chars={len(prompt)}; "
+            f"detail={detail[:2000]}",
+            flush=True,
+        )
         raise RuntimeError(
             "Gemini审核失败，已停止生成和发送周报；请查看[gemini-error]日志。"
         ) from None
