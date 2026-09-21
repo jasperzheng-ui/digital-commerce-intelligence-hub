@@ -7,7 +7,7 @@ from config import MIN_SECTION_CANDIDATES, SECTION_ORDER
 from intelligence.prompt import build_dashboard_prompt
 
 
-GEMINI_MODEL = "gemini-3.1-pro"
+GEMINI_MODEL = "gemini-3.8-flash"
 
 
 SECTION_ALIASES = {
