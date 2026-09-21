@@ -54,9 +54,18 @@ def generate_dashboard_data(items):
             contents=prompt,
         )
     except Exception as exc:
-        failed = build_dashboard_fallback("")
-        failed["parse_warning"] = f"Gemini审核请求失败：{type(exc).__name__}。请重新Preview。"
-        return failed
+    detail = str(exc).replace(api_key, "[REDACTED]")
+    print(
+        f"[gemini-error] model={GEMINI_MODEL}; "
+        f"type={type(exc).__name__}; "
+        f"code={getattr(exc, 'code', 'unknown')}; "
+        f"items={len(items)}; prompt_chars={len(prompt)}; "
+        f"detail={detail[:2000]}",
+        flush=True,
+    )
+    raise RuntimeError(
+        "Gemini审核失败，已停止生成和发送周报；请查看[gemini-error]日志。"
+    ) from None
 
     raw_text = (response.text or "").strip()
     return parse_dashboard_json(raw_text)
