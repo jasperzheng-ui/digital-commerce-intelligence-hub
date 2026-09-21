@@ -63,9 +63,9 @@ def generate_dashboard_data(items):
         f"detail={detail[:2000]}",
         flush=True,
     )
-    raise RuntimeError(
-        "Gemini审核失败，已停止生成和发送周报；请查看[gemini-error]日志。"
-    ) from None
+        raise RuntimeError(
+            "Gemini审核失败，已停止生成和发送周报；请查看[gemini-error]日志。"
+        ) from None
 
     raw_text = (response.text or "").strip()
     return parse_dashboard_json(raw_text)
