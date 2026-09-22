@@ -1,7 +1,7 @@
 {
   "date": "2026-09-22",
-  "headline": "购物助手连接下单，品牌零售深化商品与渠道协同",
-  "platform_intelligence": [
+  "today_focus": "购物助手连接下单，品牌零售深化商品与渠道协同",
+  "platform": [
     {
       "name": "TikTok Shop美国奢侈品转售",
       "title": "TikTok Shop美国奢侈品转售",
@@ -54,7 +54,7 @@
       "event_key": "京东、七鲜大厨:京东七鲜大厨把膳食规划、食材配送和烹饪连接起来:2026-09-16"
     }
   ],
-  "ai_technology": [
+  "ai": [
     {
       "name": "Ask Shipt将文字和图片需求转为可编辑的购物车",
       "title": "Ask Shipt将文字和图片需求转为可编辑的购物车",
@@ -108,7 +108,7 @@
       "event_key": "Walmart:沃尔玛Scintilla计划整合Marketplace数据与AI分析:2026-09-16"
     }
   ],
-  "sports_outdoor": [
+  "sports": [
     {
       "name": "ALO大中华区渠道扩张",
       "title": "ALO大中华区渠道扩张",
@@ -214,7 +214,7 @@
       "event_key": "安踏、Puma:安踏收购PUMA约29%股权获中国反垄断批准:2026-09-14"
     }
   ],
-  "retail_innovation": [
+  "retail": [
     {
       "name": "江南布衣会员与库存协同",
       "title": "江南布衣会员与库存协同",
@@ -269,37 +269,5 @@
       "event_key": "The Laundress、Target、Unilever:The Laundress借Target门店扩大香氛衣物护理体验:2026-09-16"
     }
   ],
-  "one_thing_worth_watching": "购物助手开始将需求描述、食谱和清单连接到具体商品与购物车；实体零售案例则通过库存共享、商品重组和现场体验改善购物过程。上述变化的落地状态与效果证据各不相同，已上线功能、未来计划和企业观察数据不能混为一谈。",
-  "rejected_candidates": [
-    {
-      "link": "https://www.cbndata.com/information/295794",
-      "reason": "正文主要讨论跨境企业上市、利润、现金流、库存和资本市场表现，未聚焦具体国内平台能力或明确的零售创新案例。虽然具有商业洞察价值，但当前四栏目没有独立行研板块，不为满足平台数量将其纳入。"
-    },
-    {
-      "link": "https://jdcorporateblog.com/beyond-the-chatbot-how-jd-health-is-bringing-ai-into-doctors-everyday-work/",
-      "reason": "属于有具体流程和使用数据的医疗人工智能应用，并非研发新闻；但核心场景为医学证据查找、临床决策与患者管理，与本期数字商业团队所需的购物、运营、供应链及办公应用关联较弱，本轮未达到业务相关性筛选要求。"
-    }
-  ],
-  "source_mix": {
-    "total": 10,
-    "wechat": 0,
-    "required_wechat": 5,
-    "shortfall": 5
-  },
-  "quality_shortfalls": {
-    "platform": {
-      "actual": 2,
-      "required": 3
-    },
-    "ai": {
-      "actual": 2,
-      "required": 3
-    },
-    "retail": {
-      "actual": 2,
-      "required": 3
-    }
-  },
-  "quality_status": "manually_approved",
-  "editorial_notice": ""
+  "one_thing_worth_watching": "购物助手开始将需求描述、食谱和清单连接到具体商品与购物车；实体零售案例则通过库存共享、商品重组和现场体验改善购物过程。上述变化的落地状态与效果证据各不相同，已上线功能、未来计划和企业观察数据不能混为一谈。"
 }
