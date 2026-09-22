@@ -52,61 +52,9 @@
       "quality_score": 88,
       "quality_reason": "官方披露菜单、供应链、配送与设备的具体连接方式；仍处预订阶段，没有规模化经营效果数据。",
       "event_key": "京东、七鲜大厨:京东七鲜大厨把膳食规划、食材配送和烹饪连接起来:2026-09-16"
-    },
-    {
-      "name": "京东收购Ceconomy审查进展",
-      "title": "京东收购Ceconomy审查进展",
-      "company": "京东、Ceconomy",
-      "summary_points": [
-        "路透社报道，京东为推进约25亿美元收购Ceconomy提出的承诺受到竞争对手质疑。交易正在接受欧盟外国补贴条例审查，审查关注的是潜在补贴是否影响市场竞争。",
-        "拟议安排包括Ceconomy按市场价格使用京东在欧洲的物流和技术能力，同时允许小型竞争对手按公平、非歧视价格使用相关能力。物流与技术服务的定价和开放条件，因此成为交易审查的一部分。",
-        "报道时，欧委会计划于10月23日前作出决定，竞争对手的负面反馈可能促使京东调整或完善承诺。相关方面未就反馈置评，报道描述的是审查过程中的争议，并非最终裁决或交易交割结果。"
-      ],
-      "link": "https://www.reuters.com/legal/litigation/jdcoms-ceconomy-concessions-face-criticism-rivals-sources-say-2026-09-10/",
-      "source": "Reuters",
-      "source_type": "other",
-      "date": "2026-09-10",
-      "origin_type": "manual",
-      "keywords": [
-        "海外扩张",
-        "收购",
-        "物流",
-        "平台竞争",
-        "欧洲零售"
-      ],
-      "quality_score": 80,
-      "quality_reason": "明确交易、拟议承诺和竞争反馈；审查未结束，不能作为最终批准或交割消息。",
-      "event_key": "京东、Ceconomy:京东收购Ceconomy：物流与技术开放承诺受到质疑:2026-09-10"
     }
   ],
   "ai_technology": [
-    {
-      "name": "Instacart把膳食规划、购物清单与门店商品连接成购物车",
-      "title": "Instacart把膳食规划、购物清单与门店商品连接成购物车",
-      "company": "Instacart",
-      "summary_points": [
-        "Instacart推出购物助手Clementine，面向美国和加拿大多数用户，将对话需求、购物清单或菜谱转为可购买的购物车。推荐结合用户选择门店的实际库存、个人偏好和历史订单，使建议能够衔接具体商品与下单。",
-        "助手覆盖食谱发现、家庭饮食限制、优惠及低价替代品、常购物品补货和聚会采购等场景，也支持拍摄手写清单。用户可以从生活需求出发组织采购，减少逐项搜索商品的操作。",
-        "官方称，早期用户的使用方式已从简单补货延伸到食谱规划，相关订单的商品数量与金额高于平台常规购物篮，订单金额超过平台115美元的均值。这属于早期使用观察，不能据此认定助手带来了经对照实验验证的销售增量。",
-        "面向零售商的Cart Assistant允许企业结合自己的商品目录与客户数据，定制助手名称、语气、会员及食谱内容。Food Bazaar等已上线，ALDI美国等仍待推出，不同零售商的部署状态并不相同。",
-        "Instacart同时连接外部人工智能入口，使用户在ChatGPT、Claude等服务中开始的购物对话，可以衔接Instacart的配送或自提下单。其布局同时包含自有消费者助手、零售商定制助手与外部购物入口。"
-      ],
-      "link": "https://investors.instacart.com/News/news-releases/news-details/2026/Meet-Clementine-Instacarts-AI-Shopping-Assistant-That-Takes-Whats-for-Dinner-Off-Your-Plate/default.aspx",
-      "source": "Instacart官方投资者网站",
-      "source_type": "other",
-      "date": "2026-09-09",
-      "origin_type": "manual",
-      "keywords": [
-        "AI应用",
-        "购物助手",
-        "膳食规划",
-        "食品电商",
-        "消费决策"
-      ],
-      "quality_score": 91,
-      "quality_reason": "官方说明个人助手、零售商定制和外部入口的应用流程；早期购物篮表现不能视为因果增量。",
-      "event_key": "Instacart:Instacart以Clementine连接膳食规划与下单:2026-09-09"
-    },
     {
       "name": "Ask Shipt将文字和图片需求转为可编辑的购物车",
       "title": "Ask Shipt将文字和图片需求转为可编辑的购物车",
@@ -158,31 +106,6 @@
       "quality_score": 86,
       "quality_reason": "解释现有AI和后续跨数据集分析的区别，并注明使用对象限制；主要升级尚未上线。",
       "event_key": "Walmart:沃尔玛Scintilla计划整合Marketplace数据与AI分析:2026-09-16"
-    },
-    {
-      "name": "购物助手的产地回答引发商品信息可靠性争议",
-      "title": "购物助手的产地回答引发商品信息可靠性争议",
-      "company": "Amazon、Walmart",
-      "summary_points": [
-        "美国参议员Baldwin和Scott要求联邦贸易委员会调查亚马逊与沃尔玛，质疑两家企业的购物助手可能弱化美国制造商品的信息，并未有效处理虚假产地标签。报道涉及消费者在购物过程中获取商品产地信息的实际应用问题。",
-        "相关质疑来自一项研究，涉及Alexa for Shopping和Sparky的回答，以及平台对商品信息的治理。购物助手对自身回答原因所作的解释，不能直接视为企业真实政策或内部决策的证据。",
-        "亚马逊否认故意隐瞒产地信息，表示会引导用户查看商品详情页。报道时，联邦贸易委员会未置评，沃尔玛尚未回应，因此材料呈现的是议员质疑、研究发现与企业回应，尚不能认定监管部门已经确认违规。"
-      ],
-      "link": "https://www.reuters.com/legal/litigation/amazon-walmart-chatbots-attract-senator-ire-over-made-usa-label-snags-2026-09-17/",
-      "source": "Reuters",
-      "source_type": "other",
-      "date": "2026-09-17",
-      "origin_type": "manual",
-      "keywords": [
-        "AI应用",
-        "购物助手",
-        "商品信息",
-        "答案可靠性",
-        "产地标签"
-      ],
-      "quality_score": 79,
-      "quality_reason": "涉及已使用的购物助手及商品产地信息回答，属于应用治理案例；议员质疑不等于监管结论。",
-      "event_key": "Amazon、Walmart:AI购物助手的产地回答引发商品信息治理争议:2026-09-17"
     }
   ],
   "sports_outdoor": [
@@ -321,33 +244,6 @@
       "event_key": "江南布衣、JNBY:江南布衣以会员、线上增长和库存共享提升经营效率:2026-09-10"
     },
     {
-      "name": "永旺Food Style店型改造",
-      "title": "永旺Food Style店型改造",
-      "company": "永旺",
-      "summary_points": [
-        "联商网拆解永旺Food Style在东京的两家改造样板店：平均商品品项压缩约25%，截至6月底，销售、客流及购买件数均有改善，平均购买件数由8件升至10件。改造从3—4月启动，9月转载的是案例复盘，并非当月新开门店。",
-        "卖场改造围绕即食、优质实惠食材和省时做饭需求，重新安排入口与重点陈列区。门店以沙拉等生活主题关联商品，并通过卖场说明解释用途，使顾客能够按用餐场景一次配齐所需商品。",
-        "鲜鱼区引入半开放加工，并根据不同时段的销售情况调整制作，提供预加工和即食商品。生鲜部门由销售原料向提供便捷用餐方案延伸，增加了商品加工及现场服务环节。",
-        "商品划分为基础畅销、衍生和尝鲜等层次，结合基础品、时令品及店铺企划安排销售重点，再通过不同价格标签表达优惠。精简品项并不意味着只留下低价商品，而是重新组织商品角色和顾客选择。",
-        "门店调整还依赖集团联合采购、自有品牌、中央厨房、物流与商品开发支持。作者强调，这是卖场、商品、价格和组织共同变化的结果，样板店验证后再逐步推广，不能将成效简单归因于减少商品数量。"
-      ],
-      "link": "https://www.cbndata.com/information/295797",
-      "source": "联商网（CBNData转载）",
-      "source_type": "other",
-      "date": "2026-09-20",
-      "origin_type": "manual",
-      "keywords": [
-        "超市",
-        "店型调整",
-        "商品精简",
-        "门店效率",
-        "客流"
-      ],
-      "quality_score": 92,
-      "quality_reason": "涵盖商品、动线、加工、价格与组织配合；业绩仅来自改造样板店，不能外推至全部门店。",
-      "event_key": "永旺:永旺Food Style以精简商品、重排卖场和加工服务改善经营:2026-09-20"
-    },
-    {
       "name": "The Laundress拓展Target渠道",
       "title": "The Laundress拓展Target渠道",
       "company": "The Laundress、Target、Unilever",
@@ -372,31 +268,6 @@
       "quality_score": 88,
       "quality_reason": "包含线上与实体覆盖、专属香型和门店试香机制；2027年扩张规模仍是计划。",
       "event_key": "The Laundress、Target、Unilever:The Laundress借Target门店扩大香氛衣物护理体验:2026-09-16"
-    },
-    {
-      "name": "Target Beauty Studio商品与渠道调整",
-      "title": "Target Beauty Studio商品与渠道调整",
-      "company": "Target、韩国美妆品牌",
-      "summary_points": [
-        "Target以Beauty Studio替代原Ulta店中店空间，组合90个品牌、1600多款商品，其中许多品牌首次进入Target。该调整通过更新商品组合与购物体验，参与公司恢复增长的经营安排。",
-        "韩妆是扩充重点。Target今年早些时候已新增150多款韩妆商品和10多个品牌，Beauty Studio进一步纳入六个韩妆品牌，其中五个首次进入Target，扩大这一品类在其渠道中的覆盖。",
-        "文章将其放在韩妆品牌拓展美国销售渠道的背景下讨论：除Sephora、Ulta等专业美妆零售商之外，品牌也进入大众综合零售渠道，以接触更广泛的消费者。",
-        "报道同时指出，90个品牌中只能识别出两个黑人创始人或所有者品牌。新商品组合扩大了部分品牌的渠道机会，但作者认为品牌代表性仍存在不足，不能把整体扩容等同于所有品牌群体均衡受益。"
-      ],
-      "link": "https://www.modernretail.co/operations/target-gets-k-beauty-brands-to-think-beyond-sephora-ulta-with-new-beauty-studio/",
-      "source": "Modern Retail",
-      "source_type": "other",
-      "date": "2026-09-21",
-      "origin_type": "manual",
-      "keywords": [
-        "美妆零售",
-        "渠道拓展",
-        "品类经营",
-        "门店体验"
-      ],
-      "quality_score": 85,
-      "quality_reason": "披露商品规模及韩妆渠道变化；商品代表性判断来自报道，尚无改造效果数据。",
-      "event_key": "Target、韩国美妆品牌:Target以Beauty Studio拓展韩妆与大众美妆渠道:2026-09-21"
     }
   ],
   "one_thing_worth_watching": "购物助手开始将需求描述、食谱和清单连接到具体商品与购物车；实体零售案例则通过库存共享、商品重组和现场体验改善购物过程。上述变化的落地状态与效果证据各不相同，已上线功能、未来计划和企业观察数据不能混为一谈。",
