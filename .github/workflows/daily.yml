@@ -4,12 +4,13 @@ name: Digital Commerce Intelligence Brief
   workflow_dispatch:
     inputs:
       report_mode:
-        description: "preview = run AI draft; deploy_only = deploy edited preview only; publish = promote preview to official archive"
+        description: "preview = run AI draft; manual_preview = email saved draft; deploy_only = deploy edited preview only; publish = promote preview to official archive"
         required: true
         default: preview
         type: choice
         options:
           - preview
+          - manual_preview
           - publish
           - deploy_only
 
@@ -44,15 +45,7 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Validate edited preview
-        if: ${{ inputs.report_mode == 'deploy_only' }}
-        run: |
-          test -f output/preview/index.html
-          test -f output/preview/data.json
-          echo "Deploying the current checked-in preview without running AI, email, or archive publish."
-
       - name: Run script
-        if: ${{ inputs.report_mode != 'deploy_only' }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
@@ -63,11 +56,10 @@ jobs:
         run: python main.py
 
       - name: Commit preview or archive history
-        if: ${{ inputs.report_mode != 'deploy_only' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [ "${{ inputs.report_mode }}" = "preview" ]; then
+          if [ "${{ inputs.report_mode }}" != "publish" ]; then
             git add output/preview
             COMMIT_MESSAGE="preview: save weekly intelligence preview [skip ci]"
           else
@@ -90,3 +82,4 @@ jobs:
       - name: Deploy dashboard to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
