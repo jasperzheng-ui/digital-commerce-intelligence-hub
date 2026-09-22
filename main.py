@@ -13,7 +13,7 @@ from config import (
 )
 
 
-REPORT_MODES = {"preview", "publish"}
+REPORT_MODES = {"preview", "manual_preview", "deploy_only", "publish"}
 
 
 def collect_information_pool(search_cache=None, article_cache=None):
@@ -191,6 +191,57 @@ def run_preview_mode():
     print(f"Preview dashboard generated: {PREVIEW_OUTPUT_PATH}")
 
 
+def validate_preview_data(data):
+    """Validate editable draft structure without selection rules or AI calls."""
+    if not isinstance(data, dict):
+        raise ValueError("output/preview/data.json 必须是 JSON 对象。")
+    try:
+        datetime.strptime(data.get("date", ""), "%Y-%m-%d")
+    except (TypeError, ValueError) as exc:
+        raise ValueError("草稿 date 必须是有效的 YYYY-MM-DD 日期。") from exc
+    total = 0
+    for section in ("platform_intelligence", "ai_technology", "sports_outdoor", "retail_innovation"):
+        cards = data.get(section)
+        if not isinstance(cards, list):
+            raise ValueError(f"{section} 必须是文章数组。")
+        for card in cards:
+            if not isinstance(card, dict):
+                raise ValueError(f"{section} 中的文章必须是 JSON 对象。")
+            title = card.get("title") or card.get("name")
+            link = card.get("link")
+            points = card.get("summary_points")
+            if not isinstance(title, str) or not title.strip():
+                raise ValueError(f"{section} 文章缺少标题。")
+            if not isinstance(link, str) or not link.startswith(("https://", "http://")):
+                raise ValueError(f"{section} 文章缺少有效链接。")
+            if not isinstance(points, list) or not points or not all(isinstance(x, str) and x.strip() for x in points):
+                raise ValueError(f"{section} 的 summary_points 必须是非空文本数组。")
+            keywords = card.get("keywords", [])
+            if not isinstance(keywords, list) or not all(isinstance(x, str) for x in keywords):
+                raise ValueError(f"{section} 的 keywords 必须是文本数组。")
+            total += 1
+    if not total:
+        raise ValueError("草稿没有文章，停止生成和发送空白周报。")
+    if data.get("parse_warning"):
+        raise ValueError("草稿含 parse_warning，请先检查并修正数据。")
+    return data
+
+
+def run_saved_preview_mode(send_email=False):
+    """Render checked-in JSON; never collect, invoke AI, or publish archives."""
+    from output.html import render_dashboard
+
+    data = load_preview_data()
+    if data is None:
+        raise FileNotFoundError("缺少 output/preview/data.json，请先提交草稿 JSON。")
+    validate_preview_data(data)
+    render_dashboard(data, PREVIEW_OUTPUT_PATH, archive_href="../archive/")
+    if send_email:
+        from output.email import send_brief_email
+        send_brief_email(data, get_dashboard_url("preview"))
+    print(f"Saved preview rendered: {PREVIEW_OUTPUT_PATH}; email={send_email}")
+
+
 def prepare_manual_publish(data):
     """Check file structure only; editorial selection belongs to Preview."""
     from intelligence.report_quality import report_shortfalls, source_mix
@@ -251,8 +302,12 @@ def main():
     if mode == "preview":
         run_preview_mode()
         return
+    if mode in {"manual_preview", "deploy_only"}:
+        run_saved_preview_mode(send_email=mode == "manual_preview")
+        return
     run_publish_mode()
 
 
 if __name__ == "__main__":
     main()
+
