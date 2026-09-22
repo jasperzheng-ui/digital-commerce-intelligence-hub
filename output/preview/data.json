@@ -1,37 +1,467 @@
 {
-  "date": "2026-09-21",
-  "headline": "AI审核未完成，本期暂不可发布",
-  "platform_intelligence": [],
-  "ai_technology": [],
-  "sports_outdoor": [],
-  "retail_innovation": [],
-  "one_thing_worth_watching": "Gemini 返回内容未能解析为标准 JSON，已按 empty 结果处理。",
-  "parse_warning": "Gemini审核请求失败：ServerError。请重新Preview。",
-  "review_version": 2,
-  "quality_shortfalls": {
-    "platform": {
-      "actual": 0,
-      "required": 3
+  "date": "2026-09-22",
+  "headline": "购物助手走向下单，零售增长回到商品与渠道协同",
+  "platform_intelligence": [
+    {
+      "name": "TikTok Shop美国奢侈品转售收入94%来自直播",
+      "title": "TikTok Shop美国奢侈品转售收入94%来自直播",
+      "company": "TikTok Shop",
+      "summary_points": [
+        "TikTok Shop披露，今年以来美国站奢侈品转售收入的94%来自直播，该品类GMV同比增长400%，主要涉及手袋、腕表等。94%是收入占比，并非订单笔数或平台全品类占比。",
+        "为解决真伪风险，该品类实行卖家邀请制，并要求与指定鉴定机构合作；直播进一步展示磨损、尺寸和细节，让买家实时询问包带长度、颜色和上身效果。",
+        "卖家通过演示和讲解解释商品成色及价值，减少静态商品页难以消除的疑问。Fashionphile、Rebag和MyGemma等已开展常态化直播，将直播作为实际销售渠道。",
+        "直播间还形成重复观看、互相交流购买体验的社群。平台认为，这既帮助商家接触新客，也能积累持续关系；文章将其放在年轻消费者二手消费增长的背景下讨论。"
+      ],
+      "link": "https://www.modernretail.co/operations/nearly-all-luxury-resale-transactions-on-tiktok-shop-us-now-come-from-livestreams/",
+      "source": "Modern Retail",
+      "source_type": "other",
+      "date": "2026-09-16",
+      "origin_type": "manual",
+      "keywords": [
+        "直播电商",
+        "奢侈品转售",
+        "海外电商",
+        "商品展示"
+      ],
+      "quality_score": 90,
+      "quality_reason": "提供收入占比、品类增长及鉴定和直播经营方式；数据由平台披露，不能外推到全平台。",
+      "event_key": "TikTok Shop:TikTok Shop美国奢侈品转售收入94%来自直播:2026-09-16"
     },
-    "ai": {
-      "actual": 0,
-      "required": 3
+    {
+      "name": "京东七鲜大厨把膳食规划、食材配送和烹饪连接起来",
+      "title": "京东七鲜大厨把膳食规划、食材配送和烹饪连接起来",
+      "company": "京东、七鲜大厨",
+      "summary_points": [
+        "京东推出七鲜大厨CHEFRESH，将饮食规划、生鲜配送与智能烹饪连接为家庭服务。用户提供体检信息及饮食偏好，系统据此生成个性化菜单。",
+        "供应链负责选择、清洗和分装食材，再通过生鲜冷链交付；家庭设备管理烹饪、调味与自清洁，使菜单建议进入实际制作环节。",
+        "产品还探索家庭食谱数字化，可记录食材比例、调味、步骤及火候，再由设备复现，尝试把个人或家庭饮食习惯纳入服务。",
+        "京东宣布与莱佛士医院、英国管家指南及OriginX合作，结合健康管理、家庭服务与AI能力。发布时已在北京、上海等城市开放预订，后续按预约顺序交付。"
+      ],
+      "link": "https://jdcorporateblog.com/jd-com-launches-chefresh-bringing-ai-meal-planning-and-robotic-cooking-into-the-home/",
+      "source": "JD Corporate Blog",
+      "source_type": "other",
+      "date": "2026-09-16",
+      "origin_type": "manual",
+      "keywords": [
+        "平台新业务",
+        "供应链",
+        "生鲜配送",
+        "AI应用",
+        "家庭服务"
+      ],
+      "quality_score": 88,
+      "quality_reason": "官方披露菜单、供应链、配送与设备的具体连接方式；仍处预订阶段，没有规模化经营效果数据。",
+      "event_key": "京东、七鲜大厨:京东七鲜大厨把膳食规划、食材配送和烹饪连接起来:2026-09-16"
     },
-    "sports": {
-      "actual": 0,
-      "required": 3
+    {
+      "name": "跨境企业上市潮：利润、现金流与库存揭示增长分化",
+      "title": "跨境企业上市潮：利润、现金流与库存揭示增长分化",
+      "company": "跨境电商企业",
+      "summary_points": [
+        "亿邦动力盘点2026年以来至少18家已上市或冲刺上市的跨境企业，覆盖电子、家居、运动设备等领域。企业规模和路径差异明显，资本市场热度并不能直接反映经营质量。",
+        "利润表现出现分化：智岩科技、迈金科技等受益于细分需求、品牌溢价及渠道优化，但部分企业经历增收不增利；文中18家企业中有7家在报告期内出现过这类困境或亏损。",
+        "作者重点检查现金流和库存：4家经营现金流为负，9家现金流同比下降。扬腾创新以大量汽配SKU覆盖需求，却占用较多资金；安克库存周转天数延长，说明海外备货与销售增长必须匹配。",
+        "渠道、市场和客户集中是另一风险。依赖亚马逊容易受费用与规则影响，过度集中单一国家则暴露于汇率波动；部分企业正拓展独立站、线下分销和其他平台。",
+        "文章认为，长期竞争力来自产品、供应链与品牌的协同。拓品类需围绕核心用户和使用场景，并兼顾营销与研发投入，不能只增加业务线而缺少协同。本条日期为转载日期。"
+      ],
+      "link": "https://www.cbndata.com/information/295794",
+      "source": "亿邦动力（CBNData转载）",
+      "source_type": "other",
+      "date": "2026-09-20",
+      "origin_type": "manual",
+      "keywords": [
+        "商业洞察",
+        "行研",
+        "跨境电商",
+        "上市",
+        "增长质量"
+      ],
+      "quality_score": 78,
+      "quality_reason": "包含多家企业利润、现金流和库存数据，适合作为跨境经营补充；行业综述并非国内平台功能新闻，日期为转载日期。",
+      "event_key": "跨境电商企业:跨境企业上市潮：利润、现金流与库存揭示增长分化:2026-09-20"
     },
-    "retail": {
-      "actual": 0,
-      "required": 3
+    {
+      "name": "京东收购Ceconomy：物流与技术开放承诺受到质疑",
+      "title": "京东收购Ceconomy：物流与技术开放承诺受到质疑",
+      "company": "京东、Ceconomy",
+      "summary_points": [
+        "路透社报道，京东为推进约25亿美元收购Ceconomy提出的承诺遭竞争对手质疑。交易正接受欧盟外国补贴条例审查，关注潜在补贴对竞争的影响。",
+        "拟议方案包括Ceconomy按市场价格使用京东欧洲物流和技术能力，小型竞争对手也可按公平、非歧视价格使用。",
+        "报道时欧委会计划于10月23日前决定，负面反馈可能促使京东完善承诺；双方未就反馈置评，尚非最终裁决。"
+      ],
+      "link": "https://www.reuters.com/legal/litigation/jdcoms-ceconomy-concessions-face-criticism-rivals-sources-say-2026-09-10/",
+      "source": "Reuters",
+      "source_type": "other",
+      "date": "2026-09-10",
+      "origin_type": "manual",
+      "keywords": [
+        "海外扩张",
+        "收购",
+        "物流",
+        "平台竞争",
+        "欧洲零售"
+      ],
+      "quality_score": 80,
+      "quality_reason": "明确交易、拟议承诺和竞争反馈；审查未结束，不能作为最终批准或交割消息。",
+      "event_key": "京东、Ceconomy:京东收购Ceconomy：物流与技术开放承诺受到质疑:2026-09-10"
     }
-  },
+  ],
+  "ai_technology": [
+    {
+      "name": "Instacart以Clementine连接膳食规划与下单",
+      "title": "Instacart以Clementine连接膳食规划与下单",
+      "company": "Instacart",
+      "summary_points": [
+        "Instacart推出Clementine，面向美国和加拿大多数用户，把对话、购物清单或菜谱转为可购买购物车。推荐结合所选门店实际库存、用户偏好和历史订单。",
+        "功能覆盖食谱发现、家庭饮食限制、优惠与低价替代品、常购物品补货及聚会采购；还支持拍摄手写清单，减少逐项搜索的负担。",
+        "官方称，早期用户由简单补货逐渐使用食谱规划，相关订单的商品数量及金额高于平台常规购物篮，金额超过平台115美元均值。这是观察结果，不是经对照实验确认的增量。",
+        "企业版Cart Assistant让零售商使用自身商品目录和客户数据，定制名称、语气、会员及食谱内容。Food Bazaar等已上线，ALDI美国等仍待推出。",
+        "Instacart还连接外部AI入口，让在ChatGPT、Claude等服务中开始的购物对话，在Instacart完成配送或自提下单，形成自有助手、零售商助手和外部入口并行的布局。"
+      ],
+      "link": "https://investors.instacart.com/News/news-releases/news-details/2026/Meet-Clementine-Instacarts-AI-Shopping-Assistant-That-Takes-Whats-for-Dinner-Off-Your-Plate/default.aspx",
+      "source": "Instacart官方投资者网站",
+      "source_type": "other",
+      "date": "2026-09-09",
+      "origin_type": "manual",
+      "keywords": [
+        "AI应用",
+        "购物助手",
+        "膳食规划",
+        "食品电商",
+        "消费决策"
+      ],
+      "quality_score": 91,
+      "quality_reason": "官方说明个人助手、零售商定制和外部入口的应用流程；早期购物篮表现不能视为因果增量。",
+      "event_key": "Instacart:Instacart以Clementine连接膳食规划与下单:2026-09-09"
+    },
+    {
+      "name": "Ask Shipt把文字和图片需求转换成可编辑购物车",
+      "title": "Ask Shipt把文字和图片需求转换成可编辑购物车",
+      "company": "Shipt、Target",
+      "summary_points": [
+        "Shipt推出Ask Shipt，已可在应用和网站使用。用户不必逐个搜索商品，可以直接描述家庭饮食、聚会人数或预算，由助手生成购物车。",
+        "图片输入可把社交媒体或餐厅菜品转为食材清单；场景请求则可覆盖多人聚会、儿童午餐和课后零食等，把生活需求转换为可购买商品。",
+        "助手支持结合预算与门店优惠推荐，用户仍需检查购物车，并可替换、编辑商品，以适配饮食限制和个人偏好。",
+        "该功能属于Shipt将购物灵感、规划与结账连接起来的产品调整，同期还提到Shipt Kits和计划中的共享清单。网页日期为9月10日，正文发布电头为9月9日。"
+      ],
+      "link": "https://www.prnewswire.com/news-releases/meet-ask-shipt-shipts-new-ai-shopping-assistant-302873122.html",
+      "source": "Shipt（PR Newswire官方新闻稿）",
+      "source_type": "other",
+      "date": "2026-09-10",
+      "origin_type": "manual",
+      "keywords": [
+        "AI应用",
+        "购物助手",
+        "图片识别",
+        "购物车",
+        "场景推荐"
+      ],
+      "quality_score": 87,
+      "quality_reason": "官方稿明确上线入口、图片输入和购物车编辑流程；未披露转化或效率提升数据。",
+      "event_key": "Shipt、Target:Ask Shipt把文字和图片需求转换成可编辑购物车:2026-09-10"
+    },
+    {
+      "name": "沃尔玛Scintilla计划整合Marketplace数据与AI分析",
+      "title": "沃尔玛Scintilla计划整合Marketplace数据与AI分析",
+      "company": "Walmart",
+      "summary_points": [
+        "沃尔玛宣布Scintilla明年将加入Marketplace数据、自定义看板和预警，并加强与门店工具及补货系统的连接，让供应商从多项数据共同判断经营状况。",
+        "数据扩展面向同时经营Marketplace业务的沃尔玛一方供应商，暂不开放给仅做Marketplace的卖家；也不是允许查看所有消费者在沃尔玛的购买记录。",
+        "现有AI主要解释指标、概括报告；升级后的Marty计划跨数据集分析销量、顾客变化和库存位置，提示问题并提出后续行动建议，例如寻找客户流失与缺货的联系。",
+        "看板的目标是把销售、顾客和供应链信息放在一起，减少分别查看孤立报表的工作。上述主要升级计划于下一年推出，不能全部写成当前已上线。"
+      ],
+      "link": "https://www.modernretail.co/technology/walmart-adds-marketplace-data-deeper-ai-features-to-scintilla-insights-platform/",
+      "source": "Modern Retail",
+      "source_type": "other",
+      "date": "2026-09-16",
+      "origin_type": "manual",
+      "keywords": [
+        "AI应用",
+        "零售数据",
+        "经营分析",
+        "Marketplace",
+        "决策支持"
+      ],
+      "quality_score": 86,
+      "quality_reason": "解释现有AI和后续跨数据集分析的区别，并注明使用对象限制；主要升级尚未上线。",
+      "event_key": "Walmart:沃尔玛Scintilla计划整合Marketplace数据与AI分析:2026-09-16"
+    },
+    {
+      "name": "AI购物助手的产地回答引发商品信息治理争议",
+      "title": "AI购物助手的产地回答引发商品信息治理争议",
+      "company": "Amazon、Walmart",
+      "summary_points": [
+        "美国参议员Baldwin和Scott要求FTC调查亚马逊与沃尔玛，质疑AI购物助手可能弱化美国制造商品信息、未有效处理虚假产地标签。",
+        "质疑来自一项研究，涉及Alexa for Shopping和Sparky的回答及商品信息治理。机器人对原因的解释不等于企业真实政策。",
+        "亚马逊否认故意隐瞒产地，称会引导用户查看商品详情页；报道时FTC未置评、沃尔玛尚未回应，相关指控仍待调查。"
+      ],
+      "link": "https://www.reuters.com/legal/litigation/amazon-walmart-chatbots-attract-senator-ire-over-made-usa-label-snags-2026-09-17/",
+      "source": "Reuters",
+      "source_type": "other",
+      "date": "2026-09-17",
+      "origin_type": "manual",
+      "keywords": [
+        "AI应用",
+        "购物助手",
+        "商品信息",
+        "答案可靠性",
+        "产地标签"
+      ],
+      "quality_score": 79,
+      "quality_reason": "涉及已使用的购物助手及商品产地信息回答，属于应用治理案例；议员质疑不等于监管结论。",
+      "event_key": "Amazon、Walmart:AI购物助手的产地回答引发商品信息治理争议:2026-09-17"
+    },
+    {
+      "name": "京东健康“知医”把可追溯证据带入医生工作流",
+      "title": "京东健康“知医”把可追溯证据带入医生工作流",
+      "company": "京东健康",
+      "summary_points": [
+        "京东健康介绍面向医生的“知医”，用于证据查找、临床决策辅助和患者管理。产品于2026年1月推出，官方称已服务逾百万医生、支持逾2000万次临床决策交互，9月文章是应用复盘。",
+        "知医整合医学论文、指南和药品说明书，帮助拆解复杂问题、判断证据层级，并提供200多个医学计算工具，减少医生在资料检索和信息整理上的时间。",
+        "医生可上传检验报告、处方、影像或PDF；系统支持定位结论对应的原文证据，让使用者检查依据，而不仅得到一个难以追溯的答案。",
+        "产品设置准确性及高风险场景评估机制，强调医生继续承担判断责任。8月接入云鹊医后，其基层医生用户可免费使用升级能力，扩大专业工具的可及性。"
+      ],
+      "link": "https://jdcorporateblog.com/beyond-the-chatbot-how-jd-health-is-bringing-ai-into-doctors-everyday-work/",
+      "source": "JD Corporate Blog",
+      "source_type": "other",
+      "date": "2026-09-08",
+      "origin_type": "manual",
+      "keywords": [
+        "AI应用",
+        "工作流",
+        "医疗服务",
+        "医生助手",
+        "业务协同"
+      ],
+      "quality_score": 78,
+      "quality_reason": "官方提供证据检索、报告输入及医生使用规模；应用领域为医疗，经营参考价值在可追溯工作流，规模数据未经独立核验。",
+      "event_key": "京东健康:京东健康“知医”把可追溯证据带入医生工作流:2026-09-08"
+    }
+  ],
+  "sports_outdoor": [
+    {
+      "name": "ALO以数字渠道和运动社区承接大中华区门店扩张",
+      "title": "ALO以数字渠道和运动社区承接大中华区门店扩张",
+      "company": "ALO",
+      "summary_points": [
+        "ALO宣布于2026—2027年扩大大中华区门店布局，覆盖上海、北京、香港等七城。文章将其描述为从线上进入实体零售的阶段，香港K11 MUSEA店计划秋季开业。",
+        "品牌8月已上线天猫旗舰店和微信小程序，先通过数字渠道建立认知与消费者关系，再承接到线下。文章还提到上海八周社区活动，包括跑团、瑜伽、骑行和健康课程。",
+        "首轮选址集中核心城市的高端商业地标，试图将门店作为运动、健康、社交与文化体验的延伸。作者关注线上热度能否转为持续的线下经营和品牌资产。"
+      ],
+      "link": "https://news.ladymax.cn/202609/16-39767.html",
+      "source": "时尚商业Daily／LADYMAX时尚头条网",
+      "source_type": "other",
+      "date": "2026-09-16",
+      "origin_type": "manual",
+      "keywords": [
+        "运动品牌",
+        "中国市场",
+        "门店扩张",
+        "品牌直营"
+      ],
+      "quality_score": 88,
+      "quality_reason": "有天猫、小程序、社区活动及实体选址信息；原文店数矛盾，摘要不采用未经确认的总店数。",
+      "event_key": "ALO:ALO以数字渠道和运动社区承接大中华区门店扩张:2026-09-16"
+    },
+    {
+      "name": "Beyond Yoga以纽约快闪店测试运动性能产品与实体体验",
+      "title": "Beyond Yoga以纽约快闪店测试运动性能产品与实体体验",
+      "company": "Beyond Yoga",
+      "summary_points": [
+        "Beyond Yoga在纽约Flatiron开设快闪店，相比此前主要用于品牌互动的店型，增加可购买商品，并设置运动空间，以课程和试穿结合产品销售。",
+        "店铺重点展示7月推出的Glowzone，服务高出汗、较高强度训练需求。品牌依据顾客反馈扩展产品，同时外套、连体衣等生活方式商品已贡献多数增长。",
+        "纽约是品牌重要电商市场，快闪店让消费者亲自感受面料，也用于测试区域和选址，为长期门店决策积累经验。",
+        "管理者持续到店收集顾客对产品的意见，门店因此兼具销售、体验与反馈功能。品牌多数销售仍来自品牌直营，实体投入是对现有业务的扩展。"
+      ],
+      "link": "https://www.modernretail.co/marketing/beyond-yoga-stresses-performance-offerings-in-new-nyc-pop-up/",
+      "source": "Modern Retail",
+      "source_type": "other",
+      "date": "2026-09-17",
+      "origin_type": "manual",
+      "keywords": [
+        "运动品牌",
+        "门店体验",
+        "品牌直营",
+        "商品组合",
+        "用户反馈"
+      ],
+      "quality_score": 90,
+      "quality_reason": "有产品、课程、试穿、销售及门店选址测试等具体动作；尚无快闪店经营结果。",
+      "event_key": "Beyond Yoga:Beyond Yoga以纽约快闪店测试运动性能产品与实体体验:2026-09-17"
+    },
+    {
+      "name": "Nike引入Alexandre Arnault，推进品牌重塑与渠道调整",
+      "title": "Nike引入Alexandre Arnault，推进品牌重塑与渠道调整",
+      "company": "Nike、LVMH",
+      "summary_points": [
+        "据文章援引的Nike公告，酩悦轩尼诗副首席执行官Alexandre Arnault获任Nike董事，任期至2027年股东大会，董事会增至12人。Nike看重其品牌建设、数字化转型及深化消费者联系的经验。",
+        "Arnault曾领导RIMOWA由功能型旅行箱向兼具时尚与文化辨识度的品牌转变，随后在Tiffany负责产品、传播及工业业务，参与品牌年轻化。作者认为，这段品牌重塑经历对应了Nike当前需要重新吸引下一代消费者的挑战，而不只是引入一名奢侈品行业人士。",
+        "文章援引Nike2026财年第四季度数据：营收109.72亿美元，同比下降1%；Nike Direct直营收入41亿美元，下降7%，批发收入66亿美元，增长4%。全年营收463.98亿美元，报告口径基本持平。直营与批发表现分化，构成公司重新调整渠道、产品组合与市场策略的背景。",
+        "管理层方面，Nike由Jane Ewing统筹全球批发与Nike Direct，董事会也同步调整。文章将这些动作解读为渠道整合与品牌重塑并行，核心议题是经典大品牌如何继续获得消费者选择，而非单纯扩大销售规模。",
+        "此次任命属于董事会治理安排，文章未披露Arnault将直接负责具体经营，其委员会任职尚未确定，也没有证据表明Nike与LVMH因此建立新的资本合作关系。"
+      ],
+      "link": "https://news.ladymax.cn/202609/17-39770.html",
+      "source": "时尚商业Daily／LADYMAX时尚头条网",
+      "source_type": "other",
+      "date": "2026-09-17",
+      "origin_type": "manual",
+      "keywords": [
+        "运动品牌",
+        "品牌重塑",
+        "消费者关系",
+        "渠道整合",
+        "公司治理"
+      ],
+      "quality_score": 86,
+      "quality_reason": "人事、财务和渠道信息解释品牌调整背景；品牌重塑为作者解读，董事任命不代表资本合作。",
+      "event_key": "Nike、LVMH:Nike引入Alexandre Arnault，推进品牌重塑与渠道调整:2026-09-17"
+    },
+    {
+      "name": "安踏收购PUMA约29%股权获中国反垄断批准",
+      "title": "安踏收购PUMA约29%股权获中国反垄断批准",
+      "company": "安踏、Puma",
+      "summary_points": [
+        "文章报道，安踏收购PUMA股权案列入国家市场监督管理总局公布的无条件批准经营者集中案件名单，审结日期为2026年8月31日。本次9月14日报道的是中国反垄断审批进展，不是新签署收购协议或已完成交割。",
+        "根据文章援引的安踏披露，安踏于1月26日与Artémis签约，拟以每股35欧元收购43,014,760股PUMA普通股，占已发行股本约29.06%；总对价15.05亿欧元，约合人民币122.78亿元。交易完成后安踏将成为最大股东，但此次并非全面收购。",
+        "安踏此前表示没有发起全面要约收购的计划，交易资金全部来自集团内部自有现金，原计划于2026年底前完成。因此，获得中国反垄断批准不能直接写成交易全部条件已经满足或安踏已取得PUMA控制权。",
+        "安踏将该投资定位为推进“单聚焦、多品牌、全球化”战略，认为PUMA在专业运动、潮流运动及全球市场的布局可补充现有品牌组合。与此同时，PUMA正面对品牌竞争压力，推进品牌重塑、产品结构调整和成本控制。",
+        "文章提出，交易后真正需要观察的是最大股东关系能否转化为品牌、产品、渠道及全球市场协同；这些是后续经营议题，尚不能作为已实现的收购收益。"
+      ],
+      "link": "https://news.ladymax.cn/202609/14-39762.html",
+      "source": "时尚商业Daily／LADYMAX时尚头条网",
+      "source_type": "other",
+      "date": "2026-09-14",
+      "origin_type": "manual",
+      "keywords": [
+        "运动品牌",
+        "国际化",
+        "多品牌战略",
+        "股权投资",
+        "品牌复兴"
+      ],
+      "quality_score": 85,
+      "quality_reason": "披露审批节点、持股比例和资金安排；中国批准不等于全部交割条件满足或取得控制权。",
+      "event_key": "安踏、Puma:安踏收购PUMA约29%股权获中国反垄断批准:2026-09-14"
+    }
+  ],
+  "retail_innovation": [
+    {
+      "name": "江南布衣以会员、线上增长和库存共享提升经营效率",
+      "title": "江南布衣以会员、线上增长和库存共享提升经营效率",
+      "company": "江南布衣、JNBY",
+      "summary_points": [
+        "江南布衣2026财年收入60.46亿元，增长9%，经营现金流14.33亿元，增长26.5%；门店仅净增一家至2118家，增长主要来自线上和同店，而非大规模开店。",
+        "线上收入增长20.5%，线下增长5.8%，可比同店增长2.4%。库存共享与分配系统贡献增量零售额14.05亿元，增长23.6%，通过跨店调配提高货品匹配和销售效率。",
+        "会员贡献超过八成零售额，活跃会员逾61万；年消费超过5000元的会员逾36万，贡献52亿元零售额。会员、社交互动和个性化服务是文章解释增长的重要部分。",
+        "JNBY仍贡献超过一半收入，新兴品牌收入增长32.2%；整体毛利率提高至66.6%，多品牌和渠道结构有所改善。",
+        "作者也指出费用与库存压力：行政费用增长22.3%，存货周转天数升至166.3天。公司继续投入数字零售、供应链与园区建设，这些投入与费用、库存压力共同构成其经营表现的另一面。"
+      ],
+      "link": "https://news.ladymax.cn/202609/10-39758.html",
+      "source": "时尚商业Daily／LADYMAX时尚头条网",
+      "source_type": "other",
+      "date": "2026-09-10",
+      "origin_type": "manual",
+      "keywords": [
+        "服饰零售",
+        "财报",
+        "会员经营",
+        "库存共享",
+        "电商"
+      ],
+      "quality_score": 94,
+      "quality_reason": "以财报数据说明会员、共享库存与渠道增长，同时保留费用和周转压力；不能仅凭关联数据证明因果。",
+      "event_key": "江南布衣、JNBY:江南布衣以会员、线上增长和库存共享提升经营效率:2026-09-10"
+    },
+    {
+      "name": "永旺Food Style以精简商品、重排卖场和加工服务改善经营",
+      "title": "永旺Food Style以精简商品、重排卖场和加工服务改善经营",
+      "company": "永旺",
+      "summary_points": [
+        "联商网拆解永旺Food Style东京两家改造样板店：平均SKU压缩约25%，截至6月底销售、客流与购买件数改善，平均购买件数由8件升至10件。数据来自特定门店，改造从3—4月启动，非9月新开业。",
+        "改造围绕即食、优质实惠食材和省时做饭需求，重排入口与重点陈列区；以沙拉等生活主题关联商品，让顾客更容易一次配齐，并通过POP解释用途。",
+        "鲜鱼区引入半开放加工，依时段销售调整制作，提供预加工及即食商品。生鲜向熟食延伸，既提供便捷用餐方案，也增加生鲜部门的销售机会。",
+        "商品区分基础畅销、衍生和尝鲜层次，配合基础品、时令品及店铺企划的销售重点，再以多种价格标签表达优惠；减SKU并不等于只保留最低价商品。",
+        "集团通过联合采购、自有品牌、中央厨房、物流及商品开发支持门店。作者强调这是卖场、商品、价格和组织共同调整，样板店验证后再逐步推广。"
+      ],
+      "link": "https://www.cbndata.com/information/295797",
+      "source": "联商网（CBNData转载）",
+      "source_type": "other",
+      "date": "2026-09-20",
+      "origin_type": "manual",
+      "keywords": [
+        "超市",
+        "店型调整",
+        "商品精简",
+        "门店效率",
+        "客流"
+      ],
+      "quality_score": 92,
+      "quality_reason": "涵盖商品、动线、加工、价格与组织配合；业绩仅来自改造样板店，不能外推至全部门店。",
+      "event_key": "永旺:永旺Food Style以精简商品、重排卖场和加工服务改善经营:2026-09-20"
+    },
+    {
+      "name": "The Laundress借Target门店扩大香氛衣物护理体验",
+      "title": "The Laundress借Target门店扩大香氛衣物护理体验",
+      "company": "The Laundress、Target、Unilever",
+      "summary_points": [
+        "The Laundress将16个SKU上线Target网站和应用，9月进入600家门店，计划2027年3月扩大至1000家，开启其最大规模实体零售扩张。",
+        "品牌为Target开发专属Cloud香型，并通过门店试香装置、包装和香调说明传达高端衣物护理定位，让消费者直接感受线上难以呈现的气味。",
+        "文章将该动作联系到家居护理的高端化：消费者把日常护理与居家舒适、自我照顾结合，香氛成为产品差异化的重要部分；线上品牌页也提供香味叠搭和衣物护理教程。",
+        "品牌此前销售主要由自营网站和亚马逊构成，进入Target同时保留原有渠道；报道时暂无扩展到其他实体零售商的近期计划。"
+      ],
+      "link": "https://www.modernretail.co/operations/the-laundress-enters-target-embarking-on-its-largest-retail-expansion-to-date/",
+      "source": "Modern Retail",
+      "source_type": "other",
+      "date": "2026-09-16",
+      "origin_type": "manual",
+      "keywords": [
+        "全渠道",
+        "家居护理",
+        "门店体验",
+        "商品组合",
+        "渠道扩张"
+      ],
+      "quality_score": 88,
+      "quality_reason": "包含线上与实体覆盖、专属香型和门店试香机制；2027年扩张规模仍是计划。",
+      "event_key": "The Laundress、Target、Unilever:The Laundress借Target门店扩大香氛衣物护理体验:2026-09-16"
+    },
+    {
+      "name": "Target以Beauty Studio拓展韩妆与大众美妆渠道",
+      "title": "Target以Beauty Studio拓展韩妆与大众美妆渠道",
+      "company": "Target、韩国美妆品牌",
+      "summary_points": [
+        "Target以Beauty Studio替代原Ulta店中店空间，组合90个品牌、1600多款商品，许多品牌首次进入Target，用商品与购物体验更新推动业务恢复增长。",
+        "韩妆是扩充重点：今年早些时候已新增150多款商品、10多个品牌；Beauty Studio又纳入六个韩妆品牌，其中五个首次进入Target。",
+        "文章将这一变化放在韩妆渠道扩张背景下：品牌除Sephora、Ulta等专业零售商外，也进入大众综合零售渠道，以接触更广泛消费者。",
+        "新组合并非所有群体都同样受益。报道指出90个品牌中只能识别出两个黑人创始人或所有者品牌，显示商品焕新同时仍存在品牌代表性不足的问题。"
+      ],
+      "link": "https://www.modernretail.co/operations/target-gets-k-beauty-brands-to-think-beyond-sephora-ulta-with-new-beauty-studio/",
+      "source": "Modern Retail",
+      "source_type": "other",
+      "date": "2026-09-21",
+      "origin_type": "manual",
+      "keywords": [
+        "美妆零售",
+        "渠道拓展",
+        "品类经营",
+        "门店体验"
+      ],
+      "quality_score": 85,
+      "quality_reason": "披露商品规模及韩妆渠道变化；商品代表性判断来自报道，尚无改造效果数据。",
+      "event_key": "Target、韩国美妆品牌:Target以Beauty Studio拓展韩妆与大众美妆渠道:2026-09-21"
+    }
+  ],
+  "one_thing_worth_watching": "购物助手正在把需求描述、清单和食谱转换成购物车；品牌与零售商则通过库存共享、商品调整和门店体验连接线上与线下。应用覆盖范围与经营效果仍须分别判断。",
+  "quality_status": "manual_draft",
+  "rejected_candidates": [],
+  "draft_notes": [
+    "依据当前 daily_input.md 的17篇素材人工整理，尚待用户确认；未调用Gemini。",
+    "当前17篇 Source Type 均为 other，不满足公众号占比至少50%的要求；未伪造或更改来源类型。"
+  ],
   "source_mix": {
-    "total": 0,
+    "total": 17,
     "wechat": 0,
-    "required_wechat": 0,
-    "shortfall": 0
-  },
-  "quality_status": "incomplete",
-  "editorial_notice": "本期尚未达到发布条件。板块缺口：{'platform': {'actual': 0, 'required': 3}, 'ai': {'actual': 0, 'required': 3}, 'sports': {'actual': 0, 'required': 3}, 'retail': {'actual': 0, 'required': 3}}；公众号：0/0，至少需要0篇。请补充合格素材后重新Preview。"
+    "required_wechat": 9,
+    "shortfall": 9
+  }
 }
