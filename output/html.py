@@ -497,8 +497,8 @@ def _render_summary_points(card, section_key):
     if not points:
         return "<p></p>"
     if len(points) == 1:
-        return f"<p>{safe_escape(points[0])}</p>"
-    rendered = "\n".join(f"<li>{safe_escape(point)}</li>" for point in points)
+        return f"<p>{_render_summary_text(points[0])}</p>"
+    rendered = "\n".join(f"<li>{_render_summary_text(point)}</li>" for point in points)
     return f'<ul class="summary-list">{rendered}</ul>'
 
 
@@ -541,3 +541,4 @@ def _render_warning(data):
     if not warning:
         return ""
     return f'<div class="warning">{safe_escape(warning)}</div>'
+
