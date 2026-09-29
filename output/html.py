@@ -478,6 +478,20 @@ def _card_title(card, section_key):
     return card.get("name") or card.get("title") or "Signal"
 
 
+def _render_summary_text(value):
+    text = safe_text(value)
+    pattern = r"补充出处[：:]\s*(https?://[^\s<>\"'，。；）)]+)"
+    parts = []
+    cursor = 0
+    for match in re.finditer(pattern, text):
+        parts.append(escape(text[cursor:match.start()], quote=True))
+        url = escape(match.group(1), quote=True)
+        parts.append(f'<a href="{url}" target="_blank" rel="noopener noreferrer">补充出处</a>')
+        cursor = match.end()
+    parts.append(escape(text[cursor:], quote=True))
+    return "".join(parts)
+
+
 def _render_summary_points(card, section_key):
     points = _summary_points(card, section_key)
     if not points:
