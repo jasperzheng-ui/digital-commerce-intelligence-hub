@@ -1,7 +1,7 @@
 {
   "date": "2026-09-28",
-  "headline": "平台连接商品与渠道，AI进入服务和门店履约流程",
-  "platform_intelligence": [
+  "today_focus": "平台连接商品与渠道，AI进入服务和门店履约流程",
+  "platform": [
     {
       "name": "京东：AI经营工具升级与自营、POP、秒送协同",
       "title": "京东：AI经营工具升级与自营、POP、秒送协同",
@@ -83,7 +83,7 @@
       "event_key": "微信小店:微信小店加码双11，商家探索社交复购与货架入口:2026-09-24"
     }
   ],
-  "ai_technology": [
+  "ai": [
     {
       "name": "添可：AI连接开箱指导、故障诊断与报修",
       "title": "添可：AI连接开箱指导、故障诊断与报修",
@@ -189,7 +189,7 @@
       "event_key": "银河通用、Sharpa、商汤善惠:零售机器人从展示转向实际作业，商品交付与人机协同成为检验重点:2026-09-22"
     }
   ],
-  "sports_outdoor": [
+  "sports": [
     {
       "name": "NikeSKIMS：线上渠道与上海慢闪空间连接女性运动需求",
       "title": "NikeSKIMS：线上渠道与上海慢闪空间连接女性运动需求",
@@ -296,7 +296,7 @@
       "event_key": "24小时自助健身房、乐刻等:24小时自助健身房增长，低门槛付费和碎片化锻炼吸引年轻用户:2026-09-24"
     }
   ],
-  "retail_innovation": [
+  "retail": [
     {
       "name": "Instacart：减少线上加价，连接会员权益与低成本履约",
       "title": "Instacart：减少线上加价，连接会员权益与低成本履约",
@@ -377,24 +377,5 @@
       "event_key": "Action:Action以统一货盘和低成本门店扩张，折扣零售依靠供应链保持简单:2026-09-24"
     }
   ],
-  "one_thing_worth_watching": "平台正把选品、商家工具、会员和履约连接到具体经营流程；AI应用也从问答延伸至故障诊断、工单和门店作业。运动与零售案例通过商品组合、体验空间和线上渠道承接需求，但单店试点、企业披露效果与未来扩张目标仍处于不同验证阶段。",
-  "rejected_candidates": [
-    {
-      "link": "https://mp.weixin.qq.com/s/vXjP0lL-_5eOkZ4ED0iQXA",
-      "reason": "标注发布日期为2026-09-09，正文称9月10日发布，两者均早于本期9月28日的最近14天窗口，且存在日期不一致，不纳入本周。"
-    },
-    {
-      "link": "https://finance.sina.com.cn/roll/2026-09-23/doc-inisvcqc5390193.shtml",
-      "reason": "核心为手袋上市表现、品牌IP与旅行主题体验活动；虽有门店场景，但缺少会员、交易、库存或履约流程的明确变化，对本期数字商业团队的参考价值较弱，编辑评分未达75分。"
-    }
-  ],
-  "source_mix": {
-    "total": 14,
-    "wechat": 7,
-    "required_wechat": 7,
-    "shortfall": 0
-  },
-  "quality_shortfalls": {},
-  "quality_status": "manually_approved",
-  "editorial_notice": ""
+  "one_thing_worth_watching": "平台正把选品、商家工具、会员和履约连接到具体经营流程；AI应用也从问答延伸至故障诊断、工单和门店作业。运动与零售案例通过商品组合、体验空间和线上渠道承接需求，但单店试点、企业披露效果与未来扩张目标仍处于不同验证阶段。"
 }
