@@ -540,5 +540,14 @@
     }
   ],
   "one_thing_worth_watching": "AI与零售业务系统连接后，应用正从单点工具延伸到商品、服务和履约流程。",
-  "rejected_candidates": []
+  "rejected_candidates": [],
+  "source_mix": {
+    "total": 19,
+    "wechat": 7,
+    "required_wechat": 10,
+    "shortfall": 3
+  },
+  "quality_shortfalls": {},
+  "quality_status": "manually_approved",
+  "editorial_notice": ""
 }
