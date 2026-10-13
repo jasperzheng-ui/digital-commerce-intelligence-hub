@@ -391,5 +391,14 @@
     }
   ],
   "one_thing_worth_watching": "平台和品牌正把渠道、商品、履约与业务数据连接起来，竞争逐步延伸到持续经营和流程协同。",
-  "rejected_candidates": []
+  "rejected_candidates": [],
+  "source_mix": {
+    "total": 14,
+    "wechat": 11,
+    "required_wechat": 7,
+    "shortfall": 0
+  },
+  "quality_shortfalls": {},
+  "quality_status": "manually_approved",
+  "editorial_notice": ""
 }
