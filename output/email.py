@@ -5,6 +5,7 @@ from html import escape
 import requests
 
 from output.html import safe_text
+from output.overview import render_overview_html, render_overview_text
 from utils.date_utils import report_date_parts
 
 
@@ -88,6 +89,7 @@ def build_email_html(data, dashboard_url=""):
             </tr>
             <tr>
               <td style="padding:28px 34px 34px 34px;">
+                {render_overview_html(data, email=True)}
                 {sections_html}
               </td>
             </tr>
@@ -107,6 +109,10 @@ def build_email_text(data, dashboard_url=""):
     ]
     if dashboard_url:
         lines.extend(["", f"Open Dashboard: {safe_text(dashboard_url)}"])
+
+    overview = render_overview_text(data)
+    if overview:
+        lines.extend(["", overview])
 
     for title, key, section_type in SECTIONS:
         lines.extend(["", title])
@@ -130,7 +136,7 @@ def _render_dashboard_button(dashboard_url):
         return ""
     return f"""
                 <div style="margin-top:22px;">
-                  <a href="{_e(url)}" style="display:inline-block; background:#0055ff; color:#ffffff; text-decoration:none; font-size:14px; font-weight:700; line-height:1; padding:13px 18px; border-radius:999px;">
+                  <a href="{_e(url)}" style="display:inline-block; background:#3643BA; color:#ffffff; text-decoration:none; font-size:14px; font-weight:700; line-height:1; padding:13px 18px; border-radius:999px;">
                     Open Dashboard
                   </a>
                 </div>"""
@@ -210,7 +216,7 @@ def _render_original_link(value):
         return ""
     return f"""
                             <div style="margin-top:16px;">
-                              <a href="{_e(url)}" style="display:inline-block; color:#0055ff; text-decoration:none; font-size:13px; line-height:1; font-weight:750; padding:9px 12px; border:1px solid #c7d7fe; border-radius:999px;">
+                              <a href="{_e(url)}" style="display:inline-block; color:#3643BA; text-decoration:none; font-size:13px; line-height:1; font-weight:750; padding:9px 12px; border:1px solid #c7d7fe; border-radius:999px;">
                                 Read Original
                               </a>
                             </div>"""
@@ -401,3 +407,4 @@ def _split_recipients(value):
 
 def _e(value):
     return escape(safe_text(value), quote=True)
+
