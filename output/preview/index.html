@@ -12,7 +12,7 @@
       --muted: #687386;
       --line: #e6e9ef;
       --soft-line: #f0f2f6;
-      --blue: #2357d9;
+      --blue: #3643BA;
       --blue-soft: #edf3ff;
       --green: #078365;
       --green-soft: #eaf8f2;
@@ -41,6 +41,36 @@
       margin: 0 auto;
       padding: 44px 0 44px;
     }
+
+    html { scroll-behavior: smooth; }
+    .section { scroll-margin-top: 24px; }
+    .sidebar { display: none; }
+    .sidebar-title { color: var(--blue); font-size: 13px; font-weight: 750; margin: 0 12px 22px; }
+    .report-nav { display: flex; flex-direction: column; gap: 6px; }
+    .report-nav a {
+      display: block; padding: 11px 12px; border-left: 3px solid transparent;
+      border-radius: 0 6px 6px 0; color: var(--muted); text-decoration: none;
+      font-size: 14px; line-height: 1.5;
+    }
+    .report-nav a:hover { color: var(--blue); background: #f4f5fc; }
+    .report-nav a[aria-current="location"] {
+      color: var(--blue); background: #eef0fc; border-left-color: var(--blue); font-weight: 750;
+    }
+    .report-nav a:focus-visible, .mobile-directory summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+    .mobile-directory { margin-bottom: 18px; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+    .mobile-directory summary { cursor: pointer; color: var(--blue); font-size: 14px; font-weight: 750; }
+    .mobile-directory .report-nav { margin-top: 12px; }
+    .overview { font-size: 15px; overflow-wrap: anywhere; }
+    @media (min-width: 1281px) {
+      .sidebar {
+        display: block; position: fixed; top: 0; bottom: 0; left: max(16px, calc((100vw - 1600px) / 2));
+        width: 208px; padding: 48px 12px 24px 0; background: #fff;
+        border-right: 1px solid var(--line); overflow-y: auto;
+      }
+      .page { width: min(1120px, calc(100% - 280px)); margin-left: max(248px, calc((100% - 1120px) / 2)); margin-right: 32px; }
+      .mobile-directory { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
     .topbar {
       display: flex;
@@ -294,6 +324,10 @@
   </style>
 </head>
 <body>
+  <aside class="sidebar" aria-label="周报导航">
+    <p class="sidebar-title">Digital Commerce<br>Intelligence Hub</p>
+    <nav class="report-nav" aria-label="本期目录"><a href="#weekly-overview">本周核心概览</a><a href="#platform_intelligence">国内电商平台</a><a href="#ai_technology">AI 能力与行业影响</a><a href="#sports_outdoor">体育与户外行业</a><a href="#retail_innovation">传统零售创新</a></nav>
+  </aside>
   <main class="page">
     <section class="topbar">
       <div>
@@ -306,10 +340,17 @@
       </div>
     </section>
 
-    
+    <details class="mobile-directory">
+      <summary>本期目录</summary>
+      <nav class="report-nav" aria-label="本期目录"><a href="#weekly-overview">本周核心概览</a><a href="#platform_intelligence">国内电商平台</a><a href="#ai_technology">AI 能力与行业影响</a><a href="#sports_outdoor">体育与户外行业</a><a href="#retail_innovation">传统零售创新</a></nav>
+    </details>
 
     
-    <section class="section">
+
+    <section class="section overview" id="weekly-overview" aria-label="本周核心概览"><h2 style="margin:0 0 4px;font-size:22px;color:#172033;">本周核心概览</h2><div style="color:#687386;font-size:12px;margin-bottom:20px;">Weekly Overview</div><h3 style="margin:0 0 8px;color:#3643BA;font-size:14px;font-weight:750;">核心总结</h3><p style="margin:0 0 10px;font-size:20px;line-height:1.5;font-weight:750;">平台细化全渠道经营，AI连接业务流程与商品供给</p></section>
+
+    
+    <section class="section" id="platform_intelligence">
       <div class="section-head">
         <div>
           <h2>国内电商平台</h2>
@@ -360,13 +401,12 @@
       <div class="field"><div class="field-label">Keywords</div><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="display:inline-block;padding:4px 10px;border-radius:999px;background:#eef2ff;color:#3643ba;font-size:12px;overflow-wrap:anywhere;max-width:100%">场景寄递</span><span style="display:inline-block;padding:4px 10px;border-radius:999px;background:#eef2ff;color:#3643ba;font-size:12px;overflow-wrap:anywhere;max-width:100%">文旅消费</span><span style="display:inline-block;padding:4px 10px;border-radius:999px;background:#eef2ff;color:#3643ba;font-size:12px;overflow-wrap:anywhere;max-width:100%">揽收网点</span><span style="display:inline-block;padding:4px 10px;border-radius:999px;background:#eef2ff;color:#3643ba;font-size:12px;overflow-wrap:anywhere;max-width:100%">自动化分拣</span><span style="display:inline-block;padding:4px 10px;border-radius:999px;background:#eef2ff;color:#3643ba;font-size:12px;overflow-wrap:anywhere;max-width:100%">末端运输</span></div></div>
       <a class="read-button" href="https://mp.weixin.qq.com/s/aMuktFY_7674JvdV_05g4g" target="_blank" rel="noopener noreferrer">阅读全文</a>
     </article>
-   
     
       </div>
     </section>
     
 
-    <section class="section">
+    <section class="section" id="ai_technology">
       <div class="section-head">
         <div>
           <h2>AI 能力与行业影响</h2>
@@ -436,7 +476,7 @@
     </section>
     
 
-    <section class="section">
+    <section class="section" id="sports_outdoor">
       <div class="section-head">
         <div>
           <h2>体育与户外行业</h2>
@@ -506,7 +546,7 @@
     </section>
     
 
-    <section class="section">
+    <section class="section" id="retail_innovation">
       <div class="section-head">
         <div>
           <h2>传统零售创新</h2>
@@ -515,7 +555,7 @@
         <span class="section-badge green">3 Signals</span>
       </div>
       <div class="cards">
-   
+        
     <article class="card">
       <h3 class="card-title">西西弗书店是怎么赚钱的？</h3>
       <div class="field">
@@ -557,10 +597,39 @@
       <a class="read-button" href="https://mp.weixin.qq.com/s/LWq1U324rBUbgZvstkc4zQ" target="_blank" rel="noopener noreferrer">阅读全文</a>
     </article>
     
-
       </div>
     </section>
     
   </main>
+  <script>
+    (() => {
+      const links = Array.from(document.querySelectorAll('.report-nav a'));
+      const sections = Array.from(document.querySelectorAll('main > .section[id]'));
+      let scheduled = false;
+      function updateNavigation() {
+        scheduled = false;
+        let active = sections[0];
+        for (const section of sections) {
+          if (section.getBoundingClientRect().top <= 140) active = section;
+        }
+        if (window.scrollY > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+          active = sections[sections.length - 1];
+        }
+        for (const link of links) {
+          if (active && link.hash === '#' + active.id) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
+        }
+      }
+      window.addEventListener('scroll', () => {
+        if (!scheduled) { scheduled = true; requestAnimationFrame(updateNavigation); }
+      }, { passive: true });
+      window.addEventListener('resize', updateNavigation);
+      for (const link of links) link.addEventListener('click', () => {
+        const directory = link.closest('details');
+        if (directory) directory.open = false;
+      });
+      updateNavigation();
+    })();
+  </script>
 </body>
 </html>
