@@ -2,6 +2,8 @@ from datetime import datetime
 from html import escape
 import re
 
+from output.overview import render_overview_html
+
 from utils.date_utils import report_date_parts
 
 
@@ -104,7 +106,7 @@ def build_dashboard_html(data, archive_href="./archive/"):
       --muted: #687386;
       --line: #e6e9ef;
       --soft-line: #f0f2f6;
-      --blue: #2357d9;
+      --blue: #3643BA;
       --blue-soft: #edf3ff;
       --green: #078365;
       --green-soft: #eaf8f2;
@@ -133,6 +135,36 @@ def build_dashboard_html(data, archive_href="./archive/"):
       margin: 0 auto;
       padding: 44px 0 44px;
     }}
+
+    html {{ scroll-behavior: smooth; }}
+    .section {{ scroll-margin-top: 24px; }}
+    .sidebar {{ display: none; }}
+    .sidebar-title {{ color: var(--blue); font-size: 13px; font-weight: 750; margin: 0 12px 22px; }}
+    .report-nav {{ display: flex; flex-direction: column; gap: 6px; }}
+    .report-nav a {{
+      display: block; padding: 11px 12px; border-left: 3px solid transparent;
+      border-radius: 0 6px 6px 0; color: var(--muted); text-decoration: none;
+      font-size: 14px; line-height: 1.5;
+    }}
+    .report-nav a:hover {{ color: var(--blue); background: #f4f5fc; }}
+    .report-nav a[aria-current="location"] {{
+      color: var(--blue); background: #eef0fc; border-left-color: var(--blue); font-weight: 750;
+    }}
+    .report-nav a:focus-visible, .mobile-directory summary:focus-visible {{ outline: 2px solid var(--blue); outline-offset: 3px; }}
+    .mobile-directory {{ margin-bottom: 18px; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }}
+    .mobile-directory summary {{ cursor: pointer; color: var(--blue); font-size: 14px; font-weight: 750; }}
+    .mobile-directory .report-nav {{ margin-top: 12px; }}
+    .overview {{ font-size: 15px; overflow-wrap: anywhere; }}
+    @media (min-width: 1281px) {{
+      .sidebar {{
+        display: block; position: fixed; top: 0; bottom: 0; left: max(16px, calc((100vw - 1600px) / 2));
+        width: 208px; padding: 48px 12px 24px 0; background: #fff;
+        border-right: 1px solid var(--line); overflow-y: auto;
+      }}
+      .page {{ width: min(1120px, calc(100% - 280px)); margin-left: max(248px, calc((100% - 1120px) / 2)); margin-right: 32px; }}
+      .mobile-directory {{ display: none; }}
+    }}
+    @media (prefers-reduced-motion: reduce) {{ html {{ scroll-behavior: auto; }} }}
 
     .topbar {{
       display: flex;
@@ -386,6 +418,10 @@ def build_dashboard_html(data, archive_href="./archive/"):
   </style>
 </head>
 <body>
+  <aside class="sidebar" aria-label="周报导航">
+    <p class="sidebar-title">Digital Commerce<br>Intelligence Hub</p>
+    {_render_navigation(data)}
+  </aside>
   <main class="page">
     <section class="topbar">
       <div>
@@ -398,13 +434,58 @@ def build_dashboard_html(data, archive_href="./archive/"):
       </div>
     </section>
 
+    <details class="mobile-directory">
+      <summary>本期目录</summary>
+      {_render_navigation(data)}
+    </details>
+
     {_render_warning(data)}
+
+    {render_overview_html(data)}
 
     {_render_sections(data)}
   </main>
+  <script>
+    (() => {{
+      const links = Array.from(document.querySelectorAll('.report-nav a'));
+      const sections = Array.from(document.querySelectorAll('main > .section[id]'));
+      let scheduled = false;
+      function updateNavigation() {{
+        scheduled = false;
+        let active = sections[0];
+        for (const section of sections) {{
+          if (section.getBoundingClientRect().top <= 140) active = section;
+        }}
+        if (window.scrollY > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {{
+          active = sections[sections.length - 1];
+        }}
+        for (const link of links) {{
+          if (active && link.hash === '#' + active.id) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
+        }}
+      }}
+      window.addEventListener('scroll', () => {{
+        if (!scheduled) {{ scheduled = true; requestAnimationFrame(updateNavigation); }}
+      }}, {{ passive: true }});
+      window.addEventListener('resize', updateNavigation);
+      for (const link of links) link.addEventListener('click', () => {{
+        const directory = link.closest('details');
+        if (directory) directory.open = false;
+      }});
+      updateNavigation();
+    }})();
+  </script>
 </body>
 </html>
 """
+
+
+def _render_navigation(data):
+    items = [(section["key"], section["title"]) for section in SECTIONS]
+    if data.get("weekly_overview") or data.get("headline") or data.get("today_focus") or data.get("one_thing_worth_watching"):
+        items.insert(0, ("weekly-overview", "本周核心概览"))
+    return '<nav class="report-nav" aria-label="本期目录">' + ''.join(
+        f'<a href="#{safe_escape(key)}">{safe_escape(title)}</a>' for key, title in items) + '</nav>'
 
 
 def _render_sections(data):
@@ -417,7 +498,7 @@ def _render_section(section, cards):
         rendered_cards = '<div class="empty">本期未筛出高价值行业情报。</div>'
 
     return f"""
-    <section class="section">
+    <section class="section" id="{safe_escape(section['key'])}">
       <div class="section-head">
         <div>
           <h2>{safe_escape(section["title"])}</h2>
@@ -541,4 +622,5 @@ def _render_warning(data):
     if not warning:
         return ""
     return f'<div class="warning">{safe_escape(warning)}</div>'
+
 
