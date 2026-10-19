@@ -45,7 +45,7 @@ def get_brief_date(data):
 
 
 def build_archive_json(data, brief_date):
-    return {
+    archived = {
         "date": brief_date,
         "today_focus": data.get("headline", ""),
         "platform": data.get("platform_intelligence", []),
@@ -54,6 +54,9 @@ def build_archive_json(data, brief_date):
         "retail": data.get("retail_innovation", []),
         "one_thing_worth_watching": data.get("one_thing_worth_watching", ""),
     }
+    if data.get("weekly_overview") is not None:
+        archived["weekly_overview"] = data["weekly_overview"]
+    return archived
 
 
 def scan_archive_dates(archive_dir):
@@ -241,3 +244,4 @@ def format_week_label(date):
     except ValueError:
         return date
     return f"Week {parsed.isocalendar()[1]}"
+
