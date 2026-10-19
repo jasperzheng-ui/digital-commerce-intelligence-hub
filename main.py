@@ -163,7 +163,8 @@ def generate_dashboard_data():
                 pool = prepare_information_pool(base + extra)
                 result = finalize_report(generate_with_gemini(pool), pool)
     print(f'[report] {result["quality_status"]}, total={monotonic()-started:.1f}s', flush=True)
-    return result
+    from intelligence.overview import add_weekly_overview
+    return add_weekly_overview(result)
 
 
 def save_preview_data(data):
@@ -224,6 +225,8 @@ def validate_preview_data(data):
         raise ValueError("草稿没有文章，停止生成和发送空白周报。")
     if data.get("parse_warning"):
         raise ValueError("草稿含 parse_warning，请先检查并修正数据。")
+    from output.overview import validate_overview
+    validate_overview(data)
     return data
 
 
@@ -247,6 +250,8 @@ def prepare_manual_publish(data):
     from intelligence.report_quality import report_shortfalls, source_mix
     if not isinstance(data, dict):
         raise ValueError("终稿必须是 JSON 对象，请检查 output/preview/data.json。")
+    from output.overview import validate_overview
+    validate_overview(data)
     try:
         datetime.strptime(data.get("date", ""), "%Y-%m-%d")
     except (TypeError, ValueError) as exc:
@@ -310,4 +315,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
