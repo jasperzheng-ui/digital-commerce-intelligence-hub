@@ -569,26 +569,34 @@
     ],
     "industry_trends": [
       {
-        "title": "渠道端：AI从商品推荐延伸到购买承接，入口关系开始变化",
-        "text": "本期案例中，Google把跨商家商品保存、价格与库存提醒接入购物车，沃尔玛通过视觉选购承接需求，品牌也开始单独追踪AI来源订单。AI正进入更连续的购物流程，而非停留在问答。亚马逊与Shopify对外部代理的不同态度同时表明，商品目录、授权和结账关系仍决定这些入口如何连接实际交易。",
-        "source_ids": []
+        "title": "品类格局：AI购物的潜在影响并非在各类零售中平均分布",
+        "text": "Numerator于10月14日发布AI消费指数，将AI使用态度与实际家庭购买记录结合。其美国数据发现，AI参与度较高的人群，在电子产品、服装鞋履配饰及健康美容品类支出高于平均；电商和价值型零售商的相关客群也更集中。研究据此判断，这些领域更可能较早受到AI购物影响。但它呈现的是客群与消费结构的关联，不能将较高支出解释成AI已经创造的收入增量；相关问卷来自7月。",
+        "source_ids": [
+          "industry_ai_index"
+        ]
       },
       {
-        "title": "经营端：渠道扩张越来越依赖商品、库存与履约的协同",
-        "text": "沃尔玛将门店库存与配送连接，优衣库让个店反馈进入生产和库存计划，超盒算NB则以仓配半径约束加盟扩张。本期案例反映，实体网络的价值已不限于店内销售，也包括需求反馈和交付能力。Aritzia收入、折扣与库存的变化进一步说明，开店和销售增长仍需结合货品周转、正常价销售及利润质量理解。",
-        "source_ids": []
+        "title": "渠道模式：购物中心的吸引力与跨品类行程仍有增长空间",
+        "text": "JLL于10月6日发布的美国假日购物调研显示，计划到封闭式购物中心购物的人占55.3%，上年为49.9%；计划使用线上配送的比例仍有80%。研究同时发现，较高预算与计划访问更多门店、更多品类相关，停留时间与支出的关系则在约75分钟后趋平。由此可见，线上便利与多业态线下体验可以并存；这些是购物计划及相关性，尚不能证明增加停留或门店数量必然提高销售。",
+        "source_ids": [
+          "external_jll"
+        ]
       }
     ],
     "consumer_insights": [
       {
-        "title": "需求端：购买机会既来自未被表达的需要，也来自具体使用场景",
-        "text": "天猫以爬山用户可能需要、却不知道名称的髌骨带说明潜在需求；阿里妈妈案例则尝试从商品用途识别传统标签之外的人群。两者共同提示，消费者未必先有明确关键词，商品能否解释适合谁、用于什么场景，会影响其被发现和理解。这是本期案例的观察，不能推断所有推荐都已带来新增购买。",
-        "source_ids": []
+        "title": "预算选择：节日总预算增加，不等于礼品需求同比例扩大",
+        "text": "同一份JLL美国调研中，消费者计划假日预算同比增加9.7%，礼品预算只增3.1%；食品与装饰、娱乐与外出用餐分别增加16.0%和17.3%。同时，打算减少送礼对象的人由24.9%升至28.9%。这说明受访者仍在为节日分配支出，却更有选择地决定钱花在哪里。预算增加与缩减礼单可以同时发生，不能仅凭总额认定所有商品需求改善；这仍是季前意愿，并非实际消费结果。",
+        "source_ids": [
+          "external_jll"
+        ]
       },
       {
-        "title": "体验端：运动参与和日常生活方式正在拓宽品牌接触人群的方式",
-        "text": "SM把跑步与演出组织成参与式体验，耐克连接本地训练空间和运动社群，Aritzia以通勤、运动休闲等货盘回应不同衣橱场景。案例表明，吸引力可以来自实际参与和生活适配，而非只有商品曝光。不过，报名人数、互动热度或短期收入尚不能证明长期习惯；HYROX争议也显示服务体验会影响参与关系。",
-        "source_ids": []
+        "title": "决策偏好：愿意让AI协助选购，与授权AI付款存在明显距离",
+        "text": "德勤10月15日发布的美国假日零售调研显示，39%的受访者将生成式AI作为至少一项假日购物任务的主要工具，但仅16%表示会允许其完成购买。两种回答反映不同程度的参与和授权，说明接受信息辅助不等于接受交易委托。分析上，商品比较与最终下单应分开理解，助手使用率不能直接当作代理购买率。调研于8月26日至9月10日访问4000名美国消费者，结论不能直接外推中国市场。",
+        "source_ids": [
+          "external_deloitte"
+        ]
       }
     ],
     "section_overviews": {
@@ -617,6 +625,27 @@
         "title": "商务部召开例行新闻发布会（2026年10月15日）",
         "url": "https://www.mofcom.gov.cn/xwfbzt/2026/swbzklxxwfbh2026n10y15r/index.html",
         "source": "商务部",
+        "date": "2026-10-15"
+      },
+      {
+        "id": "industry_ai_index",
+        "title": "Numerator AI Consumer Index：健康美容、服装和电子产品更可能受到AI购物影响",
+        "url": "https://www.globenewswire.com/news-release/2026/10/14/3380795/0/en/numerator-s-newly-launched-ai-consumer-index-finds-health-beauty-apparel-and-electronics-prime-for-ai-shopping-disruption.html",
+        "source": "Numerator官方新闻稿／GlobeNewswire",
+        "date": "2026-10-14"
+      },
+      {
+        "id": "external_jll",
+        "title": "Holiday shopping 2026: Bigger budgets, fewer names",
+        "url": "https://www.jll.com/en-us/insights/holiday-shopping-report",
+        "source": "JLL（仲量联行）",
+        "date": "2026-10-06"
+      },
+      {
+        "id": "external_deloitte",
+        "title": "2026 Deloitte Holiday Retail Survey",
+        "url": "https://www.deloitte.com/us/en/insights/industry/retail-distribution/holiday-retail-sales-consumer-survey.html",
+        "source": "Deloitte Insights（德勤）",
         "date": "2026-10-15"
       }
     ]
