@@ -6,6 +6,7 @@ import requests
 
 from output.html import safe_text
 from output.overview import render_overview_html, render_overview_text, render_section_overview_html, section_overview
+from output.digest import render_digest_html, render_digest_text
 from utils.date_utils import report_date_parts
 
 
@@ -54,7 +55,7 @@ def send_brief_email(data, dashboard_url=""):
 def build_email_html(data, dashboard_url=""):
     date_parts = report_date_parts(data.get("date"))
     sections_html = "\n".join(
-        _render_section(title, data.get(key, []) or [], section_type, render_section_overview_html(data, key))
+        _render_digest_section(title, data, key)
         for title, key, section_type in SECTIONS
     )
 
@@ -116,12 +117,7 @@ def build_email_text(data, dashboard_url=""):
 
     for title, key, section_type in SECTIONS:
         lines.extend(["", title, "本周板块总览", section_overview(data, key)])
-        cards = data.get(key, []) or []
-        if not cards:
-            lines.append("No reliable signal returned from real sources.")
-            continue
-        for index, card in enumerate(cards, start=1):
-            lines.extend(_format_text_card(index, card, section_type))
+        lines.append(render_digest_text(data, key))
 
     return "\n".join(safe_text(line) for line in lines).strip() + "\n"
 
@@ -140,6 +136,13 @@ def _render_dashboard_button(dashboard_url):
                     Open Dashboard
                   </a>
                 </div>"""
+
+
+def _render_digest_section(title, data, key):
+    return (f'<table role="presentation" width="100%" cellspacing="0" cellpadding="0" '
+            f'style="border-collapse:collapse;margin-bottom:32px;"><tr><td>'
+            f'<h2 style="margin:0 0 16px;color:#172033;font-size:22px;line-height:1.5;">{_e(title)}</h2>'
+            + render_section_overview_html(data, key) + render_digest_html(data, key) + '</td></tr></table>')
 
 
 def _render_section(title, cards, section_type, summary_html=""):
@@ -408,4 +411,5 @@ def _split_recipients(value):
 
 def _e(value):
     return escape(safe_text(value), quote=True)
+
 
