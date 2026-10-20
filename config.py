@@ -9,15 +9,15 @@ HTML_OUTPUT_PATH = BASE_DIR / "output" / "index.html"
 PREVIEW_OUTPUT_PATH = BASE_DIR / "output" / "preview" / "index.html"
 PREVIEW_DATA_PATH = BASE_DIR / "output" / "preview" / "data.json"
 
-MAX_ITEMS_FOR_GEMINI = 48
-RSS_ITEMS_PER_FEED = 8
+MAX_ITEMS_FOR_GEMINI = None  # No total article quota; model requests are batched.
+RSS_ITEMS_PER_FEED = None
 GOOGLE_NEWS_ITEMS_PER_QUERY = 5
 
 SECTION_ORDER = ["platform", "ai", "sports", "retail"]
-MIN_SECTION_SIGNALS = {section: 3 for section in SECTION_ORDER}
-TARGET_SECTION_SIGNALS = {"platform": 4, "ai": 3, "sports": 4, "retail": 4}
-MAX_SECTION_SIGNALS = 5
-MIN_WECHAT_SHARE = 0.5
+MIN_SECTION_SIGNALS = {section: 0 for section in SECTION_ORDER}
+TARGET_SECTION_SIGNALS = {section: 0 for section in SECTION_ORDER}
+MAX_SECTION_SIGNALS = None
+MIN_WECHAT_SHARE = 0.0  # Source mix is descriptive, not an article deletion rule.
 MIN_QUALITY_SCORE = 75
 # Compatibility for old imports; there is no fixed manual count or input ratio.
 MANUAL_SOURCE_MIX = None
@@ -29,8 +29,8 @@ PREFERRED_WECHAT_CHANNELS = {
 }
 RESEARCH_CHANNELS = ["贝恩公司", "艾瑞咨询", "艾瑞消费资讯", "36氪未来消费", "虎嗅APP", "晚点LatePost", "刘润", "商业弧光"]
 SEARCH_WINDOWS_DAYS = [3, 7, 14]
-MIN_SECTION_CANDIDATES = {section: 8 for section in SECTION_ORDER}
-MAX_SECTION_CANDIDATES = {section: 12 for section in SECTION_ORDER}
+MIN_SECTION_CANDIDATES = {section: 0 for section in SECTION_ORDER}
+MAX_SECTION_CANDIDATES = None
 
 FEEDS = [
     {"source": "Retail Dive", "url": "https://www.retaildive.com/feeds/news/", "domain": "retail"},
@@ -199,3 +199,47 @@ FILTER_PROFILES["retail"]["require_any"] += ["门店", "商品", "自有品牌",
 FILTER_PROFILES["sports"]["include_any"] += ["运动", "健身", "羽绒", "skypeople", "hyrox"]
 FILTER_PROFILES["ai"]["include_any"] += ["人工智能", "智能体", "ai", "千问"]
 FILTER_PROFILES["ai"]["require_any"] += ["工作流", "客服", "办公", "营销"]
+
+# Search scope is finite, but collected candidates and published items have no
+# per-section quotas. Review and synthesis process every item in bounded batches.
+MODEL_BATCH_ITEMS = 12
+MODEL_BATCH_CHARS = 22000
+SEARCH_QUERIES_PER_SECTION = 6
+SEARCH_QUERIES["platform"] = [
+    "阿里 淘宝 天猫 菜鸟 电商 平台 商家工具",
+    "京东 零售 物流 商家 履约",
+    "字节 抖音 电商 商家 平台",
+    "腾讯 微信 视频号 微信小店 电商",
+    "美团 闪购 即时零售 平台",
+    "小红书 电商 商家 经营 工具",
+]
+SEARCH_QUERIES["ai"] = [
+    "AI retail shopping customer service workflow adoption",
+    "人工智能 智能体 企业 业务 应用",
+    "AI model release multimodal reasoning capabilities",
+    "大模型 多模态 智能体 技术 进展",
+    "AI inference infrastructure developer tools",
+    "人工智能 开源 模型 推理 技术",
+]
+SEARCH_QUERIES["sports"] = [
+    "安踏 李宁 特步 运动品牌 零售",
+    "中国 运动 户外 品牌 消费",
+    "Nike Adidas Lululemon sports retail strategy",
+    "Decathlon outdoor sports retail industry",
+]
+SEARCH_QUERIES["retail"] = [
+    "盒马 永辉 胖东来 零售 商品 门店",
+    "中国 零售 创新 供应链 门店",
+    "Walmart Costco Target retail innovation",
+    "Uniqlo Zara IKEA retail inventory",
+]
+# AI now explicitly includes technical progress as well as business applications.
+FILTER_PROFILES["ai"] = {
+    "include_any": ["ai", "人工智能", "智能体", "模型", "openai", "gemini", "claude",
+                    "deepseek", "qwen", "多模态", "推理", "机器学习", "芯片", "算力"],
+    "require_any": [],
+    "hard_exclude_any": ["招聘", "招聘广告", "job vacancy", "stock price target"],
+    "exclude_any": [],
+    "override_any": [],
+}
+
