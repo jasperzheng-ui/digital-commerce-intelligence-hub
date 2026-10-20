@@ -3,6 +3,7 @@ from html import escape
 import re
 
 from output.overview import render_overview_html, render_section_overview_html
+from output.digest import render_digest_html
 
 from utils.date_utils import report_date_parts
 
@@ -263,7 +264,7 @@ def build_dashboard_html(data, archive_href="./archive/"):
 
     .cards {{
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+      grid-template-columns: 1fr;
       gap: 16px;
       align-items: start;
     }}
@@ -435,7 +436,7 @@ def build_dashboard_html(data, archive_href="./archive/"):
       }}
       .mobile-directory {{ display: none; }}
       .section {{ padding: clamp(10px, 2vw, 22px); }}
-      .cards {{ grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); }}
+      .cards {{ grid-template-columns: 1fr; }}
     }}
   </style>
 </head>
@@ -514,10 +515,6 @@ def _render_sections(data):
 
 
 def _render_section(section, cards, data):
-    rendered_cards = "\n".join(_render_card(card, section["key"]) for card in cards[:8])
-    if not rendered_cards:
-        rendered_cards = '<div class="empty">本期未筛出高价值行业情报。</div>'
-
     return f"""
     <section class="section" id="{safe_escape(section['key'])}">
       <div class="section-head">
@@ -525,11 +522,10 @@ def _render_section(section, cards, data):
           <h2>{safe_escape(section["title"])}</h2>
           <div class="subtitle">{safe_escape(section["subtitle"])}</div>
         </div>
-        <span class="section-badge {safe_escape(section["tone"])}">{len(cards[:8])} Signals</span>
       </div>
       {render_section_overview_html(data, section['key'])}
-      <div class="cards">
-        {rendered_cards}
+      <div class="digest-content">
+        {render_digest_html(data, section['key'])}
       </div>
     </section>
     """
@@ -644,5 +640,6 @@ def _render_warning(data):
     if not warning:
         return ""
     return f'<div class="warning">{safe_escape(warning)}</div>'
+
 
 
