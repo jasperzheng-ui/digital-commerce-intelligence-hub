@@ -155,19 +155,11 @@ def build_dashboard_html(data, archive_href="./archive/"):
     .mobile-directory summary {{ cursor: pointer; color: var(--blue); font-size: 14px; font-weight: 750; }}
     .mobile-directory .report-nav {{ margin-top: 12px; }}
     .overview {{ font-size: 15px; overflow-wrap: anywhere; }}
-    @media (min-width: 1281px) {{
-      .sidebar {{
-        display: block; position: fixed; top: 0; bottom: 0; left: max(16px, calc((100vw - 1600px) / 2));
-        width: 208px; padding: 48px 12px 24px 0; background: #fff;
-        border-right: 1px solid var(--line); overflow-y: auto;
-      }}
-      .page {{ width: min(1120px, calc(100% - 280px)); margin-left: max(248px, calc((100% - 1120px) / 2)); margin-right: 32px; }}
-      .mobile-directory {{ display: none; }}
-    }}
     @media (prefers-reduced-motion: reduce) {{ html {{ scroll-behavior: auto; }} }}
 
     .topbar {{
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       gap: 24px;
       align-items: flex-start;
@@ -188,10 +180,12 @@ def build_dashboard_html(data, archive_href="./archive/"):
       font-size: clamp(30px, 4.4vw, 48px);
       line-height: 1;
       letter-spacing: 0;
+      overflow-wrap: anywhere;
     }}
 
     .header-actions {{
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 12px;
       flex: 0 0 auto;
@@ -269,7 +263,7 @@ def build_dashboard_html(data, archive_href="./archive/"):
 
     .cards {{
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
       gap: 16px;
       align-items: start;
     }}
@@ -283,6 +277,8 @@ def build_dashboard_html(data, archive_href="./archive/"):
       padding: 18px;
       background: #fff;
       min-height: 0;
+      min-width: 0;
+      overflow-wrap: anywhere;
     }}
 
     .card-title {{
@@ -414,6 +410,32 @@ def build_dashboard_html(data, archive_href="./archive/"):
       .card {{
         min-height: auto;
       }}
+    }}
+
+    /* A mouse-operated desktop keeps its left directory at every browser zoom.
+       Touch devices retain the compact directory; article columns follow the
+       space remaining beside the sidebar rather than the full window width. */
+    @media (hover: hover) and (pointer: fine), (min-width: 1281px) {{
+      :root {{
+        --sidebar-width: clamp(100px, 18vw, 208px);
+        --sidebar-left: max(8px, calc((100vw - 1600px) / 2));
+      }}
+      .sidebar {{
+        display: block; position: fixed; top: 0; bottom: 0;
+        left: var(--sidebar-left); width: var(--sidebar-width);
+        padding: 40px 8px 24px 0; background: #fff;
+        border-right: 1px solid var(--line); overflow-y: auto;
+        overflow-wrap: anywhere;
+      }}
+      .page {{
+        width: min(1120px, calc(100% - var(--sidebar-left) - var(--sidebar-width) - 48px));
+        margin-left: max(calc(var(--sidebar-left) + var(--sidebar-width) + 24px), calc((100% - 1120px) / 2));
+        margin-right: 24px; padding-top: 44px;
+        min-width: 0; overflow-wrap: anywhere;
+      }}
+      .mobile-directory {{ display: none; }}
+      .section {{ padding: clamp(10px, 2vw, 22px); }}
+      .cards {{ grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); }}
     }}
   </style>
 </head>
