@@ -61,19 +61,11 @@
     .mobile-directory summary { cursor: pointer; color: var(--blue); font-size: 14px; font-weight: 750; }
     .mobile-directory .report-nav { margin-top: 12px; }
     .overview { font-size: 15px; overflow-wrap: anywhere; }
-    @media (min-width: 1281px) {
-      .sidebar {
-        display: block; position: fixed; top: 0; bottom: 0; left: max(16px, calc((100vw - 1600px) / 2));
-        width: 208px; padding: 48px 12px 24px 0; background: #fff;
-        border-right: 1px solid var(--line); overflow-y: auto;
-      }
-      .page { width: min(1120px, calc(100% - 280px)); margin-left: max(248px, calc((100% - 1120px) / 2)); margin-right: 32px; }
-      .mobile-directory { display: none; }
-    }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
     .topbar {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       gap: 24px;
       align-items: flex-start;
@@ -94,10 +86,12 @@
       font-size: clamp(30px, 4.4vw, 48px);
       line-height: 1;
       letter-spacing: 0;
+      overflow-wrap: anywhere;
     }
 
     .header-actions {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 12px;
       flex: 0 0 auto;
@@ -175,7 +169,7 @@
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
       gap: 16px;
       align-items: start;
     }
@@ -189,6 +183,8 @@
       padding: 18px;
       background: #fff;
       min-height: 0;
+      min-width: 0;
+      overflow-wrap: anywhere;
     }
 
     .card-title {
@@ -321,6 +317,32 @@
         min-height: auto;
       }
     }
+
+    /* A mouse-operated desktop keeps its left directory at every browser zoom.
+       Touch devices retain the compact directory; article columns follow the
+       space remaining beside the sidebar rather than the full window width. */
+    @media (hover: hover) and (pointer: fine), (min-width: 1281px) {
+      :root {
+        --sidebar-width: clamp(100px, 18vw, 208px);
+        --sidebar-left: max(8px, calc((100vw - 1600px) / 2));
+      }
+      .sidebar {
+        display: block; position: fixed; top: 0; bottom: 0;
+        left: var(--sidebar-left); width: var(--sidebar-width);
+        padding: 40px 8px 24px 0; background: #fff;
+        border-right: 1px solid var(--line); overflow-y: auto;
+        overflow-wrap: anywhere;
+      }
+      .page {
+        width: min(1120px, calc(100% - var(--sidebar-left) - var(--sidebar-width) - 48px));
+        margin-left: max(calc(var(--sidebar-left) + var(--sidebar-width) + 24px), calc((100% - 1120px) / 2));
+        margin-right: 24px; padding-top: 44px;
+        min-width: 0; overflow-wrap: anywhere;
+      }
+      .mobile-directory { display: none; }
+      .section { padding: clamp(10px, 2vw, 22px); }
+      .cards { grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); }
+    }
   </style>
 </head>
 <body>
@@ -347,7 +369,7 @@
 
     
 
-    <section class="section overview" id="weekly-overview" aria-label="本周行业观察"><h2 style="margin:0 0 24px;font-size:24px;color:#172033;">本周行业观察</h2><div style="margin-top:22px;"><h3 style="margin:0 0 18px;padding-left:10px;border-left:3px solid #3643BA;color:#3643BA;font-size:19px;line-height:1.5;">1. 宏观环境</h3><h4 style="margin:18px 0 8px;color:#172033;font-size:16px;line-height:1.65;font-weight:750;">消费端：假日消费活跃，但不同场景的增速存在差异</h4><p style="margin:0 0 12px;color:#263244;font-size:15px;line-height:1.85;">国家税务总局数据显示，国庆假期服务消费相关行业日均销售收入同比增长19.5%；商务部监测的78个步行街及商圈客流、营业额分别增长2.5%和4.7%。这些口径覆盖的范围不同，不能直接比较强弱，但共同呈现消费活动的恢复与场景差异，尚不足以推断所有商品品类或全年需求同步增长。 <a href="https://www.chinatax.gov.cn/chinatax/n810219/n810724/c5252805/content.html" target="_blank" rel="noopener noreferrer" title="增值税发票数据显示：国庆假期服务消费和部分商品消费态势良好" aria-label="来源 1：增值税发票数据显示：国庆假期服务消费和部分商品消费态势良好" style="color:#3643BA;text-decoration:underline;font-size:13px;">[1]</a> <a href="https://www.cnfin.com/yw-lb/detail/20261008/4477773_1.html" target="_blank" rel="noopener noreferrer" title="国庆假期智能、绿色、健康商品需求旺盛" aria-label="来源 2：国庆假期智能、绿色、健康商品需求旺盛" style="color:#3643BA;text-decoration:underline;font-size:13px;">[2]</a></p><h4 style="margin:18px 0 8px;color:#172033;font-size:16px;line-height:1.65;font-weight:750;">政策端：电商发展进一步强调品质、服务与供给</h4><p style="margin:0 0 12px;color:#263244;font-size:15px;line-height:1.85;">商务部10月15日介绍，七部门推出品质电商“五优”行动，从平台、商家、消费者、丝路电商和规范标准五个维度部署15项举措。其导向是让优质商品与服务更容易被发现，并让品质投入获得市场回报。这为理解平台竞争提供了政策背景；行动部署本身尚不代表商家利润或消费者体验已经改善。 <a href="https://www.mofcom.gov.cn/xwfbzt/2026/swbzklxxwfbh2026n10y15r/index.html" target="_blank" rel="noopener noreferrer" title="商务部召开例行新闻发布会（2026年10月15日）" aria-label="来源 3：商务部召开例行新闻发布会（2026年10月15日）" style="color:#3643BA;text-decoration:underline;font-size:13px;">[3]</a></p></div><div style="margin-top:24px;border-top:1px solid #edf0f5;"></div><div style="margin-top:22px;"><h3 style="margin:0 0 18px;padding-left:10px;border-left:3px solid #3643BA;color:#3643BA;font-size:19px;line-height:1.5;">2. 行业趋势</h3><h4 style="margin:18px 0 8px;color:#172033;font-size:16px;line-height:1.65;font-weight:750;">渠道端：AI从商品推荐延伸到购买承接，入口关系开始变化</h4><p style="margin:0 0 12px;color:#263244;font-size:15px;line-height:1.85;">本期案例中，Google把跨商家商品保存、价格与库存提醒接入购物车，沃尔玛通过视觉选购承接需求，品牌也开始单独追踪AI来源订单。AI正进入更连续的购物流程，而非停留在问答。亚马逊与Shopify对外部代理的不同态度同时表明，商品目录、授权和结账关系仍决定这些入口如何连接实际交易。 </p><h4 style="margin:18px 0 8px;color:#172033;font-size:16px;line-height:1.65;font-weight:750;">经营端：渠道扩张越来越依赖商品、库存与履约的协同</h4><p style="margin:0 0 12px;color:#263244;font-size:15px;line-height:1.85;">沃尔玛将门店库存与配送连接，优衣库让个店反馈进入生产和库存计划，超盒算NB则以仓配半径约束加盟扩张。本期案例反映，实体网络的价值已不限于店内销售，也包括需求反馈和交付能力。Aritzia收入、折扣与库存的变化进一步说明，开店和销售增长仍需结合货品周转、正常价销售及利润质量理解。 </p></div><div style="margin-top:24px;border-top:1px solid #edf0f5;"></div><div style="margin-top:22px;"><h3 style="margin:0 0 18px;padding-left:10px;border-left:3px solid #3643BA;color:#3643BA;font-size:19px;line-height:1.5;">3. 消费者洞察</h3><h4 style="margin:18px 0 8px;color:#172033;font-size:16px;line-height:1.65;font-weight:750;">需求端：购买机会既来自未被表达的需要，也来自具体使用场景</h4><p style="margin:0 0 12px;color:#263244;font-size:15px;line-height:1.85;">天猫以爬山用户可能需要、却不知道名称的髌骨带说明潜在需求；阿里妈妈案例则尝试从商品用途识别传统标签之外的人群。两者共同提示，消费者未必先有明确关键词，商品能否解释适合谁、用于什么场景，会影响其被发现和理解。这是本期案例的观察，不能推断所有推荐都已带来新增购买。 </p><h4 style="margin:18px 0 8px;color:#172033;font-size:16px;line-height:1.65;font-weight:750;">体验端：运动参与和日常生活方式正在拓宽品牌接触人群的方式</h4><p style="margin:0 0 12px;color:#263244;font-size:15px;line-height:1.85;">SM把跑步与演出组织成参与式体验，耐克连接本地训练空间和运动社群，Aritzia以通勤、运动休闲等货盘回应不同衣橱场景。案例表明，吸引力可以来自实际参与和生活适配，而非只有商品曝光。不过，报名人数、互动热度或短期收入尚不能证明长期习惯；HYROX争议也显示服务体验会影响参与关系。 </p></div></section>
+    <section class="section overview" id="weekly-overview" aria-label="本周行业观察"><h2 style="margin:0 0 24px;font-size:24px;color:#172033;">本周行业观察</h2><div style="margin-top:22px;"><h3 style="margin:0 0 18px;padding-left:10px;border-left:3px solid #3643BA;color:#3643BA;font-size:19px;line-height:1.5;">1. 宏观环境</h3><h4 style="margin:18px 0 8px;color:#172033;font-size:16px;line-height:1.65;font-weight:750;">消费端：假日消费活跃，但不同场景的增速存在差异</h4><p style="margin:0 0 12px;color:#263244;font-size:15px;line-height:1.85;">国家税务总局数据显示，国庆假期服务消费相关行业日均销售收入同比增长19.5%；商务部监测的78个步行街及商圈客流、营业额分别增长2.5%和4.7%。这些口径覆盖的范围不同，不能直接比较强弱，但共同呈现消费活动的恢复与场景差异，尚不足以推断所有商品品类或全年需求同步增长。 <a href="https://www.chinatax.gov.cn/chinatax/n810219/n810724/c5252805/content.html" target="_blank" rel="noopener noreferrer" title="增值税发票数据显示：国庆假期服务消费和部分商品消费态势良好" aria-label="来源 1：增值税发票数据显示：国庆假期服务消费和部分商品消费态势良好" style="color:#3643BA;text-decoration:underline;font-size:13px;">[1]</a> <a href="https://www.cnfin.com/yw-lb/detail/20261008/4477773_1.html" target="_blank" rel="noopener noreferrer" title="国庆假期智能、绿色、健康商品需求旺盛" aria-label="来源 2：国庆假期智能、绿色、健康商品需求旺盛" style="color:#3643BA;text-decoration:underline;font-size:13px;">[2]</a></p><h4 style="margin:18px 0 8px;color:#172033;font-size:16px;line-height:1.65;font-weight:750;">政策端：电商发展进一步强调品质、服务与供给</h4><p style="margin:0 0 12px;color:#263244;font-size:15px;line-height:1.85;">商务部10月15日介绍，七部门推出品质电商“五优”行动，从平台、商家、消费者、丝路电商和规范标准五个维度部署15项举措。其导向是让优质商品与服务更容易被发现，并让品质投入获得市场回报。这为理解平台竞争提供了政策背景；行动部署本身尚不代表商家利润或消费者体验已经改善。 <a href="https://www.mofcom.gov.cn/xwfbzt/2026/swbzklxxwfbh2026n10y15r/index.html" target="_blank" rel="noopener noreferrer" title="商务部召开例行新闻发布会（2026年10月15日）" aria-label="来源 3：商务部召开例行新闻发布会（2026年10月15日）" style="color:#3643BA;text-decoration:underline;font-size:13px;">[3]</a></p></div><div style="margin-top:24px;border-top:1px solid #edf0f5;"></div><div style="margin-top:22px;"><h3 style="margin:0 0 18px;padding-left:10px;border-left:3px solid #3643BA;color:#3643BA;font-size:19px;line-height:1.5;">2. 行业趋势</h3><h4 style="margin:18px 0 8px;color:#172033;font-size:16px;line-height:1.65;font-weight:750;">品类格局：AI购物的潜在影响并非在各类零售中平均分布</h4><p style="margin:0 0 12px;color:#263244;font-size:15px;line-height:1.85;">Numerator于10月14日发布AI消费指数，将AI使用态度与实际家庭购买记录结合。其美国数据发现，AI参与度较高的人群，在电子产品、服装鞋履配饰及健康美容品类支出高于平均；电商和价值型零售商的相关客群也更集中。研究据此判断，这些领域更可能较早受到AI购物影响。但它呈现的是客群与消费结构的关联，不能将较高支出解释成AI已经创造的收入增量；相关问卷来自7月。 <a href="https://www.globenewswire.com/news-release/2026/10/14/3380795/0/en/numerator-s-newly-launched-ai-consumer-index-finds-health-beauty-apparel-and-electronics-prime-for-ai-shopping-disruption.html" target="_blank" rel="noopener noreferrer" title="Numerator AI Consumer Index：健康美容、服装和电子产品更可能受到AI购物影响" aria-label="来源 4：Numerator AI Consumer Index：健康美容、服装和电子产品更可能受到AI购物影响" style="color:#3643BA;text-decoration:underline;font-size:13px;">[4]</a></p><h4 style="margin:18px 0 8px;color:#172033;font-size:16px;line-height:1.65;font-weight:750;">渠道模式：购物中心的吸引力与跨品类行程仍有增长空间</h4><p style="margin:0 0 12px;color:#263244;font-size:15px;line-height:1.85;">JLL于10月6日发布的美国假日购物调研显示，计划到封闭式购物中心购物的人占55.3%，上年为49.9%；计划使用线上配送的比例仍有80%。研究同时发现，较高预算与计划访问更多门店、更多品类相关，停留时间与支出的关系则在约75分钟后趋平。由此可见，线上便利与多业态线下体验可以并存；这些是购物计划及相关性，尚不能证明增加停留或门店数量必然提高销售。 <a href="https://www.jll.com/en-us/insights/holiday-shopping-report" target="_blank" rel="noopener noreferrer" title="Holiday shopping 2026: Bigger budgets, fewer names" aria-label="来源 5：Holiday shopping 2026: Bigger budgets, fewer names" style="color:#3643BA;text-decoration:underline;font-size:13px;">[5]</a></p></div><div style="margin-top:24px;border-top:1px solid #edf0f5;"></div><div style="margin-top:22px;"><h3 style="margin:0 0 18px;padding-left:10px;border-left:3px solid #3643BA;color:#3643BA;font-size:19px;line-height:1.5;">3. 消费者洞察</h3><h4 style="margin:18px 0 8px;color:#172033;font-size:16px;line-height:1.65;font-weight:750;">预算选择：节日总预算增加，不等于礼品需求同比例扩大</h4><p style="margin:0 0 12px;color:#263244;font-size:15px;line-height:1.85;">同一份JLL美国调研中，消费者计划假日预算同比增加9.7%，礼品预算只增3.1%；食品与装饰、娱乐与外出用餐分别增加16.0%和17.3%。同时，打算减少送礼对象的人由24.9%升至28.9%。这说明受访者仍在为节日分配支出，却更有选择地决定钱花在哪里。预算增加与缩减礼单可以同时发生，不能仅凭总额认定所有商品需求改善；这仍是季前意愿，并非实际消费结果。 <a href="https://www.jll.com/en-us/insights/holiday-shopping-report" target="_blank" rel="noopener noreferrer" title="Holiday shopping 2026: Bigger budgets, fewer names" aria-label="来源 5：Holiday shopping 2026: Bigger budgets, fewer names" style="color:#3643BA;text-decoration:underline;font-size:13px;">[5]</a></p><h4 style="margin:18px 0 8px;color:#172033;font-size:16px;line-height:1.65;font-weight:750;">决策偏好：愿意让AI协助选购，与授权AI付款存在明显距离</h4><p style="margin:0 0 12px;color:#263244;font-size:15px;line-height:1.85;">德勤10月15日发布的美国假日零售调研显示，39%的受访者将生成式AI作为至少一项假日购物任务的主要工具，但仅16%表示会允许其完成购买。两种回答反映不同程度的参与和授权，说明接受信息辅助不等于接受交易委托。分析上，商品比较与最终下单应分开理解，助手使用率不能直接当作代理购买率。调研于8月26日至9月10日访问4000名美国消费者，结论不能直接外推中国市场。 <a href="https://www.deloitte.com/us/en/insights/industry/retail-distribution/holiday-retail-sales-consumer-survey.html" target="_blank" rel="noopener noreferrer" title="2026 Deloitte Holiday Retail Survey" aria-label="来源 6：2026 Deloitte Holiday Retail Survey" style="color:#3643BA;text-decoration:underline;font-size:13px;">[6]</a></p></div></section>
 
     
     <section class="section" id="platform_intelligence">
