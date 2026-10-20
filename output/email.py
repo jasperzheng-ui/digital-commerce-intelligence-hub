@@ -5,7 +5,7 @@ from html import escape
 import requests
 
 from output.html import safe_text
-from output.overview import render_overview_html, render_overview_text
+from output.overview import render_overview_html, render_overview_text, render_section_overview_html, section_overview
 from utils.date_utils import report_date_parts
 
 
@@ -54,7 +54,7 @@ def send_brief_email(data, dashboard_url=""):
 def build_email_html(data, dashboard_url=""):
     date_parts = report_date_parts(data.get("date"))
     sections_html = "\n".join(
-        _render_section(title, data.get(key, []) or [], section_type)
+        _render_section(title, data.get(key, []) or [], section_type, render_section_overview_html(data, key))
         for title, key, section_type in SECTIONS
     )
 
@@ -115,7 +115,7 @@ def build_email_text(data, dashboard_url=""):
         lines.extend(["", overview])
 
     for title, key, section_type in SECTIONS:
-        lines.extend(["", title])
+        lines.extend(["", title, "本周板块总览", section_overview(data, key)])
         cards = data.get(key, []) or []
         if not cards:
             lines.append("No reliable signal returned from real sources.")
@@ -142,7 +142,7 @@ def _render_dashboard_button(dashboard_url):
                 </div>"""
 
 
-def _render_section(title, cards, section_type):
+def _render_section(title, cards, section_type, summary_html=""):
     cards = _safe_cards(cards)
     if cards:
         cards_html = "\n".join(_render_card(card, section_type) for card in cards)
@@ -163,6 +163,7 @@ def _render_section(title, cards, section_type):
                       </h2>
                     </td>
                   </tr>
+                  <tr><td>{summary_html}</td></tr>
                   {cards_html}
                 </table>"""
 
