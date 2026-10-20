@@ -1,6 +1,6 @@
 import feedparser
 
-from config import FILTER_PROFILES, RSS_ITEMS_PER_FEED, SEARCH_WINDOWS_DAYS
+from config import FILTER_PROFILES, SEARCH_WINDOWS_DAYS
 from sources.common import is_within_days, make_item, parse_date, should_keep_section_item
 
 
@@ -19,7 +19,7 @@ def fetch_rss_items(feeds):
         if parsed_feed is None:
             continue
 
-        for entry in parsed_feed.entries[:RSS_ITEMS_PER_FEED]:
+        for entry in parsed_feed.entries:
             title = entry.get("title", "")
             summary = entry.get("summary", "") or entry.get("description", "")
 
@@ -45,4 +45,5 @@ def fetch_rss_items(feeds):
             )
 
     return items
+
 
