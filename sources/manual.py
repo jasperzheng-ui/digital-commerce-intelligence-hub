@@ -33,6 +33,10 @@ FIELD_ALIASES = {
     "来源类型": "source_type",
     "date": "date",
     "日期": "date",
+    "subcategory": "subcategory",
+    "sub_category": "subcategory",
+    "细分类": "subcategory",
+    "子分类": "subcategory",
 }
 
 
@@ -74,6 +78,8 @@ def fetch_manual_items(path):
         item["company"] = entry.get("company", "")
         item["date"] = entry.get("date", "")
         item["source_type"] = _manual_source_type(entry)
+        if entry.get("subcategory"):
+            item["subcategory"] = entry["subcategory"]
         items.append(item)
 
     return items
@@ -172,6 +178,8 @@ def _format_manual_summary(entry):
         parts.append(f"Source: {entry['source']}")
     if entry.get("date"):
         parts.append(f"Date: {entry['date']}")
+    if entry.get("subcategory"):
+        parts.append(f"Subcategory: {entry['subcategory']}")
     if entry.get("content"):
         parts.append(f"Content: {entry['content']}")
     return "\n".join(parts) or entry.get("title", "")
@@ -224,3 +232,4 @@ def validate_manual_source_mix(items, expected=None):
                or (i.get('source_type') == 'wechat' and urlparse(i.get('link', '')).hostname != 'mp.weixin.qq.com')]
     if invalid:
         raise ValueError('人工素材请填写有效日期、Category、Link及Source Type；公众号计数需要微信原文链接：' + '；'.join(invalid))
+
