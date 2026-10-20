@@ -97,7 +97,9 @@ def _content(data):
     used = list(dict.fromkeys(ref for field, _ in ANALYSIS_GROUPS
                              for p in overview.get(field, [])
                              for ref in p.get("source_ids", [])))
-    return overview, sources, {ref: n for n, ref in enumerate(used, 1)}
+    from output.digest import citation_catalog
+    catalog = citation_catalog(data)
+    return overview, sources, {ref: catalog[sources[ref]['url']]['number'] for ref in used}
 
 
 def section_overview(data, section):
@@ -185,3 +187,4 @@ def render_overview_text(data):
                             for ref in dict.fromkeys(paragraph.get("source_ids", [])))
             lines.append(body_text + (" " + refs if refs else ""))
     return "\n".join(lines)
+
