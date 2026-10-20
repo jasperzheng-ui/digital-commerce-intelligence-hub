@@ -34,7 +34,7 @@ FORBIDDEN_OUTPUT_REPLACEMENTS = (
 )
 
 
-def generate_dashboard_data(items):
+def _generate_dashboard_batch(items):
     try:
         from google import genai
     except ImportError as exc:
@@ -71,6 +71,31 @@ def generate_dashboard_data(items):
     return parse_dashboard_json(raw_text)
 
 
+def generate_dashboard_data(items):
+    from intelligence.batches import batches
+    from intelligence.report_quality import canonical_link
+    result = {section: [] for section in SECTION_ALIASES}
+    result['rejected_candidates'] = []
+    for index, batch in enumerate(batches(items), 1):
+        print(f'[review batch] {index}: {len(batch)} source articles', flush=True)
+        reviewed = _generate_dashboard_batch(batch)
+        if reviewed.get('parse_warning'):
+            raise RuntimeError('本批AI审核JSON无效，已停止；不会发送不完整周报。')
+        known = {canonical_link(i['link']) for i in batch}
+        accepted = {canonical_link(c.get('link')) for section in SECTION_ALIASES for c in reviewed[section]}
+        rejected = {canonical_link(c.get('link')) for c in reviewed.get('rejected_candidates', [])}
+        if known - accepted - rejected:
+            raise RuntimeError('AI审核遗漏部分输入文章，请重新Preview；没有按数量截断素材。')
+        if (accepted | rejected) - known:
+            raise RuntimeError('AI审核引用了本批素材之外的链接，已停止生成。')
+        for section in SECTION_ALIASES:
+            result[section].extend(reviewed[section])
+        result['rejected_candidates'].extend(reviewed.get('rejected_candidates', []))
+        if reviewed.get('headline'):
+            result['headline'] = reviewed['headline']
+    return result
+
+
 def parse_dashboard_json(raw_text):
     text = _strip_json_fence(raw_text)
     try:
@@ -95,7 +120,7 @@ def normalize_dashboard_data(data):
         "retail_innovation": _filter_reliable_cards(_normalize_cards(_first_section(data, "retail_innovation"))),
         "one_thing_worth_watching": data.get("one_thing_worth_watching") or data.get("headline") or "今日信号已更新",
     }
-    for key in ("parse_warning", "quality_status", "quality_shortfalls", "source_mix",
+    for key in ("weekly_overview", "parse_warning", "quality_status", "quality_shortfalls", "source_mix",
                 "editorial_notice", "review_version", "rejected_candidates"):
         if key in data:
             normalized[key] = data[key]
@@ -112,13 +137,13 @@ def _first_section(data, canonical_key):
 def _card_metadata(item):
     fields = ("title", "company", "category", "keywords", "date", "source", "source_type",
               "origin_type", "quality_score", "quality_reason", "event_key", "review_status",
-              "provenance_url")
+              "provenance_url", "subcategory", "references", "text")
     return {key: item[key] for key in fields if key in item}
 
 
 def _normalize_cards(items):
     cards = []
-    for item in items[:8]:
+    for item in items:
         if isinstance(item, str):
             cards.append(
                 {
@@ -156,7 +181,7 @@ def _normalize_cards(items):
 
 def _normalize_ai_cards(items):
     cards = []
-    for item in items[:8]:
+    for item in items:
         if isinstance(item, str):
             cards.append(
                 {
@@ -398,7 +423,7 @@ def _summary_points(value):
             points = [part.strip() for part in re.split(r"(?<=[。！？.!?])\s*", text) if part.strip()]
         if len(points) <= 1 and text:
             points = [text]
-    return points[:6]
+    return points
 
 
 def _manual_structured_points(text):
@@ -414,3 +439,4 @@ def _manual_structured_points(text):
         if line:
             points.append(line)
     return points if len(points) > 1 else []
+
