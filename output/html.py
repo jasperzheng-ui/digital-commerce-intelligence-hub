@@ -2,7 +2,7 @@ from datetime import datetime
 from html import escape
 import re
 
-from output.overview import render_overview_html
+from output.overview import render_overview_html, render_section_overview_html
 
 from utils.date_utils import report_date_parts
 
@@ -482,17 +482,16 @@ def build_dashboard_html(data, archive_href="./archive/"):
 
 def _render_navigation(data):
     items = [(section["key"], section["title"]) for section in SECTIONS]
-    if data.get("weekly_overview") or data.get("headline") or data.get("today_focus") or data.get("one_thing_worth_watching"):
-        items.insert(0, ("weekly-overview", "本周核心概览"))
+    items.insert(0, ("weekly-overview", "本周行业观察"))
     return '<nav class="report-nav" aria-label="本期目录">' + ''.join(
         f'<a href="#{safe_escape(key)}">{safe_escape(title)}</a>' for key, title in items) + '</nav>'
 
 
 def _render_sections(data):
-    return "\n".join(_render_section(section, safe_cards(data.get(section["key"], []))) for section in SECTIONS)
+    return "\n".join(_render_section(section, safe_cards(data.get(section["key"], [])), data) for section in SECTIONS)
 
 
-def _render_section(section, cards):
+def _render_section(section, cards, data):
     rendered_cards = "\n".join(_render_card(card, section["key"]) for card in cards[:8])
     if not rendered_cards:
         rendered_cards = '<div class="empty">本期未筛出高价值行业情报。</div>'
@@ -506,6 +505,7 @@ def _render_section(section, cards):
         </div>
         <span class="section-badge {safe_escape(section["tone"])}">{len(cards[:8])} Signals</span>
       </div>
+      {render_section_overview_html(data, section['key'])}
       <div class="cards">
         {rendered_cards}
       </div>
