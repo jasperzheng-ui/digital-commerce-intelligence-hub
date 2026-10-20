@@ -4,8 +4,6 @@ import os
 
 from config import (
     HTML_OUTPUT_PATH,
-    MAX_ITEMS_FOR_GEMINI,
-    MIN_SECTION_CANDIDATES,
     PREVIEW_DATA_PATH,
     PREVIEW_OUTPUT_PATH,
     PROJECT_NAME,
@@ -26,11 +24,11 @@ def collect_information_pool(search_cache=None, article_cache=None):
     manual_items = fetch_manual_items(MANUAL_INPUT_PATH)
     validate_manual_source_mix(manual_items)
     rss = fetch_rss_items(FEEDS)  # Always runs, independently of manual count.
-    automatic = enrich_items(prepare_information_pool(rss, limit=24), article_cache)
+    automatic = enrich_items(prepare_information_pool(rss), article_cache)
     items = [i for i in manual_items + automatic if eligible(i)]
     print(f'[collect] manual={len(manual_items)}, rss_filtered={len(rss)}, rss_readable={len(automatic)}, usable={len(items)}', flush=True)
     items.extend(fetch_google_news_items(SEARCH_QUERIES, existing_items=items,
-                 cache=search_cache, article_cache=article_cache, wechat_needed=4))
+                 cache=search_cache, article_cache=article_cache))
     return prepare_information_pool(items)
 
 
@@ -41,32 +39,15 @@ def _item_key(item):
 
 
 
-def prepare_information_pool(items, limit=MAX_ITEMS_FOR_GEMINI):
-    from config import SECTION_ORDER
-    pools = {s: [] for s in SECTION_ORDER}
-    seen = set()
+def prepare_information_pool(items, limit=None):
+    """Keep every unique usable candidate; request batching happens downstream."""
+    seen, chosen = set(), []
     for item in items:
         key = _item_key(item)
-        if key in seen or not item.get('title') or not item.get('summary'):
+        if key in seen or not item.get('title') or not item.get('summary') or item.get('domain') not in SECTION_ORDER:
             continue
         seen.add(key)
-        pools.get(item.get('domain'), []).append(item)
-    # Equal section capacity; alternate WeChat/other to preserve quota options.
-    for s, pool in pools.items():
-        ranked = sorted(pool, key=lambda i: (i.get('relevance_score', 0), i.get('published_date', '')), reverse=True)
-        wechat = [i for i in ranked if i.get('source_type') == 'wechat']
-        other = [i for i in ranked if i.get('source_type') != 'wechat']
-        ordered = []
-        while wechat or other:
-            for group in (wechat, other):
-                if group:
-                    ordered.append(group.pop(0))
-        pools[s] = ordered
-    chosen = []
-    while any(pools.values()) and len(chosen) < limit:
-        for s in SECTION_ORDER:
-            if pools[s] and len(chosen) < limit:
-                chosen.append(pools[s].pop(0))
+        chosen.append(item)
     return chosen
 
 
@@ -136,35 +117,13 @@ def get_dashboard_url(mode):
 def generate_dashboard_data():
     from intelligence.gemini import generate_dashboard_data as generate_with_gemini
     from intelligence.report_quality import finalize_report
-    from config import TARGET_SECTION_SIGNALS, EXPANDED_SEARCH_QUERIES, MIN_SECTION_CANDIDATES
-    from sources.google_news import fetch_google_news_items
-    from time import monotonic
-    started = monotonic()
-    search_cache, article_cache = {}, {}
-    pool = collect_information_pool(search_cache, article_cache)
-    generated = generate_with_gemini(pool) if pool else {'parse_warning': '没有可审核素材'}
-    result = finalize_report(generated, pool)
-    # One targeted supplementary batch after actual quality review; cache is shared.
-    if pool and not generated.get('parse_warning'):
-        from intelligence.gemini import _canonical_section_key
-        gaps = [s for s in SECTION_ORDER if len(result[_canonical_section_key(s)]) < TARGET_SECTION_SIGNALS[s]]
-        mix_gap = result['source_mix']['shortfall']
-        if mix_gap:
-            gaps = list(SECTION_ORDER)
-        queries = {s: EXPANDED_SEARCH_QUERIES.get(s, [])[3:6] for s in gaps}
-        if queries:
-            extra = fetch_google_news_items(queries, existing_items=pool, cache=search_cache,
-                article_cache=article_cache, targets={s: sum(i['domain']==s for i in pool)+3 for s in gaps},
-                wechat_needed=6 if mix_gap else 0)
-            if extra:
-                # Preserve previously reviewed options while giving new candidates room.
-                reviewed_links = {c['link'] for section in SECTION_ORDER for c in generated.get(_canonical_section_key(section), [])}
-                base = [i for i in pool if i['link'] in reviewed_links]
-                pool = prepare_information_pool(base + extra)
-                result = finalize_report(generate_with_gemini(pool), pool)
-    print(f'[report] {result["quality_status"]}, total={monotonic()-started:.1f}s', flush=True)
+    from intelligence.digest import build_text_digest
     from intelligence.overview import add_weekly_overview
-    return add_weekly_overview(result)
+    pool = collect_information_pool({}, {})
+    generated = generate_with_gemini(pool) if pool else {}
+    reviewed = finalize_report(generated, pool)
+    digest = build_text_digest(reviewed)
+    return add_weekly_overview(digest)
 
 
 def save_preview_data(data):
@@ -193,40 +152,20 @@ def run_preview_mode():
 
 
 def validate_preview_data(data):
-    """Validate editable draft structure without selection rules or AI calls."""
+    """Check saved facts and references, without AI or editorial quotas."""
+    from output.digest import validate_digest
+    from output.overview import validate_overview
     if not isinstance(data, dict):
         raise ValueError("output/preview/data.json 必须是 JSON 对象。")
     try:
         datetime.strptime(data.get("date", ""), "%Y-%m-%d")
     except (TypeError, ValueError) as exc:
         raise ValueError("草稿 date 必须是有效的 YYYY-MM-DD 日期。") from exc
-    total = 0
-    for section in ("platform_intelligence", "ai_technology", "sports_outdoor", "retail_innovation"):
-        cards = data.get(section)
-        if not isinstance(cards, list):
-            raise ValueError(f"{section} 必须是文章数组。")
-        for card in cards:
-            if not isinstance(card, dict):
-                raise ValueError(f"{section} 中的文章必须是 JSON 对象。")
-            title = card.get("title") or card.get("name")
-            link = card.get("link")
-            points = card.get("summary_points")
-            if not isinstance(title, str) or not title.strip():
-                raise ValueError(f"{section} 文章缺少标题。")
-            if not isinstance(link, str) or not link.startswith(("https://", "http://")):
-                raise ValueError(f"{section} 文章缺少有效链接。")
-            if not isinstance(points, list) or not points or not all(isinstance(x, str) and x.strip() for x in points):
-                raise ValueError(f"{section} 的 summary_points 必须是非空文本数组。")
-            keywords = card.get("keywords", [])
-            if not isinstance(keywords, list) or not all(isinstance(x, str) for x in keywords):
-                raise ValueError(f"{section} 的 keywords 必须是文本数组。")
-            total += 1
-    if not total:
-        raise ValueError("草稿没有文章，停止生成和发送空白周报。")
+    if not validate_digest(data):
+        raise ValueError("草稿没有有效信息点，停止生成和发送空白周报。")
+    validate_overview(data)
     if data.get("parse_warning"):
         raise ValueError("草稿含 parse_warning，请先检查并修正数据。")
-    from output.overview import validate_overview
-    validate_overview(data)
     return data
 
 
@@ -252,6 +191,8 @@ def prepare_manual_publish(data):
         raise ValueError("终稿必须是 JSON 对象，请检查 output/preview/data.json。")
     from output.overview import validate_overview
     validate_overview(data)
+    from output.digest import validate_digest
+    validate_digest(data)
     try:
         datetime.strptime(data.get("date", ""), "%Y-%m-%d")
     except (TypeError, ValueError) as exc:
@@ -315,5 +256,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
