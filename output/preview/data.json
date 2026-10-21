@@ -292,7 +292,8 @@
           "date": "2026-10-15",
           "link": "https://blog.google/products-and-platforms/products/shopping/universal-cart-launch/"
         }
-      ]
+      ],
+      "topic": "shopping_discovery"
     },
     {
       "title": "The RealReal让用户描述穿着需要，寻找独件二手商品",
@@ -305,7 +306,8 @@
           "date": "2026-10-08",
           "link": "https://www.googlecloudpresscorner.com/2026-10-08-The-RealReal-Expands-Ask-TRR-AI-Shopping-Agent-With-Google-Clouds-Gemini-Enterprise"
         }
-      ]
+      ],
+      "topic": "shopping_discovery"
     },
     {
       "title": "沃尔玛Sparky支持图片找商品，丰富购物选择方式",
@@ -318,7 +320,8 @@
           "date": "2026-10-08",
           "link": "https://finance.yahoo.com/technology/ai/articles/ai-reshaping-walmart-sparky-leading-152800576.html"
         }
-      ]
+      ],
+      "topic": "shopping_discovery"
     },
     {
       "title": "品牌开始查看AI带来的订单，并调整商品信息",
@@ -331,7 +334,8 @@
           "date": "2026-10-16",
           "link": "https://mp.weixin.qq.com/s/YZHUgCwIXVVgePF_uxKtgA"
         }
-      ]
+      ],
+      "topic": "shopping_discovery"
     },
     {
       "title": "千问与UNICUS把AI用于新品测试和按需生产",
@@ -350,7 +354,8 @@
           "date": "2026-10-09",
           "link": "https://mp.weixin.qq.com/s/UUfcTGhOVu6ggorVn51VhA"
         }
-      ]
+      ],
+      "topic": "merchandising_operations"
     },
     {
       "title": "千问汇总多平台经营数据，支持选品和价格判断",
@@ -363,7 +368,8 @@
           "date": "2026-10-16",
           "link": "https://www.leiphone.com/category/industrynews/csaOBaiXpZZLOOtp.html"
         }
-      ]
+      ],
+      "topic": "merchandising_operations"
     },
     {
       "title": "Home Depot用AI回答库存问题，帮助顾客找到附近商品",
@@ -376,7 +382,8 @@
           "date": "2026-10-08",
           "link": "https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026"
         }
-      ]
+      ],
+      "topic": "shopping_discovery"
     },
     {
       "title": "Hello Retail让运营人员直接询问搜索问题并调整商品展示",
@@ -389,7 +396,8 @@
           "date": "2026-10-20",
           "link": "https://helloretail.com/en/fall-release-2026/"
         }
-      ]
+      ],
+      "topic": "merchandising_operations"
     },
     {
       "title": "亚马逊与Shopify采取不同接入方式，影响AI代理购物",
@@ -408,7 +416,8 @@
           "date": "2026-10-15",
           "link": "https://blog.google/products-and-platforms/products/shopping/universal-cart-launch/"
         }
-      ]
+      ],
+      "topic": "shopping_discovery"
     },
     {
       "title": "Claude轻量模型可按任务难度调整思考投入",
@@ -421,7 +430,8 @@
           "date": "2026-10-07",
           "link": "https://www.anthropic.com/claude-haiku-5-5"
         }
-      ]
+      ],
+      "topic": "model_updates"
     },
     {
       "title": "Gemini更新侧重连续完成多步骤工作",
@@ -434,7 +444,8 @@
           "date": "2026-10-13",
           "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/"
         }
-      ]
+      ],
+      "topic": "model_updates"
     },
     {
       "title": "EmbeddingGemma支持跨文字、图片、音视频查找资料",
@@ -447,7 +458,8 @@
           "date": "2026-10-06",
           "link": "https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/"
         }
-      ]
+      ],
+      "topic": "retrieval_content_interaction"
     },
     {
       "title": "CommerceGen把商品信息和版式要求一起用于主图生成",
@@ -460,7 +472,8 @@
           "date": "2026-10-14",
           "link": "https://arxiv.org/abs/2610.20603"
         }
-      ]
+      ],
+      "topic": "retrieval_content_interaction"
     },
     {
       "title": "WeGR电商搜索实验同时改善订单与计算成本",
@@ -473,7 +486,8 @@
           "date": "2026-10-20",
           "link": "https://arxiv.org/abs/2610.16979"
         }
-      ]
+      ],
+      "topic": "retrieval_content_interaction"
     },
     {
       "title": "Google展示机器人先在模拟环境练习，再执行动作",
@@ -486,7 +500,8 @@
           "date": "2026-10-13",
           "link": "https://developers.googleblog.com/gemini-4-argon-for-robotics/"
         }
-      ]
+      ],
+      "topic": "retrieval_content_interaction"
     },
     {
       "title": "研究分析AI推荐清单如何影响零售商选品",
@@ -499,7 +514,8 @@
           "date": "2026-10-09",
           "link": "https://arxiv.org/abs/2610.12917"
         }
-      ]
+      ],
+      "topic": "retrieval_content_interaction"
     }
   ],
   "sports_outdoor": [
@@ -514,7 +530,8 @@
           "date": "2026-10-07",
           "link": "https://ir.anta.com/sc/news_detail.php?id=170762"
         }
-      ]
+      ],
+      "topic": "strategy"
     },
     {
       "name": "361度主品牌、童装和电商三条业务线均增长",
@@ -527,7 +544,8 @@
           "date": "2026-10-14",
           "link": "https://www.guandian.cn/m/show/612809"
         }
-      ]
+      ],
+      "topic": "performance"
     },
     {
       "name": "李宁与安踏按运动场景细分产品功能",
@@ -546,11 +564,12 @@
           "date": "2026-10-19",
           "link": "https://www.prnasia.com/story/552192-1.shtml"
         }
-      ]
+      ],
+      "topic": "product"
     },
     {
-      "name": "安踏把精英跑者训练经验用于跑鞋测试与产品细分",
-      "text": "安踏高原C计划结合精英跑者训练和产品测试，10月北京活动展示竞速C家族，并发布训练经验资料。品牌将跑者在实际训练中的使用反馈带回产品开发，再按不同跑者阶段安排产品。专业训练经验由此进入日常选鞋需要，帮助解释竞速、赛训等产品之间的区别。",
+      "name": "安踏结合跑者测试与校企研究，推进运动产品开发",
+      "text": "安踏高原C计划把精英跑者训练和产品测试结合，竞速C家族再按不同跑者阶段安排产品，把实际使用反馈带回开发。材料与设计方面，安踏和清华将联合研究中心升级为运动时尚联合研究院。双方自2021年合作以来开展近40项跨学科项目，新阶段继续推进运动科学、材料和设计成果用于产品。",
       "subcategory": "domestic",
       "references": [
         {
@@ -558,21 +577,15 @@
           "source": "安踏／美通社",
           "date": "2026-10-19",
           "link": "https://www.prnasia.com/story/552192-1.shtml"
-        }
-      ]
-    },
-    {
-      "name": "安踏与清华升级合作，继续开发运动材料与产品",
-      "text": "安踏与清华将联合研究中心升级为运动时尚联合研究院。双方自2021年合作以来，已围绕功能设计、运动科学和高性能材料开展近40项跨学科项目。新阶段继续推进研究、设计及人才培养，并将成果用于产品开发，为运动功能与穿着设计提供长期支持。",
-      "subcategory": "domestic",
-      "references": [
+        },
         {
           "title": "安踏集团与清华大学战略合作再升级，携手打造校企合作新标杆",
           "source": "安踏集团／美通社",
           "date": "2026-10-19",
           "link": "https://www.prnasia.com/story/552302-1.shtml"
         }
-      ]
+      ],
+      "topic": "product"
     },
     {
       "name": "波司登关闭低效店，高端系列线上销售仍待打开",
@@ -585,7 +598,8 @@
           "date": "2026-10-09",
           "link": "https://mp.weixin.qq.com/s/WGaBHXneVQZ6AScBv7PBOw"
         }
-      ]
+      ],
+      "topic": "performance"
     },
     {
       "name": "奥康运动品牌代理收缩，受上游渠道调整影响",
@@ -598,7 +612,8 @@
           "date": "2026-10-10",
           "link": "https://mp.weixin.qq.com/s/DzNbLveWqipPW6-sKgW11Q"
         }
-      ]
+      ],
+      "topic": "channels_performance"
     },
     {
       "name": "迪卡侬在德国扩展店中店，运动装备与电子产品同场销售",
@@ -611,7 +626,8 @@
           "date": "2026-10-19",
           "link": "https://www.snowsportsnews.com/newsrepository/2026/october/decathlon-and-mediamarktsaturn-expand-store-in-store-partnership-across-germany/"
         }
-      ]
+      ],
+      "topic": "channels_performance"
     },
     {
       "name": "阿迪达斯扩大中国设计角色，上海团队参与全球创新",
@@ -624,7 +640,8 @@
           "date": "2026-10-12",
           "link": "https://english.shanghai.gov.cn/en-IBLACShanghai2026/20261012/b423c553b6f64b44bcd89ad9a1bd8abe.html"
         }
-      ]
+      ],
+      "topic": "product"
     },
     {
       "name": "耐克中国团队用不到120天开发本土源创商品",
@@ -637,7 +654,8 @@
           "date": "2026-10-16",
           "link": "https://www.36kr.com/p/4028351988159109"
         }
-      ]
+      ],
+      "topic": "product"
     },
     {
       "name": "耐克把训练课程、装备体验与上海本地社群放在一起",
@@ -650,7 +668,8 @@
           "date": "2026-10-16",
           "link": "https://www.36kr.com/p/4028351988159109"
         }
-      ]
+      ],
+      "topic": "channels_performance"
     },
     {
       "name": "lululemon重组产品与运营岗位，覆盖设计到配货",
@@ -663,11 +682,12 @@
           "date": "2026-10-07",
           "link": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000131/lulu-20260930xex991.htm"
         }
-      ]
+      ],
+      "topic": "strategy"
     },
     {
-      "name": "Aritzia收入增长44%，通勤与运动休闲商品共同扩张",
-      "text": "Aritzia第二季度收入增长44%，可比销售增长34.5%，数字收入增速快于实体零售。旗下多个品牌覆盖通勤、简约、运动休闲和年轻日常穿着，移动App、新店及调整位置后的门店共同增加购物机会。商品覆盖更多生活场景，线上与实体渠道也同步扩大销售。",
+      "name": "Aritzia收入增长44%，多场景商品与库存补充支持销售",
+      "text": "Aritzia第二季度收入增长44%，可比销售增长34.5%，数字收入增速快于实体零售。商品覆盖通勤、运动休闲及年轻日常穿着，移动App、新店和调整位置后的门店共同扩大销售。期末库存增长35.8%，部分用于补足此前偏低库存；折扣减少和初始商品加价倍率改善，支持剔除关税退款后的调整毛利率提升。",
       "subcategory": "international",
       "references": [
         {
@@ -676,20 +696,8 @@
           "date": "2026-10-14",
           "link": "https://mp.weixin.qq.com/s/T7nSwz4lqn7s04GrjdNFJg"
         }
-      ]
-    },
-    {
-      "name": "Aritzia补足库存、减少折扣，支持正常价销售",
-      "text": "Aritzia期末库存增长35.8%，管理层解释部分增加用于补足此前偏低的库存，满足销售需要。同期收入增长44%，库存增幅低于销售增幅。公司披露，初始商品加价倍率改善、折扣减少，剔除关税退款后的调整毛利率仍有提升，商品备货与正常价销售共同支撑盈利表现。",
-      "subcategory": "international",
-      "references": [
-        {
-          "title": "新黑马狂奔，Aritzia凭什么收入大涨44%？",
-          "source": "时尚商业Daily／LadyMax",
-          "date": "2026-10-14",
-          "link": "https://mp.weixin.qq.com/s/T7nSwz4lqn7s04GrjdNFJg"
-        }
-      ]
+      ],
+      "topic": "performance"
     },
     {
       "name": "Crocs等品牌翻新经典款，回应年轻消费者的复古需求",
@@ -702,7 +710,8 @@
           "date": "2026-10-15",
           "link": "https://www.modernretail.co/operations/why-crocs-vera-bradley-and-other-brands-are-diving-into-their-archives-for-fashion-inspiration/"
         }
-      ]
+      ],
+      "topic": "product"
     },
     {
       "name": "服装鞋履门店打通购买记录、查库存和移动收银",
@@ -715,7 +724,8 @@
           "date": "2026-10-20",
           "link": "https://www.shopify.com/news/experience-is-the-brand"
         }
-      ]
+      ],
+      "topic": "channels_performance"
     },
     {
       "name": "Frasers一边经营运动零售，一边增加品牌权益投资",
@@ -728,7 +738,8 @@
           "date": "2026-10-17",
           "link": "https://mp.weixin.qq.com/s/EbYIJ2a9sNftU_D87xmhUg"
         }
-      ]
+      ],
+      "topic": "strategy"
     }
   ],
   "retail_innovation": [
@@ -743,7 +754,8 @@
           "date": "2026-10-14",
           "link": "https://mp.weixin.qq.com/s/AB3tbNuNMjFE0d6mCHq88w"
         }
-      ]
+      ],
+      "topic": "stores"
     },
     {
       "name": "叮咚买菜上线新鲜零食，短保商品考验补货和损耗管理",
@@ -762,7 +774,8 @@
           "date": "2026-10-12",
           "link": "https://mp.weixin.qq.com/s/3eC407GQQgGioDFjR5H7Tw"
         }
-      ]
+      ],
+      "topic": "product"
     },
     {
       "name": "永辉推出8款玉米，用原料与锁鲜工艺回应健康需求",
@@ -775,7 +788,8 @@
           "date": "2026-10-15",
           "link": "https://finance.eastmoney.com/a/202610153896731183.html"
         }
-      ]
+      ],
+      "topic": "product"
     },
     {
       "name": "盒马等零售商参与上游开发，把顾客反馈变成新品",
@@ -788,7 +802,8 @@
           "date": "2026-10-16",
           "link": "https://mp.weixin.qq.com/s/kGMkFk2TmqiGNzqzxLNSkg"
         }
-      ]
+      ],
+      "topic": "product"
     },
     {
       "name": "西西弗把图书、咖啡和文创组合成一次到店消费",
@@ -801,7 +816,8 @@
           "date": "2026-10-11",
           "link": "https://mp.weixin.qq.com/s/f5rz4ocFxwjmedMR9iD13w"
         }
-      ]
+      ],
+      "topic": "stores"
     },
     {
       "name": "广州连锁开店快办，减少多门店重复填报",
@@ -814,11 +830,12 @@
           "date": "2026-10-15",
           "link": "https://news.dayoo.com/guangzhou/202610/15/139995_55012943.htm"
         }
-      ]
+      ],
+      "topic": "stores"
     },
     {
-      "name": "沃尔玛把门店变成附近订单的拣货与配送节点",
-      "text": "沃尔玛将大量电商配送通过门店完成。顾客在线下单后，附近门店利用现有库存拣货并安排配送，实体店同时承担现场销售和线上订单服务。门店靠近消费者的优势，被用于当日及更快送达，也让原有实体网络获得货架销售之外的订单。",
+      "name": "沃尔玛用门店配送和代履约服务，扩大网上销售",
+      "text": "沃尔玛把大量电商订单交给附近门店拣货和配送，用现有库存支持当日及更快送达。同时，Marketplace引入更多第三方商品，WFS履约服务负责入仓、拣选、包装、配送和退货，让未进入实体货架的商品也能在线销售。门店服务附近的即时需要，履约中心支持更广的商品选择，两类网络分工满足不同购买需求。",
       "subcategory": "international",
       "references": [
         {
@@ -827,20 +844,8 @@
           "date": "2026-10-19",
           "link": "https://mp.weixin.qq.com/s/c5yF14Jb_tYkZ4O_KNqmMQ"
         }
-      ]
-    },
-    {
-      "name": "沃尔玛用第三方平台和代履约扩大网上商品选择",
-      "text": "沃尔玛Marketplace引入更多商家的商品，WFS履约服务承担入仓、拣选、包装、配送和退货。消费者可购买未进入实体货架的商品，卖家则借用沃尔玛的物流服务销售。门店负责附近库存，履约中心支持更广的网上选择，两类网络共同扩大可购买的商品范围。",
-      "subcategory": "international",
-      "references": [
-        {
-          "title": "低价、AI与平台之外：重新理解沃尔玛美国的增长",
-          "source": "窄播",
-          "date": "2026-10-19",
-          "link": "https://mp.weixin.qq.com/s/c5yF14Jb_tYkZ4O_KNqmMQ"
-        }
-      ]
+      ],
+      "topic": "operations"
     },
     {
       "name": "沃尔玛推出120美元套餐，组合山姆与大众零售权益",
@@ -853,7 +858,8 @@
           "date": "2026-10-20",
           "link": "https://www.reuters.com/business/walmart-launches-120-membership-bundle-with-sams-club-ahead-holidays-2026-10-20/"
         }
-      ]
+      ],
+      "topic": "membership"
     },
     {
       "name": "Costco九月销售增长13%，数字发起销售增长19%",
@@ -866,7 +872,8 @@
           "date": "2026-10-07",
           "link": "https://investor.costco.com/news/news-details/2026/Costco-Wholesale-Corporation-Reports-September-Sales-Results/default.aspx"
         }
-      ]
+      ],
+      "topic": "operations"
     },
     {
       "name": "优衣库中国减少低效店，并按单店需求调整商品与库存",
@@ -879,7 +886,8 @@
           "date": "2026-10-10",
           "link": "https://www.jiemian.com/article/15175818.html"
         }
-      ]
+      ],
+      "topic": "operations"
     },
     {
       "name": "Target引进已有线上人气的家居品牌，更新实体货架",
@@ -892,7 +900,8 @@
           "date": "2026-10-16",
           "link": "https://www.modernretail.co/operations/target-bets-on-buzzy-tiktok-brands-like-mellow-sleep-to-revamp-its-home-category/"
         }
-      ]
+      ],
+      "topic": "product"
     },
     {
       "name": "Albertsons数字销售增长11%，配送成本和损耗压缩毛利",
@@ -911,7 +920,8 @@
           "date": "2026-10-15",
           "link": "https://www.modernretail.co/operations/big-box-briefing-whats-fueling-albertsons-identity-crisis-as-it-accelerates-turnaround-efforts/"
         }
-      ]
+      ],
+      "topic": "operations"
     },
     {
       "name": "Kroger把鲜食、自有品牌和会员列为增长重点",
@@ -924,7 +934,8 @@
           "date": "2026-10-20",
           "link": "https://ir.kroger.com/news/news-details/2026/Kroger-Outlines-Plan-to-Build-Americas-Favorite-Grocer-and-Introduces-New-Long-Term-Financial-Targets/default.aspx"
         }
-      ]
+      ],
+      "topic": "membership"
     }
   ],
   "weekly_overview": {
@@ -1007,9 +1018,9 @@
     ],
     "section_overviews": {
       "platform_intelligence": "电商平台正在同时解决找商品、做选择和收货三个问题。天猫用AI发现新的购买需要，并将国内商家带入东南亚；京东细化不同渠道的选品和门店补货。抖音简化现货购买，微信小店扩充交易与商品推广工具。美团围绕目的地附近的临时需求组织供给，小红书则根据笔记和直播的购买方式安排优惠。平台之间的差异，越来越体现在商家如何销售、消费者如何买到合适商品。",
-      "ai_technology": "AI业务应用的重点转向真实购买：Google保存跨入口的购物意向，The RealReal和沃尔玛帮助用户找到商品，品牌开始追踪AI带来的订单。新品验证、经营数据汇总与门店库存咨询，也让AI进入商品和销售工作。技术进展单独保留，介绍主流模型更新、多媒体检索、商品图生成、搜索实验和机器人操作。各项更新都围绕新增功能及具体使用方式展开。",
-      "sports_outdoor": "运动与服装品牌同时调整商品、渠道和组织。安踏完成彪马股权收购，并持续投入运动产品研究；耐克和阿迪达斯扩大中国团队的设计角色。迪卡侬利用合作卖场增加销售地点，lululemon明确产品与运营岗位职责。Aritzia通过多场景服装、数字渠道和库存补充扩大销售，波司登与奥康则呈现门店调整及代理业务的压力。行业竞争更具体地落到商品是否合适、门店是否有效和库存是否匹配需求。",
-      "retail_innovation": "零售商正在深入商品开发，并重新安排门店、库存和配送。国内案例包括超盒算NB加盟、新鲜零食、健康商品与买手开发新品，重点是用供应链支持商品差异和门店复制。海外案例中，沃尔玛以门店和履约中心服务不同订单，优衣库按单店需求调整配货，Costco数字发起销售保持增长。Albertsons的配送与损耗压力则表明，订单增加也需要更有效的成本管理。"
+      "ai_technology": "AI业务应用分为“购物发现与转化”“商品开发与经营”：前者观察购物助手、库存咨询和AI渠道订单，后者关注新品验证、数据分析和店铺调整。技术进展继续保留，分为“主流模型更新”“搜索、内容与交互技术”，介绍模型新功能、电商检索、主图生成和机器人操作。每个主题集中呈现相关案例，便于先浏览方向，再阅读具体变化。",
+      "sports_outdoor": "本周从四个角度观察运动与服装品牌：品牌布局看安踏完成收购、lululemon调整组织；商品创新看中国设计团队、训练测试和材料研究；门店渠道看店中店、导购系统及代理业务；经营表现看销售增长、备货和门店效率。国内外案例放在同一主题中呈现，方便比较企业面对相近问题时采取的不同做法。",
+      "retail_innovation": "本周零售内容按商品、门店、运营和会员四个主题展开。商品端关注新鲜零食、健康需求和零售商参与开发；门店端关注加盟、复合空间及开店筹备；运营端关注附近配送、库存调整和线上订单成本；会员端关注跨业态权益及高频商品服务。各项变化共同影响消费者能买到什么、在哪里买，以及零售商如何持续提供这些服务。"
     },
     "sources": [
       {
@@ -1090,15 +1101,15 @@
       },
       {
         "section": "ai_technology",
-        "text": "AI业务应用的重点转向真实购买：Google保存跨入口的购物意向，The RealReal和沃尔玛帮助用户找到商品，品牌开始追踪AI带来的订单。新品验证、经营数据汇总与门店库存咨询，也让AI进入商品和销售工作。技术进展单独保留，介绍主流模型更新、多媒体检索、商品图生成、搜索实验和机器人操作。各项更新都围绕新增功能及具体使用方式展开。"
+        "text": "AI业务应用分为“购物发现与转化”“商品开发与经营”：前者观察购物助手、库存咨询和AI渠道订单，后者关注新品验证、数据分析和店铺调整。技术进展继续保留，分为“主流模型更新”“搜索、内容与交互技术”，介绍模型新功能、电商检索、主图生成和机器人操作。每个主题集中呈现相关案例，便于先浏览方向，再阅读具体变化。"
       },
       {
         "section": "sports_outdoor",
-        "text": "运动与服装品牌同时调整商品、渠道和组织。安踏完成彪马股权收购，并持续投入运动产品研究；耐克和阿迪达斯扩大中国团队的设计角色。迪卡侬利用合作卖场增加销售地点，lululemon明确产品与运营岗位职责。Aritzia通过多场景服装、数字渠道和库存补充扩大销售，波司登与奥康则呈现门店调整及代理业务的压力。行业竞争更具体地落到商品是否合适、门店是否有效和库存是否匹配需求。"
+        "text": "本周从四个角度观察运动与服装品牌：品牌布局看安踏完成收购、lululemon调整组织；商品创新看中国设计团队、训练测试和材料研究；门店渠道看店中店、导购系统及代理业务；经营表现看销售增长、备货和门店效率。国内外案例放在同一主题中呈现，方便比较企业面对相近问题时采取的不同做法。"
       },
       {
         "section": "retail_innovation",
-        "text": "零售商正在深入商品开发，并重新安排门店、库存和配送。国内案例包括超盒算NB加盟、新鲜零食、健康商品与买手开发新品，重点是用供应链支持商品差异和门店复制。海外案例中，沃尔玛以门店和履约中心服务不同订单，优衣库按单店需求调整配货，Costco数字发起销售保持增长。Albertsons的配送与损耗压力则表明，订单增加也需要更有效的成本管理。"
+        "text": "本周零售内容按商品、门店、运营和会员四个主题展开。商品端关注新鲜零食、健康需求和零售商参与开发；门店端关注加盟、复合空间及开店筹备；运营端关注附近配送、库存调整和线上订单成本；会员端关注跨业态权益及高频商品服务。各项变化共同影响消费者能买到什么、在哪里买，以及零售商如何持续提供这些服务。"
       }
     ],
     "keywords": [
