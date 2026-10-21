@@ -16,7 +16,7 @@ AI包含业务应用和技术进展；模型、算法、多模态、推理、开
 体育与零售按品牌/企业归属分国内国外，不按新闻发生地；无法明确归属填unclassified。
 AI、体育与零售每篇另填topic，取值必须来自后附主题表。按主要事实选择一个主题，不跨主题重复。
 AI保留业务应用和技术进展两层：business仅用shopping_discovery或merchandising_operations；technology仅用model_updates或retrieval_content_interaction。
-体育与零售页面先按topic展示，国内国外由subcategory保留并显示为标签。平台仍按六大生态展示，不填topic。
+体育与零售页面先按subcategory分国内国外，再按topic分主题；每条保留这两个字段。平台仍按六大生态展示，不填topic。
 平台按阿里、京东、字节、腾讯、美团、小红书六大生态，跨生态合作按主要发起主体归类，其他或不明确填unclassified。
 人工有效Category和Subcategory优先采用。每篇只能在一个主板块，link只能使用素材的原文。
 只输出结构：
