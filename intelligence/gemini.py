@@ -137,7 +137,7 @@ def _first_section(data, canonical_key):
 def _card_metadata(item):
     fields = ("title", "company", "category", "keywords", "date", "source", "source_type",
               "origin_type", "quality_score", "quality_reason", "event_key", "review_status",
-              "provenance_url", "subcategory", "references", "text")
+              "provenance_url", "subcategory", "topic", "references", "text")
     return {key: item[key] for key in fields if key in item}
 
 
@@ -439,4 +439,5 @@ def _manual_structured_points(text):
         if line:
             points.append(line)
     return points if len(points) > 1 else []
+
 
