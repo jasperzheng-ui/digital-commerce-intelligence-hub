@@ -14,6 +14,24 @@ SUBCATEGORIES = {
     'sports_outdoor': OrderedDict(domestic='国内', international='国外'),
     'retail_innovation': OrderedDict(domestic='国内', international='国外'),
 }
+# Topics are independent of company origin; old drafts may omit them.
+TOPICS = {
+    'ai_technology': OrderedDict(
+        shopping_discovery='购物发现与转化',
+        merchandising_operations='商品开发与经营',
+        model_updates='主流模型更新',
+        retrieval_content_interaction='搜索、内容与交互技术'),
+    'sports_outdoor': OrderedDict(
+        strategy='品牌布局与组织调整', product='商品创新与本土开发',
+        channels_performance='门店与销售渠道', performance='经营表现与库存管理'),
+    'retail_innovation': OrderedDict(
+        product='商品开发与消费需求', stores='门店模式与扩张',
+        operations='库存、履约与经营效率', membership='会员与购物服务'),
+}
+AI_TOPICS = {
+    'business': ('shopping_discovery', 'merchandising_operations'),
+    'technology': ('model_updates', 'retrieval_content_interaction'),
+}
 PLATFORM_WORDS = {
     'alibaba': ('阿里', '淘宝', '天猫', '菜鸟', '1688', 'alibaba', 'taobao', 'tmall', 'cainiao', '通义', '千问'),
     'jd': ('京东', 'jingdong', 'jd', 'jd.com', 'jd logistics'),
@@ -131,6 +149,14 @@ def validate_digest(data):
                 raise ValueError(f'{path} 缺少正文 text 或 summary_points。')
             if infer_subcategory(section, item) not in (*SUBCATEGORIES[section], 'unclassified'):
                 raise ValueError(f'{path}.subcategory 不是该板块的有效细分类。')
+            topic = item.get('topic')
+            if topic is not None:
+                if not isinstance(topic, str) or topic not in TOPICS.get(section, {}):
+                    raise ValueError(f'{path}.topic 不是该板块的有效主题。')
+                if section == 'ai_technology':
+                    kind = infer_subcategory(section, item)
+                    if kind in AI_TOPICS and topic not in AI_TOPICS[kind]:
+                        raise ValueError(f'{path}.topic 与业务应用／技术进展不匹配。')
             refs = references(item)
             if not isinstance(refs, list) or not refs:
                 raise ValueError(f'{path} 必须有原文 link 或 references。')
@@ -173,11 +199,43 @@ def grouped_entries(data, section):
             for key, items in groups.items() if items]
 
 
+def _topic_groups(section, items, allowed=None):
+    topics = TOPICS[section]
+    groups = OrderedDict((key, []) for key in (allowed or topics))
+    for item in items:
+        key = item.get('topic')
+        # Missing topics in mixed old/new drafts remain visible without guessing.
+        groups.setdefault(key if key in groups else 'other', []).append(item)
+    return [(key, topics.get(key, '其他动态'), entries)
+            for key, entries in groups.items() if entries]
+
+
+def display_groups(data, section):
+    """Return headings and optional subheadings shared by web and email."""
+    items = data.get(section, [])
+    topical = section in TOPICS and any(item.get('topic') for item in items)
+    if topical and section in {'sports_outdoor', 'retail_innovation'}:
+        return [(key, label, [(None, '', entries)])
+                for key, label, entries in _topic_groups(section, items)]
+    result = []
+    for key, label, entries in grouped_entries(data, section):
+        nested = (_topic_groups(section, entries, AI_TOPICS.get(key))
+                  if topical else [(None, '', entries)])
+        result.append((key, label, nested))
+    return result
+
+
+def _origin_label(section, item):
+    if section not in {'sports_outdoor', 'retail_innovation'} or not item.get('topic'):
+        return ''
+    return {'domestic': '国内', 'international': '国外'}.get(infer_subcategory(section, item), '')
+
+
 def render_digest_html(data, section):
     catalog = citation_catalog(data)
     e = lambda value: escape(str(value), quote=True)
     blocks = []
-    for key, label, items in grouped_entries(data, section):
+    def render_items(items):
         lines = []
         for item in items:
             links, seen = [], set()
@@ -192,25 +250,45 @@ def render_digest_html(data, section):
                              f'title="{e(detail)}" aria-label="来源 {source["number"]}：{e(detail)}" '
                              f'style="color:#3643BA;text-decoration:underline;font-size:13px;white-space:nowrap;">[{source["number"]}]</a>')
             text = e(entry_text(item)).replace('\n', '<br>')
+            origin = _origin_label(section, item)
+            badge = (f'<span class="digest-origin" style="display:inline-block;margin-right:7px;'
+                     f'padding:0 6px;border:1px solid #dfe4f1;border-radius:4px;font-size:11px;'
+                     f'line-height:1.7;color:#596780;background:#f4f6fb;vertical-align:middle;">'
+                     f'{e(origin)}</span>' if origin else '')
             lines.append('<li class="digest-item" style="margin:0 0 14px;padding-left:2px;line-height:1.85;'
                          'font-size:15px;color:#263244;overflow-wrap:anywhere;">'
-                         f'<strong style="color:#172033;">{e(entry_title(item))}：</strong>'
+                         + badge + f'<strong style="color:#172033;">{e(entry_title(item))}：</strong>'
                          + text + ' ' + ' '.join(links) + '</li>')
+        return '<ul style="margin:0;padding-left:20px;">' + ''.join(lines) + '</ul>'
+
+    for key, label, nested in display_groups(data, section):
+        content = []
+        for topic, topic_label, items in nested:
+            if topic is not None:
+                content.append(f'<h4 style="margin:18px 0 10px;color:#253253;'
+                               f'font-size:16px;line-height:1.5;">{e(topic_label)}</h4>')
+            content.append(render_items(items))
         blocks.append(f'<div class="digest-group" data-subcategory="{e(key)}" style="margin-top:22px;">'
                       f'<h3 style="margin:0 0 14px;padding:0 0 9px;border-bottom:1px solid #e6e9ef;'
                       f'color:#3643BA;font-size:19px;line-height:1.5;">{e(label)}</h3>'
-                      '<ul style="margin:0;padding-left:20px;">' + ''.join(lines) + '</ul></div>')
+                      + ''.join(content) + '</div>')
     return ''.join(blocks) or '<p style="color:#687386;font-size:14px;">本期未筛出高价值行业情报。</p>'
 
 
 def render_digest_text(data, section):
     catalog = citation_catalog(data)
     lines = []
-    for _, label, items in grouped_entries(data, section):
+    for _, label, nested in display_groups(data, section):
         lines.extend(['', label])
-        for item in items:
-            lines.append('- ' + entry_title(item) + '：' + entry_text(item))
-            for ref in {r['link']: r for r in references(item)}.values():
-                number = catalog[ref['link']]['number']
-                lines.append(f"  [{number}] {ref.get('title') or entry_title(item)}：{ref['link']}")
+        for topic, topic_label, items in nested:
+            if topic is not None:
+                lines.extend(['', topic_label])
+            for item in items:
+                origin = _origin_label(section, item)
+                prefix = f'【{origin}】' if origin else ''
+                lines.append('- ' + prefix + entry_title(item) + '：' + entry_text(item))
+                for ref in {r['link']: r for r in references(item)}.values():
+                    number = catalog[ref['link']]['number']
+                    lines.append(f"  [{number}] {ref.get('title') or entry_title(item)}：{ref['link']}")
     return '\n'.join(lines) or '本期未筛出高价值行业情报。'
+
