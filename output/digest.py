@@ -214,21 +214,12 @@ def display_groups(data, section):
     """Return headings and optional subheadings shared by web and email."""
     items = data.get(section, [])
     topical = section in TOPICS and any(item.get('topic') for item in items)
-    if topical and section in {'sports_outdoor', 'retail_innovation'}:
-        return [(key, label, [(None, '', entries)])
-                for key, label, entries in _topic_groups(section, items)]
     result = []
     for key, label, entries in grouped_entries(data, section):
         nested = (_topic_groups(section, entries, AI_TOPICS.get(key))
                   if topical else [(None, '', entries)])
         result.append((key, label, nested))
     return result
-
-
-def _origin_label(section, item):
-    if section not in {'sports_outdoor', 'retail_innovation'} or not item.get('topic'):
-        return ''
-    return {'domestic': '国内', 'international': '国外'}.get(infer_subcategory(section, item), '')
 
 
 def render_digest_html(data, section):
@@ -250,14 +241,9 @@ def render_digest_html(data, section):
                              f'title="{e(detail)}" aria-label="来源 {source["number"]}：{e(detail)}" '
                              f'style="color:#3643BA;text-decoration:underline;font-size:13px;white-space:nowrap;">[{source["number"]}]</a>')
             text = e(entry_text(item)).replace('\n', '<br>')
-            origin = _origin_label(section, item)
-            badge = (f'<span class="digest-origin" style="display:inline-block;margin-right:7px;'
-                     f'padding:0 6px;border:1px solid #dfe4f1;border-radius:4px;font-size:11px;'
-                     f'line-height:1.7;color:#596780;background:#f4f6fb;vertical-align:middle;">'
-                     f'{e(origin)}</span>' if origin else '')
             lines.append('<li class="digest-item" style="margin:0 0 14px;padding-left:2px;line-height:1.85;'
                          'font-size:15px;color:#263244;overflow-wrap:anywhere;">'
-                         + badge + f'<strong style="color:#172033;">{e(entry_title(item))}：</strong>'
+                         + f'<strong style="color:#172033;">{e(entry_title(item))}：</strong>'
                          + text + ' ' + ' '.join(links) + '</li>')
         return '<ul style="margin:0;padding-left:20px;">' + ''.join(lines) + '</ul>'
 
@@ -284,9 +270,7 @@ def render_digest_text(data, section):
             if topic is not None:
                 lines.extend(['', topic_label])
             for item in items:
-                origin = _origin_label(section, item)
-                prefix = f'【{origin}】' if origin else ''
-                lines.append('- ' + prefix + entry_title(item) + '：' + entry_text(item))
+                lines.append('- ' + entry_title(item) + '：' + entry_text(item))
                 for ref in {r['link']: r for r in references(item)}.values():
                     number = catalog[ref['link']]['number']
                     lines.append(f"  [{number}] {ref.get('title') or entry_title(item)}：{ref['link']}")
