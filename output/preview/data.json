@@ -1,664 +1,1333 @@
 {
-  "date": "2026-10-19",
-  "headline": "平台挖掘潜在需求，AI购物与门店精细经营共同寻找增长",
+  "date": "2026-10-21",
+  "headline": "平台争夺需求入口，品牌以商品和运营承接增长",
+  "content_format": "thematic_digest_v1",
   "platform_intelligence": [
     {
-      "name": "天猫用AI挖掘跨品类需求，旗舰店数据与服务承接增长",
-      "title": "天猫用AI挖掘跨品类需求，旗舰店数据与服务承接增长",
-      "company": "淘宝天猫",
-      "summary_points": [
-        "天猫在10月15日发布会上公布，双11有100万全球品牌、7200万款商品参加，包括5万款超级单品、2000款旗舰店独有礼盒，另有6万个商家首次参与。10月20日晚8点开卖，采用品牌直接立减叠加平台消费券，在扩大供给的同时简化凑单规则。",
-        "增长重点进一步落到单个消费者的购买品类。家洛称，活跃消费者一年平均购买约15个品类，学生为8—10个；平台判断潜在需求可能覆盖25—30个品类，希望在服务近10亿消费者的基础上，扩大每个人的消费边界。这一潜在范围是平台判断，并非实际购买结果。",
-        "AI尝试发现用户尚未表达的需求，例如爱爬山的人可能需要髌骨带，却不知道这种护具的名称。平台希望通过理解商品、身份和生活场景，让推荐超越已有关键词搜索，从提高现有交易转化延伸到发现新的购买需求，目前未披露该能力独立带来的新增成交额。",
-        "旗舰店积累的商品、会员、内容、客服与经营数据，成为AI理解品牌业务的基础。文章观察，AI已进入商品运营、内容、客服与分析，并探索从人工提问走向主动发现问题、推进任务，再由人决策；作者将这些数据积累概括为品牌的“经营语料”。",
-        "供给与交付也在变化：智谱、MiniMax等厂商开店销售不同使用场景的Token套餐；马桶、窗帘、灯具、智能门锁强化拆送装一体，消费者可查看送货、安装及售后进度。平台试图同时解决商品能否被想到、是否容易购买以及服务能否兑现的问题。"
-      ],
-      "link": "https://mp.weixin.qq.com/s/z0985SfECQCiIlQob6mhIg",
-      "source": "天下网商",
-      "source_type": "wechat",
-      "date": "2026-10-15",
-      "category": "platform",
-      "origin_type": "manual",
-      "keywords": [
-        "潜在需求",
-        "跨品类购买",
-        "旗舰店数据",
-        "AI经营",
-        "服务履约"
-      ],
-      "quality_score": 91,
-      "quality_reason": "发布会提供购买品类、供给与服务证据，增长方向清晰；潜在需求为平台判断，尚无AI独立增量结果。",
-      "event_key": "淘宝天猫|2026双11需求挖掘与旗舰店服务|2026-10-15"
+      "name": "增长从增加用户转向扩大个人购买品类",
+      "text": "天猫提出，平台活跃消费者一年平均购买约15个品类，而学生群体为8—10个。面对近10亿消费者，新的增长思路是识别一个人在运动、家庭和生活阶段变化中尚未表达的需要。例如，爬山用户可能需要髌骨带，却不知道商品名称；AI推荐尝试把这类需求与商品连接起来。",
+      "subcategory": "alibaba",
+      "references": [
+        {
+          "title": "第18个双11，天猫用AI挖10亿人的“沉睡需求”",
+          "source": "天下网商",
+          "date": "2026-10-15",
+          "link": "https://mp.weixin.qq.com/s/z0985SfECQCiIlQob6mhIg"
+        },
+        {
+          "title": "天猫、京东、抖音竞逐“双十一”：规则做减法、AI做加法",
+          "source": "科创板日报",
+          "date": "2026-10-15",
+          "link": "https://m.cls.cn/detail/2506176"
+        }
+      ]
     },
     {
-      "name": "阿里妈妈以商品场景匹配潜客，品牌寻找标签之外的新客群",
-      "title": "阿里妈妈以商品场景匹配潜客，品牌寻找标签之外的新客群",
-      "company": "阿里妈妈、蕉下、林氏家居、巴拉巴拉",
-      "summary_points": [
-        "阿里妈妈《经营蓝宝书》依托淘系交易与经营信息，按月整理消费趋势和商家案例。文章借一周年节点，说明品牌怎样从具体商品、消费场景与人群变化寻找增量，将平台信息用于选品和经营判断。",
-        "城野新机能、绒感轻羽美学等方向涉及轻户外进入日常穿搭、消费者重视面料质感。巴拉巴拉围绕分龄生活和亲子户外识别产品机会，百雀羚、蕉内等案例也体现趋势进入商品定位；这些是文章基于平台信息的归纳，范围并非全部消费市场。",
-        "万相点睛尝试同时理解商品卖点与行为背后的需求，找到传统标签之外的潜客。林氏家居布艺床案例触达电竞人群，新客成交占比83%；蕉下防晒口罩找到健身及敏感肌用户，新客占比超过90%，反映的是案例成交结构，不等同于新增销售增幅。",
-        "相关能力嵌入万相台AI无界等既有工具，把需求识别、人群匹配与交易承接连接起来。文章呈现平台工具进入真实商品经营的路径，但案例数据由报道提供，尚缺统一对照、投入成本与长期复购信息，不能据此保证不同品牌的增长结果。"
-      ],
-      "link": "https://mp.weixin.qq.com/s/iPzVmCqxcjJ88Qv0Tgw16g",
-      "source": "亿邦动力",
-      "source_type": "wechat",
-      "date": "2026-10-16",
-      "category": "platform",
-      "origin_type": "manual",
-      "keywords": [
-        "消费洞察",
-        "潜在人群",
-        "万相点睛",
-        "商品场景",
-        "轻户外"
-      ],
-      "quality_score": 86,
-      "quality_reason": "商品场景、具体工具与品牌新客结构较充分；推广色彩较强，缺乏统一对照及投入成本。",
-      "event_key": "阿里妈妈|经营蓝宝书周年与场景潜客案例|2026-10-16"
+      "name": "旗舰店积累的经营信息成为AI理解品牌的基础",
+      "text": "天猫将旗舰店的商品、会员、内容、客服与交易信息视为AI理解生意的重要基础；阿里妈妈则把趋势、人群和商品卖点连接到商家现有经营工具。林氏家居布艺床找到电竞人群、蕉下防晒口罩触达健身及敏感肌用户，体现匹配依据从粗略人群标签进一步走向具体使用需要。",
+      "subcategory": "alibaba",
+      "references": [
+        {
+          "title": "第18个双11，天猫用AI挖10亿人的“沉睡需求”",
+          "source": "天下网商",
+          "date": "2026-10-15",
+          "link": "https://mp.weixin.qq.com/s/z0985SfECQCiIlQob6mhIg"
+        },
+        {
+          "title": "新趋势、新客群、新打法丨阿里妈妈《经营蓝宝书》一周年，把双11的新增量备好了",
+          "source": "亿邦动力",
+          "date": "2026-10-16",
+          "link": "https://mp.weixin.qq.com/s/iPzVmCqxcjJ88Qv0Tgw16g"
+        }
+      ]
     },
     {
-      "name": "京东早间配送对接门店补货，核心商圈承诺10点半前送达",
-      "title": "京东早间配送对接门店补货，核心商圈承诺10点半前送达",
-      "company": "京东快递、京东物流",
-      "summary_points": [
-        "京东快递面向核心商圈和专业市场推出“早十点达”，服务3C门店、服饰专柜、连锁商超等商家。配送时段围绕开门营业、货品陈列与早间客流安排，回应门店早上需要及时补货、收到货后还要完成上架准备的需求。",
-        "服务通过优化终端派送路径、补充骑手运力提高早间派送能力。素材披露的承诺是上午10点半前送达且不额外收费，现已覆盖全国核心一二线城市的多个核心商圈与专业市场，仍有具体地域和服务范围。",
-        "3C门店收到新机、配件和样机后可及时陈列；服装专柜能在营业前完成拆包、熨烫、挂版及贴价签；商超便利店则赶在客流高峰前补货上架。该服务把配送安排接入门店实际作业节奏，原文尚未披露统一的销售增幅或库存改善数据。"
-      ],
-      "link": "https://mp.weixin.qq.com/s/AOdPJ5sRStiCruizxSXyPQ",
-      "source": "京东物流黑板报",
-      "source_type": "wechat",
-      "date": "2026-10-13",
-      "category": "platform",
-      "origin_type": "manual",
-      "keywords": [
-        "早间补货",
-        "门店履约",
-        "派送路径",
-        "服饰专柜",
-        "商圈配送"
-      ],
-      "quality_score": 87,
-      "quality_reason": "官方说明服务承诺、地域和具体门店流程，与服饰及商超履约相关；缺少成本及销售效果。",
-      "event_key": "京东快递|早十点达门店补货服务|2026-10-13"
+      "name": "双11同时调整优惠、供给和交付服务",
+      "text": "本届天猫双11有100万全球品牌、7200万款商品参加，采用直接立减叠加平台消费券，减少复杂凑单。旗舰店独有礼盒、新品和Token套餐扩展商品供给；马桶、窗帘、灯具等品类强化拆送装一体，并展示送货、安装与售后进度，降低购买大件时的交付顾虑。",
+      "subcategory": "alibaba",
+      "references": [
+        {
+          "title": "第18个双11，天猫用AI挖10亿人的“沉睡需求”",
+          "source": "天下网商",
+          "date": "2026-10-15",
+          "link": "https://mp.weixin.qq.com/s/z0985SfECQCiIlQob6mhIg"
+        },
+        {
+          "title": "天猫、京东、抖音竞逐“双十一”：规则做减法、AI做加法",
+          "source": "科创板日报",
+          "date": "2026-10-15",
+          "link": "https://m.cls.cn/detail/2506176"
+        }
+      ]
     },
     {
-      "name": "小红书按直播与笔记场域配置混资券，承接站内购买兴趣",
-      "title": "小红书按直播与笔记场域配置混资券，承接站内购买兴趣",
-      "company": "小红书",
-      "summary_points": [
-        "小红书在10月10—11日购物狂欢开门红中推出友好商家混资券。凑单混资由商家与平台各出资50%，适合直播为主、商品较多的店铺；爆品混资面向非直播、笔记型经营，平台按档位递增补贴，冲量档商家出资10%、平台补贴6%—15%。",
-        "报道披露，参与爆品混资的商品GMV较日常增长2倍，新品较大促前增长3倍以上；2000元以上商品增长3倍，800—2000元两个价格带均增长3.5倍。其中日常值取此前三个周末均值，这些数据是活动期比较，而非同比增速。",
-        "凑单混资报名店铺整体GMV较日常增长2倍，美妆护肤为5倍、食品与家具为3倍、女装为2.5倍。买手福利券同样连接直播经营，参与买手GMV增长2倍、曝光提升1.5倍，户外运动报名买手GMV增长2倍，体现不同经营场域的资源适配。",
-        "平台将补贴与流量向内容真实、服务达标、价格有竞争力的商家和买手倾斜，意在把内容产生的购买兴趣留在站内完成交易。首波数据说明活动承接情况，但没有单独分离补贴的因果效果，也未披露商家净利润和长期复购表现。"
-      ],
-      "link": "https://mp.weixin.qq.com/s/wNuyz57jGn_oK3A9txtklw",
-      "source": "亿邦动力",
-      "source_type": "wechat",
-      "date": "2026-10-16",
-      "category": "platform",
-      "origin_type": "manual",
-      "keywords": [
-        "混资券",
-        "笔记电商",
-        "店播",
-        "买手",
-        "交易承接"
-      ],
-      "quality_score": 86,
-      "quality_reason": "补贴结构、经营场域和比较基准明确；活动数据未分离因果效果，缺少利润和长期复购。",
-      "event_key": "小红书|2026双11开门红混资券经营|2026-10-10_11"
+      "name": "一键轻出海连接国内货盘与海外本地经营",
+      "text": "符合条件的天猫商家可在LazMall生成镜像店铺，同步商品、库存和营销信息；海外订单由商家发往国内中转仓，平台接续跨境运输与售后。进入市场之后，Lazada在泰国用穿搭媒体、达人和直播承接时尚需求，在越南通过电竞战队、精选店铺和直播连接装备消费，分别处理开店履约与本地销售问题。",
+      "subcategory": "alibaba",
+      "references": [
+        {
+          "title": "近万天猫商家加入Lazada“一键轻出海”，东南亚的下一份增量就在路上",
+          "source": "电商派Pro",
+          "date": "2026-10-09",
+          "link": "https://mp.weixin.qq.com/s/r0AaEZhVcco9Q6nfeu7Twg"
+        }
+      ]
     },
     {
-      "name": "京东机器人售后合作覆盖近百家企业，规划培训认证网络",
-      "title": "京东机器人售后合作覆盖近百家企业，规划培训认证网络",
-      "company": "京东、智元、云深处、众擎、松延动力",
-      "summary_points": [
-        "京东在推出机器人维修售后服务一年之际，披露已与智元、云深处、众擎、松延动力等近百家机器人企业达成合作。服务从机器人商品销售延伸到使用后的上门调试与维修，尝试建立跨品牌的售后支持。",
-        "合作范围不只包括家用机器人，还涉及制造、物流仓储、农业、基建，以及陪伴、园区导览、送餐、竞技运动和特种作业等场景。企业合作数量描述的是服务覆盖的品牌范围，尚无对应维修客户量、订单量或服务收入披露。",
-        "京东提出在全国建设10个培训认证中心，并计划未来5年创造超过10万个机器人维修工程师就业岗位。这是后续服务网络和人员能力的建设目标；目前已披露的是企业合作进展，中心建成规模及岗位兑现情况仍未提供。"
-      ],
-      "link": "https://mp.weixin.qq.com/s/Tpf3t5x0f3ggrbQAHdE9Ww",
-      "source": "京东黑板报",
-      "source_type": "wechat",
-      "date": "2026-10-15",
-      "category": "platform",
-      "origin_type": "manual",
-      "keywords": [
-        "机器人售后",
-        "维修网络",
-        "上门调试",
-        "培训认证",
-        "商品服务"
-      ],
-      "quality_score": 78,
-      "quality_reason": "具备官方合作企业与服务范围证据，体现新商品售后能力；培训就业仍属计划，零售关联相对间接。",
-      "event_key": "京东|机器人售后近百企业合作与培训计划|2026-10-15"
+      "name": "早间配送围绕门店营业节奏组织",
+      "text": "京东快递“早十点达”面向核心商圈和专业市场中的3C、服装及商超门店，将派送安排与开门陈列、补货上架衔接。素材披露的送达时点为上午10点半前，且不额外收费；服装门店收到货后，还能留出拆包、熨烫和挂版时间。物流服务由送到地址进一步细化到商家的作业节奏。",
+      "subcategory": "jd",
+      "references": [
+        {
+          "title": "京东快递推出“早十点达”服务，门店商超开门即可补货",
+          "source": "京东物流黑板报",
+          "date": "2026-10-13",
+          "link": "https://mp.weixin.qq.com/s/AOdPJ5sRStiCruizxSXyPQ"
+        }
+      ]
+    },
+    {
+      "name": "三端融合不是同一货盘铺满所有渠道",
+      "text": "京东家电家居统一主站、京东MALL及城市旗舰店、县域专卖店的新品定位与服务，同时保留差异化配置。美菱同系列冰箱在线上展示全系列、大店提供高端机型体验、县域配置更适合当地的版本；报道披露其首发成交超5000台，线下贡献近一半。渠道协同既包括统一表达，也包括按需求分配商品。",
+      "subcategory": "jd",
+      "references": [
+        {
+          "title": "从首发热销到长期增长，京东家电家居以“三端融合”提升新品经营效率",
+          "source": "京东家电／书生家电网",
+          "date": "2026-10-10",
+          "link": "https://www.ssxjd.com/news/20261010/179162075725334.html"
+        }
+      ]
+    },
+    {
+      "name": "新品扶持从首发延伸至后续销售",
+      "text": "京东家电家居把新品搜索扶持最长延至60天，覆盖预售、首发和续销；大尺寸电视、智能锁等还需要真机体验、安装与交付共同承接。双11数万家线下门店同步参与，使新品经营不只发生在主站流量中，也进入线下比较、服务和交付环节。",
+      "subcategory": "jd",
+      "references": [
+        {
+          "title": "2026京东双11活动全流程公布：数万家门店同步参与，10月20日超级秒杀日",
+          "source": "IT之家",
+          "date": "2026-10-15",
+          "link": "https://www.ithome.com/1/013/437.htm"
+        },
+        {
+          "title": "从首发热销到长期增长，京东家电家居以“三端融合”提升新品经营效率",
+          "source": "京东家电／书生家电网",
+          "date": "2026-10-10",
+          "link": "https://www.ssxjd.com/news/20261010/179162075725334.html"
+        }
+      ]
+    },
+    {
+      "name": "平台扶持开始覆盖工厂商家的经营短板",
+      "text": "亿邦采访中的女鞋、运动袜和箱包商家，将入驻成本、投放试错、内容制作和日常经营视为不同难题。京东春晓计划通过保证金相关支持、经营陪跑和AI工具补齐这些环节；“稳赚计划”按适用规则提供投放保障。品牌案例反映的是具体工具和经营流程，不能把平台计划名称理解为店铺利润保证。",
+      "subcategory": "jd",
+      "references": [
+        {
+          "title": "厂二代和新品牌，为什么开始把赌注押在京东上？",
+          "source": "亿邦动力",
+          "date": "2026-10-16",
+          "link": "https://m.ebrun.com/714602.html"
+        }
+      ]
+    },
+    {
+      "name": "机器人售后从销售配套扩展为跨品牌服务",
+      "text": "京东披露，机器人维修服务已与近百家相关企业建立合作，覆盖家庭、园区、物流和制造等使用场景，并提供上门调试与维修。后续提出培训认证中心和工程师培养计划。对这一新品类，平台需要承接的不只是商品上架，还包括设备投入使用之后的维护和服务人员能力。",
+      "subcategory": "jd",
+      "references": [
+        {
+          "title": "京东已与近百家头部机器人企业达成维修合作",
+          "source": "京东黑板报",
+          "date": "2026-10-15",
+          "link": "https://mp.weixin.qq.com/s/Tpf3t5x0f3ggrbQAHdE9Ww"
+        }
+      ]
+    },
+    {
+      "name": "工业供应链把跨境采购与现场服务连接起来",
+      "text": "京东工业与伙伴建立全球供应链互联联盟，通过本地供应、采购系统连接和国际履约网络服务企业；敏实集团的欧洲合作是其中案例。与AMD的新协议则计划将工业模型与现场设备结合，探索维护、质检和安全应用。前者已有采购合作实践，后者属于新签约的开发方向，分别扩展供应链连接与现场服务能力。",
+      "subcategory": "jd",
+      "references": [
+        {
+          "title": "JINGDONG Industrials and Partners Launch Alliance to Strengthen Global Industrial Supply Chains",
+          "source": "JD Corporate Blog",
+          "date": "2026-10-19",
+          "link": "https://jdcorporateblog.com/jingdong-industrials-and-partners-launch-alliance-to-strengthen-global-industrial-supply-chains/"
+        },
+        {
+          "title": "JINGDONG Industrials and AMD Partner to Bring AI to Factory Operations",
+          "source": "JD Corporate Blog",
+          "date": "2026-10-15",
+          "link": "https://jdcorporateblog.com/jingdong-industrials-and-amd-partner-to-bring-ai-to-factory-operations/"
+        }
+      ]
+    },
+    {
+      "name": "现货和直接优惠减少大促购买步骤",
+      "text": "抖音商城双11从10月15日持续至11月11日，主打现货，延续“立减折扣”和“一件直降”等单件优惠方式。平台把开门红、日常现货及品类活动、最后狂欢阶段分开安排资源，让商家围绕备货、销售和发货组织经营，而不是让消费者长期等待预售兑现。",
+      "subcategory": "bytedance",
+      "references": [
+        {
+          "title": "抖音电商双11启动：主打现货、优惠更直接，持续为商家降本增收",
+          "source": "新华网",
+          "date": "2026-10-16",
+          "link": "https://www.xinhuanet.com/tech/20261016/7fc4e06d797d43879577a0054a9f3ee2/c.html"
+        },
+        {
+          "title": "天猫、京东、抖音竞逐“双十一”：规则做减法、AI做加法",
+          "source": "科创板日报",
+          "date": "2026-10-15",
+          "link": "https://m.cls.cn/detail/2506176"
+        }
+      ]
+    },
+    {
+      "name": "多端消费券把字节生态流量导向交易",
+      "text": "本次抖音双11在豆包、红果短剧、今日头条等入口分批发放消费券，并在抖音商城承接购买。与只在电商会场发券相比，它将消费者日常使用的内容和工具入口纳入大促触达，再通过商品页和交易场景完成购买。跨端触达是资源安排，实际成交仍由商品、价格和服务共同承接。",
+      "subcategory": "bytedance",
+      "references": [
+        {
+          "title": "抖音电商双11启动：主打现货、优惠更直接，持续为商家降本增收",
+          "source": "新华网",
+          "date": "2026-10-16",
+          "link": "https://www.xinhuanet.com/tech/20261016/7fc4e06d797d43879577a0054a9f3ee2/c.html"
+        },
+        {
+          "title": "天猫、京东、抖音竞逐“双十一”：规则做减法、AI做加法",
+          "source": "科创板日报",
+          "date": "2026-10-15",
+          "link": "https://m.cls.cn/detail/2506176"
+        }
+      ]
+    },
+    {
+      "name": "商家支持从补贴延伸至分析与客服流程",
+      "text": "抖音面向新商和不同成长阶段的中小商家设置投放补贴、挑战赛等支持，同时开放罗盘AI问数、豆包AI导购和飞鸽智能客服。经营者可用对话查指标、分析异常，消费者可在购前咨询商品，客服承担接待和售后；不同工具分别进入经营、选购和服务流程。",
+      "subcategory": "bytedance",
+      "references": [
+        {
+          "title": "抖音电商双11启动：主打现货、优惠更直接，持续为商家降本增收",
+          "source": "新华网",
+          "date": "2026-10-16",
+          "link": "https://www.xinhuanet.com/tech/20261016/7fc4e06d797d43879577a0054a9f3ee2/c.html"
+        },
+        {
+          "title": "天猫、京东、抖音竞逐“双十一”：规则做减法、AI做加法",
+          "source": "科创板日报",
+          "date": "2026-10-15",
+          "link": "https://m.cls.cn/detail/2506176"
+        }
+      ]
+    },
+    {
+      "name": "微信小店进入双11经营场景",
+      "text": "微信小店参与10月12日至11月15日的双11活动，为商家提供新的促销和交易承接窗口。蓝鲸新闻的横向报道把这一变化放在平台简化玩法、商家重新核算投入的背景中：优惠只是入口，商家还需要把内容触达、店铺商品和售后经营衔接起来。",
+      "subcategory": "tencent",
+      "references": [
+        {
+          "title": "第18个双11：平台不抢跑了，商家开始算账",
+          "source": "蓝鲸新闻／东方财富",
+          "date": "2026-10-12",
+          "link": "https://finance.eastmoney.com/a/202610123892933225.html"
+        }
+      ]
+    },
+    {
+      "name": "商品托管将素材选择与投放执行交给系统",
+      "text": "微信小店“小店加热”在灰度测试商品托管：商家选择商品、设置目标和每日预算，系统选择素材、设置出价并持续执行，新发布的合格挂链视频可自动纳入。计划达到当日预算后暂停、次日恢复；成本保障按成交、消耗和目标调整等条件计算，以费用抵扣形式提供。",
+      "subcategory": "tencent",
+      "references": [
+        {
+          "title": "微信小店上线“商品托管”功能，支持自动加热、长期投放",
+          "source": "亿邦动力",
+          "date": "2026-10-19",
+          "link": "https://m.ebrun.com/714793.html"
+        }
+      ]
+    },
+    {
+      "name": "店铺体验分进入新一轮规则修订",
+      "text": "微信小店10月14日发布店铺体验分管理规则修订公示，公示期至10月20日。它与双11活动、商品托管分别对应服务评价、集中交易和日常经营工具三种机制：平台一方面增加商家触达用户的方式，另一方面也通过店铺规则管理交易体验。",
+      "subcategory": "tencent",
+      "references": [
+        {
+          "title": "关于《微信小店店铺体验分管理规则-20261021版本》修订公示通知",
+          "source": "微信小店规则中心／电商热点雷达收录",
+          "date": "2026-10-14",
+          "link": "https://dianshanghot.com/news/ecommerce/items/kq4ygovve95w5p5ny6d9b0vc1"
+        },
+        {
+          "title": "微信小店上线“商品托管”功能，支持自动加热、长期投放",
+          "source": "亿邦动力",
+          "date": "2026-10-19",
+          "link": "https://m.ebrun.com/714793.html"
+        },
+        {
+          "title": "第18个双11：平台不抢跑了，商家开始算账",
+          "source": "蓝鲸新闻／东方财富",
+          "date": "2026-10-12",
+          "link": "https://finance.eastmoney.com/a/202610123892933225.html"
+        }
+      ]
+    },
+    {
+      "name": "小团将本地信息查询接入即时消费决策",
+      "text": "美团国庆报告披露，“小团”用户量和调用量较五一增长超六成。用户会根据天气、距离、同行人和临时安排询问餐饮及游玩选择，AI同时校验本地商家信息。它承接的不只是出发前攻略，还包括到达目的地之后的临时找店和消费决策。",
+      "subcategory": "meituan",
+      "references": [
+        {
+          "title": "美团2026国庆消费洞察报告：“小团”国庆用户量较五一增长超六成，AI助力假期出游",
+          "source": "美团Meituan",
+          "date": "2026-10-07",
+          "link": "https://www.meituan.com/news/NN261008270001908"
+        }
+      ]
+    },
+    {
+      "name": "旅行场景把即时零售从应急补充变为行程配套",
+      "text": "美团披露，国庆一次性袜子、一次性拖鞋等旅行用品订单同比翻倍，氧气罐、晕车晕船药也出现异地需求。长线出游、停留当地和运动体验，让部分消费从提前装进行李转向抵达后附近购买；即时供给需要跟着具体场景，而不只是增加门店和配送覆盖。",
+      "subcategory": "meituan",
+      "references": [
+        {
+          "title": "美团2026国庆消费洞察报告：“小团”国庆用户量较五一增长超六成，AI助力假期出游",
+          "source": "美团Meituan",
+          "date": "2026-10-07",
+          "link": "https://www.meituan.com/news/NN261008270001908"
+        }
+      ]
+    },
+    {
+      "name": "站点管理与派单规则共同影响配送表现",
+      "text": "配送合作商负责招人、排班、补位及异常处理，平台负责订单网络与调度。Techmo报道中的商家出餐后调度、虚假出餐治理和异常改派，针对的是骑手在店等待及接单衔接问题。征求意见背景下，站点还需要记录和反馈不合理规则，让现场问题能够回到平台系统。",
+      "subcategory": "meituan",
+      "references": [
+        {
+          "title": "骑手新规背后，配送合作商的生意要重新算",
+          "source": "Techmo",
+          "date": "2026-10-10",
+          "link": "https://mp.weixin.qq.com/s/NFxe1KG4rVae4_1D_Muyyw"
+        }
+      ]
+    },
+    {
+      "name": "混资券按直播与笔记经营配置补贴",
+      "text": "小红书双11把商家与平台共同出资的优惠，分别用于直播凑单和笔记型爆品经营。报道披露了商品、店铺及买手的活动期增长，比较基准包括此前周末的日常表现。重点是补贴适配不同交易场域，活动GMV变化与商家最终利润仍是不同指标。",
+      "subcategory": "xiaohongshu",
+      "references": [
+        {
+          "title": "小红书双11开局战报：混资券拉动多品类爆发，友好商家GMV最高涨5倍",
+          "source": "亿邦动力",
+          "date": "2026-10-16",
+          "link": "https://mp.weixin.qq.com/s/wNuyz57jGn_oK3A9txtklw"
+        }
+      ]
+    },
+    {
+      "name": "价格梯度与账号分层承接不同成熟度用户",
+      "text": "运营研究社以小晶灵bibi等珠宝商家说明，低价素串、设计款和高价商品承担不同经营任务；高频日播小号与主理人上新大号也服务不同人群。真人讲解、商品红黑榜和长期使用分享帮助用户理解非标商品，账号经营由一次曝光延伸到信任和多阶段购买。",
+      "subcategory": "xiaohongshu",
+      "references": [
+        {
+          "title": "600元起盘、月入1000+万，小红书上这条千亿赛道正在批量造富",
+          "source": "运营研究社／亿邦动力转载",
+          "date": "2026-10-09",
+          "link": "https://m.ebrun.com/713866.html"
+        }
+      ]
+    },
+    {
+      "name": "企业号内容从品牌公告转向具体使用体验",
+      "text": "Vic对维特丝账号的分析强调，一件商品可以围绕香味、肤感、使用时间等不同体验持续表达，而不是反复堆叠成分和卖点。其区分种草内容的阅读互动与挂链内容的商品点击、进店和成交，提示不同内容承担的任务不同。这是作者对单个商家的观察。",
+      "subcategory": "xiaohongshu",
+      "references": [
+        {
+          "title": "在小红书用官方账号装素人，年销两千万",
+          "source": "Vic的营销思考／人人都是产品经理",
+          "date": "2026-10-20",
+          "link": "https://www.woshipm.com/share/6480812.html"
+        }
+      ]
+    },
+    {
+      "name": "商品履约与服务规范为站内成交配套",
+      "text": "小红书商家规则中心公示的发货管理规则修订，补充了内容、买手与优惠券之外的交易治理议题。与大促经营材料结合看，消费者被内容吸引进店之后，商品信息、承诺的发货安排及后续服务仍属于同一次购买体验，需要由店铺履约承接。",
+      "subcategory": "xiaohongshu",
+      "references": [
+        {
+          "title": "关于修订《小红书商家发货管理规则》的意见征集通知",
+          "source": "小红书商家规则中心／电商热点雷达收录",
+          "date": "",
+          "link": "https://dianshanghot.com/news/ecommerce/items/lg5qsfirpy3ua8cmsnhwtveko"
+        },
+        {
+          "title": "小红书双11开局战报：混资券拉动多品类爆发，友好商家GMV最高涨5倍",
+          "source": "亿邦动力",
+          "date": "2026-10-16",
+          "link": "https://mp.weixin.qq.com/s/wNuyz57jGn_oK3A9txtklw"
+        }
+      ]
     }
   ],
   "ai_technology": [
     {
-      "name": "Google跨商家购物车连接AI推荐、库存提醒与结账",
-      "title": "Google跨商家购物车连接AI推荐、库存提醒与结账",
-      "company": "Google、Gemini",
-      "summary_points": [
-        "Google于10月15日在美国向Search和Gemini应用推出Universal Cart，把用户在不同Google购物入口发现的跨商家商品保存在同一购物车。消费者可保留选择、稍后继续比较和购买，减少用多个标签页或截图记录商品的步骤。",
-        "购物车依托持续更新的Shopping Graph商品信息，追踪整张清单的价格与库存，在降价或缺货商品恢复供应时提醒。功能从一次性的推荐问答，延伸到保存购买意向、跟踪商品条件及承接后续回访。",
-        "产品结合Google Wallet中的支付方式权益与促销信息，帮助用户识别适用优惠和付款选择。消费者仍决定何时购买，系统提供的是商品、价格、库存与支付条件的组织和提示，而非默认替用户自主付款。",
-        "消费者可在支持商家通过Google Pay结账，或转至商家网站购物车完成购买，官方列举Nike、Sephora、Target、Ulta Beauty、Walmart、Wayfair及部分Shopify商家。商家仍是销售方并提供确认与售后；本次发布未披露上线后的转化或销售增量。"
-      ],
-      "link": "https://blog.google/products-and-platforms/products/shopping/universal-cart-launch/",
-      "source": "Google官方博客",
-      "source_type": "other",
-      "date": "2026-10-15",
-      "category": "ai",
-      "origin_type": "manual",
-      "keywords": [
-        "AI购物",
-        "跨商家购物车",
-        "价格提醒",
-        "库存提醒",
-        "交易衔接"
-      ],
-      "quality_score": 92,
-      "quality_reason": "企业官方披露已上线地区、购物流程和商家衔接，直接关联交易；尚无转化和收入结果。",
-      "event_key": "Google|UniversalCart美国SearchGemini上线|2026-10-15"
+      "title": "购物车开始跨越搜索、助手和多个商家",
+      "text": "Google在美国推出Universal Cart，把消费者在Search、Gemini等入口发现的商品保存在同一购物车。用户可以继续比较、稍后购买，并在支持商家通过Google Pay或转到商家网站结账；销售确认、发货与售后仍由商家承担。AI购物由回答问题进一步进入保存意向和购买衔接。",
+      "subcategory": "business",
+      "references": [
+        {
+          "title": "Universal Cart: A new way to shop across Google",
+          "source": "Google官方博客",
+          "date": "2026-10-15",
+          "link": "https://blog.google/products-and-platforms/products/shopping/universal-cart-launch/"
+        }
+      ]
     },
     {
-      "name": "品牌完善商品信息并追踪AI订单，承接购物推荐新增量",
-      "title": "品牌完善商品信息并追踪AI订单，承接购物推荐新增量",
-      "company": "豆包、抖音电商、Stanley1913、Shopify",
-      "summary_points": [
-        "文章讨论AI推荐如何进入品牌订单获取。其转述Shopify等资料称，Stanley1913上一季度来自AI渠道的订单同比增长5倍，ILIA近3倍，Cottonique增速276%。这些数字描述AI渠道表现，不是品牌整体收入增长，也未单独分离各项经营动作的贡献。",
-        "Stanley围绕消费者会问的问题补充商品信息，包括常见问题、使用及护理说明，以及功能对应的使用好处。商品表达由图片和氛围延伸到可读取的事实与场景，让AI在推荐时能解释产品适合谁、解决什么问题。",
-        "国内案例涉及抖店豆包运营专区，商家可单独查看该渠道成交额、订单量、商品卡曝光和点击，了解购前问题，再完善属性与卖点，并配置渠道专属优惠券。AI推荐由泛化流量入口进一步变为可以追踪、分析和经营的渠道。",
-        "用户可以让AI挑选和比较商品，再自行进入商品页确认付款，推荐辅助与自主购买仍有区别。作者认为商品信息、外部内容和交易承接需要协同；AI来源标记尚无统一标准，渠道订单统计仍需明确归因口径。"
-      ],
-      "link": "https://mp.weixin.qq.com/s/YZHUgCwIXVVgePF_uxKtgA",
-      "source": "运营研究社",
-      "source_type": "wechat",
-      "date": "2026-10-16",
-      "category": "ai",
-      "origin_type": "manual",
-      "keywords": [
-        "AI推荐",
-        "商品信息",
-        "渠道订单",
-        "需求洞察",
-        "购物转化"
-      ],
-      "quality_score": 89,
-      "quality_reason": "含商品信息改造、渠道数据与品牌案例，关联新增订单；增长数字为二次转述，归因标准尚不统一。",
-      "event_key": "Stanley及抖音电商|AI渠道商品信息与订单归因案例|2026-10-16"
+      "title": "商品价格和库存变化成为回访触发点",
+      "text": "Universal Cart依托Shopping Graph跟踪清单里的价格与库存，在降价或恢复供应时提醒，并结合Wallet展示可用支付权益。它把一次会话中的商品选择保留下来，消费者不必依靠多个标签页或截图重新寻找，也仍由本人决定何时购买。",
+      "subcategory": "business",
+      "references": [
+        {
+          "title": "Universal Cart: A new way to shop across Google",
+          "source": "Google官方博客",
+          "date": "2026-10-15",
+          "link": "https://blog.google/products-and-platforms/products/shopping/universal-cart-launch/"
+        }
+      ]
     },
     {
-      "name": "沃尔玛Sparky连接视觉选购与外部AI流量，披露订单表现",
-      "title": "沃尔玛Sparky连接视觉选购与外部AI流量，披露订单表现",
-      "company": "Walmart、Sparky",
-      "summary_points": [
-        "10月8日的报道整理沃尔玛美国负责人在此前高盛会议上的发言，说明Sparky如何进入选购与零售流程。管理层称，其周度互动较上一季度增长60%，使用该助手的订单金额比其他购物订单高40%，显示AI购物人群与订单结构的变化。",
-        "Sparky新增视觉搜索，让消费者用图片表达需求，再连接商品发现、比较与购买。管理层披露，视觉购物转化率比文字搜索高57%；这是两种场景的比较，原文没有随机对照证据，因此不能将订单金额差异全部归因于AI。",
-        "沃尔玛也接收ChatGPT、Gemini等外部AI入口的深层链接。管理层称相关流量转化较高，包含新客和回流客，后续自然复购表现较好，但没有给出统一比例，体现自有助手与外部入口并行承接需求。",
-        "将Sparky进一步接入Vizio、onn电视等业务，是管理层提出的探索设想，尚非已上线服务。本篇披露的是10月8日整理发布的既往访谈情况，不代表全部应用和效果都在本周新发生。"
-      ],
-      "link": "https://finance.yahoo.com/technology/ai/articles/ai-reshaping-walmart-sparky-leading-152800576.html",
-      "source": "Retail Dive（Yahoo转载）",
-      "source_type": "other",
-      "date": "2026-10-08",
-      "category": "ai",
-      "origin_type": "manual",
-      "keywords": [
-        "AI导购",
-        "视觉购物",
-        "订单金额",
-        "外部流量",
-        "购物转化"
-      ],
-      "quality_score": 90,
-      "quality_reason": "外国零售企业具体应用、订单及视觉转化指标明确；为此前访谈，场景差异不能视作因果。",
-      "event_key": "Walmart|Sparky视觉购物与外部AI流量披露|2026-10-08"
+      "title": "自然语言帮助消费者找到不断变化的单件库存",
+      "text": "The RealReal将Ask TRR向4500万会员开放。其二手奢侈品库存每件独立、售出即消失，消费者又未必知道设计师或准确关键词；助手允许按场合、风格和想法描述需求，再匹配商品。公司计划进一步把推荐放进详情页，已有购物助手与后续页面扩展分别处于上线和规划阶段。",
+      "subcategory": "business",
+      "references": [
+        {
+          "title": "The RealReal Expands Ask TRR AI Shopping Agent With Google Cloud's Gemini Enterprise",
+          "source": "The RealReal／Google Cloud",
+          "date": "2026-10-08",
+          "link": "https://www.googlecloudpresscorner.com/2026-10-08-The-RealReal-Expands-Ask-TRR-AI-Shopping-Agent-With-Google-Clouds-Gemini-Enterprise"
+        }
+      ]
     },
     {
-      "name": "千问办公进入商品验证与多平台经营，串联执行和复盘",
-      "title": "千问办公进入商品验证与多平台经营，串联执行和复盘",
-      "company": "千问办公、小熊电器、捌比特咖啡、电商品牌商家",
-      "summary_points": [
-        "千问办公于10月14日发布电商版，负责人称电商用户占其付费用户超过20%。女鞋商家先借AI调研、制作数字样品和商品页，观察点击与加购再决定生产，筹店准备由约30天缩至7天，前期费用由超过万元降至数百元，把工具用于商品试错。",
-        "捌比特咖啡跨十余个平台经营，约30分钟生成汇总经营看板；小熊电器运营人员每天两次自动采集天猫、京东到手价，结合优惠、库存和近7天走势发送价格日报。原先分散查询的信息进入同一经营流程，更便于发现变化。",
-        "两家天猫内衣旗舰店通过连接第三方生图工具，由千问办公组织批量任务，将秋冬素材准备从约四个月压缩至15天左右，帮助及时备齐搜索、推荐和种草素材。文章披露了生产周期变化，尚未给出其独立带来的销售增幅。",
-        "商家再把平台、店铺、商品数据做成分层看板，对点击率下降拆查视觉、文案与投放原因，将有效素材和判断写回规则库。人仍决定产品与经营方向；主动发现库存、转化等异常的部分能力仍在推出中，案例价值主要体现在验证和经营链路衔接。"
-      ],
-      "link": "https://www.leiphone.com/category/industrynews/csaOBaiXpZZLOOtp.html",
-      "source": "雷峰网",
-      "source_type": "other",
-      "date": "2026-10-16",
-      "category": "ai",
-      "origin_type": "manual",
-      "keywords": [
-        "商品验证",
-        "跨平台经营",
-        "价格监测",
-        "素材调度",
-        "经营复盘"
-      ],
-      "quality_score": 87,
-      "quality_reason": "具体商家、工具和验证复盘链路充分，非单纯办公提效；尚无独立营收增量，部分能力仍在推出。",
-      "event_key": "千问办公|电商版商品验证与多平台经营案例|2026-10-14"
+      "title": "Sparky把视觉表达转为商品发现",
+      "text": "沃尔玛管理层在Retail Dive整理的访谈中称，Sparky互动持续增加，视觉搜索让消费者用图片而不是只用文字寻找商品；使用助手的订单金额及视觉购物转化表现更高。这里的数字比较对应不同购物人群与场景，业务变化是选购入口更丰富，而非所有差额均由AI单独创造。",
+      "subcategory": "business",
+      "references": [
+        {
+          "title": "AI is reshaping Walmart, with Sparky leading",
+          "source": "Retail Dive／Yahoo",
+          "date": "2026-10-08",
+          "link": "https://finance.yahoo.com/technology/ai/articles/ai-reshaping-walmart-sparky-leading-152800576.html"
+        }
+      ]
     },
     {
-      "name": "亚马逊限制外部购物代理，AI交易入口呈现不同开放路径",
-      "title": "亚马逊限制外部购物代理，AI交易入口呈现不同开放路径",
-      "company": "Amazon、Grok、Meta、Shopify",
-      "summary_points": [
-        "文章从10月15日用户反映Grok Bot被亚马逊拦截切入，串联Comet、Muse等购物访问争议。亚马逊要求外部代理表明身份、尊重平台是否参与的决定，并提出账号凭据与隐私安全顾虑：用户同意代理操作，并不等于商家已授权接入。",
-        "亚马逊同时发展自有购物助手与Buy for Me。后者可在用户确认后代其到外部商家购买，由原商家发货并处理售后，减少消费者切换网站。文章也记录未主动加入的商户及商品匹配错误反馈，说明便利性与商户授权、信息准确性需要同时解决。",
-        "Shopify则于10月13日向更多兼容Agent开放商品目录，经Shop MCP支持检索、建立购物车和衔接Shop Pay结账。作为商家基础设施提供方，它把外部代理视为潜在销售渠道，与亚马逊保有自身购物入口的诉求形成不同路径。",
-        "作者认为，争议背后是发现商品、推荐与交易关系的重新分配，首先理解消费者购物意图的主体可能转向代理提供商。这是生态分析，尚不能证明代理全面替代平台；马斯克提及另建购物平台也只是公开回应，没有实际产品计划。"
-      ],
-      "link": "https://mp.weixin.qq.com/s/r40_qA7Wg5ri1mUOghAMnA",
-      "source": "字母AI",
-      "source_type": "wechat",
-      "date": "2026-10-16",
-      "category": "ai",
-      "origin_type": "manual",
-      "keywords": [
-        "购物智能体",
-        "访问授权",
-        "交易入口",
-        "商品目录",
-        "平台开放"
-      ],
-      "quality_score": 85,
-      "quality_reason": "购物代理权限、商家授权和目录开放有具体事件；主要为生态分析，缺少统一经营效果。",
-      "event_key": "Amazon及Shopify|购物代理授权与目录开放对比|2026-10-13_15"
+      "title": "AI渠道订单开始进入商家的日常分析",
+      "text": "运营研究社报道，Stanley1913、ILIA等品牌出现来自AI渠道的订单增长，并围绕使用、护理、功能和适用人群完善商品信息。国内抖店的豆包运营专区提供渠道成交、订单、曝光、点击及购前问题，商家可据此调整商品属性与表达，让AI推荐成为能被追踪的经营渠道。",
+      "subcategory": "business",
+      "references": [
+        {
+          "title": "“豆包们”再造电商蓝海，有商家获5倍订单增长",
+          "source": "运营研究社",
+          "date": "2026-10-16",
+          "link": "https://mp.weixin.qq.com/s/YZHUgCwIXVVgePF_uxKtgA"
+        }
+      ]
+    },
+    {
+      "title": "先验证商品需求，再安排生产",
+      "text": "千问办公的女鞋案例把调研、数字样品和商品页制作放在生产之前，用点击和加购反馈判断需求，筹店准备由约30天缩短到7天。UNICUS则让照片和创意进入积木设计，再由柔性工厂按单生产。两者分别把AI放在商品试错和个性化供给环节，连接需求与真实商品交付。",
+      "subcategory": "business",
+      "references": [
+        {
+          "title": "付费用户占比超20%，电商商家“涌入”千问办公",
+          "source": "雷峰网",
+          "date": "2026-10-16",
+          "link": "https://www.leiphone.com/category/industrynews/csaOBaiXpZZLOOtp.html"
+        },
+        {
+          "title": "UNICUS以AI设计连接柔性生产，探索零库存玩具平台",
+          "source": "Founder Park／极客公园",
+          "date": "2026-10-09",
+          "link": "https://mp.weixin.qq.com/s/UUfcTGhOVu6ggorVn51VhA"
+        }
+      ]
+    },
+    {
+      "title": "多平台看板和价格日报进入经营复盘",
+      "text": "雷峰网报道，捌比特咖啡用千问办公汇总十余个平台数据，小熊电器人员定时采集天猫、京东到手价，结合优惠、库存及近期走势生成日报。任务从分别查数变成同一套经营信息汇总，运营人员再判断价格或点击变化，并决定商品、素材和销售安排。",
+      "subcategory": "business",
+      "references": [
+        {
+          "title": "付费用户占比超20%，电商商家“涌入”千问办公",
+          "source": "雷峰网",
+          "date": "2026-10-16",
+          "link": "https://www.leiphone.com/category/industrynews/csaOBaiXpZZLOOtp.html"
+        }
+      ]
+    },
+    {
+      "title": "棉花交易中的AI先处理报价和供需信息",
+      "text": "棉联已将AI用于报价单导入、企微询盘核实及车辆、签章信息提取。受访者称，报价单导入从5人工作3小时变为1人约1小时，供需推送使平均成交周期从3天缩到1天。字段整理、业务审核与人工复核仍在流程中；正在开发的交易智能体与这些现有应用分别推进。",
+      "subcategory": "business",
+      "references": [
+        {
+          "title": "千峰访谈棉联CEO肖时国：从信息处理到棉花交易垂直智能体",
+          "source": "亿邦动力",
+          "date": "2026-10-12",
+          "link": "https://m.ebrun.com/713972.html"
+        }
+      ]
+    },
+    {
+      "title": "门店电话咨询与商品搜索共用业务信息",
+      "text": "Google Cloud披露，Home Depot将AI语音和Magic Apron助手用于顾客咨询，消费者可用自然语言查询本地库存，减少在固定电话菜单中反复选择。它把找商品、找附近库存和解决咨询放在同一流程中，店员则保留更多时间接待现场顾客。",
+      "subcategory": "business",
+      "references": [
+        {
+          "title": "Welcome to Gemini at Work 2026: Introducing Gemini agent",
+          "source": "Google Cloud",
+          "date": "2026-10-08",
+          "link": "https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026"
+        }
+      ]
+    },
+    {
+      "title": "运营对话从查询数据延伸到确认后执行",
+      "text": "Hello Retail秋季产品资料展示，将店铺商品和搜索推荐信息接入Claude、ChatGPT，运营者可询问哪些搜索没有结果、哪些商品适合推广，并要求调整商品展示。更改操作先向人确认，体现助手从生成报告走向连接经营系统；这份材料呈现产品能力，不把它写成已经取得的销售业绩。",
+      "subcategory": "business",
+      "references": [
+        {
+          "title": "Hello Retail Fall Release 2026: AI for ecommerce",
+          "source": "Hello Retail",
+          "date": "2026-10-20",
+          "link": "https://helloretail.com/en/fall-release-2026/"
+        }
+      ]
+    },
+    {
+      "title": "运动企业把AI用于系统迁移与组织工作流",
+      "text": "On与Google Cloud披露，AI智能体参与24项核心服务迁移，工程师负责审核、基础设施变更和生产切换；单项迁移时间由约三个月缩为两周。公司同时向员工开放Gemini Enterprise，用于报告、研究和入职等任务。案例说明全球化企业如何减少系统碎片，并保留关键执行责任。",
+      "subcategory": "business",
+      "references": [
+        {
+          "title": "On Establishes Google Cloud as Enterprise AI Backbone, Beginning with Agent-Led Cloud Migration",
+          "source": "On／Google Cloud",
+          "date": "2026-10-08",
+          "link": "https://www.googlecloudpresscorner.com/2026-10-08-On-Establishes-Google-Cloud-as-Enterprise-AI-Backbone,-Beginning-with-Agent-Led-Cloud-Migration"
+        }
+      ]
+    },
+    {
+      "title": "外部购物代理能否成交，还取决于商家接入",
+      "text": "字母AI比较亚马逊对外部购物代理的限制、自有购物助手的发展，以及Shopify开放商品目录和购物车的路径。代理获得用户授权，仍需要商品信息、账户和交易接口可用。不同平台对接入的选择，使AI购物既是推荐能力的变化，也涉及谁负责商品、支付及售后。",
+      "subcategory": "business",
+      "references": [
+        {
+          "title": "亚马逊，Agent最严厉的父亲",
+          "source": "字母AI",
+          "date": "2026-10-16",
+          "link": "https://mp.weixin.qq.com/s/r40_qA7Wg5ri1mUOghAMnA"
+        },
+        {
+          "title": "Universal Cart: A new way to shop across Google",
+          "source": "Google官方博客",
+          "date": "2026-10-15",
+          "link": "https://blog.google/products-and-platforms/products/shopping/universal-cart-launch/"
+        }
+      ]
+    },
+    {
+      "title": "轻量模型开始同时提供速度与推理投入选择",
+      "text": "Anthropic发布Claude Haiku 5.5，定位高频、成本敏感和低延迟任务，包括分类、摘要、查询与客服，并首次在Haiku系列提供可调节的推理投入。官方还调整部分缓存价格。能力更新让简单任务与复杂任务可以采用不同计算投入，而不必统一交给最高成本模型。",
+      "subcategory": "technology",
+      "references": [
+        {
+          "title": "Introducing Claude Haiku 5.5",
+          "source": "Anthropic",
+          "date": "2026-10-07",
+          "link": "https://www.anthropic.com/claude-haiku-5-5"
+        }
+      ]
+    },
+    {
+      "title": "Gemini更新强调复杂任务的连续处理",
+      "text": "Google于10月13日向开发者、企业和部分订阅用户开放Gemini 4 Argon，重点展示跨多个步骤的工程、金融、法律与科学任务。更新的重点不只是单次回答，而是结合工具、资料和任务过程完成复杂工作；实际使用仍需配置数据访问、工具权限与结果审核。",
+      "subcategory": "technology",
+      "references": [
+        {
+          "title": "Gemini 4 Argon: Built to solve your hardest problems",
+          "source": "Google",
+          "date": "2026-10-13",
+          "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/"
+        }
+      ]
+    },
+    {
+      "title": "多模态检索可用一种表达寻找另一种内容",
+      "text": "10月6日发布的EmbeddingGemma 2把文本、图片、音频和视频放入统一检索表示，并提供适合本地运行的轻量版本及Apache 2.0许可。它可以用文字寻找图像、用语音寻找视频片段；与生成式助手相比，它主要解决先把相关资料找出来的问题，是本月上旬的能力补充。",
+      "subcategory": "technology",
+      "references": [
+        {
+          "title": "EmbeddingGemma 2: an open, lightweight multimodal embedding model",
+          "source": "Google",
+          "date": "2026-10-06",
+          "link": "https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/"
+        }
+      ]
+    },
+    {
+      "title": "商品主图生成同时约束商品、商标和文字",
+      "text": "CommerceGen-Studio将商品资料提炼、卖点改写、版式组织和图像生成串成流程，并以商品图、商标和结构化布局约束输出。研究作者披露系统已用于大规模主图生产。它针对商业素材能否准确表达商品的要求，不能用普通图片生成质量替代商品与文字的一致性。",
+      "subcategory": "technology",
+      "references": [
+        {
+          "title": "CommerceGen-Studio: An End-to-End Framework for Commercial-Grade Main-Image Generation",
+          "source": "研究作者／arXiv",
+          "date": "2026-10-14",
+          "link": "https://arxiv.org/abs/2610.20603"
+        }
+      ]
+    },
+    {
+      "title": "生成式检索把用户行为融入候选商品选择",
+      "text": "WeGR在10月20日更新的论文中，结合用户查询和商品之间的行为关系优化检索，并报告大型电商搜索平台六周线上实验：订单相对提高2.539%、点击率提高1.508%、转化率提高1.381%，同时降低计算资源使用。这是特定实验的相对变化，显示检索质量与运行成本可以共同评估。",
+      "subcategory": "technology",
+      "references": [
+        {
+          "title": "WeGR: Towards Unified Generative Retrieval via Behavior-aware Tokenization and Preference Alignment",
+          "source": "研究作者／arXiv",
+          "date": "2026-10-20",
+          "link": "https://arxiv.org/abs/2610.16979"
+        }
+      ]
+    },
+    {
+      "title": "空间理解与模拟练习进入机器人控制",
+      "text": "Google的Argon机器人材料展示，从摄像头画面或草图建立模拟环境，再练习并执行物体操作。例如机器人先模拟踩开垃圾桶踏板，再完成投放；其他案例包括扶正杯子。它说明视觉理解、规划与动作之间的能力进展，属于技术验证场景，区别于商店已经规模化部署。",
+      "subcategory": "technology",
+      "references": [
+        {
+          "title": "Gemini 4 Argon for Robotics",
+          "source": "Google Developers Blog",
+          "date": "2026-10-13",
+          "link": "https://developers.googleblog.com/gemini-4-argon-for-robotics/"
+        }
+      ]
+    },
+    {
+      "title": "购物助手的候选清单影响商品组合设计",
+      "text": "《AI介入零售市场》研究先记录主流AI模型的商品排序，再结合模拟消费者偏好分析零售商的选品。它指出，消费者可能只在助手筛出的清单中选择，商品组合的设计因此还要考虑AI如何展示商品。论文结果属于模型和模拟分析，为理解新入口提供方法，不是企业真实收入增长。",
+      "subcategory": "technology",
+      "references": [
+        {
+          "title": "AI-Mediation in Retail Markets: Revenue Effects and Assortment Optimization",
+          "source": "研究作者／arXiv",
+          "date": "2026-10-09",
+          "link": "https://arxiv.org/abs/2610.12917"
+        }
+      ]
     }
   ],
   "sports_outdoor": [
     {
-      "name": "Aritzia以多场景货盘和移动App推动增长，库存与利润需拆看",
-      "title": "Aritzia以多场景货盘和移动App推动增长，库存与利润需拆看",
-      "company": "Aritzia",
-      "summary_points": [
-        "Aritzia截至8月30日的第二季度收入增长44%至11.7亿加元，可比销售增长34.5%。Babaton、Wilfred、Tna等品牌覆盖通勤、简约、运动休闲和年轻日常场景，以相对可负担的设计和品质争取更广泛衣橱需求，减少对单一生活方式的依赖。",
-        "数字收入增长67.7%至4.03亿加元，占营收34%，快于实体零售34.1%的增速。管理层将近一年前推出的移动App列为推动因素；过去12个月新开14店、重新定位5店，期末146家精品店，线上触达与线下体验共同承接需求。",
-        "剔除关税退款后的调整毛利率为48.7%，同比提高490个基点，公司归因于初始加价倍率改善和折扣减少。净利润增长204%中含9740万加元关税退款，主营商品经营与一次性因素都参与利润变化，需要区分观察。",
-        "库存增长35.8%至7.15亿加元，低于当季收入增速，管理层称部分用于补足上年偏低库存，后续正常价售出能力仍影响利润。美国贡献约三分之二收入，后续开店也主要集中于美国；潜在入华属于文章分析，尚无中国扩张公告。"
-      ],
-      "link": "https://mp.weixin.qq.com/s/T7nSwz4lqn7s04GrjdNFJg",
-      "source": "LADYMAX",
-      "source_type": "wechat",
-      "date": "2026-10-14",
-      "category": "sports",
-      "origin_type": "manual",
-      "keywords": [
-        "移动App",
-        "多品牌货盘",
-        "数字销售",
-        "折扣管理",
-        "库存"
-      ],
-      "quality_score": 93,
-      "quality_reason": "产品、App、渠道、毛利和库存共同解释增长；需区分一次性退款与主业，并注意美国依赖。",
-      "event_key": "Aritzia|第二季度App渠道毛利库存经营|2026-08-30"
+      "name": "安踏成为彪马最大股东，进入交割后的合作阶段",
+      "text": "安踏10月7日宣布，以15.055亿欧元现金完成收购彪马29.06%股权，成为第一大股东。这次进展是完成交易，而非此前监管批准；安踏表示尊重彪马独立治理和品牌自主权，并将寻求适当监事会席位，目前没有发起全面要约收购的计划。多品牌能力的协同由资本关系进一步进入经营合作阶段。",
+      "subcategory": "domestic",
+      "references": [
+        {
+          "title": "安踏集团完成收购彪马29.06%股权，正式成为最大股东",
+          "source": "安踏集团投资者关系",
+          "date": "2026-10-07",
+          "link": "https://ir.anta.com/sc/news_detail.php?id=170762"
+        }
+      ]
     },
     {
-      "name": "耐克中国团队加快本土商品开发，连接训练社群与消费需求",
-      "title": "耐克中国团队加快本土商品开发，连接训练社群与消费需求",
-      "company": "Nike",
-      "summary_points": [
-        "文章记录耐克CEO贺雁峰约96小时中国行，涉及上海混合训练馆、申花主场、总部和时装周展厅。具体动作集中在本土商品、真实运动场景和消费者交流，品牌访问本身尚无对应销售结果披露。",
-        "Nike与上海Temporary Humans合作训练空间，将系统课程、混合训练产品和本地爱好者社群连接起来。贺雁峰体验Nike Hybrid RN等装备，展示本地训练需求如何成为产品使用和社群互动的场景，尚无训练馆转化与会员留存数据。",
-        "时装周展厅展示由中国团队完成创意、设计和开发的本土源创系列，从想法到商品不到120天。本地洞察直接进入产品开发，而不仅是将全球商品引入中国；该系列销售、库存和后续规模尚未披露。",
-        "球迷交流涉及正版球衣补货与复古商品需求，Nike i96夹克新版本计划明年上市；同期公布Nike Grind环保球场计划，将回收旧鞋用于校园和社区空间。两项分别属于后续上市及建设计划，尚不能作为已完成的市场效果。"
-      ],
-      "link": "https://www.36kr.com/p/4028351988159109",
-      "source": "36氪品牌",
-      "source_type": "other",
-      "date": "2026-10-16",
-      "category": "sports",
-      "origin_type": "manual",
-      "keywords": [
-        "本土产品",
-        "混合训练",
-        "运动社群",
-        "开发周期",
-        "消费者反馈"
-      ],
-      "quality_score": 82,
-      "quality_reason": "本土团队开发周期、产品与训练场景具体；品牌传播属性较强，缺少销售和留存结果。",
-      "event_key": "Nike|中国行本土源创与混合训练场景|2026-10-16"
+      "name": "361度不同业务线需要分别观察",
+      "text": "361度公布的三季度运营表现中，主品牌、童装和电商均录得增长，但增长区间不同。把三条线拆开，才能看清品牌总体表现与渠道、年龄层需求之间的差异；零售流水描述终端销售情况，也不等同于集团确认收入和利润。",
+      "subcategory": "domestic",
+      "references": [
+        {
+          "title": "361度国际：三季度主品牌零售额同比录得单位数正增长",
+          "source": "观点网",
+          "date": "2026-10-14",
+          "link": "https://www.guandian.cn/m/show/612809"
+        }
+      ]
     },
     {
-      "name": "HYROX上海站延期，快速扩张考验赛事治理与大众体验",
-      "title": "HYROX上海站延期，快速扩张考验赛事治理与大众体验",
-      "company": "HYROX",
-      "summary_points": [
-        "HYROX于10月14日宣布原定10月31日至11月1日的上海站延期，官方称由场地突发安排导致，具体日期将在2—3周内通知。文章将其放在此前北京站争议的背景中讨论，但两者因果关系未经官方确认。",
-        "作者首先分析跨国赛事协同：本地团队了解市场，但事故响应、规则解释和全球决策仍需清楚分工。北京站风波显示，总部与本地之间的权限、责任和沟通会直接影响现场体验，问题不限于某个执行环节。",
-        "HYROX同时追求精英竞技和大众付费参与，文章引用盈方统计称约70%参赛者为首次参赛者。作者认为，大众的卫生、安全及参赛体验构成品牌黏性基础，普通用户不应在商业扩张中成为精英赛事的附属。",
-        "规模由内地首站不足2000人增至单场上万人后，共用器材、突发停赛授权、卫生医疗及退出规则需要同步升级。社媒既推动备赛和传播，也放大体验问题；文章将规模与治理能力不匹配视为成长压力，目前没有后续整改效果数据。"
-      ],
-      "link": "https://mp.weixin.qq.com/s/htEAZlawl1kXiYoOZRVY_g",
-      "source": "体育产业生态圈",
-      "source_type": "wechat",
-      "date": "2026-10-15",
-      "category": "sports",
-      "origin_type": "manual",
-      "keywords": [
-        "大众赛事",
-        "运营治理",
-        "参赛体验",
-        "应急机制",
-        "本地协同"
-      ],
-      "quality_score": 83,
-      "quality_reason": "延期事实与大众参赛治理场景具体；官方未确认与此前争议的因果，整改效果尚无数据。",
-      "event_key": "HYROX|上海站延期与赛事治理|2026-10-14"
+      "name": "运动科技通过具体穿着场景进入产品",
+      "text": "李宁航天主题材料将温度调节等技术落到跑步、篮球、户外及日常穿着；安踏竞速C家族则区分极致轻量、赛训稳定与回弹等需求。两类产品表达都从一个技术名词延伸到消费者在什么场景使用、需要哪种体验，技术卖点由产品配置和穿着任务解释。",
+      "subcategory": "domestic",
+      "references": [
+        {
+          "title": "致敬中国航天70周年，李宁以航天科技赋能大众运动生活",
+          "source": "资讯中国／新浪",
+          "date": "2026-10-09",
+          "link": "https://news.sina.com.cn/sx/2026-10-09/detail-iniurmnk1059404.shtml"
+        },
+        {
+          "title": "安踏“高原C计划·返映2.0”落地北京，2026竞速C家族亮相",
+          "source": "安踏／美通社",
+          "date": "2026-10-19",
+          "link": "https://www.prnasia.com/story/552192-1.shtml"
+        }
+      ]
     },
     {
-      "name": "Frasers叠加品牌股权与零售渠道，运动品牌经营关系变化",
-      "title": "Frasers叠加品牌股权与零售渠道，运动品牌经营关系变化",
-      "company": "Frasers Group、Sports Direct、Puma、Under Armour",
-      "summary_points": [
-        "Frasers Group于10月1日披露持有安德玛约8.8%的A类普通股，此前已建立彪马权益头寸。其Sports Direct业务拥有大规模门店网络，既是商品采购与零售渠道，也通过资本参与运动品牌，关系超出单纯财务投资。",
-        "作者梳理以零售现金流支持品牌及零售资产收购的模式，以及Elevation战略：改善门店和品牌呈现，向更高等级品牌零售伙伴转型，以获得更有竞争力的商品。股权与货架、订单资源叠加，可能改变双方谈判关系。",
-        "文中彪马5.77%的权益头寸包含直接股票与大量期权安排，并不等于全部已交割股票或实际控制权。其重要性在于渠道商运用不同资本工具进入品牌利益结构，具体决策影响仍取决于权益性质及治理安排。",
-        "作者指出，彪马减少过度折扣、重建品牌，与Sports Direct需要货品和规模销售之间可能存在利益张力。该判断并非已证实的具体决策冲突；Frasers还面对本土零售承压、债务和利息增加，资本布局能否兑现协同仍有不确定性。"
-      ],
-      "link": "https://mp.weixin.qq.com/s/EbYIJ2a9sNftU_D87xmhUg",
-      "source": "懒熊体育",
-      "source_type": "wechat",
-      "date": "2026-10-17",
-      "category": "sports",
-      "origin_type": "manual",
-      "keywords": [
-        "体育零售",
-        "品牌股权",
-        "渠道关系",
-        "品牌升级",
-        "资本布局"
-      ],
-      "quality_score": 81,
-      "quality_reason": "品牌权益与门店渠道关系清楚，具战略参考；头寸含期权，潜在利益冲突属于作者分析。",
-      "event_key": "FrasersGroup|运动品牌权益与SportsDirect渠道布局|2026-10-01"
+      "name": "安踏将跑者训练与产品测试放在同一体系",
+      "text": "安踏高原C计划把精英跑者、运动员训练、产品测试及城市跑步活动衔接起来，10月北京活动展示竞速C家族，并发布训练经验资料。对品牌而言，训练现场不仅提供传播素材，也让不同跑者需求进入产品迭代；产品线再按跑者阶段组织，而不是只突出一个通用竞速概念。",
+      "subcategory": "domestic",
+      "references": [
+        {
+          "title": "安踏“高原C计划·返映2.0”落地北京，2026竞速C家族亮相",
+          "source": "安踏／美通社",
+          "date": "2026-10-19",
+          "link": "https://www.prnasia.com/story/552192-1.shtml"
+        }
+      ]
     },
     {
-      "name": "SM将10公里跑与演出组合，粉丝从观看者变成运动参与者",
-      "title": "SM将10公里跑与演出组合，粉丝从观看者变成运动参与者",
-      "company": "SM Entertainment、SMTOWN RUN CLUB",
-      "summary_points": [
-        "SM于10月初在韩国仁川举办SMTOWN RUN CLUB 26，把10公里跑与艺人演出组合为付费体验，文章称超过2万人报名。年满15岁的参与者支付8.9万韩元、约470元人民币，在2小时内完赛即可优先观看特别舞台，参与不再局限于观看演出。",
-        "活动将热身、分组领跑、途中互动与赛后舞台连接起来，粉丝分为六组，每组两名艺人领跑，主题服装、熟悉的音乐和现场交流贯穿过程。偶像内容成为组织实际运动参与的媒介，而不只是场边曝光。",
-        "社交平台出现提前备赛与赛后分享，文章也记录非核心粉丝和周边居民加入。案例呈现娱乐内容带动运动新人群参与的方式，但没有首次跑步者比例、训练留存或运动商品销售数据，报名热度尚不等同于长期运动习惯。",
-        "作者将其放在IP由单次内容、联名商品延伸至跑步和城市生活场景的变化中，认为共同经历比单纯购买更可能形成关系。活动产品的组织方式已有案例，长期复购与商业回报则尚未验证。"
-      ],
-      "link": "https://mp.weixin.qq.com/s/ldhHzNbO_kX-PLfdFfPAUA",
-      "source": "20社",
-      "source_type": "wechat",
-      "date": "2026-10-18",
-      "category": "sports",
-      "origin_type": "manual",
-      "keywords": [
-        "跑步参与",
-        "运动新人群",
-        "付费体验",
-        "粉丝社群",
-        "生活方式"
-      ],
-      "quality_score": 80,
-      "quality_reason": "付费、人数、流程和新人群参与有具体证据；暂无训练留存、零售转化和长期复购，参考价值偏体验。",
-      "event_key": "SMEntertainment|SMTOWNRUNCLUB26跑步演出体验|2026-10"
+      "name": "校企合作延伸至材料、设计和产品转化",
+      "text": "安踏与清华将联合研究中心升级为运动时尚联合研究院。双方自2021年合作以来，围绕功能设计、运动科学和高性能材料开展近40项跨学科项目；新阶段继续连接研究、设计竞赛、人才和产业落地。合作内容由品牌关系延伸到长期产品能力建设。",
+      "subcategory": "domestic",
+      "references": [
+        {
+          "title": "安踏集团与清华大学战略合作再升级，携手打造校企合作新标杆",
+          "source": "安踏集团／美通社",
+          "date": "2026-10-19",
+          "link": "https://www.prnasia.com/story/552302-1.shtml"
+        }
+      ]
+    },
+    {
+      "name": "波司登调整门店组合，高端线需要独立看动销",
+      "text": "报道引用波司登关闭低效店、开高效店的安排；其2025/26财年收入和利润仍增长，因此关店不能直接等同于集团业务下降。与此同时，高端AREAL系列进入新渠道，记者在天猫看到的部分商品销量较低。集团业绩、门店效率和高端线单品表现，应作为不同层次的信息观察。",
+      "subcategory": "domestic",
+      "references": [
+        {
+          "title": "波司登全国门店“大收缩”，多款高端线产品线上销量挂零",
+          "source": "新浪财经",
+          "date": "2026-10-09",
+          "link": "https://mp.weixin.qq.com/s/WGaBHXneVQZ6AScBv7PBOw"
+        }
+      ]
+    },
+    {
+      "name": "代理运动品牌不等于拥有品牌零售能力",
+      "text": "奥康一边收缩传统门店，一边面对斯凯奇代理门店清零、彪马代理门店减少。报道将其困难与品牌方减少批发、回收库存和控制折扣联系起来。代理业务依赖自己的销售与服务，也受上游货品和渠道政策影响；把品牌引入门店，与建立自己的商品企划和用户体验能力并非同一件事。",
+      "subcategory": "domestic",
+      "references": [
+        {
+          "title": "关店近800家、代理清零，昔日“中国鞋王”为何没接住彪马？",
+          "source": "天下网商",
+          "date": "2026-10-10",
+          "link": "https://mp.weixin.qq.com/s/DzNbLveWqipPW6-sKgW11Q"
+        }
+      ]
+    },
+    {
+      "name": "迪卡侬借合作卖场扩大实体触达",
+      "text": "迪卡侬计划11月在德国四家MediaMarkt门店新增店中店，延续3月慕尼黑首个合作销售区。新空间利用既有卖场，而不是全部自建独立大店，面积约1000—1600平方米。伙伴提供位置和现有客流，迪卡侬增加运动商品与现场建议，形成传统大店之外的渠道扩展方式。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "Decathlon and MediaMarktSaturn Expand Store-in-Store Partnership Across Germany",
+          "source": "Snowsports News",
+          "date": "2026-10-19",
+          "link": "https://www.snowsportsnews.com/newsrepository/2026/october/decathlon-and-mediamarktsaturn-expand-store-in-store-partnership-across-germany/"
+        }
+      ]
+    },
+    {
+      "name": "按活动场景组合运动装备与电子产品",
+      "text": "迪卡侬与MediaMarktSaturn合作把运动服饰、户外及骑行装备与可穿戴设备、运动相机等放在同一访问中。两家零售商利用互补品类，围绕健身、骑行和户外活动组织购买场景；店中店模式的价值不仅是增加货架，也在于消费者能现场理解相关装备如何一起使用。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "Decathlon and MediaMarktSaturn Expand Store-in-Store Partnership Across Germany",
+          "source": "Snowsports News",
+          "date": "2026-10-19",
+          "link": "https://www.snowsportsnews.com/newsrepository/2026/october/decathlon-and-mediamarktsaturn-expand-store-in-store-partnership-across-germany/"
+        }
+      ]
+    },
+    {
+      "name": "阿迪达斯把中国作为设计与创新来源",
+      "text": "阿迪达斯CEO在上海表示，当地不仅是销售市场，也为全球提供创意。公司约160名设计师在上海工作，并计划继续扩展实体与数字零售、加强体育合作，探索AI、材料和设计创新。中国团队的作用从承接全球产品，进一步延伸至设计输出与本地需求开发。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "Adidas CEO: Shanghai extremely important for the future",
+          "source": "上海市政府英文网站",
+          "date": "2026-10-12",
+          "link": "https://english.shanghai.gov.cn/en-IBLACShanghai2026/20261012/b423c553b6f64b44bcd89ad9a1bd8abe.html"
+        }
+      ]
+    },
+    {
+      "name": "Nike中国团队缩短本土商品开发链路",
+      "text": "耐克CEO中国行报道展示，由中国团队完成创意、设计和开发的本土源创系列，从想法到商品不到120天。球迷对正版球衣补货、复古商品的反馈也进入交流。品牌在中国的商品工作不只是销售全球款式，而是将本地穿着与运动需要带入开发。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "一趟中国行，耐克CEO看见了什么？",
+          "source": "36氪品牌",
+          "date": "2026-10-16",
+          "link": "https://www.36kr.com/p/4028351988159109"
+        }
+      ]
+    },
+    {
+      "name": "训练空间为产品提供真实使用场景",
+      "text": "Nike与上海Temporary Humans合作训练空间，把系统课程、混合训练装备与本地运动社群连接起来。消费者可以在训练任务中体验产品，品牌也在真实运动环境中交流需求。它与单次开业或明星露出不同，具体承接的是训练内容、商品使用和社群参与。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "一趟中国行，耐克CEO看见了什么？",
+          "source": "36氪品牌",
+          "date": "2026-10-16",
+          "link": "https://www.36kr.com/p/4028351988159109"
+        }
+      ]
+    },
+    {
+      "name": "lululemon将产品与运营责任重新连接",
+      "text": "lululemon宣布设立总裁兼首席产品官、首席运营官两项新职位，任命计划10月26日生效。前者整合设计、商品、鞋履、创新和材料，后者连接采购生产、规划配货与履约；品牌和技术岗位继续招聘。组织调整围绕商品从设计走向市场的完整链路展开。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "lululemon Announces New Leadership Team Structure to Drive Next Chapter of Growth",
+          "source": "lululemon／SEC",
+          "date": "2026-10-07",
+          "link": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000131/lulu-20260930xex991.htm"
+        }
+      ]
+    },
+    {
+      "name": "Aritzia用多场景衣橱与线上线下共同扩张",
+      "text": "Aritzia第二季度收入增长44%、可比销售增长34.5%。其多个品牌覆盖通勤、简约、运动休闲和年轻日常场景；数字收入增长快于实体零售，移动App和新增、重定位门店共同承接需求。增长来自更广的商品使用场景与渠道能力，而非只靠一种爆款生活方式。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "新黑马狂奔，Aritzia凭什么收入大涨44%？",
+          "source": "时尚商业Daily／LadyMax",
+          "date": "2026-10-14",
+          "link": "https://mp.weixin.qq.com/s/T7nSwz4lqn7s04GrjdNFJg"
+        }
+      ]
+    },
+    {
+      "name": "库存补充与正常价销售共同影响利润",
+      "text": "Aritzia期末库存增长35.8%，低于同期收入增速，管理层将部分增加解释为补足此前偏低库存。剔除关税退款后的调整毛利率仍改善，公司提到初始加价倍率和折扣减少；净利润中又包含一次性退款。库存规模、正常价售出能力和一次性因素需要分别理解。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "新黑马狂奔，Aritzia凭什么收入大涨44%？",
+          "source": "时尚商业Daily／LadyMax",
+          "date": "2026-10-14",
+          "link": "https://mp.weixin.qq.com/s/T7nSwz4lqn7s04GrjdNFJg"
+        }
+      ]
+    },
+    {
+      "name": "历史产品通过新材料和新搭配触达年轻人",
+      "text": "Modern Retail采访Crocs、Vera Bradley及Express，记录品牌重新使用历史轮廓、花型和款式，并调整面料或搭配方式。年轻消费者既寻找熟悉年代的审美，也需要差异化表达。案例中的复刻不是原样复制旧货，而是在品牌原有产品资产上寻找当下的穿着理由。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "Why Crocs, Vera Bradley and other brands are diving into their archives for fashion inspiration",
+          "source": "Modern Retail",
+          "date": "2026-10-15",
+          "link": "https://www.modernretail.co/operations/why-crocs-vera-bradley-and-other-brands-are-diving-into-their-archives-for-fashion-inspiration/"
+        }
+      ]
+    },
+    {
+      "name": "门店系统让导购能够连续了解顾客",
+      "text": "Shopify以Tuckernuck和Tecovas说明，服装鞋履门店把空间体验与系统信息一起使用：导购可查看历史购买和尺码，店内移动收银减少固定柜台等待，后仓取货工具帮助查询款式与库存。体验的变化既发生在装修和服务方式，也发生在员工能调用什么信息、完成哪些动作。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "In the age of convenience, experience is the brand",
+          "source": "Shopify",
+          "date": "2026-10-20",
+          "link": "https://www.shopify.com/news/experience-is-the-brand"
+        }
+      ]
+    },
+    {
+      "name": "HYROX扩张需要同步增加服务治理能力",
+      "text": "HYROX上海站宣布延期，官方说明涉及场地突发安排。体育产业生态圈进一步讨论，大量首次参赛者进入后，共用器材、卫生、医疗、异常停赛及退出规则需要与规模共同升级。赛事吸引力带来报名，也把执行和沟通直接变成参与者购买体验的一部分。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "上海站延期，HYROX成长的烦恼",
+          "source": "体育产业生态圈",
+          "date": "2026-10-15",
+          "link": "https://mp.weixin.qq.com/s/htEAZlawl1kXiYoOZRVY_g"
+        }
+      ]
+    },
+    {
+      "name": "渠道商同时成为品牌股东",
+      "text": "Frasers旗下Sports Direct拥有实体零售网络，集团又建立安德玛和彪马相关权益头寸。懒熊体育将其放在提升门店和品牌呈现的转型中：渠道商不只采购商品，也可能通过资本参与品牌利益。报道中的部分权益包含期权安排，不能直接等同于全部股票持有或控制权。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "华尔街口中“不诚实”的人，正在大笔抄底彪马和安德玛",
+          "source": "懒熊体育",
+          "date": "2026-10-17",
+          "link": "https://mp.weixin.qq.com/s/EbYIJ2a9sNftU_D87xmhUg"
+        }
+      ]
+    },
+    {
+      "name": "娱乐IP将观看关系延伸为运动参与",
+      "text": "SMTOWN RUN CLUB把10公里跑、艺人领跑和完赛后的特别舞台组合为付费体验，文章称超过2万人报名。热身、分组、音乐和赛后互动贯穿活动，让粉丝从观看者成为参与者。它展示娱乐内容吸引运动新人群的方式，长期运动习惯则不由单次报名热度代表。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "跟爱豆一起跑10公里，韩娱已经进化到赛级生活方式",
+          "source": "20社",
+          "date": "2026-10-18",
+          "link": "https://mp.weixin.qq.com/s/ldhHzNbO_kX-PLfdFfPAUA"
+        }
+      ]
     }
   ],
   "retail_innovation": [
     {
-      "name": "沃尔玛让门店、第三方供给与仓储履约协同创造增长",
-      "title": "沃尔玛让门店、第三方供给与仓储履约协同创造增长",
-      "company": "Walmart、Walmart Marketplace、WFS",
-      "summary_points": [
-        "窄播以此前季度财报和9月管理层访谈解释沃尔玛增长，引用全球电商增长23%、美国Marketplace销售增长超过50%、门店履约配送增长40%。文章本周发布，基础数据属于此前经营期，重点是同一套门店、商品和供应链如何支持更多交易及服务。",
-        "管理层称约80%的电商配送经过门店，约70%的订单当天或更快送达；门店发出的配送订单中，接近40%可在数小时甚至数分钟内完成。门店因此同时承担附近库存、拣货与交付，单看线下销售难以完整衡量网络价值。",
-        "自营和第三方平台扩大商品选择，WFS为卖家提供入仓、拣货、包装、配送与退货，文中称其承接约一半Marketplace交易量。门店服务本地库存，履约中心承接更多未上实体货架的第三方商品，让供给扩充获得配送支撑。",
-        "低价依靠采购、库存周转和自动化控制成本，再投入价格与体验。Bettergoods补充大众价位的差异化商品，Nespresso、Medicube等品牌引入品类新客，体现价格、便利和货盘层次共同扩大购买范围。",
-        "作者进一步认为，消费者需求可能在平台之外形成，产品认知、本地库存、交付和售后共同影响最终成交及复购。平台能够提供更多标准化工具，但品牌持续开发商品、管理库存与服务消费者的能力，仍决定这些资源如何转化为具体订单。"
-      ],
-      "link": "https://mp.weixin.qq.com/s/c5yF14Jb_tYkZ4O_KNqmMQ",
-      "source": "窄播",
-      "source_type": "wechat",
-      "date": "2026-10-19",
-      "category": "retail",
-      "origin_type": "manual",
-      "keywords": [
-        "门店履约",
-        "第三方供给",
-        "仓储配送",
-        "会员",
-        "全渠道经营"
-      ],
-      "quality_score": 93,
-      "quality_reason": "门店配送、WFS与货盘结构信息充分；以历史财报和访谈作本周分析，非本周新增结果。",
-      "event_key": "Walmart|门店配送WFS及第三方供给经营分析|2026-10-19"
+      "name": "加盟输出的是完整经营体系",
+      "text": "超盒算NB在直营模型基础上开放加盟，总部负责商品、供应链、数字系统及运营标准，合作方提供铺位、资金和本地团队。报道强调扩张仍受中心仓服务半径约束：可复制的不是单一招牌，而是货盘、补货、价格和门店作业能否一起落地。",
+      "subcategory": "domestic",
+      "references": [
+        {
+          "title": "盒马超盒算NB发力加盟，释放了什么信号？",
+          "source": "联商网",
+          "date": "2026-10-14",
+          "link": "https://mp.weixin.qq.com/s/AB3tbNuNMjFE0d6mCHq88w"
+        }
+      ]
     },
     {
-      "name": "超盒算NB输出商品与运营体系，供应链半径约束加盟扩张",
-      "title": "超盒算NB输出商品与运营体系，供应链半径约束加盟扩张",
-      "company": "盒马、超盒算NB",
-      "summary_points": [
-        "超盒算NB在直营体系形成后逐步开放加盟，由上海、杭州、嘉兴、湖州扩展至长三角更多城市，仍以直营拓店为主。加盟补充本地资金、铺位与经营资源，总部先验证商品和作业方式，再向合作门店输出。",
-        "总部提供商品、供应链、数智化系统和运营标准，并管控价格及促销，加盟商负责投资、铺位、团队与当地经营。文章强调加盟城市需处于中心仓约300公里供应链半径内，扩张受到仓配能力和单店模型约束。",
-        "文中披露约1500个SKU，自有品牌与生鲜占比均超过60%；产地仓前置质检、分级后，蔬菜损耗率降至3%以下、物流成本降低约15%。这些是报道介绍的体系数据，并非对每家加盟店经营结果的统一保证。",
-        "600平方米标准店的品牌使用费、保证金、装修和设备等前期投入合计约265万元，不含房租与人员。作者认为硬折扣低价依赖周转、损耗和运营效率，跨区域复制后能否守住品控及执行标准，仍是加盟扩张的核心考验。"
-      ],
-      "link": "https://mp.weixin.qq.com/s/AB3tbNuNMjFE0d6mCHq88w",
-      "source": "联商网",
-      "source_type": "wechat",
-      "date": "2026-10-14",
-      "category": "retail",
-      "origin_type": "manual",
-      "keywords": [
-        "硬折扣",
-        "加盟管控",
-        "供应链半径",
-        "损耗管理",
-        "标准化运营"
-      ],
-      "quality_score": 91,
-      "quality_reason": "总部与加盟分工、仓配半径、SKU及损耗有具体信息；数据来自报道，非加盟盈利保证。",
-      "event_key": "超盒算NB|供应链约束下的加盟体系输出|2026-10-14"
+      "name": "硬折扣低价依赖周转与损耗管理",
+      "text": "超盒算NB通过精简SKU、自有品牌和生鲜配置组织商品，产地仓承担质检与分级。低价需要采购、仓配和店内执行共同支撑；加盟增加门店数量之后，这些标准仍须保持一致。报道以仓储与门店分工解释成本结构，比单看开店速度更接近折扣零售的经营基础。",
+      "subcategory": "domestic",
+      "references": [
+        {
+          "title": "盒马超盒算NB发力加盟，释放了什么信号？",
+          "source": "联商网",
+          "date": "2026-10-14",
+          "link": "https://mp.weixin.qq.com/s/AB3tbNuNMjFE0d6mCHq88w"
+        }
+      ]
     },
     {
-      "name": "优衣库减少低效门店，把个店反馈接入生产与库存经营",
-      "title": "优衣库减少低效门店，把个店反馈接入生产与库存经营",
-      "company": "优衣库、迅销集团",
-      "summary_points": [
-        "报道据10月8日年报分析优衣库业务：2026财年大中华区营收增长11.3%至7240亿日元，经营溢利增长26.4%至1171亿日元，利润率16.2%；同期大中华区门店净减50家、中国大陆净减51家，盈利改善并非靠单纯增加店数实现。",
-        "关闭低效店与开新店、翻新旧店同时进行，城市和全球旗舰店继续进入一线及省会核心位置。这是门店组合和单店效益的调整，不意味着全面退出，也尚不足以证明全部新旗舰店均已成功。",
-        "个店经营让店长与顾客反馈进入商品及销售计划。中国市场自2025年春夏起按销售趋势更频繁地调整生产和库存，变化主要发生在商品、人力和计划等后台环节，日常陈列及品牌体验仍保持统一。",
-        "难点是统一品牌规范与当地经营权限之间的平衡，以及人才培养和激励能否支持店长主动优化。报道提醒，大陆增长有上年低基数因素，单年业绩不足以证明结构性转型完成；按期末店数粗算的单店营收也不等于可比同店指标。"
-      ],
-      "link": "https://www.jiemian.com/article/15175818.html",
-      "source": "界面新闻",
-      "source_type": "other",
-      "date": "2026-10-10",
-      "category": "retail",
-      "origin_type": "manual",
-      "keywords": [
-        "个店经营",
-        "库存调整",
-        "门店优化",
-        "生产计划",
-        "单店效率"
-      ],
-      "quality_score": 92,
-      "quality_reason": "财报、店数与生产库存机制共同支撑分析；报告期与发布日期不同，低基数和同店口径需区分。",
-      "event_key": "Uniqlo|2026财年大中华区个店经营与库存改革|2026-08-31"
+      "name": "生鲜供应链延伸至短保零食",
+      "text": "叮咚买菜上线新鲜零食专区，首批100余款，覆盖果干、烘焙和熟食等，并以原料、调味、工艺、配料表和保质期建立分级。新鲜零食的界定包括较短保质期、轻加工等要求，扩品类同时也把补货频率、周转和品质管理带入零食经营。",
+      "subcategory": "domestic",
+      "references": [
+        {
+          "title": "叮咚买菜入局新鲜零食赛道，首批上线超100款商品",
+          "source": "北京商报",
+          "date": "2026-10-15",
+          "link": "https://www.bbtnews.com.cn/2026/1015/608000.shtml"
+        },
+        {
+          "title": "新鲜零食，同质化血拼",
+          "source": "斑马消费",
+          "date": "2026-10-12",
+          "link": "https://mp.weixin.qq.com/s/3eC407GQQgGioDFjR5H7Tw"
+        }
+      ]
     },
     {
-      "name": "山姆、盒马用消费反馈定义商品，零售商深入上游开发",
-      "title": "山姆、盒马用消费反馈定义商品，零售商深入上游开发",
-      "company": "山姆、盒马、沃尔玛",
-      "summary_points": [
-        "文章以沃尔玛新店型、沃集鲜时令商品以及山姆、盒马爆款，对照传统供应商推新困难，讨论零售商如何从挑选品牌现成商品，进一步参与产品定义，改变渠道与上游的分工。",
-        "山姆苹果干围绕品质、外观和简洁配料满足需求，盒马HPP红心苹果汁通过加工与复配调整原料风味。案例表明买手能把消费者反馈转化为原料、口味和工艺要求，商品创新不只发生在品牌研发部门。",
-        "直采、集中采购和零售商找工厂生产，缩短中间层级；会员复购、日常交易和试吃反馈又让渠道更接近需求。盒马买手制、山姆会员需求定制、沃尔玛按节气开发，体现零售端数据进入选品与生产安排。",
-        "作者认为，品牌毛利压力和上架周期缩短可能挤压长期研发，工厂更多承接渠道订单；零售商则承担新品试错、加单或下架责任。创新话语权转移是文章判断，并非全部品牌失去创新能力，也不代表每个自有品牌都能盈利。"
-      ],
-      "link": "https://mp.weixin.qq.com/s/kGMkFk2TmqiGNzqzxLNSkg",
-      "source": "新经销",
-      "source_type": "wechat",
-      "date": "2026-10-16",
-      "category": "retail",
-      "origin_type": "manual",
-      "keywords": [
-        "自有品牌",
-        "反向定制",
-        "会员反馈",
-        "买手制",
-        "商品开发"
-      ],
-      "quality_score": 88,
-      "quality_reason": "买手、会员和商品案例解释产品定义方式；行业变化为作者判断，缺少各案例统一经营对照。",
-      "event_key": "山姆盒马沃尔玛|渠道参与产品定义与自有品牌开发|2026-10-16"
+      "name": "短保商品将扩张压力提前到供应与库存",
+      "text": "斑马消费对新鲜零食商家的比较，涉及商品同质化、直营或加盟选择，以及短保条件下的库存与损耗。相较长保零食，门店需要更准确地判断本地销量、及时补货和处理临期；鲜度可以形成购买理由，也要求后台供应能力与销售节奏一致。",
+      "subcategory": "domestic",
+      "references": [
+        {
+          "title": "新鲜零食，同质化血拼",
+          "source": "斑马消费",
+          "date": "2026-10-12",
+          "link": "https://mp.weixin.qq.com/s/3eC407GQQgGioDFjR5H7Tw"
+        }
+      ]
     },
     {
-      "name": "Target引入TikTok热销家居品牌，以货盘与陈列承接新客",
-      "title": "Target引入TikTok热销家居品牌，以货盘与陈列承接新客",
-      "company": "Target、Mellow Sleep",
-      "summary_points": [
-        "Target引入在TikTok积累销量的年轻家居品牌，以调整承压的家居货盘。Mellow Sleep计划10月18日起进入550家Target门店，年底扩至全美，是其首次进入实体零售；首批五款商品价格从39.99至129.99美元。这是10月16日报道披露的部署计划。",
-        "Mellow Sleep此前通过TikTok Shop与自有网站经营，文章称首年收入1.3亿美元，第二年超过3亿美元则是品牌预计。进入Target可覆盖习惯线下购买的人群，零售商也借助已有消费者认知，为家居品类引入新供给。",
-        "品牌投入定制端架，用淡紫色、云朵与标识在中性床品货架中突出呈现；Target同时恢复Simply Shabby Chic等品牌，并对更新后的自有品牌床品平均降价15%，外部品牌引入、价格与自有货盘调整并行。",
-        "受访者指出，消费者可能在到店前通过社交媒体或AI寻找风格和灵感，线下陈列需要承接这些认知。线上热销能否形成持续的线下收入尚待验证，首批铺货规模与品牌历史收入还不能作为Target已实现的销售增量。"
-      ],
-      "link": "https://www.modernretail.co/operations/target-bets-on-buzzy-tiktok-brands-like-mellow-sleep-to-revamp-its-home-category/",
-      "source": "Modern Retail",
-      "source_type": "other",
-      "date": "2026-10-16",
-      "category": "retail",
-      "origin_type": "manual",
-      "keywords": [
-        "家居货盘",
-        "社交电商",
-        "线下首发",
-        "门店陈列",
-        "渠道扩展"
-      ],
-      "quality_score": 88,
-      "quality_reason": "品牌、门店数、价位及陈列动作明确；部署为报道时计划，尚无线下增量销售验证。",
-      "event_key": "Target及MellowSleep|家居货盘门店首发计划|2026-10-16"
+      "name": "永辉把健康需求落实到原料和锁鲜标准",
+      "text": "永辉农场上架8款玉米，产地覆盖多地种植基地，并统一采摘后封装和仓配要求。报道提到低温时段采摘后4小时内真空封装、工厂至全国物流仓7天内配送，部分产品原料取得低GI认证。商品差异由原料、认证、工艺和交付共同表达，而不是只增加健康宣传。",
+      "subcategory": "domestic",
+      "references": [
+        {
+          "title": "迎合控糖需求，永辉上架8款玉米",
+          "source": "北京商报／东方财富转载",
+          "date": "2026-10-15",
+          "link": "https://finance.eastmoney.com/a/202610153896731183.html"
+        }
+      ]
+    },
+    {
+      "name": "买手将消费反馈转化为商品定义",
+      "text": "新经销以盒马HPP红心苹果汁等案例讨论零售商深入上游：买手把原料、风味和消费者反馈整理为产品要求，再与供应方协同开发。零售商不仅决定现成商品是否上架，也承担新品测试、补单或下架；作者据此观察商品创新的部分工作向渠道端延伸。",
+      "subcategory": "domestic",
+      "references": [
+        {
+          "title": "山姆、盒马等爆款频出，零售商开始掌握产品创新的话语权",
+          "source": "新经销",
+          "date": "2026-10-16",
+          "link": "https://mp.weixin.qq.com/s/kGMkFk2TmqiGNzqzxLNSkg"
+        }
+      ]
+    },
+    {
+      "name": "书店以复合消费和空间体验解释收入结构",
+      "text": "有关西西弗的分析将图书、咖啡和文创放在同一空间中观察：读者的停留、选书、饮品和附带购买，不再是彼此独立的访问。文章提供的是复合书店经营模式的解释，可帮助理解商品组合与体验如何相互支持，而不是用单一图书销量概括门店收入。",
+      "subcategory": "domestic",
+      "references": [
+        {
+          "title": "西西弗书店是怎么赚钱的？",
+          "source": "寻空的营销启示录",
+          "date": "2026-10-11",
+          "link": "https://mp.weixin.qq.com/s/f5rz4ocFxwjmedMR9iD13w"
+        }
+      ]
+    },
+    {
+      "name": "连锁开店流程减少重复提交信息",
+      "text": "广州日报以盒马等连锁企业的办事场景介绍线上快办，通过复用企业信息、汇集办理事项，减少不同门店重复填报和往返。对持续拓店的企业，门店筹备不仅包括选址、装修和备货，证照与跨部门办理的组织方式也影响开业准备过程。",
+      "subcategory": "domestic",
+      "references": [
+        {
+          "title": "跟着企业去办事⑨｜连锁企业开店办事一键快办",
+          "source": "广州日报大洋网",
+          "date": "2026-10-15",
+          "link": "https://news.dayoo.com/guangzhou/202610/15/139995_55012943.htm"
+        }
+      ]
+    },
+    {
+      "name": "沃尔玛门店同时承担附近库存和交付",
+      "text": "窄播整理的经营资料显示，沃尔玛把大量电商配送经由门店完成，使实体网络兼具销售、拣货与配送作用。门店库存离消费者更近，能够承接当日及更快送达；衡量门店价值因而不能只看现场收银，还要看它支撑了多少线上订单和服务。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "低价、AI与平台之外：重新理解沃尔玛美国的增长",
+          "source": "窄播",
+          "date": "2026-10-19",
+          "link": "https://mp.weixin.qq.com/s/c5yF14Jb_tYkZ4O_KNqmMQ"
+        }
+      ]
+    },
+    {
+      "name": "第三方供给通过履约服务扩大选择",
+      "text": "沃尔玛Marketplace引入更多商品，WFS为卖家提供入仓、拣选、包装、配送及退货。门店服务附近可用库存，履约中心承接更多未进入实体货架的商品。采购、库存周转和自动化支持低价，第三方供给则补充消费者可以购买的品类，两者共同构成增长的经营基础。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "低价、AI与平台之外：重新理解沃尔玛美国的增长",
+          "source": "窄播",
+          "date": "2026-10-19",
+          "link": "https://mp.weixin.qq.com/s/c5yF14Jb_tYkZ4O_KNqmMQ"
+        }
+      ]
+    },
+    {
+      "name": "会员权益跨越大众零售与仓储业态",
+      "text": "沃尔玛在假日前推出120美元的联合会员套餐，组合Walmart与Sam’s Club相关权益。它把不同购物场景放入同一会员价值表达：消费者不只比较某个单品价格，也比较配送、仓储店购物及会员服务是否适合自己的日常使用。该安排属于新推出的套餐。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "Walmart launches $120 membership bundle with Sam’s Club ahead of holidays",
+          "source": "Reuters",
+          "date": "2026-10-20",
+          "link": "https://www.reuters.com/business/walmart-launches-120-membership-bundle-with-sams-club-ahead-holidays-2026-10-20/"
+        }
+      ]
+    },
+    {
+      "name": "Costco销售需要拆开价格、地区和数字渠道",
+      "text": "Costco九月销售公告披露，净销售额同比增长13%，可比销售增长11.4%，剔除油价和汇率后为7.6%；数字发起的销售增长19%。后一口径包括由数字设备发起、通过仓库店、配送中心或旅游业务完成的销售，不只是传统网站订单。假日时间移动也影响当月比较。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "Costco Wholesale Corporation Reports September Sales Results",
+          "source": "Costco投资者关系",
+          "date": "2026-10-07",
+          "link": "https://investor.costco.com/news/news-details/2026/Costco-Wholesale-Corporation-Reports-September-Sales-Results/default.aspx"
+        }
+      ]
+    },
+    {
+      "name": "优衣库减少低效店，同时改善店铺组合",
+      "text": "界面据迅销年报分析，优衣库大中华区门店数量减少的同时，收入与经营利润增长。关闭低效店、新开和翻新店铺并行，核心商圈继续承担品牌展示。门店总数与经营结果可以方向不同，关键是保留下来的店、更新后的店和线上业务如何共同服务当地需求。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "优衣库中国店少了，却赚更多了",
+          "source": "界面新闻",
+          "date": "2026-10-10",
+          "link": "https://www.jiemian.com/article/15175818.html"
+        }
+      ]
+    },
+    {
+      "name": "个店反馈回到生产与库存计划",
+      "text": "优衣库在中国推进个店经营，将店长与消费者反馈带回商品和销售计划，并按销售趋势更频繁地调整生产与库存。后台的计划、配货和人员安排逐步提高当地适配度，前台仍保持统一品牌体验。零售调整因此不只发生在门店装潢，也进入商品流转的日常决策。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "优衣库中国店少了，却赚更多了",
+          "source": "界面新闻",
+          "date": "2026-10-10",
+          "link": "https://www.jiemian.com/article/15175818.html"
+        }
+      ]
+    },
+    {
+      "name": "Target把社交平台热度引入家居货架",
+      "text": "Target引入Mellow Sleep等有线上消费基础的家居品牌。10月16日报道的计划是首批进入550家门店，再继续扩展，并用定制端架突出品牌；同时调整自有床品价格和其他品牌组合。它用既有消费者认知寻找新供给，再通过陈列、价格和实体触达承接购买。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "Target bets on buzzy TikTok brands like Mellow Sleep to revamp its home category",
+          "source": "Modern Retail",
+          "date": "2026-10-16",
+          "link": "https://www.modernretail.co/operations/target-bets-on-buzzy-tiktok-brands-like-mellow-sleep-to-revamp-its-home-category/"
+        }
+      ]
+    },
+    {
+      "name": "Albertsons线上增长伴随配送与损耗压力",
+      "text": "Albertsons第二季度数字销售增长11%，同店销售下降0.8%。财报将毛利压力的部分原因指向配送处理成本和损耗，说明增加线上订单与改善整体盈利并不是同一项任务。公司启动全面业务审查，寻找组织简化和成本改善空间，再投入消费者价值。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "Albertsons Companies, Inc. Reports Second Quarter Fiscal 2026 Results",
+          "source": "Albertsons／SEC",
+          "date": "2026-10-13",
+          "link": "https://www.sec.gov/Archives/edgar/data/1646972/000164697226000059/aciq226earningsrelease.htm"
+        },
+        {
+          "title": "Big-Box Briefing: What’s fueling Albertsons’ identity crisis as it accelerates turnaround efforts",
+          "source": "Modern Retail",
+          "date": "2026-10-15",
+          "link": "https://www.modernretail.co/operations/big-box-briefing-whats-fueling-albertsons-identity-crisis-as-it-accelerates-turnaround-efforts/"
+        }
+      ]
+    },
+    {
+      "name": "Kroger将采购节约与顾客价值放进同一计划",
+      "text": "Kroger最新多年计划将鲜食、自有品牌和Boost会员作为重点，同时追求电商盈利增长。运营端通过更直接采购、购买纪律、流程简化和技术应用形成节约，再支持价格与增长投入。其2029年同店及2027—2029年利润增长数字属于目标，当前可观察的是资源配置和经营方向。",
+      "subcategory": "international",
+      "references": [
+        {
+          "title": "Kroger Outlines Plan to Build America's Favorite Grocer and Introduces New Long-Term Financial Targets",
+          "source": "Kroger投资者关系",
+          "date": "2026-10-20",
+          "link": "https://ir.kroger.com/news/news-details/2026/Kroger-Outlines-Plan-to-Build-Americas-Favorite-Grocer-and-Introduces-New-Long-Term-Financial-Targets/default.aspx"
+        }
+      ]
     }
   ],
   "weekly_overview": {
+    "summary": "消费支出保持增长，但渠道、品类和人群表现分化。平台把发现需求、商品匹配与交付服务进一步连接；AI进入购物和经营流程，品牌与零售商则通过商品、库存、门店和组织能力承接需求。",
     "macro_analysis": [
       {
-        "title": "消费端：假日消费活跃，但不同场景的增速存在差异",
-        "text": "国家税务总局数据显示，国庆假期服务消费相关行业日均销售收入同比增长19.5%；商务部监测的78个步行街及商圈客流、营业额分别增长2.5%和4.7%。这些口径覆盖的范围不同，不能直接比较强弱，但共同呈现消费活动的恢复与场景差异，尚不足以推断所有商品品类或全年需求同步增长。",
+        "title": "收入增长与消费释放之间仍有差异",
+        "text": "国家统计局披露，前三季度居民人均可支配收入名义增长5.3%，人均消费支出名义增长3.6%；同期社会消费品零售总额增长1.1%。居民收支调查包含更广的消费支出，社零主要覆盖实物商品和餐饮，不能把两者当作同一口径。综合来看，收入与支出均增加，但需求释放并不平均：衣着、生活用品及服务、教育文化娱乐等支出各有变化，企业需要面对的是具体人群如何分配预算，而不只是总体购买力是否增长。",
         "source_ids": [
-          "macro1",
-          "macro2"
+          "overview_72",
+          "overview_46"
         ]
       },
       {
-        "title": "政策端：电商发展进一步强调品质、服务与供给",
-        "text": "商务部10月15日介绍，七部门推出品质电商“五优”行动，从平台、商家、消费者、丝路电商和规范标准五个维度部署15项举措。其导向是让优质商品与服务更容易被发现，并让品质投入获得市场回报。这为理解平台竞争提供了政策背景；行动部署本身尚不代表商家利润或消费者体验已经改善。",
+        "title": "线上与线下的分化发生在业态和商品结构中",
+        "text": "前三季度网上商品零售额增长3.8%，其中吃类增长15.8%、穿类增长3.4%、用类增长0.8%；限额以上单位中，便利店、超市零售额增长，品牌专卖店则下降。这些数据说明“线上增长”或“线下承压”都不足以概括全部市场：高频补货、不同商品和不同店型处于不同节奏。数字渠道的便利性与实体门店的体验、附近供给可以并存，增长更取决于业态承担什么任务、出售什么商品。",
         "source_ids": [
-          "macro4"
+          "overview_46"
+        ]
+      },
+      {
+        "title": "政策将品质经营与跨场景消费连接起来",
+        "text": "商务部对品质电商“五优”行动的解读，涉及平台规则、商家运营、消费场景、出海和标准建设，导向从单纯扩张交易规模进一步转向商品与服务质量。10月公开的“跟着电影去运动”通知，则列出票根联动、积分兑换、观影健身套餐及户外线路等方式。两类材料分别作用于经营环境和需求场景：前者强调交易基础，后者鼓励文化内容与实际参与衔接，政策安排与已经形成的消费结果需要分开理解。",
+        "source_ids": [
+          "overview_47",
+          "overview_75"
         ]
       }
     ],
     "industry_trends": [
       {
-        "title": "品类格局：AI购物的潜在影响并非在各类零售中平均分布",
-        "text": "Numerator于10月14日发布AI消费指数，将AI使用态度与实际家庭购买记录结合。其美国数据发现，AI参与度较高的人群，在电子产品、服装鞋履配饰及健康美容品类支出高于平均；电商和价值型零售商的相关客群也更集中。研究据此判断，这些领域更可能较早受到AI购物影响。但它呈现的是客群与消费结构的关联，不能将较高支出解释成AI已经创造的收入增量；相关问卷来自7月。",
+        "title": "户外参与扩大，产业需要承接多层次运动需求",
+        "text": "新发布的户外产业报告材料披露，我国户外运动参与人数超过5亿。参与基础扩大并不意味着每个商品或品牌同步增长：专业训练、轻量入门、日常穿着和旅行体验对应不同产品与渠道。与统计局的商品销售数据结合，能够看出“参与运动”与“购买某类装备”是不同层次的需求。行业变化不宜只用一次赛事或一轮热销概括，更需要把参与场景、使用频次和消费选择放在一起理解。",
         "source_ids": [
-          "industry_ai_index"
+          "overview_48",
+          "overview_46"
         ]
       },
       {
-        "title": "渠道模式：购物中心的吸引力与跨品类行程仍有增长空间",
-        "text": "JLL于10月6日发布的美国假日购物调研显示，计划到封闭式购物中心购物的人占55.3%，上年为49.9%；计划使用线上配送的比例仍有80%。研究同时发现，较高预算与计划访问更多门店、更多品类相关，停留时间与支出的关系则在约75分钟后趋平。由此可见，线上便利与多业态线下体验可以并存；这些是购物计划及相关性，尚不能证明增加停留或门店数量必然提高销售。",
+        "title": "AI购物影响先体现在特定客群和品类",
+        "text": "Numerator的AI消费指数把美国消费者的AI态度与家庭购买记录结合，发现AI参与度较高的家庭在服装鞋履、健康美容和电子产品上支出更集中。它提供的是人群与品类之间的关联，说明AI购物的影响可能先出现在需要比较、解释或寻找适配方案的购买中。德勤调查又显示，接受AI帮助完成部分购物任务的人，明显多于愿意授权其完成购买的人，因此发现商品、协助决策和执行交易仍应分别观察。",
         "source_ids": [
-          "external_jll"
+          "overview_52",
+          "overview_50"
+        ]
+      },
+      {
+        "title": "实体渠道的角色继续超出完成付款",
+        "text": "JLL于10月6日发布的美国假日购物调研中，计划到封闭式购物中心的人占55.3%，高于上一年，同时线上配送仍被广泛选择；Teneo研究也把购物渠道与不同收入人群的预算选择联系起来。这些资料支持一种并存关系：线上负责便捷寻找与下单，实体空间继续承接比较、体验、即时获得和共同出行。门店吸引力来自能提供什么完整体验，而不只是把线上商品复制到货架；上述材料反映的是美国季前计划与研究观察。",
+        "source_ids": [
+          "overview_51",
+          "overview_74"
         ]
       }
     ],
     "consumer_insights": [
       {
-        "title": "预算选择：节日总预算增加，不等于礼品需求同比例扩大",
-        "text": "同一份JLL美国调研中，消费者计划假日预算同比增加9.7%，礼品预算只增3.1%；食品与装饰、娱乐与外出用餐分别增加16.0%和17.3%。同时，打算减少送礼对象的人由24.9%升至28.9%。这说明受访者仍在为节日分配支出，却更有选择地决定钱花在哪里。预算增加与缩减礼单可以同时发生，不能仅凭总额认定所有商品需求改善；这仍是季前意愿，并非实际消费结果。",
+        "title": "消费者在价格之外重新比较质量和实用性",
+        "text": "DT商业观察从“男装女穿”现象分析消费者对面料、口袋、版型、耐穿和真实商品表达的重视。文章同时讨论女装更快的款式变化、分散订单、库存及退货成本，说明消费者觉得“不值”，未必只是标签价格过高，也可能是同价位得到的品质和确定性不足。这类选择提示，审美需求仍在，但商品是否好穿、描述是否准确以及购买是否容易踩坑，正共同影响消费者如何评价性价比。",
         "source_ids": [
-          "external_jll"
+          "overview_49"
         ]
       },
       {
-        "title": "决策偏好：愿意让AI协助选购，与授权AI付款存在明显距离",
-        "text": "德勤10月15日发布的美国假日零售调研显示，39%的受访者将生成式AI作为至少一项假日购物任务的主要工具，但仅16%表示会允许其完成购买。两种回答反映不同程度的参与和授权，说明接受信息辅助不等于接受交易委托。分析上，商品比较与最终下单应分开理解，助手使用率不能直接当作代理购买率。调研于8月26日至9月10日访问4000名美国消费者，结论不能直接外推中国市场。",
+        "title": "预算更有选择地流向商品与体验",
+        "text": "NRF与Prosper的美国调查中，56%的假日购物者认为经济环境会影响支出安排；受影响人群更倾向促销、线上比价和优惠券。Teneo进一步描述不同收入与年龄人群的分化，JLL则发现总预算、礼品与餐饮体验预算的变化并不一致。综合这些不同样本，稳妥的判断不是人人减少消费，而是消费者更明确地决定在哪些地方省、哪些地方愿意多花；优惠、品质和体验需要对应具体人群及消费任务。",
         "source_ids": [
-          "external_deloitte"
+          "overview_73",
+          "overview_74",
+          "overview_51"
+        ]
+      },
+      {
+        "title": "让AI帮助选购，与让AI代替付款是两种信任",
+        "text": "德勤对4000名美国消费者的假日调研显示，39%会将生成式AI作为至少一项购物任务的主要工具，16%表示会允许其完成购买。前者包括信息整理和比较，后者涉及账户、金额和最终选择，信任要求更高。结合Numerator的品类差异，AI购物更适合被理解为逐步进入消费流程：用户可以先让助手解释和缩小范围，再自行确认商品与付款，而不是一次性把整段购买关系交出去。",
+        "source_ids": [
+          "overview_50",
+          "overview_52"
         ]
       }
     ],
     "section_overviews": {
-      "platform_intelligence": "平台正把增长细化为潜在需求识别、商品与人群匹配，以及内容兴趣向交易的承接。天猫和阿里妈妈探索购买品类与潜客空间，小红书按经营场域配置补贴，京东则把配送与售后延伸至具体作业。案例已有交易或服务进展，但长期复购及净增利润尚未充分披露。",
-      "ai_technology": "AI购物从推荐问答进入视觉选购、购物车与渠道订单追踪，商家同时用工具缩短商品验证和经营复盘流程。Google、沃尔玛与品牌的做法呈现不同交易入口，亚马逊和Shopify则体现开放边界的分化。已披露的订单及转化比较，仍需区分统计口径与因果效果。",
-      "sports_outdoor": "品牌以多场景货盘、数字渠道和本地商品开发承接需求，参与式活动也在拓宽运动人群。Aritzia与耐克呈现不同增长路径，HYROX则暴露规模与服务治理的磨合；Frasers的股权布局进一步改变渠道和品牌关系。各案例的收入、活动热度与资本动作仍处于不同验证阶段。",
-      "retail_innovation": "门店正在同时承担履约、需求反馈与商品试错，沃尔玛、优衣库和山姆等分别把这些能力接入配送、库存与上游开发。超盒算NB强调供应链约束下的复制，Target尝试承接线上热门品牌。渠道数量之外，品控、周转与当地动销共同影响扩张能否转成有效增长。"
+      "platform_intelligence": "六大生态分别从发现需求、承接流量和交付服务寻找增量。阿里连接商品、人群与跨境经营，京东把门店作业、渠道货盘及企业供应链细化为服务；字节用多端触达和商家工具承接大促，腾讯扩展交易与持续投放。美团将即时信息与附近供给接入旅行和本地决策，小红书则把内容、商家分层、补贴及履约规则组合起来。共同变化是平台能力进一步进入商家的日常经营，而不只停留在活动曝光。",
+      "ai_technology": "业务应用围绕商品发现、比较、购买承接和经营流程展开：购物车保存跨入口意向，助手理解单件库存或视觉需求，商家用AI验证商品、汇总经营和连接供应链。技术进展则分别改善任务成本、复杂工作、多模态检索、商品素材和机器人理解。上线产品、客户实践、研究实验与后续计划分别呈现，核心是交代能力进入了什么环节、改变了什么步骤。",
+      "sports_outdoor": "国内品牌同时推进全球股权布局、产品研究、跑者验证与门店调整，增长能力并不等同于单纯增加门店。国外品牌通过合作店型、中国设计、产品和运营组织、移动渠道及经典款更新承接需求；门店系统与训练空间又把体验接到实际商品使用。赛事与娱乐IP扩大运动参与，也使现场服务和组织能力成为购买体验的一部分。",
+      "retail_innovation": "国内零售围绕商品开发、短保供应、损耗和标准化复制推进，加盟、门店快办和复合空间反映不同经营环节的变化。国外案例连接附近库存、第三方履约、会员权益、个店反馈和货盘更新，同时提供线上增长仍有成本压力的对照。商品、库存与服务能否协同，比单独的开店数、线上增幅或一次活动热度更能解释经营结果。"
     },
     "sources": [
       {
-        "id": "macro1",
-        "title": "增值税发票数据显示：国庆假期服务消费和部分商品消费态势良好",
-        "url": "https://www.chinatax.gov.cn/chinatax/n810219/n810724/c5252805/content.html",
-        "source": "国家税务总局办公厅",
-        "date": "2026-10-08"
+        "id": "overview_72",
+        "title": "2026年前三季度居民收入和消费支出情况",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202610/t20261019_1965612.html",
+        "source": "国家统计局",
+        "date": "2026-10-19"
       },
       {
-        "id": "macro2",
-        "title": "国庆假期智能、绿色、健康商品需求旺盛",
-        "url": "https://www.cnfin.com/yw-lb/detail/20261008/4477773_1.html",
-        "source": "新华社／新华财经",
-        "date": "2026-10-08"
+        "id": "overview_46",
+        "title": "2026年1—9月份社会消费品零售总额增长1.1%",
+        "url": "https://www.stats.gov.cn/zwfwck/sjfb/202610/t20261019_1965614.html",
+        "source": "国家统计局",
+        "date": "2026-10-19"
       },
       {
-        "id": "macro4",
-        "title": "商务部召开例行新闻发布会（2026年10月15日）",
-        "url": "https://www.mofcom.gov.cn/xwfbzt/2026/swbzklxxwfbh2026n10y15r/index.html",
+        "id": "overview_47",
+        "title": "商务部电子商务司负责人解读《关于实施品质电商“五优”行动的通知》",
+        "url": "https://www.mofcom.gov.cn/xwfb/sjfzrfb/art/2026/art_1556a843ea4a4187a49caee26056b254.html",
         "source": "商务部",
-        "date": "2026-10-15"
+        "date": "2026-10-10"
       },
       {
-        "id": "industry_ai_index",
-        "title": "Numerator AI Consumer Index：健康美容、服装和电子产品更可能受到AI购物影响",
+        "id": "overview_75",
+        "title": "国家电影局、体育总局关于开展“跟着电影去运动”行动、推动电影与体育双向赋能的通知",
+        "url": "https://www.chinafilm.gov.cn/xxgk/gztz/202610/t20261015_1012502.html",
+        "source": "国家电影局／体育总局",
+        "date": "2026-10-16"
+      },
+      {
+        "id": "overview_48",
+        "title": "《中国户外运动产业发展报告》发布，我国户外运动参与人数超5亿",
+        "url": "https://bj.people.com.cn/n2/2026/1018/c14540-41725209.html",
+        "source": "人民网",
+        "date": "2026-10-18"
+      },
+      {
+        "id": "overview_52",
+        "title": "Numerator AI Consumer Index: Health, Beauty, Apparel and Electronics Prime for AI Shopping Disruption",
         "url": "https://www.globenewswire.com/news-release/2026/10/14/3380795/0/en/numerator-s-newly-launched-ai-consumer-index-finds-health-beauty-apparel-and-electronics-prime-for-ai-shopping-disruption.html",
-        "source": "Numerator官方新闻稿／GlobeNewswire",
+        "source": "Numerator／GlobeNewswire",
         "date": "2026-10-14"
       },
       {
-        "id": "external_jll",
+        "id": "overview_50",
+        "title": "2026 Deloitte Holiday Retail Survey",
+        "url": "https://www.deloitte.com/us/en/insights/industry/retail-distribution/holiday-retail-sales-consumer-survey.html",
+        "source": "Deloitte Insights",
+        "date": "2026-10-15"
+      },
+      {
+        "id": "overview_51",
         "title": "Holiday shopping 2026: Bigger budgets, fewer names",
         "url": "https://www.jll.com/en-us/insights/holiday-shopping-report",
-        "source": "JLL（仲量联行）",
+        "source": "JLL",
         "date": "2026-10-06"
       },
       {
-        "id": "external_deloitte",
-        "title": "2026 Deloitte Holiday Retail Survey",
-        "url": "https://www.deloitte.com/us/en/insights/industry/retail-distribution/holiday-retail-sales-consumer-survey.html",
-        "source": "Deloitte Insights（德勤）",
-        "date": "2026-10-15"
+        "id": "overview_74",
+        "title": "U.S. Holiday Spending Outlook – Merry & Mixed: Holiday Spending in a K-Shaped Economy",
+        "url": "https://www.teneo.com/insights/articles/us-holiday-spending-outlook-merry-mixed-holiday-spending-in-a-k-shaped-economy/",
+        "source": "Teneo",
+        "date": "2026-10-07"
+      },
+      {
+        "id": "overview_49",
+        "title": "被女装背刺，中国女人涌入男装区",
+        "url": "https://www.36kr.com/p/4025604995518336",
+        "source": "DT商业观察／36氪授权转载",
+        "date": "2026-10-14"
+      },
+      {
+        "id": "overview_73",
+        "title": "Affordability Shapes Winter Holiday Shopping, According to NRF Holiday Survey",
+        "url": "https://cdn.nrf.com/media-center/press-releases/affordability-shapes-winter-holiday-shopping-according-to-nrf-holiday-survey",
+        "source": "NRF／Prosper Insights & Analytics",
+        "date": "2026-10-20"
       }
+    ],
+    "core_signals": [
+      {
+        "section": "platform_intelligence",
+        "text": "六大生态分别从发现需求、承接流量和交付服务寻找增量。阿里连接商品、人群与跨境经营，京东把门店作业、渠道货盘及企业供应链细化为服务；字节用多端触达和商家工具承接大促，腾讯扩展交易与持续投放。美团将即时信息与附近供给接入旅行和本地决策，小红书则把内容、商家分层、补贴及履约规则组合起来。共同变化是平台能力进一步进入商家的日常经营，而不只停留在活动曝光。"
+      },
+      {
+        "section": "ai_technology",
+        "text": "业务应用围绕商品发现、比较、购买承接和经营流程展开：购物车保存跨入口意向，助手理解单件库存或视觉需求，商家用AI验证商品、汇总经营和连接供应链。技术进展则分别改善任务成本、复杂工作、多模态检索、商品素材和机器人理解。上线产品、客户实践、研究实验与后续计划分别呈现，核心是交代能力进入了什么环节、改变了什么步骤。"
+      },
+      {
+        "section": "sports_outdoor",
+        "text": "国内品牌同时推进全球股权布局、产品研究、跑者验证与门店调整，增长能力并不等同于单纯增加门店。国外品牌通过合作店型、中国设计、产品和运营组织、移动渠道及经典款更新承接需求；门店系统与训练空间又把体验接到实际商品使用。赛事与娱乐IP扩大运动参与，也使现场服务和组织能力成为购买体验的一部分。"
+      },
+      {
+        "section": "retail_innovation",
+        "text": "国内零售围绕商品开发、短保供应、损耗和标准化复制推进，加盟、门店快办和复合空间反映不同经营环节的变化。国外案例连接附近库存、第三方履约、会员权益、个店反馈和货盘更新，同时提供线上增长仍有成本压力的对照。商品、库存与服务能否协同，比单独的开店数、线上增幅或一次活动热度更能解释经营结果。"
+      }
+    ],
+    "keywords": [
+      "需求分化",
+      "品质经营",
+      "平台能力",
+      "AI购物",
+      "商品创新",
+      "库存周转",
+      "门店体验",
+      "运动参与"
     ]
   },
-  "one_thing_worth_watching": "商品被发现、订单被承接与履约被兑现，正分布在AI入口、平台和实体门店之间；本期案例共同呈现这些环节能否由商品信息、库存及服务衔接的变化。",
-  "rejected_candidates": [],
-  "source_mix": {
-    "total": 20,
-    "wechat": 14,
-    "required_wechat": 10,
-    "shortfall": 0
-  },
-  "quality_shortfalls": {},
-  "quality_status": "manual_preview",
-  "editorial_notice": ""
+  "one_thing_worth_watching": "需求发现与交易执行逐步分离后，商品信息、库存和服务能否在不同入口之间保持连续。",
+  "quality_status": "manual_draft",
+  "editorial_notice": "",
+  "rejected_candidates": []
 }
