@@ -11,10 +11,23 @@ SECTION_TITLES = {
 }
 
 ANALYSIS_GROUPS = (
+    ("macro_analysis", "宏观经济与政策"),
+    ("consumer_insights", "消费需求与支出变化"),
+    ("channel_competition", "渠道与竞争格局"),
+)
+
+LEGACY_ANALYSIS_GROUPS = (
     ("macro_analysis", "宏观环境"),
     ("industry_trends", "行业趋势"),
     ("consumer_insights", "消费者洞察"),
 )
+
+
+def analysis_groups(overview):
+    """Old saved editions keep their original headings and citation order."""
+    if "industry_trends" in overview and "channel_competition" not in overview:
+        return LEGACY_ANALYSIS_GROUPS
+    return ANALYSIS_GROUPS
 
 
 def original_url(value):
@@ -42,7 +55,7 @@ def validate_overview(data):
     if not isinstance(overview, dict):
         raise ValueError("weekly_overview 必须是对象。")
     _text(overview.get("summary", ""), "weekly_overview.summary")
-    for field in ("macro_analysis", "industry_trends", "consumer_insights", "core_signals", "keywords", "sources"):
+    for field in ("macro_analysis", "consumer_insights", "channel_competition", "industry_trends", "core_signals", "keywords", "sources"):
         if not isinstance(overview.get(field, []), list):
             raise ValueError(f"weekly_overview.{field} 必须是数组。")
     sources = {}
@@ -59,7 +72,9 @@ def validate_overview(data):
         if not original_url(source["url"]):
             raise ValueError(f"{path}.url 必须是有效的 HTTP(S) 原文链接。")
         sources[source["id"]] = source
-    for field, _ in ANALYSIS_GROUPS:
+    if "channel_competition" in overview and "industry_trends" in overview:
+        raise ValueError("新版渠道与竞争格局和旧版行业趋势不能同时填写。")
+    for field, _ in analysis_groups(overview):
         for index, paragraph in enumerate(overview.get(field, [])):
             path = f"weekly_overview.{field}[{index}]"
             if not isinstance(paragraph, dict):
@@ -94,7 +109,7 @@ def _content(data):
     validate_overview(data)
     overview = data.get("weekly_overview") or {}
     sources = {s["id"]: s for s in overview.get("sources", [])}
-    used = list(dict.fromkeys(ref for field, _ in ANALYSIS_GROUPS
+    used = list(dict.fromkeys(ref for field, _ in analysis_groups(overview)
                              for p in overview.get(field, [])
                              for ref in p.get("source_ids", [])))
     from output.digest import citation_catalog
@@ -142,7 +157,8 @@ def render_overview_html(data, email=False):
     overview, sources, numbers = _content(data)
     e = lambda value: escape(str(value), quote=True)
     blocks = ['<h2 style="margin:0 0 24px;font-size:24px;color:#172033;">本周行业观察</h2>']
-    for index, (field, label) in enumerate(ANALYSIS_GROUPS, 1):
+    groups = analysis_groups(overview)
+    for index, (field, label) in enumerate(groups, 1):
         blocks.append('<div style="margin-top:22px;">'
                       f'<h3 style="margin:0 0 18px;padding-left:10px;border-left:3px solid #3643BA;'
                       f'color:#3643BA;font-size:19px;line-height:1.5;">{index}. {label}</h3>')
@@ -163,7 +179,7 @@ def render_overview_html(data, email=False):
             blocks.append(f'<p style="margin:0 0 12px;color:#263244;font-size:15px;line-height:1.85;">'
                           f'{e(body_text)} {refs}</p>')
         blocks.append('</div>')
-        if index < len(ANALYSIS_GROUPS):
+        if index < len(groups):
             blocks.append('<div style="margin-top:24px;border-top:1px solid #edf0f5;"></div>')
     body = ''.join(blocks)
     if email:
@@ -175,7 +191,7 @@ def render_overview_html(data, email=False):
 def render_overview_text(data):
     overview, sources, numbers = _content(data)
     lines = ["本周行业观察"]
-    for index, (field, label) in enumerate(ANALYSIS_GROUPS, 1):
+    for index, (field, label) in enumerate(analysis_groups(overview), 1):
         lines.extend(["", f"{index}. {label}"])
         paragraphs = overview.get(field, [])
         if not paragraphs:
