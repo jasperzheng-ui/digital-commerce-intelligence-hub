@@ -178,7 +178,8 @@ def citation_catalog(data):
             catalog[url] = {'number': len(catalog) + 1, 'title': title, 'source': source, 'date': date}
     overview = data.get('weekly_overview') or {}
     by_id = {s['id']: s for s in overview.get('sources', [])}
-    for field in ('macro_analysis', 'industry_trends', 'consumer_insights'):
+    from output.overview import analysis_groups
+    for field, _ in analysis_groups(overview):
         for point in overview.get(field, []):
             for ref_id in point.get('source_ids', []):
                 source = by_id.get(ref_id)
