@@ -1097,7 +1097,14 @@
     ]
   },
   "one_thing_worth_watching": "AI推荐开始影响消费者能看到什么商品，门店与供应链则决定这些商品能否及时买到。商品信息、可售库存和交付服务之间的配合，将更直接地影响购买体验。",
-  "quality_status": "manual_draft",
+  "quality_status": "manually_approved",
   "editorial_notice": "",
-  "rejected_candidates": []
+  "rejected_candidates": [],
+  "source_mix": {
+    "total": 60,
+    "wechat": 18,
+    "required_wechat": 0,
+    "shortfall": 0
+  },
+  "quality_shortfalls": {}
 }
