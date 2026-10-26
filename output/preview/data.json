@@ -636,64 +636,51 @@
   "weekly_overview": {
     "macro_analysis": [
       {
-        "title": "消费端：总体温和增长，服务与升级类商品更活跃",
-        "text": "商务部公布，前三季度社会消费商品和服务零售总额增长2.6%，服务零售额增长5.0%，高于商品消费。最终消费支出对经济增长的贡献率为46.7%，比上半年提高0.7个百分点。需求在不同品类间分化：通讯器材、化妆品保持增长，智能眼镜、外骨骼助力器等新型商品也有扩张。整体消费在增长，新增预算更多流向能提供新功能、健康价值和服务体验的商品，企业面对的是具体需求的变化。",
+        "title": "消费增长保持温和，服务消费提供更多支撑",
+        "text": "商务部本周公布，前三季度社会消费商品和服务零售总额增长2.6%，其中服务零售额增长5.0%、商品零售额增长1.0%。最终消费支出对经济增长的贡献率升至46.7%。整体需求继续扩大，但增长在商品与服务之间分布不均，服务消费贡献更加突出。理解当前市场，需要同时观察实物购买和出行、文体休闲等服务需求，单看商品销售难以完整呈现消费活动的变化。",
         "source_ids": [
-          "o1"
+          "ov_consumption"
         ]
       },
       {
-        "title": "渠道端：线上持续带动消费，旅游与生活服务增长更快",
-        "text": "前三季度全国网上商品和服务零售额增长4.4%，对社会消费商品和服务零售总额增长的贡献率为45.4%。商务部监测的在线旅游、生活服务和餐饮分别增长25.7%、13.9%和12.2%，农产品网上零售额增长12.6%。线上渠道既承接商品购买，也进入出行、用餐和附近服务；实体企业通过互联网实现的商品销售占比同步提升，线上获客与线下供给、服务的连接更加紧密。",
+        "title": "政策推动电商转向品质经营，竞争规则覆盖交易全流程",
+        "text": "作为当前政策背景，商务部等七部门10月发布的品质电商“五优”行动，将平台规则、全链路品控、商家品牌培育、线上线下融合场景和出海支持纳入同一安排，并提出完善标准、整治无序非理性竞争。这一方向把经营环境的重点延伸到商品质量、交易规则和服务能力。平台、商家与服务参与者之间的关系，也被纳入长期经营体系，品质与规范将更持续地影响电商竞争。",
         "source_ids": [
-          "o2"
-        ]
-      },
-      {
-        "title": "海外环境：假日预算承受价格压力，消费者更早安排购买",
-        "text": "Retail Dive汇总的美国假日调研显示，家庭正在价格上涨与节日需要之间重新分配预算。Circana调查中，计划预算从上年的796美元降至779美元；Simon-Kucher受访者更倾向提前采购、分散支出。不同机构对整体销售增速的预测仍有差异，但共同呈现出更强的比价和预算管理。零售商因此增加低价位商品、组合装和明确的价格展示，让消费者更容易判断在既定预算下可以买到什么。",
-        "source_ids": [
-          "o8"
-        ]
-      }
-    ],
-    "industry_trends": [
-      {
-        "title": "运动户外：参与走向日常，商品需求不再集中于专业活动",
-        "text": "央广网本周介绍的户外产业报告显示，2025年四个主要电商平台的户外、登山、露营和滑雪用品销售额达1423.72亿元，增长22.22%；三四线城市户外消费合计占比42%。消费场景也向城市通勤、休闲和短途出行延伸。行业供给需要同时覆盖专业性能、日常舒适和入门价格：同一种户外商品，会被用于不同强度、不同频率的活动，产品说明和渠道组合也随之细化。",
-        "source_ids": [
-          "o3"
-        ]
-      },
-      {
-        "title": "购物技术：AI逐步接管商品发现，交易仍连接评价与零售服务",
-        "text": "Modern Retail引用的新调查显示，消费者开始在AI助手中寻找商品，但随后会继续查看评价、比较价格，并回到品牌或零售商页面确认配送和退货条件。AlixPartners调查也发现，商品有货、门店易逛和员工能提供帮助，仍是多数消费者重视的服务。购物入口增加了对话式推荐，后续的商品资料、可售库存和交付能力依然共同决定购买能否完成。",
-        "source_ids": [
-          "o6",
-          "o7"
+          "ov_policy"
         ]
       }
     ],
     "consumer_insights": [
       {
-        "title": "中年消费者：日常精打细算，兴趣和品质消费仍有预算",
-        "text": "蓝鲨消费从临期食品和高价装备等选择切入，分析中年家庭同时节省日常开支、保留品质需求的行为。房贷、育儿和生活支出压缩现金流，使购买更有选择性；长期使用的装备、健康相关商品和个人兴趣，仍可能获得较高投入。这类消费者会按用途而不是统一按价格做判断：哪些商品只需满足基本需要，哪些值得为耐用、体验和个人喜好多花钱。",
+        "title": "家庭支出增长更有选择性，日常实用与体验需求同时存在",
+        "text": "前三季度全国居民人均可支配收入名义增长5.3%，人均消费支出增长3.6%；生活用品及服务、教育文化娱乐支出分别增长4.7%和4.6%。家庭仍在增加支出，增长在不同用途间有所差异。海外对照中，麦肯锡覆盖五国的消费者研究发现，换品牌、延长使用、维修和二手购买等方式正在帮助人们管理预算。购买取舍更多围绕实际用途、使用期限和体验展开，消费者对价值的比较也更细。",
         "source_ids": [
-          "o4"
+          "ov_households",
+          "ov_mckinsey"
         ]
       },
       {
-        "title": "年轻人：服饰支出回升，但运动品牌要争取更多穿着场景",
-        "text": "Piper Sandler对近9000名美国青少年的调查显示，总支出同比增长6%，服装支出增长7%，鞋履下降1%；传统运动品牌合计时尚偏好份额从32%降至29%。年轻人仍在买衣服，但预算分配和品牌选择变化明显，时尚服饰、配饰及部分新品牌获得更多注意。运动商品既要满足训练，也要解释日常造型、舒适和搭配价值，不能只依赖既有运动身份。",
+        "title": "家庭结构变化重塑购物任务，年龄之外更要看生活方式",
+        "text": "贝恩6月发布的中国购物者报告，从老龄化与单人家庭增加解释日常快消需求的变化。年长家庭仍重视可靠品质和健康相关需要，单人家庭则更在意规格适合、储存方便与减少浪费。同样一类商品，会因为家庭人数、生活安排和使用频率而被不同地选择。需求划分因此逐步从统一的年龄标签，细化到具体购物任务：一次买多少、用多久、是否易准备，以及能否减少时间和浪费。",
         "source_ids": [
-          "o5"
+          "ov_bain"
+        ]
+      }
+    ],
+    "channel_competition": [
+      {
+        "title": "线上经营继续渗透实体零售，渠道竞争围绕便利与价值重组",
+        "text": "商务部公布，前三季度限额以上单位通过互联网实现的商品零售额占比达31.8%，同比提高3.9个百分点，更多实体企业通过线上渠道完成销售。贝恩的中国快消研究同时显示，电商、到家业务以及会员店、折扣店等业态持续获取份额。不同渠道在同一家庭的采购中承担不同任务，竞争逐步落到精选商品、价格、附近库存和到家便利，门店网络与线上经营的配合也更加重要。",
+        "source_ids": [
+          "ov_ecommerce",
+          "ov_bain"
         ]
       },
       {
-        "title": "购物选择：新功能之外，消费者仍把有货、价格透明和帮助放在前面",
-        "text": "AlixPartners对9000多名美国消费者的研究中，87%看重商品可获得性，84%重视整洁、易浏览的门店，81%希望获得有帮助的店员服务，88%认为价格透明重要。AI功能会吸引部分人尝试，但购买体验更具体地取决于能否找到合适商品、理解差异，并确认总价。清晰的商品信息、顺畅的试用与可靠的服务，仍是不同购物渠道共同面对的需要。",
+        "title": "商品发现入口更加分散，竞争延伸到内容、搜索与AI之间",
+        "text": "麦肯锡2026消费者研究将技术驱动的购物路径列为重要变化：消费者会经过更多信息触点，品牌影响力分散在搜索、内容、推荐与不同购物工具之间。对消费者而言，了解商品、比较选择和完成购买可以发生在不同位置；对商业体系而言，流量入口、商品信息和交易承接的连接变得更重要。渠道的作用正从提供货架和访问量，进一步延伸到解释商品、匹配需求及支持购买决定。",
         "source_ids": [
-          "o7"
+          "ov_mckinsey"
         ]
       }
     ],
@@ -705,65 +692,128 @@
     },
     "sources": [
       {
-        "id": "o1",
+        "id": "ov_consumption",
         "title": "商务部消费促进司负责人谈2026年前三季度我国消费市场情况",
-        "url": "https://www.mofcom.gov.cn/xwfb/sjfzrfb/art/2026/art_50aff88a21d44be2915057258f893080.html",
         "source": "商务部",
-        "date": "2026-10-23"
+        "date": "2026-10-23",
+        "url": "https://www.mofcom.gov.cn/xwfb/sjfzrfb/art/2026/art_50aff88a21d44be2915057258f893080.html"
       },
       {
-        "id": "o2",
+        "id": "ov_policy",
+        "title": "商务部电子商务司负责人解读《关于实施品质电商“五优”行动的通知》",
+        "source": "商务部",
+        "date": "2026-10-10",
+        "url": "https://www.mofcom.gov.cn/xwfb/sjfzrfb/art/2026/art_1556a843ea4a4187a49caee26056b254.html"
+      },
+      {
+        "id": "ov_households",
+        "title": "2026年前三季度居民收入和消费支出情况",
+        "source": "国家统计局",
+        "date": "2026-10-19",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202610/t20261019_1965612.html"
+      },
+      {
+        "id": "ov_bain",
+        "title": "Growth Under Pressure: Value-seeking Shoppers and New Channel Battlegrounds in China FMCG",
+        "source": "贝恩公司／Worldpanel by Numerator",
+        "date": "2026-06-16",
+        "url": "https://www.bain.com/insights/china-shopper-report-2026-volume-1/"
+      },
+      {
+        "id": "ov_mckinsey",
+        "title": "State of the Consumer 2026: When tech acceleration and cost pressures collide",
+        "source": "麦肯锡",
+        "date": "2026-06-22",
+        "url": "https://www.mckinsey.com/industries/consumer-packaged-goods/our-insights/state-of-consumer"
+      },
+      {
+        "id": "ov_ecommerce",
         "title": "商务部电子商务司负责人介绍2026年1—9月我国电子商务发展情况",
-        "url": "https://www.mofcom.gov.cn/syxwfb/art/2026/art_e97e3afba99f4754b68921a80754102b.html",
         "source": "商务部",
-        "date": "2026-10-23"
-      },
-      {
-        "id": "o3",
-        "title": "户外运动释放消费新活力",
-        "url": "https://www.cnr.cn/food/gstj/20261023/t20261023_527850672.shtml",
-        "source": "央广网",
-        "date": "2026-10-23"
-      },
-      {
-        "id": "o4",
-        "title": "中年消费的“双面账”：临期省800，装备花上万",
-        "url": "https://www.lanshaxiaofei.com/A_detail?id=3094",
-        "source": "蓝鲨消费",
-        "date": "2026-10-22"
-      },
-      {
-        "id": "o5",
-        "title": "Teen spending up 6% as they trade athletic apparel for fashion",
-        "url": "https://www.retaildive.com/news/teen-spending-grows-trade-athletic-apparel-fashion-piper-sandler/833565/",
-        "source": "Retail Dive／Piper Sandler调查",
-        "date": "2026-10-21"
-      },
-      {
-        "id": "o6",
-        "title": "AI boosts discovery but reviews still seal the deal, new research shows",
-        "url": "https://www.modernretail.co/ai-strategies/ai-boosts-discovery-but-reviews-still-seal-the-deal-new-research-shows/",
-        "source": "Modern Retail",
-        "date": "2026-10-22"
-      },
-      {
-        "id": "o7",
-        "title": "US consumers prioritize retail basics over AI shopping: AlixPartners",
-        "url": "https://us.fashionnetwork.com/news/Us-consumers-prioritize-retail-basics-over-ai-shopping-alixpartners%2C1878028.html",
-        "source": "FashionNetwork／AlixPartners研究",
-        "date": "2026-10-23"
-      },
-      {
-        "id": "o8",
-        "title": "Shoppers expect less for more this holiday season. That could mean a sales decline.",
-        "url": "https://www.retaildive.com/news/holiday-season-retail-spending-sales-decline-outlook/832624/",
-        "source": "Retail Dive",
-        "date": "2026-10-20"
+        "date": "2026-10-23",
+        "url": "https://www.mofcom.gov.cn/syxwfb/art/2026/art_e97e3afba99f4754b68921a80754102b.html"
       }
     ]
   },
   "one_thing_worth_watching": "AI逐渐参与商品发现和下单，品牌的商品资料、库存与交付服务也需要一起进入新的购物流程。",
   "quality_status": "manual_draft",
   "editorial_notice": "",
-  "rejected_candidates": []
+  "rejected_candidates": [],
+  "overview_research": {
+    "as_of": "2026-10-26",
+    "sources": [
+      {
+        "id": "ov_consumption",
+        "title": "商务部消费促进司负责人谈2026年前三季度我国消费市场情况",
+        "source": "商务部",
+        "date": "2026-10-23",
+        "url": "https://www.mofcom.gov.cn/xwfb/sjfzrfb/art/2026/art_50aff88a21d44be2915057258f893080.html",
+        "summary_points": [
+          "2026年前三季度社会消费商品和服务零售总额同比增长2.6%，服务零售额增长5.0%，商品零售额增长1.0%。",
+          "最终消费支出对经济增长的贡献率46.7%，比上半年提高0.7个百分点，拉动GDP增长2.1个百分点。",
+          "9月社会消费品零售总额同比增长1.1%，比8月提高0.7个百分点；前三季度同口径增长1.1%。"
+        ]
+      },
+      {
+        "id": "ov_policy",
+        "title": "商务部电子商务司负责人解读《关于实施品质电商“五优”行动的通知》",
+        "source": "商务部",
+        "date": "2026-10-10",
+        "url": "https://www.mofcom.gov.cn/xwfb/sjfzrfb/art/2026/art_1556a843ea4a4187a49caee26056b254.html",
+        "summary_points": [
+          "商务部等七部门印发品质电商“五优”行动通知，部署15项工作；本资料为10月10日发布的政策背景，并非本周新政策。",
+          "覆盖平台规则和全链路品控、商家品质运营和品牌培育、线上线下融合消费场景、电商出海、标准体系及无序非理性竞争治理。",
+          "政策方向为推动电商从规模扩张向质量提升转型，兼顾消费者、平台内经营者和劳动者。"
+        ]
+      },
+      {
+        "id": "ov_households",
+        "title": "2026年前三季度居民收入和消费支出情况",
+        "source": "国家统计局",
+        "date": "2026-10-19",
+        "url": "https://www.stats.gov.cn/sj/zxfb/202610/t20261019_1965612.html",
+        "summary_points": [
+          "前三季度居民人均可支配收入34230元，名义增长5.3%；居民人均消费支出22354元，名义增长3.6%，实际增长2.7%。",
+          "城镇居民消费支出名义增长3.0%，农村增长4.3%；全国居民人均教育文化娱乐支出增长4.6%，生活用品及服务增长4.7%。",
+          "本资料为全国住户收支调查，消费支出不等同于社会消费品零售总额。"
+        ]
+      },
+      {
+        "id": "ov_bain",
+        "title": "Growth Under Pressure: Value-seeking Shoppers and New Channel Battlegrounds in China FMCG",
+        "source": "贝恩公司／Worldpanel by Numerator",
+        "date": "2026-06-16",
+        "url": "https://www.bain.com/insights/china-shopper-report-2026-volume-1/",
+        "summary_points": [
+          "研究27类中国家庭日常快消品，范围包括包装食品、饮料、个护和家清；不包括服装、家电、旅游或餐饮。6月报告作为结构性背景引用。",
+          "人口老龄化与单人家庭增加改变商品需求；年长消费者仍愿意为可信赖的品质付费，单人家庭重视小规格、便利储存和减少浪费。",
+          "电商、到家业务及会员店、零食集合店和折扣店获取销量与份额，国内品牌及零售商自有品牌发展；研究反映快消渠道竞争变化。"
+        ]
+      },
+      {
+        "id": "ov_mckinsey",
+        "title": "State of the Consumer 2026: When tech acceleration and cost pressures collide",
+        "source": "麦肯锡",
+        "date": "2026-06-22",
+        "url": "https://www.mckinsey.com/industries/consumer-packaged-goods/our-insights/state-of-consumer",
+        "summary_points": [
+          "消费者调查于2026年3月31日至4月8日开展，覆盖巴西、法国、德国、英国和美国4863名消费者；6月发布，作为海外跨品类背景。",
+          "技术驱动的购物路径和持续成本压力是两项主要力量；购物决定经过更多触点，品牌影响更分散，消费者更重视可感知价值。",
+          "消费者在日常必需品中换品牌、调整包装、找促销，在可选消费中也会延迟更换、维修、购买二手或自己完成原先付费的服务。"
+        ]
+      },
+      {
+        "id": "ov_ecommerce",
+        "title": "商务部电子商务司负责人介绍2026年1—9月我国电子商务发展情况",
+        "source": "商务部",
+        "date": "2026-10-23",
+        "url": "https://www.mofcom.gov.cn/syxwfb/art/2026/art_e97e3afba99f4754b68921a80754102b.html",
+        "summary_points": [
+          "前三季度全国网上商品和服务零售额增长4.4%，对社会消费商品和服务零售总额增长贡献率45.4%。",
+          "限额以上单位通过互联网实现的商品零售额占比31.8%，比上年同期提高3.9个百分点；该比例的范围是限额以上单位，不是全国全部零售。",
+          "在线旅游、在线生活服务和在线餐饮分别增长25.7%、13.9%、12.2%；线上渠道持续连接实体企业和本地服务供给。"
+        ]
+      }
+    ]
+  }
 }
