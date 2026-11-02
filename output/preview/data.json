@@ -736,7 +736,7 @@
     ]
   },
   "one_thing_worth_watching": "AI逐渐参与商品发现和下单，品牌的商品资料、库存与交付服务也需要一起进入新的购物流程。",
-  "quality_status": "manual_draft",
+  "quality_status": "manually_approved",
   "editorial_notice": "",
   "rejected_candidates": [],
   "overview_research": {
@@ -815,5 +815,12 @@
         ]
       }
     ]
-  }
+  },
+  "source_mix": {
+    "total": 46,
+    "wechat": 0,
+    "required_wechat": 0,
+    "shortfall": 0
+  },
+  "quality_shortfalls": {}
 }
