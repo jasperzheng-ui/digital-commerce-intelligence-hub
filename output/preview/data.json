@@ -867,7 +867,7 @@
     ]
   },
   "one_thing_worth_watching": "AI逐步进入消费者购买前的筛选和购买后的服务，商品信息、可售状态与履约能力开始更紧密地影响同一次购物。",
-  "quality_status": "manual_draft",
+  "quality_status": "manually_approved",
   "editorial_notice": "",
   "rejected_candidates": [
     {
@@ -886,5 +886,12 @@
       "link": "https://www.tmtpost.com/8188585.html",
       "reason": "同一永辉三季报事件已采用公司数据报道，合并去重。"
     }
-  ]
+  ],
+  "source_mix": {
+    "total": 48,
+    "wechat": 0,
+    "required_wechat": 0,
+    "shortfall": 0
+  },
+  "quality_shortfalls": {}
 }
