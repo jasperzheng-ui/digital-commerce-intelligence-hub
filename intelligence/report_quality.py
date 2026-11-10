@@ -26,6 +26,14 @@ def eligible(item, today=None):
     except (TypeError, ValueError):
         return False
     today = today or datetime.now(timezone.utc).date()
+    if day > today:
+        return False
+    if item.get('origin_type') != 'manual':
+        from sources.editorial_policy import auto_exclusion_reason
+        if auto_exclusion_reason(item.get('link'), item.get('title', '')):
+            return False
+        if item.get('publication_date_verified') is not True:
+            return False
     return today - timedelta(days=14) <= day <= today
 
 
@@ -42,6 +50,8 @@ def attach_metadata(card, item):
         card['subcategory'] = item['subcategory']
     section = _canonical_section_key(item['domain'])
     card['subcategory'] = infer_subcategory(section, card)
+    card['is_background'] = item.get('is_background', False)
+    card['material_type'] = item.get('material_type', 'news')
     card.update(category=item['domain'], date=str(item.get('published_date', ''))[:10],
                 source=re.sub(r'^Manual Input\s*-\s*', '', item.get('source', ''), flags=re.I),
                 origin_type=item.get('origin_type', ''), source_type=item.get('source_type', 'other'),
@@ -123,4 +133,5 @@ def validate_report(data):
     if data.get('parse_warning'):
         raise ValueError('AI审核未完成，请检查草稿。')
     validate_digest(data)
+
 
