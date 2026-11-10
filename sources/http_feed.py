@@ -35,6 +35,8 @@ def fetch_unique(urls, cache):
 from html.parser import HTMLParser
 from urllib.parse import urlparse, urljoin
 import re
+import json
+from sources.editorial_policy import auto_exclusion_reason
 
 
 class ArticleText(HTMLParser):
@@ -58,6 +60,8 @@ class ArticleText(HTMLParser):
                 self.published = attrs.get('content', '')
             if key in {'description', 'og:description'}:
                 self.description = attrs.get('content', '')
+        if tag == 'time' and attrs.get('itemprop') == 'datePublished':
+            self.published = attrs.get('datetime', '') or self.published
 
     def handle_endtag(self, tag):
         if tag in {'script', 'style', 'nav', 'footer', 'noscript'} and self.skip:
@@ -70,9 +74,38 @@ class ArticleText(HTMLParser):
             self.parts.append(text)
 
 
+def _jsonld_publication(text):
+    def article_date(value):
+        if isinstance(value, list):
+            for item in value:
+                found = article_date(item)
+                if found:
+                    return found
+        if isinstance(value, dict):
+            types = value.get('@type', [])
+            types = types if isinstance(types, list) else [types]
+            if any(str(t).split('/')[-1] in {'Article', 'NewsArticle', 'BlogPosting', 'Report', 'TechArticle'} for t in types):
+                if isinstance(value.get('datePublished'), str):
+                    return value['datePublished']
+            return article_date(value.get('@graph', []))
+        return ''
+    for block in re.findall(r'<script\b[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', text, re.S | re.I):
+        try:
+            found = article_date(json.loads(block))
+            if found:
+                return found
+        except (ValueError, TypeError):
+            continue
+    return ''
+
+
 def fetch_article(url):
     """Read public HTML and follow normal redirects; never bypass access controls."""
     try:
+        reason = auto_exclusion_reason(url)
+        if reason:
+            print(f'[source reject] {reason}: {url}', flush=True)
+            return None
         response = requests.get(url, timeout=(5, 20), headers={'User-Agent': 'WeeklyIntelligence/1.0'})
         response.raise_for_status()
         if 'html' not in response.headers.get('Content-Type', '').lower():
@@ -82,12 +115,17 @@ def fetch_article(url):
         parser = ArticleText()
         body = re.search(r'<article\b[^>]*>(.*?)</article>', response.text, flags=re.S | re.I)
         parser.feed(response.text)
+        parser.published = parser.published or _jsonld_publication(response.text)
         if body:
             body_parser = ArticleText()
             body_parser.feed(body.group(1))
             if len(''.join(body_parser.parts)) > 300:
                 parser.parts = body_parser.parts
         link = response.url
+        reason = auto_exclusion_reason(link)
+        if reason:
+            print(f'[source reject] {reason}: {link}', flush=True)
+            return None
         canonical = urljoin(link, parser.canonical)
         # An unresolved Google redirect is not a publisher article.
         if urlparse(link).hostname == 'news.google.com':
@@ -116,6 +154,10 @@ def enrich_items(items, cache=None):
         article = cache.get(item.get('link'))
         if not article:
             continue
+        reason = auto_exclusion_reason(article['link'], item.get('title', ''))
+        if reason:
+            print(f'[source reject] {reason}: {article["link"]}', flush=True)
+            continue
         item = dict(item)
         item['link'] = article['link']
         item['provenance_url'] = article['link']
@@ -123,11 +165,18 @@ def enrich_items(items, cache=None):
         item['content_verified'] = True
         if item.get('source') in {'news.google.com', 'www.bing.com', 'Web source'}:
             item['source'] = urlparse(item['link']).hostname
-        if article.get('published'):
-            parsed = coerce_datetime(article['published'])
-            if parsed:
-                item['published_date'] = parsed.isoformat()
+        parsed = coerce_datetime(article.get('published'))
+        if parsed:
+            item['published_date'] = parsed.isoformat()
+            item['publication_date_basis'] = 'publisher_metadata'
+        elif item.get('origin_type') == 'rss' and coerce_datetime(item.get('published_date')):
+            item['publication_date_basis'] = 'publisher_rss'
+        else:
+            print(f'[source reject] unverified_publication_date: {item["link"]}', flush=True)
+            continue
+        item['publication_date_verified'] = True
         item['source_type'] = 'wechat' if urlparse(item['link']).hostname == 'mp.weixin.qq.com' else 'other'
         results.append(item)
     print(f'[content] attempted={len(items)}, readable={len(results)}, unreadable={len(items)-len(results)}', flush=True)
     return results
+
