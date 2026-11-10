@@ -544,8 +544,8 @@
       ]
     },
     {
-      "name": "Wayfair：订单与客户增加，美国业务带动收入增长",
-      "text": "Wayfair第三季度收入约34亿美元、同比增长9.7%，其中美国增长11.4%，国际收入下降2.3%。截至9月底活跃客户2220万，调整后EBITDA率达到6.9%。美国业务贡献了主要收入增量，销售增长也传导至盈利，区域表现与利润率共同呈现其家居电商经营进展。",
+      "name": "Wayfair：会员与购物体验促进回流，广告效率改善盈利",
+      "text": "美国家居电商Wayfair通过会员奖励、商品认证、实体店体验和更快配送吸引顾客回流。管理层披露，2026年第三季度直接访问带来的收入同比增长超过15%，并通过对照实验减少面向原本就会购买人群的广告投入，将预算转向新增销售渠道。当季收入增长9.7%，广告费仅增长约2.4%，运营费用总额增长约1.1%，收入增长快于费用，推动营业利润从3800万美元增至1.06亿美元。",
       "subcategory": "international",
       "topic": "operations",
       "references": [
@@ -554,6 +554,12 @@
           "source": "Wayfair／SEC文件",
           "date": "2026-11-04",
           "link": "https://www.sec.gov/Archives/edgar/data/1616707/000161670726000195/a2026-11x04ex991.htm"
+        },
+        {
+          "title": "Wayfair 2026年第三季度业绩电话会实录",
+          "source": "Wayfair管理层发言／The Motley Fool实录",
+          "date": "2026-11-04",
+          "link": "https://www.fool.com/earnings/call-transcripts/2026/11/04/wayfair-w-q3-2026-earnings-call-transcript/"
         }
       ]
     },
