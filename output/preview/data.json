@@ -170,19 +170,6 @@
           "date": "2026-11-05"
         }
       ]
-    },
-    {
-      "name": "阿里巴巴集团业务与上市历程",
-      "text": "阿里巴巴集团于1999年由马云等18人创立，业务涵盖电子商务、云计算、数字媒体及本地生活服务等；集团于2014年在美国纽约证券交易所上市，并在2019年完成在香港交易所的二次上市。",
-      "subcategory": "alibaba",
-      "references": [
-        {
-          "title": "阿里生态",
-          "link": "https://zh.wikipedia.org/wiki/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E9%9B%86%E5%9B%A2",
-          "source": "zh.wikipedia.org",
-          "date": "2026-11-06"
-        }
-      ]
     }
   ],
   "ai_technology": [
