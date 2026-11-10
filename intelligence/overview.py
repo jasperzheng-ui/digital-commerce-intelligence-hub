@@ -1,7 +1,7 @@
 """Generate a source-bound overview only after editorial selection is complete."""
 import json
 import os
-from datetime import date
+from datetime import date, timedelta
 
 from intelligence.gemini import GEMINI_MODEL, _strip_json_fence
 from output.overview import SECTION_TITLES, original_url, validate_overview
@@ -34,6 +34,7 @@ def load_overview_research(data):
         raise ValueError("overview_research.valid_until 不能早于 as_of。")
     if report_date < as_of or (valid_until and report_date > valid_until):
         return {}
+    recent_sources = []
     for item in bundle["sources"]:
         if (not isinstance(item, dict) or not original_url(item.get("url"))
                 or not all(isinstance(item.get(k), str) and item[k].strip()
@@ -48,7 +49,11 @@ def load_overview_research(data):
             raise ValueError("Overview研报发布日期必须是 YYYY-MM-DD。") from exc
         if published > as_of:
             raise ValueError("Overview资料发布日期不能晚于资料复核日期。")
-    return bundle
+        if not report_date - timedelta(days=14) <= published <= report_date:
+            print(f'[overview reject] outside_14_day_window: {item["date"]} {item["title"]}', flush=True)
+            continue
+        recent_sources.append(item)
+    return dict(bundle, sources=recent_sources)
 
 
 def overview_sources(data, research=None):
@@ -138,11 +143,14 @@ def build_overview_prompt(data, articles):
 2. consumer_insights 消费需求与支出变化：家庭预算、商品和服务消费、人群及家庭结构、价值判断与购买方式。观察跨品类支出取舍，不把某品牌、某款服饰的偏好当作整体消费变化。
 3. channel_competition 渠道与竞争格局：线上线下份额、即时零售、新店型、交易入口和平台规则，以及影响交易结构的技术应用。解释渠道角色与竞争关系，不逐篇复述模型发布、开店或品牌战报。
 以中国市场为主，海外研究作对照；五国调查、快消研究等范围必须自然写入事实，不扩大为全球或全行业。
-独立资料可使用最新一期有效月报、季报及年度研报；旧报告作为背景，不能写成本周刚发生的变化。
+独立资料也必须在周报日期之前的近14天内发布。月报、季报、年度研报可讨论更早的统计期间，但不豁免报告本身的发布日期；背景标签不能让过早资料进入周报。
 同一事实和数字只在最合适的一类展开。不能因同一主题有多篇文章就在三类反复表述。
 每类通常1–2个小点。每点title表达一个具体判断；text为完整、易懂的150–220字正文，按实际信息量调整。
 每点按判断、关键证据、解释组织，不强制统一句式，不输出业务建议。每点source_ids只能引用独立资料的ID。
 资料不支持的类返回[]，尤其没有独立研报时不得用四大板块的新闻填充。
+近14天范围内的月报、季报、行业研究与背景补充按证据价值使用，不额外缩成7天；不把报告统计期间误当成发布日期。
+consumer_insights必须由实际消费、价格、支出、交易或人群研究数据支撑。消费月、电商节、补贴和采购活动的启动只能说明政策或供给安排，不能直接证明需求已增长或居民偏好已转向。
+价格上涨不等于消费数量或实际支出增长，采购意向不等于已成交。相关边界融入正文的口径说明，不扩写为已实现的经营效果。
 四个section_overviews分别为对应板块的2–3句、约80–120字总览：综合本板块文章共同重点、不同做法和实施状态。
 总览不逐篇复制摘要、不重复顶部宏观分析，不写建议。某板块无文章，填写“本期未筛出高价值行业情报。”。
 不输出网页标题、来源元数据或网址，来源由程序回填。只输出合法JSON：
@@ -200,4 +208,5 @@ def add_weekly_overview(data):
     if research:
         result["overview_research"] = research
     return result
+
 
