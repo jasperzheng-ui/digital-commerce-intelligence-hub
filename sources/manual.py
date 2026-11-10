@@ -71,9 +71,12 @@ def fetch_manual_items(path):
             priority=3,
         )
         item["summary"] = body
-        item["manual_category"] = entry.get("category", "")
+        item["manual_category"] = _canonical_category(entry.get("category", ""))
         item["manual_company"] = entry.get("company", "")
-        item["category"] = entry.get("category", "")
+        item["manual_source"] = source or ""
+        item["category"] = item["manual_category"]
+        if item["manual_category"] == "overview":
+            item["overview_facts"] = entry.get("content", "").strip()
         item["keywords"] = entry.get("keywords", "")
         item["company"] = entry.get("company", "")
         item["date"] = entry.get("date", "")
@@ -197,9 +200,14 @@ def _parse_manual_date(value):
     return None
 
 
+def _canonical_category(value):
+    value = clean_text(value).lower()
+    return {"行业观察": "overview", "宏观资料": "overview", "overview_research": "overview"}.get(value, value)
+
+
 def _infer_domain(category, company, content):
-    explicit = clean_text(category).lower()
-    if explicit in {"platform", "ai", "sports", "retail"}:
+    explicit = _canonical_category(category)
+    if explicit in {"platform", "ai", "sports", "retail", "overview"}:
         return explicit
     text = f"{category} {company} {content}".lower()
     if any(word in text for word in ["platform", "平台", "internet giants", "阿里", "alibaba", "淘宝", "天猫", "京东", "jd", "字节", "bytedance", "腾讯", "tencent", "美团", "meituan", "拼多多", "pdd", "小红书"]):
@@ -227,9 +235,46 @@ def validate_manual_source_mix(items, expected=None):
     """Validate editorial fields, not a fixed input count or mix."""
     invalid = [i.get('title', '') for i in items
                if i.get('source_type') not in {'wechat', 'other'}
-               or i.get('manual_category') not in {'platform', 'ai', 'sports', 'retail'}
+               or i.get('manual_category') not in {'platform', 'ai', 'sports', 'retail', 'overview'}
                or _parse_manual_date(i.get('date')) is None or not i.get('link')
                or (i.get('source_type') == 'wechat' and urlparse(i.get('link', '')).hostname != 'mp.weixin.qq.com')]
     if invalid:
         raise ValueError('人工素材请填写有效日期、Category、Link及Source Type；公众号计数需要微信原文链接：' + '；'.join(invalid))
+
+
+def build_manual_overview_research(items, as_of=None):
+    """Create the existing Overview research schema from this run's Markdown.
+
+    Research may be older than the news window. Preserve its actual publication
+    date; the supplied Content is evidence, not an instruction or a URL fetch.
+    An explicit empty bundle prevents reusing last week's saved JSON research.
+    """
+    from output.overview import original_url
+    review_day = as_of or datetime.now(timezone.utc).date()
+    if isinstance(review_day, str):
+        review_day = datetime.strptime(review_day, "%Y-%m-%d").date()
+    sources, by_url = [], {}
+    for item in items:
+        if item.get('domain') != 'overview':
+            continue
+        title = item.get('title', '')
+        published = _parse_manual_date(item.get('date'))
+        facts = item.get('overview_facts', '').strip()
+        if (not published or published.date() > review_day or not original_url(item.get('link'))
+                or not item.get('manual_source', item.get('source', '')).strip() or not title.strip() or not facts):
+            raise ValueError(f'Overview资料“{title}”需要标题、来源、有效原文链接、非未来发布日期和非空Content事实内容。')
+        url = item['link']
+        points = [line.strip() for line in facts.splitlines() if line.strip()]
+        if url in by_url:
+            existing = by_url[url]
+            for point in points:
+                if point not in existing['summary_points']:
+                    existing['summary_points'].append(point)
+            continue
+        source = {'title': title, 'source': item['source'], 'date': published.date().isoformat(),
+                  'url': url, 'summary_points': points}
+        sources.append(source)
+        by_url[url] = source
+    return {'as_of': review_day.isoformat(), 'sources': sources}
+
 
