@@ -34,41 +34,44 @@ FORBIDDEN_OUTPUT_REPLACEMENTS = (
 )
 
 
+def _review_schema():
+    fields = {key: {"type": "STRING"} for key in
+              ("name", "title", "company", "subcategory", "topic", "link", "quality_reason", "event_key")}
+    fields["summary_points"] = {"type": "ARRAY", "items": {"type": "STRING"}}
+    fields["quality_score"] = {"type": "INTEGER"}
+    card = {"type": "OBJECT", "properties": fields,
+            "required": ["link", "summary_points", "quality_score", "quality_reason", "event_key"]}
+    properties = {key: {"type": "ARRAY", "items": card} for key in ("platform", "ai", "sports", "retail")}
+    properties["headline"] = {"type": "STRING"}
+    properties["date"] = {"type": "STRING"}
+    properties["rejected_candidates"] = {"type": "ARRAY", "items": {
+        "type": "OBJECT", "properties": {"link": {"type": "STRING"}, "reason": {"type": "STRING"}},
+        "required": ["link", "reason"]}}
+    return {"type": "OBJECT", "properties": properties,
+            "required": ["platform", "ai", "sports", "retail", "rejected_candidates"]}
+
+
+def _validate_review_response(data):
+    for key in ("platform", "ai", "sports", "retail", "rejected_candidates"):
+        if not isinstance(data.get(key), list):
+            raise ValueError(f"审核JSON缺少 {key} 数组")
+        for item in data[key]:
+            if not isinstance(item, dict) or not isinstance(item.get("link"), str) or not item["link"]:
+                raise ValueError(f"{key} 每条结果都必须有原始link")
+            if key != "rejected_candidates":
+                if (not isinstance(item.get("summary_points"), list) or not item["summary_points"]
+                        or not all(isinstance(p, str) and p.strip() for p in item["summary_points"])
+                        or not isinstance(item.get("quality_score"), int)
+                        or not isinstance(item.get("quality_reason"), str)
+                        or not isinstance(item.get("event_key"), str)):
+                    raise ValueError(f"{key} 的摘要或审核字段无效")
+
+
 def _generate_dashboard_batch(items):
-    try:
-        from google import genai
-    except ImportError as exc:
-        raise RuntimeError(
-            "Missing google-genai package. Run: python3 -m pip install -r requirements.txt"
-        ) from exc
-
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        raise RuntimeError("Missing GEMINI_API_KEY environment variable.")
-
-    prompt = build_dashboard_prompt(items)
-    client = genai.Client(api_key=api_key)
-    try:
-        response = client.models.generate_content(
-            model=GEMINI_MODEL,
-            contents=prompt,
-        )
-    except Exception as exc:
-        detail = str(exc).replace(api_key, "[REDACTED]")
-        print(
-            f"[gemini-error] model={GEMINI_MODEL}; "
-            f"type={type(exc).__name__}; "
-            f"code={getattr(exc, 'code', 'unknown')}; "
-            f"items={len(items)}; prompt_chars={len(prompt)}; "
-            f"detail={detail[:2000]}",
-            flush=True,
-        )
-        raise RuntimeError(
-            "Gemini审核失败，已停止生成和发送周报；请查看[gemini-error]日志。"
-        ) from None
-
-    raw_text = (response.text or "").strip()
-    return parse_dashboard_json(raw_text)
+    from intelligence.batches import generate_json
+    result = generate_json(build_dashboard_prompt(items), "新闻审核",
+                           response_schema=_review_schema(), validator=_validate_review_response)
+    return normalize_dashboard_data(result)
 
 
 def generate_dashboard_data(items):
@@ -76,11 +79,24 @@ def generate_dashboard_data(items):
     from intelligence.report_quality import canonical_link
     result = {section: [] for section in SECTION_ALIASES}
     result['rejected_candidates'] = []
-    for index, batch in enumerate(batches(items), 1):
+    queue = list(batches(items))
+    index = 0
+    while queue:
+        batch = queue.pop(0)
+        index += 1
         print(f'[review batch] {index}: {len(batch)} source articles', flush=True)
-        reviewed = _generate_dashboard_batch(batch)
-        if reviewed.get('parse_warning'):
-            raise RuntimeError('本批AI审核JSON无效，已停止；不会发送不完整周报。')
+        from intelligence.batches import JsonGenerationError
+        try:
+            reviewed = _generate_dashboard_batch(batch)
+            if reviewed.get('parse_warning'):
+                raise JsonGenerationError('本批AI审核JSON无效')
+        except JsonGenerationError:
+            if len(batch) <= 1:
+                raise
+            middle = len(batch) // 2
+            print(f'[review split] {len(batch)} -> {middle}+{len(batch)-middle}; no source dropped', flush=True)
+            queue[0:0] = [batch[:middle], batch[middle:]]
+            continue
         known = {canonical_link(i['link']) for i in batch}
         accepted = {canonical_link(c.get('link')) for section in SECTION_ALIASES for c in reviewed[section]}
         rejected = {canonical_link(c.get('link')) for c in reviewed.get('rejected_candidates', [])}
@@ -439,5 +455,6 @@ def _manual_structured_points(text):
         if line:
             points.append(line)
     return points if len(points) > 1 else []
+
 
 
