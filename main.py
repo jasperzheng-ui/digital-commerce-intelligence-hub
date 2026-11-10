@@ -14,15 +14,21 @@ from config import (
 REPORT_MODES = {"preview", "manual_preview", "deploy_only", "publish"}
 
 
-def collect_information_pool(search_cache=None, article_cache=None):
+def collect_information_pool(search_cache=None, article_cache=None, research_output=None):
     from config import FEEDS, MANUAL_INPUT_PATH, SEARCH_QUERIES
     from sources.google_news import fetch_google_news_items
-    from sources.manual import fetch_manual_items, validate_manual_source_mix
+    from sources.manual import fetch_manual_items, validate_manual_source_mix, build_manual_overview_research
     from sources.rss import fetch_rss_items
     from sources.http_feed import enrich_items
     from intelligence.report_quality import eligible
     manual_items = fetch_manual_items(MANUAL_INPUT_PATH)
     validate_manual_source_mix(manual_items)
+    research = build_manual_overview_research(manual_items)
+    if research_output is not None:
+        research_output.clear()
+        research_output.update(research)
+    manual_items = [item for item in manual_items if item.get('domain') != 'overview']
+    print(f'[overview input] {len(research["sources"])} independent sources from daily_input.md', flush=True)
     rss = fetch_rss_items(FEEDS)  # Always runs, independently of manual count.
     automatic = enrich_items(prepare_information_pool(rss), article_cache)
     items = [i for i in manual_items + automatic if eligible(i)]
@@ -119,10 +125,12 @@ def generate_dashboard_data():
     from intelligence.report_quality import finalize_report
     from intelligence.digest import build_text_digest
     from intelligence.overview import add_weekly_overview
-    pool = collect_information_pool({}, {})
+    research = {}
+    pool = collect_information_pool({}, {}, research_output=research)
     generated = generate_with_gemini(pool) if pool else {}
     reviewed = finalize_report(generated, pool)
     digest = build_text_digest(reviewed)
+    digest['overview_research'] = research
     return add_weekly_overview(digest)
 
 
@@ -256,6 +264,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
