@@ -31,6 +31,8 @@ def parse_digest_batch(response, source_records, section):
         refs = [dict(by_id[ref]['reference']) for ref in dict.fromkeys(ids)]
         output.append({'name': row['title'].strip(), 'text': row['text'].strip(),
                        'subcategory': category, 'references': refs})
+        if any(by_id[ref].get('material_type') == 'background' for ref in ids):
+            output[-1]['has_background_sources'] = True
         covered.update(ids)
     if covered != set(by_id):
         raise ValueError('信息整理遗漏部分合格文章；未按数量裁剪，请重新Preview。')
@@ -45,10 +47,12 @@ def build_text_digest(data):
             records.append({'id': f'{section}-{index}',
                             'subcategory': infer_subcategory(section, card),
                             'company': card.get('company', ''),
+                            'material_type': card.get('material_type', 'news'),
                             'facts': card.get('summary_points', []),
                             'reference': {'title': card.get('title') or card.get('name') or '原文',
                                           'link': card['link'], 'source': card.get('source', ''),
-                                          'date': card.get('date', '')}})
+                                          'date': card.get('date', ''),
+                                          'material_type': card.get('material_type', 'news')}})
         result[section] = []
         for index, batch in enumerate(batches(records), 1):
             prompt = """你是行业周报编辑，将已审核事实整理成高信息密度的信息文本。
@@ -56,6 +60,8 @@ def build_text_digest(data):
 不必以文章为单位：同一细分类中有关联的不同文章可合并成一条主题信息点；独立事实也可单独成条。
 不设置文章条数、信息点条数或字数配额。每个输入来源至少被一条信息引用，不遗漏合格来源。
 信息要紧凑：用具体的小标题加事实正文，保留主体、关键变化、必要数字口径、已上线/试点/计划的区别。
+material_type=background是已通过近14天发布日期筛选的人工背景资料，不得因早于本周7天而遗漏，也不得将背景标记理解为14天窗口豁免；日期和报告期以reference为准，自然融入事实，不包装成近期新动作。
+新闻与背景可以结合解释，但不能混淆日期或统计口径；不同公司和行业综述可按主题综合，不要求每条只对应一家公司，不新增原文没有的因果判断。
 避免重复摘要、空泛趋势、营销口号和行动建议。不强行将不相关事件合并。
 保留来源已有的subcategory，不跨细分类合并。来源为unclassified时可据事实明确分类，否则保留unclassified。
 source_ids只能来自本批ID；不得输出新网址，网址由程序回填。
@@ -69,3 +75,4 @@ source_ids只能来自本批ID；不得输出新网址，网址由程序回填�
     validate_digest(result)
     result['content_format'] = 'thematic_digest_v1'
     return result
+
