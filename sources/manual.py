@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from urllib.parse import urlparse
 import re
 
@@ -37,6 +37,10 @@ FIELD_ALIASES = {
     "sub_category": "subcategory",
     "细分类": "subcategory",
     "子分类": "subcategory",
+    "material type": "material_type",
+    "material_type": "material_type",
+    "素材类型": "material_type",
+    "资料状态": "material_type",
 }
 
 
@@ -81,6 +85,9 @@ def fetch_manual_items(path):
         item["company"] = entry.get("company", "")
         item["date"] = entry.get("date", "")
         item["source_type"] = _manual_source_type(entry)
+        from sources.editorial_policy import background_requested
+        item["is_background"] = background_requested(entry)
+        item["material_type"] = 'background' if item["is_background"] else 'news'
         if entry.get("subcategory"):
             item["subcategory"] = entry["subcategory"]
         items.append(item)
@@ -183,6 +190,8 @@ def _format_manual_summary(entry):
         parts.append(f"Date: {entry['date']}")
     if entry.get("subcategory"):
         parts.append(f"Subcategory: {entry['subcategory']}")
+    if entry.get("material_type"):
+        parts.append(f"Material Type: {entry['material_type']}")
     if entry.get("content"):
         parts.append(f"Content: {entry['content']}")
     return "\n".join(parts) or entry.get("title", "")
@@ -245,7 +254,7 @@ def validate_manual_source_mix(items, expected=None):
 def build_manual_overview_research(items, as_of=None):
     """Create the existing Overview research schema from this run's Markdown.
 
-    Research may be older than the news window. Preserve its actual publication
+    Apply the same 14-day publication window to research. Preserve the original
     date; the supplied Content is evidence, not an instruction or a URL fetch.
     An explicit empty bundle prevents reusing last week's saved JSON research.
     """
@@ -264,6 +273,9 @@ def build_manual_overview_research(items, as_of=None):
                 or not item.get('manual_source', item.get('source', '')).strip() or not title.strip() or not facts):
             raise ValueError(f'Overview资料“{title}”需要标题、来源、有效原文链接、非未来发布日期和非空Content事实内容。')
         url = item['link']
+        if published.date() < review_day - timedelta(days=14):
+            print(f'[overview reject] outside_14_day_window: {published.date().isoformat()} {title}', flush=True)
+            continue
         points = [line.strip() for line in facts.splitlines() if line.strip()]
         if url in by_url:
             existing = by_url[url]
@@ -276,5 +288,6 @@ def build_manual_overview_research(items, as_of=None):
         sources.append(source)
         by_url[url] = source
     return {'as_of': review_day.isoformat(), 'sources': sources}
+
 
 
