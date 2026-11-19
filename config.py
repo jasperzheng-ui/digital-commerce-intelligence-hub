@@ -28,7 +28,8 @@ PREFERRED_WECHAT_CHANNELS = {
     "retail": ["联商网", "LadyMax", "时尚商业Daily", "DT商业观察"],
 }
 RESEARCH_CHANNELS = ["贝恩公司", "艾瑞咨询", "艾瑞消费资讯", "36氪未来消费", "虎嗅APP", "晚点LatePost", "刘润", "商业弧光"]
-SEARCH_WINDOWS_DAYS = [3, 7, 14]
+SEARCH_WINDOWS_DAYS = [7, 14]
+MAX_REPORT_SOURCES = 30
 MIN_SECTION_CANDIDATES = {section: 0 for section in SECTION_ORDER}
 MAX_SECTION_CANDIDATES = None
 
@@ -204,7 +205,7 @@ FILTER_PROFILES["ai"]["require_any"] += ["工作流", "客服", "办公", "营�
 # per-section quotas. Review and synthesis process every item in bounded batches.
 MODEL_BATCH_ITEMS = 12
 MODEL_BATCH_CHARS = 22000
-SEARCH_QUERIES_PER_SECTION = 6
+SEARCH_QUERIES_PER_SECTION = 100
 SEARCH_QUERIES["platform"] = [
     "阿里 淘宝 天猫 菜鸟 电商 平台 商家工具",
     "京东 零售 物流 商家 履约",
@@ -243,3 +244,21 @@ FILTER_PROFILES["ai"] = {
     "override_any": [],
 }
 
+
+
+# Search every ecosystem and product family before global editorial selection.
+from intelligence.editorial import PLATFORM_PRODUCTS, SOURCE_SEARCHES
+for _ecosystem, _products in PLATFORM_PRODUCTS.items():
+    for _offset in range(0, len(_products), 3):
+        SEARCH_QUERIES['platform'].append('(' + ' OR '.join(_products[_offset:_offset + 3]) + ') (规则 OR 商品 OR 渠道 OR 会员 OR 经营)')
+SEARCH_QUERIES['sports'] += [
+    '运动品牌 门店 社群 会员 售后 全渠道',
+    '体育户外 品类 供应链 库存 季节性 经营表现',
+    'sportswear capital inventory supply chain community sustainability',
+]
+SEARCH_QUERIES['retail'] += [
+    '零售 坪效 客群 会员 系统架构 组织 决策',
+    '零售 供应链 履约 资本 资产 品牌 可持续',
+]
+for _section, _queries in SOURCE_SEARCHES.items():
+    SEARCH_QUERIES[_section].extend(_queries)
