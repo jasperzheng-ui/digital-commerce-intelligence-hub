@@ -353,7 +353,7 @@
     ]
   },
   "one_thing_worth_watching": "",
-  "quality_status": "manual_draft",
+  "quality_status": "manually_approved",
   "editorial_notice": "",
   "rejected_candidates": [],
   "research_background": [
@@ -392,5 +392,12 @@
       "date": "2026-09-28",
       "url": "https://finance.sina.com.cn/jjxw/2026-09-28/doc-initkhxe2905684.shtml"
     }
-  ]
+  ],
+  "source_mix": {
+    "total": 18,
+    "wechat": 0,
+    "required_wechat": 0,
+    "shortfall": 0
+  },
+  "quality_shortfalls": {}
 }
