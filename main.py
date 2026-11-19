@@ -129,6 +129,10 @@ def generate_dashboard_data():
     pool = collect_information_pool({}, {}, research_output=research)
     generated = generate_with_gemini(pool) if pool else {}
     reviewed = finalize_report(generated, pool)
+    from intelligence.selection import select_report_sources
+    from intelligence.overview import load_overview_research
+    research = load_overview_research(dict(reviewed, overview_research=research))
+    reviewed, research = select_report_sources(reviewed, research)
     digest = build_text_digest(reviewed)
     digest['overview_research'] = research
     return add_weekly_overview(digest)
@@ -264,7 +268,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
