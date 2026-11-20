@@ -22,12 +22,28 @@ TOPICS = {
         model_updates='主流模型更新',
         retrieval_content_interaction='搜索、内容与交互技术'),
     'sports_outdoor': OrderedDict(
-        strategy='品牌布局与组织调整', product='商品创新与本土开发',
-        channels_performance='门店与销售渠道', performance='经营表现与库存管理'),
+        performance='经营表现', channels='渠道与业态布局',
+        stores_community='门店角色与社群运营', product_mix='商品与品类结构',
+        supply_product='供应链与产品力', capital_assets='资本与资产',
+        inventory_seasonality='库存与季节性管理', digital_omnichannel='数字化与全渠道',
+        membership='会员与售后服务', brand_esg='品牌定位与 ESG'),
     'retail_innovation': OrderedDict(
-        product='商品开发与消费需求', stores='门店模式与扩张',
-        operations='库存、履约与经营效率', membership='会员与购物服务'),
+        performance='经营表现', channels='渠道与业态布局',
+        store_productivity='门店角色与坪效', product_supply='商品与供应链',
+        inventory_fulfillment='库存与履约', capital_assets='资本与资产',
+        digital_systems='数字化与系统架构', organization='组织与决策机制',
+        membership='客群与会员体系', brand_esg='品牌定位与 ESG'),
 }
+LEGACY_TOPICS = {
+    'sports_outdoor': {'strategy': 'channels', 'product': 'product_mix', 'channels_performance': 'channels'},
+    'retail_innovation': {'product': 'product_supply', 'stores': 'channels', 'operations': 'inventory_fulfillment'},
+}
+
+
+def canonical_topic(section, topic):
+    return LEGACY_TOPICS.get(section, {}).get(topic, topic)
+
+
 AI_TOPICS = {
     'business': ('shopping_discovery', 'merchandising_operations'),
     'technology': ('model_updates', 'retrieval_content_interaction'),
@@ -40,6 +56,10 @@ PLATFORM_WORDS = {
     'meituan': ('美团', '大众点评', 'meituan'),
     'xiaohongshu': ('小红书', 'xiaohongshu', 'rednote'),
 }
+from intelligence.editorial import PLATFORM_PRODUCTS
+for _ecosystem, _products in PLATFORM_PRODUCTS.items():
+    PLATFORM_WORDS[_ecosystem] += tuple(_products)
+
 DOMESTIC = ('安踏', '李宁', '特步', '361', '匹克', '鸿星尔克', '波司登', '探路者', '凯乐石',
             'anta', 'li ning', 'li-ning', 'xtep', 'lining', 'kailas', 'bosideng', 'keep',
             '盒马', '超盒算', '永辉', '胖东来', '名创优品', '西西弗', '物美', '美宜佳', '小菜园',
@@ -149,7 +169,7 @@ def validate_digest(data):
                 raise ValueError(f'{path} 缺少正文 text 或 summary_points。')
             if infer_subcategory(section, item) not in (*SUBCATEGORIES[section], 'unclassified'):
                 raise ValueError(f'{path}.subcategory 不是该板块的有效细分类。')
-            topic = item.get('topic')
+            topic = canonical_topic(section, item.get('topic'))
             if topic is not None:
                 if not isinstance(topic, str) or topic not in TOPICS.get(section, {}):
                     raise ValueError(f'{path}.topic 不是该板块的有效主题。')
@@ -204,7 +224,7 @@ def _topic_groups(section, items, allowed=None):
     topics = TOPICS[section]
     groups = OrderedDict((key, []) for key in (allowed or topics))
     for item in items:
-        key = item.get('topic')
+        key = canonical_topic(section, item.get('topic'))
         # Missing topics in mixed old/new drafts remain visible without guessing.
         groups.setdefault(key if key in groups else 'other', []).append(item)
     return [(key, topics.get(key, '其他动态'), entries)
@@ -276,4 +296,5 @@ def render_digest_text(data, section):
                     number = catalog[ref['link']]['number']
                     lines.append(f"  [{number}] {ref.get('title') or entry_title(item)}：{ref['link']}")
     return '\n'.join(lines) or '本期未筛出高价值行业情报。'
+
 
