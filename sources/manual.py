@@ -259,7 +259,7 @@ def build_manual_overview_research(items, as_of=None):
     An explicit empty bundle prevents reusing last week's saved JSON research.
     """
     from output.overview import original_url
-    review_day = as_of or datetime.now(timezone.utc).date()
+    review_day = as_of or datetime.now(timezone(timedelta(hours=8))).date()
     if isinstance(review_day, str):
         review_day = datetime.strptime(review_day, "%Y-%m-%d").date()
     sources, by_url = [], {}
@@ -273,7 +273,7 @@ def build_manual_overview_research(items, as_of=None):
                 or not item.get('manual_source', item.get('source', '')).strip() or not title.strip() or not facts):
             raise ValueError(f'Overview资料“{title}”需要标题、来源、有效原文链接、非未来发布日期和非空Content事实内容。')
         url = item['link']
-        if published.date() < review_day - timedelta(days=14):
+        if published.date() < review_day - timedelta(days=13):
             print(f'[overview reject] outside_14_day_window: {published.date().isoformat()} {title}', flush=True)
             continue
         points = [line.strip() for line in facts.splitlines() if line.strip()]
@@ -284,10 +284,12 @@ def build_manual_overview_research(items, as_of=None):
                     existing['summary_points'].append(point)
             continue
         source = {'title': title, 'source': item['source'], 'date': published.date().isoformat(),
-                  'url': url, 'summary_points': points}
+                  'url': url, 'summary_points': points,
+                  'subcategory': item.get('subcategory', 'overview')}
         sources.append(source)
         by_url[url] = source
     return {'as_of': review_day.isoformat(), 'sources': sources}
+
 
 
 
