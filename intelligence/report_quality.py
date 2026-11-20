@@ -25,7 +25,7 @@ def eligible(item, today=None):
         day = datetime.fromisoformat(str(item.get('published_date', '')).replace('Z', '+00:00')).date()
     except (TypeError, ValueError):
         return False
-    today = today or datetime.now(timezone.utc).date()
+    today = today or datetime.now(timezone(timedelta(hours=8))).date()
     if day > today:
         return False
     if item.get('origin_type') != 'manual':
@@ -34,7 +34,7 @@ def eligible(item, today=None):
             return False
         if item.get('publication_date_verified') is not True:
             return False
-    return today - timedelta(days=14) <= day <= today
+    return today - timedelta(days=13) <= day <= today
 
 
 def manual_fallback_allowed(item):
@@ -85,7 +85,7 @@ def report_shortfalls(data):
 
 def finalize_report(data, items):
     normalized = normalize_dashboard_data(data or {})
-    normalized['date'] = datetime.now(timezone.utc).date().isoformat()
+    normalized['date'] = datetime.now(timezone(timedelta(hours=8))).date().isoformat()
     by_link = {canonical_link(i['link']): i for i in items if eligible(i)}
     rejected = list(normalized.get('rejected_candidates', []))
     candidates = []
@@ -109,7 +109,8 @@ def finalize_report(data, items):
     links, events = set(), set()
     for card in sorted(candidates, key=_score, reverse=True):
         link = canonical_link(card['link'])
-        event = re.sub(r'\s+', '', str(card['event_key'])).casefold()
+        event = (re.sub(r'\s+', '', str(card['event_key'])).casefold(),
+                 tuple(re.sub(r'\s+', '', p) for p in card['summary_points']))
         if link in links or event in events:
             rejected.append({'link': card['link'], 'reason': '同一原文或同一事件的重复报道'})
             continue
@@ -133,5 +134,6 @@ def validate_report(data):
     if data.get('parse_warning'):
         raise ValueError('AI审核未完成，请检查草稿。')
     validate_digest(data)
+
 
 
