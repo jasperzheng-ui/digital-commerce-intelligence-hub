@@ -27,7 +27,7 @@ def fetch_google_news_items(search_queries, existing_items=None, cache=None, art
     queues = {s: list(dict.fromkeys(' '.join(q.split()) for q in queries[:SEARCH_QUERIES_PER_SECTION]))
               for s, queries in sections.items()}
 
-    def read_batch(batch):
+    def read_batch(batch, window):
         feeds = fetch_unique([entry[2] for entry in batch], cache)
         seeds = []
         for (section, query, url), feed in zip(batch, feeds):
@@ -37,7 +37,7 @@ def fetch_google_news_items(search_queries, existing_items=None, cache=None, art
             for entry in feed.entries:
                 title, summary = entry.get('title', ''), entry.get('summary', '')
                 if should_keep_section_item(title, summary, profile):
-                    item = _make_google_news_item(entry, query, section, max(SEARCH_WINDOWS_DAYS),
+                    item = _make_google_news_item(entry, query, section, window,
                                                  score_section_item(title, summary, profile), 2, False)
                     publisher = entry.get('source') or {}
                     item['source'] = (publisher.get('title') if isinstance(publisher, dict) else str(publisher)) or urlparse(item['link']).hostname or 'Web source'
@@ -53,17 +53,22 @@ def fetch_google_news_items(search_queries, existing_items=None, cache=None, art
                 added.add(item['domain'])
         return added
 
-    while any(queues.values()):
-        batch = []
-        for section, queries in queues.items():
-            for _ in range(min(2, len(queries))):
-                query = queries.pop(0)
-                batch.append((section, query, GOOGLE_NEWS_RSS_URL.format(query=quote_plus(query + ' when:14d'))))
-        added = read_batch(batch)
-        alternate = [(s, q, 'https://www.bing.com/search?format=rss&q=' + quote_plus(q + ' past 14 days'))
-                     for s, q, _ in batch if s not in added]
-        if alternate:
-            read_batch(alternate)
+    for window in SEARCH_WINDOWS_DAYS:
+        queues = {s: list(dict.fromkeys(queries[:SEARCH_QUERIES_PER_SECTION]))
+                  for s, queries in sections.items()}
+        while any(queues.values()):
+            batch = []
+            for section, queries in queues.items():
+                for _ in range(min(2, len(queries))):
+                    query = queries.pop(0)
+                    batch.append((section, query, GOOGLE_NEWS_RSS_URL.format(
+                        query=quote_plus(query + f' when:{window}d'))))
+            added = read_batch(batch, window)
+            alternate = [(s, q, 'https://www.bing.com/search?format=rss&q=' +
+                          quote_plus(q + f' past {window} days'))
+                         for s, q, _ in batch if s not in added]
+            if alternate:
+                read_batch(alternate, window)
     print('[search] cached requests=' + str(len(cache)) + ', usable=' + str({s: len(v) for s, v in selected.items()}), flush=True)
     return [item for s in sections for item in sorted(selected[s], key=lambda i: i.get('relevance_score', 0), reverse=True)]
 
@@ -104,4 +109,5 @@ def _iter_section_queries(search_queries):
         grouped.setdefault(query_config.get("domain", "retail"), []).append(query_config["query"])
     for section, queries in grouped.items():
         yield section, queries
+
 
