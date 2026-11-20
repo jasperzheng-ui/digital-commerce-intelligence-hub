@@ -5,6 +5,7 @@ from datetime import date, timedelta
 
 from intelligence.gemini import GEMINI_MODEL, _strip_json_fence
 from output.overview import SECTION_TITLES, original_url, validate_overview
+from intelligence.editorial import WRITING_GUIDANCE, source_guidance
 
 
 def load_overview_research(data):
@@ -49,7 +50,7 @@ def load_overview_research(data):
             raise ValueError("Overview研报发布日期必须是 YYYY-MM-DD。") from exc
         if published > as_of:
             raise ValueError("Overview资料发布日期不能晚于资料复核日期。")
-        if not report_date - timedelta(days=14) <= published <= report_date:
+        if not report_date - timedelta(days=13) <= published <= report_date:
             print(f'[overview reject] outside_14_day_window: {item["date"]} {item["title"]}', flush=True)
             continue
         recent_sources.append(item)
@@ -143,13 +144,13 @@ def build_overview_prompt(data, articles):
 1. macro_analysis 宏观经济与政策：消费总量、收入就业、物价信心与重要政策，以及相关关税、汇率、能源成本。解释市场总体需求和经营条件，不写企业动作或单一服装品类。
 2. consumer_insights 消费需求与支出变化：以近期需求变化为主，支出与购买取舍为辅。优先解释天气与季节、假期与时间安排、家庭阶段、人口结构、生活方式、兴趣活动及技术普及等因素，如何改变特定人群在具体场景下对商品和服务的需要、购买或使用行为。观察范围包括居家、出行、健康、运动、学习、娱乐、社交陪伴、养老、育儿、宠物及数字服务等，按当周证据选择方向。
 3. channel_competition 渠道与竞争格局：线上线下份额、即时零售、新店型、交易入口和平台规则，以及影响交易结构的技术应用。解释渠道角色与竞争关系，不逐篇复述模型发布、开店或品牌战报。
-以中国市场为主，海外研究作对照；五国调查、快消研究等范围必须自然写入事实，不扩大为全球或全行业。
+Overview以中国国内宏观、消费及渠道为主，观察范围覆盖多个行业。不得用美国消费数据替代中国市场；AI相关变化可适当引用海外信息；五国调查、快消研究等范围必须自然写入事实，不扩大为全球或全行业。
 独立资料也必须在周报日期之前的近14天内发布。月报、季报、年度研报可讨论更早的统计期间，但不豁免报告本身的发布日期；背景标签不能让过早资料进入周报。
 同一事实和数字只在最合适的一类展开。不能因同一主题有多篇文章就在三类反复表述。
-宏观与渠道每类通常1–2个小点；消费需求优先选择2–3个证据充分、方向互补的变化，资料较少时按实际数量输出。每点title表达一个具体判断；text为完整、易懂的150–220字正文，按实际信息量调整。
+宏观与渠道每类通常1–2个小点；消费需求优先选择2–3个证据充分、方向互补的变化，资料较少时按实际数量输出。每点title表达一个具体判断；text为完整、易懂且多维度的事实正文，按原文信息量展开，不设统一字数。
 每点按判断、关键证据、解释组织，不强制统一句式，不输出业务建议。每点source_ids只能引用独立资料的ID。
 资料不支持的类返回[]，尤其没有独立研报时不得用四大板块的新闻填充。
-近14天范围内的月报、季报、行业研究与背景补充按证据价值使用，不额外缩成7天；不把报告统计期间误当成发布日期。
+优先近7个自然日，必要时采用近14个自然日内重要且互补的月报、季报、行业研究；不把报告统计期间误当成发布日期。
 consumer_insights可由交易、预订、搜索、咨询、使用行为、消费者调查，以及有明确对象和地域的采访观察支撑。围绕“触发因素—人群与场景—需求变化—关键证据”组织，按事实准确使用“搜索上升”“提前预订”“实际购买”或“受访者反映”等表述。支出规模、家庭预算、价格与购买取舍作为支持维度；CPI等总体价格环境主要归入macro_analysis。
 按素材丰富程度平衡需求方向，避免长期集中于食品、服装和旅游，也不为凑齐方向填充薄弱材料。采访观察描述具体场景和对象，趋势强度与证据范围相匹配。活动启动、商家上新和促销投入属于供给安排；需求判断须有相应消费者行为证据。
 正文自然交代数据期间、平台或样本范围、比较口径和行为状态，准确区分价格、数量、意向、预订和成交。采用正面、具体的事实表达，将必要口径融入事实句，避免反复使用“不等于”“不代表”“未采用”等编辑说明。
@@ -161,7 +162,7 @@ consumer_insights可由交易、预订、搜索、咨询、使用行为、消费
 "channel_competition":[{"title":"渠道竞争：具体判断","text":"分析正文","source_ids":["独立资料ID"]}],
 "section_overviews":{"platform_intelligence":"平台总览","ai_technology":"AI总览",
 "sports_outdoor":"体育户外总览","retail_innovation":"零售总览"}}
-""" + "\n周报日期：" + str(data.get("date", "")) + "\n最终入选文章：\n" + json.dumps(articles, ensure_ascii=False)
+""" + WRITING_GUIDANCE + source_guidance() + "\n周报日期：" + str(data.get("date", "")) + "\n最终入选文章：\n" + json.dumps(articles, ensure_ascii=False)
 
 
 def parse_overview_response(raw, sources):
@@ -210,6 +211,7 @@ def add_weekly_overview(data):
     if research:
         result["overview_research"] = research
     return result
+
 
 
 
