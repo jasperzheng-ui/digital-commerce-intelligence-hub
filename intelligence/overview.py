@@ -1,9 +1,8 @@
 """Generate a source-bound overview only after editorial selection is complete."""
 import json
-import os
 from datetime import date, timedelta
 
-from intelligence.gemini import GEMINI_MODEL, _strip_json_fence
+from intelligence.gemini import _strip_json_fence
 from output.overview import SECTION_TITLES, original_url, validate_overview
 from intelligence.editorial import WRITING_GUIDANCE, source_guidance
 
@@ -211,6 +210,7 @@ def add_weekly_overview(data):
     if research:
         result["overview_research"] = research
     return result
+
 
 
 
