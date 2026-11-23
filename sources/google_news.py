@@ -91,12 +91,6 @@ def _make_google_news_item(entry, query, section, window_days, score, priority, 
     return item
 
 
-def _dedupe_key(title, link):
-    normalized_title = " ".join(str(title).lower().split())
-    normalized_link = str(link).strip()
-    return normalized_title, normalized_link
-
-
 def _iter_section_queries(search_queries):
     if isinstance(search_queries, dict):
         for section, queries in search_queries.items():
