@@ -44,7 +44,6 @@ def _item_key(item):
     return ('link', link) if link else ('title', str(item.get('title', '')).strip().lower())
 
 
-
 def prepare_information_pool(items, limit=None):
     """Keep every unique usable candidate; request batching happens downstream."""
     seen, chosen = set(), []
@@ -55,45 +54,6 @@ def prepare_information_pool(items, limit=None):
         seen.add(key)
         chosen.append(item)
     return chosen
-
-
-def build_empty_message():
-    today = datetime.now().strftime("%Y-%m-%d")
-    return (
-        f"{PROJECT_NAME}\n"
-        f"Date: {today}\n\n"
-        "本期信息源未返回可用于分析的数字商业 / 电商情报。"
-    )
-
-
-def build_empty_dashboard_data():
-    today = datetime.now().strftime("%Y-%m-%d")
-    return {
-        "date": today,
-        "headline": "本期信息源未返回高置信度外部情报",
-        "platform_intelligence": [],
-        "ai_technology": [],
-        "sports_outdoor": [],
-        "retail_innovation": [],
-        "one_thing_worth_watching": "本期信息源未返回高置信度外部情报，页面已正常更新。",
-    }
-
-
-def build_dashboard_notification(data, page_url):
-    headline = data.get("headline") or data.get("one_thing_worth_watching") or "今日信号已更新"
-    return (
-        "Digital Commerce Intelligence 已更新\n"
-        f"今日重点：{headline}\n"
-        f"查看完整页面：{page_url}"
-    )
-
-
-def send_optional_feishu_test_message(data, page_url):
-    if os.getenv("ENABLE_FEISHU_TEST") != "true":
-        return
-    from output.feishu import send_text_message
-
-    send_text_message(build_dashboard_notification(data, page_url))
 
 
 def get_report_mode():
@@ -159,7 +119,6 @@ def run_preview_mode():
 
     page_url = get_dashboard_url("preview")
     send_brief_email(dashboard_data, page_url)
-    send_optional_feishu_test_message(dashboard_data, page_url)
     print(f"Preview dashboard generated: {PREVIEW_OUTPUT_PATH}")
 
 
@@ -251,7 +210,6 @@ def run_publish_mode():
 
     page_url = get_dashboard_url("publish")
     send_brief_email(dashboard_data, page_url)
-    send_optional_feishu_test_message(dashboard_data, page_url)
     print(f"Published dashboard generated: {HTML_OUTPUT_PATH}")
 
 
@@ -268,3 +226,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
