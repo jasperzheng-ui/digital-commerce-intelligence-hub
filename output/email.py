@@ -1,5 +1,4 @@
 import os
-import re
 from html import escape
 
 import requests
@@ -15,10 +14,10 @@ DEFAULT_EMAIL_FROM = "Digital Commerce Intelligence <onboarding@resend.dev>"
 
 
 SECTIONS = [
-    ("Platform Intelligence", "platform_intelligence", "standard"),
-    ("AI Capability", "ai_technology", "ai"),
-    ("Sports & Outdoor", "sports_outdoor", "standard"),
-    ("Retail Innovation", "retail_innovation", "standard"),
+    ("Platform Intelligence", "platform_intelligence"),
+    ("AI Capability", "ai_technology"),
+    ("Sports & Outdoor", "sports_outdoor"),
+    ("Retail Innovation", "retail_innovation"),
 ]
 
 
@@ -56,7 +55,7 @@ def build_email_html(data, dashboard_url=""):
     date_parts = report_date_parts(data.get("date"))
     sections_html = "\n".join(
         _render_digest_section(title, data, key)
-        for title, key, section_type in SECTIONS
+        for title, key in SECTIONS
     )
 
     return f"""<!doctype html>
@@ -115,7 +114,7 @@ def build_email_text(data, dashboard_url=""):
     if overview:
         lines.extend(["", overview])
 
-    for title, key, section_type in SECTIONS:
+    for title, key in SECTIONS:
         lines.extend(["", title, "本周板块总览", section_overview(data, key)])
         lines.append(render_digest_text(data, key))
 
@@ -143,265 +142,6 @@ def _render_digest_section(title, data, key):
             f'style="border-collapse:collapse;margin-bottom:32px;"><tr><td>'
             f'<h2 style="margin:0 0 16px;color:#172033;font-size:22px;line-height:1.5;">{_e(title)}</h2>'
             + render_section_overview_html(data, key) + render_digest_html(data, key) + '</td></tr></table>')
-
-
-def _render_section(title, cards, section_type, summary_html=""):
-    cards = _safe_cards(cards)
-    if cards:
-        cards_html = "\n".join(_render_card(card, section_type) for card in cards)
-    else:
-        cards_html = """
-                  <tr>
-                    <td style="padding:18px 20px; color:#667085; font-size:14px; line-height:1.6; background:#fafbff; border:1px solid #e8edf5; border-radius:14px;">
-                      No reliable signal returned from real sources.
-                    </td>
-                  </tr>"""
-
-    return f"""
-                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:separate; border-spacing:0; margin:0 0 30px 0;">
-                  <tr>
-                    <td style="padding:0 0 12px 0;">
-                      <h2 style="margin:0; color:#111827; font-size:20px; line-height:1.3; font-weight:760;">
-                        {_e(title)}
-                      </h2>
-                    </td>
-                  </tr>
-                  <tr><td>{summary_html}</td></tr>
-                  {cards_html}
-                </table>"""
-
-
-def _render_card(card, section_type):
-    title = _card_title(card, section_type)
-    metadata, _ = _card_content(card, section_type)
-    metadata_html = _render_metadata(metadata)
-    summary_html = _render_summary_points(card, section_type)
-    link_html = _render_original_link(card.get("link") if isinstance(card, dict) else "")
-
-    return f"""
-                  <tr>
-                    <td style="padding:0 0 14px 0;">
-                      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#ffffff; border:1px solid #e5e9f2; border-radius:14px; border-collapse:separate; border-spacing:0;">
-                        <tr>
-                          <td style="padding:20px 20px 18px 20px;">
-                            <h3 style="margin:0; color:#111827; font-size:17px; line-height:1.45; font-weight:750;">
-                              {_e(title)}
-                            </h3>
-                            {metadata_html}
-                            {summary_html}
-                            {link_html}
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>"""
-
-
-def _render_summary_points(card, section_type):
-    points = _summary_points(card, section_type)
-    if not points:
-        return ""
-    items = "".join(
-        f"""<li style="margin:0 0 8px 0; color:#263244; font-size:14px; line-height:1.75;">{_e(point)}</li>"""
-        for point in points
-    )
-    return f"""
-                            <div style="margin-top:14px;">
-                              <div style="color:#6b7280; font-size:11px; line-height:1.4; letter-spacing:.08em; text-transform:uppercase; font-weight:800; margin-bottom:8px;">
-                                摘要要点
-                              </div>
-                              <ul style="margin:0; padding-left:18px;">{items}</ul>
-                            </div>"""
-
-
-def _render_original_link(value):
-    url = safe_text(value).strip()
-    if not url:
-        return ""
-    return f"""
-                            <div style="margin-top:16px;">
-                              <a href="{_e(url)}" style="display:inline-block; color:#3643BA; text-decoration:none; font-size:13px; line-height:1; font-weight:750; padding:9px 12px; border:1px solid #c7d7fe; border-radius:999px;">
-                                Read Original
-                              </a>
-                            </div>"""
-
-
-def _format_text_card(index, card, section_type):
-    if not isinstance(card, dict):
-        return [f"{index}. {safe_text(card)}"]
-
-    lines = [f"{index}. {_card_title(card, section_type)}"]
-    metadata, points = _card_content(card, section_type)
-    if metadata:
-        lines.append("   文章信息")
-        for label, values in metadata:
-            lines.append(f"   {label}:")
-            lines.extend(f"     - {value}" for value in values)
-    if points:
-        lines.extend(["", "   摘要要点"])
-        lines.extend(f"   - {point}" for point in points)
-    link = safe_text(card.get("link")).strip()
-    if link:
-        lines.append(f"   Read Original: {link}")
-    return lines
-
-
-def _card_title(card, section_type):
-    if not isinstance(card, dict):
-        return safe_text(card) or "Signal"
-    if section_type == "ai":
-        return safe_text(card.get("title") or card.get("name") or "AI Capability")
-    return safe_text(card.get("name") or card.get("title") or "Industry Signal")
-
-
-def _card_body_fields(card, section_type):
-    if not isinstance(card, dict):
-        return [("NEWS", card), ("WHY THIS MATTERS", "")]
-    if section_type == "ai":
-        return [
-            ("NEWS", card.get("capability") or card.get("news") or ""),
-            ("WHY THIS MATTERS", card.get("industry_impact") or card.get("why_this_matters") or ""),
-        ]
-    return [
-        ("NEWS", card.get("news") or ""),
-        ("WHY THIS MATTERS", card.get("why_this_matters") or ""),
-    ]
-
-
-# Older fallback previews embed these fields in the first summary point.
-_METADATA_LABELS = ("Category", "Keywords", "Company", "Source", "Date")
-_METADATA_FIELD = re.compile(r"(?:^|\s)(Category|Keywords|Company|Source|Date)\s*[:：]\s*", re.I)
-
-
-def _split_metadata_prefix(value):
-    text = safe_text(value).strip()
-    # Only parse an explicit metadata prefix; ordinary prose is left intact.
-    if not re.match(r"^(?:Category|Keywords|Company|Source|Date)\s*[:：]", text, re.I):
-        return {}, text
-    content = re.search(r"(?:^|\s)Content\s*[:：]\s*", text, re.I)
-    header = text[:content.start()] if content else text
-    body = text[content.end():].strip() if content else ""
-    matches = list(_METADATA_FIELD.finditer(header))
-    metadata = {}
-    for index, match in enumerate(matches):
-        end = matches[index + 1].start() if index + 1 < len(matches) else len(header)
-        metadata[match.group(1).lower()] = header[match.end():end].strip()
-    return metadata, body
-
-
-def _body_points(value):
-    # Do not split decimal numbers or domains on a bare period.
-    lines = [line.strip() for line in safe_text(value).splitlines() if line.strip()]
-    if len(lines) <= 1:
-        lines = re.split(r"(?<=[。！？])\s*|(?<=[.!?])\s+(?=[A-Z])", safe_text(value).strip())
-    return [re.sub(r"^(?:[-*•]|\d+[.)、])\s*", "", line).strip()
-            for line in lines if line.strip()]
-
-
-def _metadata_values(label, value):
-    values = value if isinstance(value, list) else [value]
-    result = []
-    for item in values:
-        text = safe_text(item).strip()
-        # Categories and keywords are lists; preserve company/source punctuation.
-        parts = re.split(r"[\n,，、;；|]+", text) if label in {"Category", "Keywords"} else text.splitlines()
-        result.extend(part.strip() for part in parts if part.strip())
-    return result
-
-
-def _card_content(card, section_type):
-    if not isinstance(card, dict):
-        return [], _body_points(card)
-    value = card.get("summary_points")
-    raw_points = value if isinstance(value, list) else ([value] if value else [])
-    if not raw_points:
-        raw_points = [v for _, v in _card_body_fields(card, section_type) if v]
-    metadata = {}
-    points = []
-    legacy = any(_split_metadata_prefix(p)[0] for p in raw_points)
-    # Recover the full original body when old sentence splitting damaged metadata
-    # (e.g. news.cnmtpt.com) or consumed the six-point limit.
-    for _, raw in _card_body_fields(card, section_type):
-        parsed, body = _split_metadata_prefix(raw)
-        metadata.update(parsed)
-        if legacy and parsed and body:
-            points = _body_points(body)
-            break
-    if not points:
-        for raw in raw_points:
-            parsed, body = _split_metadata_prefix(raw)
-            metadata.update(parsed)
-            points.extend(_body_points(body) if parsed else
-                          [line.strip() for line in safe_text(raw).splitlines() if line.strip()])
-    rows = []
-    for label in _METADATA_LABELS:
-        key = label.lower()
-        explicit = card.get(key) or card.get("manual_" + key) or card.get(label)
-        value = explicit or metadata.get(key, "")
-        if label == "Source":
-            value = re.sub(r"^Manual Input\s*-\s*", "", safe_text(value), flags=re.I)
-        values = _metadata_values(label, value)
-        if values:
-            rows.append((label, values))
-    return rows, points
-
-
-def _summary_points(card, section_type):
-    return _card_content(card, section_type)[1]
-
-
-def _render_metadata(rows):
-    if not rows:
-        return ""
-    rendered = []
-    for label, values in rows:
-        if label == "Keywords":
-            value_html = " ".join(
-                '<span style="display:inline-block; margin:0 6px 6px 0; '
-                'padding:4px 9px; background:#eaf0ff; border:1px solid #d5e0fc; '
-                'border-radius:12px; color:#3643ba; font-size:12px; '
-                f'line-height:1.5; white-space:nowrap;">{_e(value)}</span>'
-                for value in values
-            )
-        else:
-            value_html = "".join(
-                f'<div style="margin:0 0 3px 0; line-height:1.65;">{_e(value)}</div>'
-                for value in values
-            )
-        rendered.append(
-            '<tr><td valign="top" width="88" style="padding:6px 10px 6px 0; '
-            'color:#667085; font-size:12px; font-weight:700; line-height:1.65;">'
-            f'{_e(label)}</td><td valign="top" style="padding:6px 0; '
-            f'color:#344054; font-size:13px; overflow-wrap:anywhere;">{value_html}</td></tr>'
-        )
-    return (
-        '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" '
-        'style="margin-top:16px; background:#f5f7fb; border:1px solid #e8edf5; '
-        'border-radius:10px;"><tr><td style="padding:10px 14px;">'
-        '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" '
-        'style="border-collapse:collapse;">' + "".join(rendered) + '</table></td></tr></table>'
-    )
-
-
-def _trend_values(value):
-    if isinstance(value, list):
-        return [safe_text(item).strip() for item in value if safe_text(item).strip()]
-    text = safe_text(value).strip()
-    if not text:
-        return []
-    separators = ["，", ",", "、", "|"]
-    for separator in separators:
-        if separator in text:
-            return [item.strip() for item in text.split(separator) if item.strip()]
-    return [text]
-
-
-def _safe_cards(cards):
-    if isinstance(cards, list):
-        return cards
-    if cards:
-        return [cards]
-    return []
 
 
 def _split_recipients(value):
