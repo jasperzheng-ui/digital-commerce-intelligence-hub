@@ -37,10 +37,6 @@ def eligible(item, today=None):
     return today - timedelta(days=13) <= day <= today
 
 
-def manual_fallback_allowed(item):
-    return False
-
-
 def attach_metadata(card, item):
     from output.digest import infer_subcategory
     for key in ('company', 'keywords'):
@@ -127,13 +123,5 @@ def finalize_report(data, items):
         normalized['editorial_notice'] = 'AI审核未完成，请重新Preview。'
     print('[selection] ' + str({s: len(v) for s, v in selected.items()}), flush=True)
     return normalized
-
-
-def validate_report(data):
-    from output.digest import validate_digest
-    if data.get('parse_warning'):
-        raise ValueError('AI审核未完成，请检查草稿。')
-    validate_digest(data)
-
 
 
