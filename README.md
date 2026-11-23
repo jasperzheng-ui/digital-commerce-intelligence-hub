@@ -1,45 +1,36 @@
 # Digital Commerce Intelligence Hub
 
-A weekly industry intelligence dashboard for Decathlon China digital commerce intelligence and opportunity discovery.
+A weekly industry intelligence dashboard for Decathlon China digital commerce and e-commerce teams.
 
-This project has been upgraded from a simple news push bot into a weekly web-based intelligence dashboard:
-
-GitHub Actions -> Python source collectors -> Unified Information Pool -> Gemini JSON analysis -> HTML Dashboard -> GitHub Pages + Email notification
+GitHub Actions → Python collectors + verified manual sources → Candidate review → Global selection → Thematic digest → HTML Dashboard + Email → GitHub Pages and history archive
 
 ## What It Does
 
-The system collects automatic and manual signals, then asks Gemini to produce short structured dashboard content focused on:
+The system combines automatic and manual sources to produce:
 
+- 本周行业观察 / Overview
 - 国内电商平台 / Platform Intelligence
-- AI 技术前沿 / AI Technology
-- 体育与户外行业 / Sports & Outdoor
-- 传统零售创新 / Retail Innovation
-- One Thing Worth Watching
+- AI 业务应用与技术进展 / AI Applications & Technology
+- 体育与服装／户外 / Sports, Apparel & Outdoor
+- 传统零售 / Retail Innovation
 
-The dashboard is designed for Decathlon China digital commerce and e-commerce leaders to scan in 2-3 minutes. Gemini may return empty sections when no reliable source-backed signals are available.
+The automatic generation flow selects up to 30 distinct source links across the overview and four sections. Related articles can support a single information point. Editors review the draft before publishing; saved-draft modes preserve the edited content.
 
 ## Information Sources
 
 Automatic sources:
 
-- RSS feeds filtered by section profile
-- Google News RSS keyword searches grouped by section
-- Official blogs
+- RSS feeds filtered by section.
+- Google News searches, with a Bing RSS fallback.
+- Official-site and publisher-name queries defined in `config.py` and `intelligence/editorial.py`.
 
-Automatic retrieval is sectioned before Gemini analysis. Each section uses its own keywords and searches recent information in widening windows: 3 days first, then 7 days, then 14 days. The four automatic sections are:
-
-- 国内电商平台 / Platform Intelligence
-- AI 能力与行业影响 / AI Capabilities & Industry Impact
-- 体育与户外行业 / Sports & Outdoor
-- 传统零售创新 / Retail Innovation
+Searches cover the last 7 days first, then widen to 14 days. Availability depends on public access and search indexing.
 
 Manual source:
 
 - `manual_sources/daily_input.md`
 
-Automatic filtering ranks usefulness over recency. It excludes low-relevance retail media, ad-network, campaign, celebrity, sponsorship, and weak product-only items. AI filtering is business-first: pure model releases, parameter counts, benchmarks, papers, and low-level infrastructure details are ignored unless the item clearly introduces a business-understandable capability for retail, ecommerce, customer experience, operations, workflow, or enterprise adoption.
-
-Future sources can be added as new modules under `sources/`, such as PDF, Feishu Docs, or internal business data.
+Editors supply verified facts, publication dates and direct article links. Independent Overview research currently comes from entries marked `Category: overview`. Source types are unrestricted, with no required WeChat article share.
 
 ## Project Structure
 
@@ -55,91 +46,122 @@ Future sources can be added as new modules under `sources/`, such as PDF, Feishu
 │   ├── common.py
 │   ├── rss.py
 │   ├── google_news.py
+│   ├── http_feed.py
+│   ├── editorial_policy.py
 │   └── manual.py
 ├── manual_sources/
-│   ├── daily_input.md
-│   └── examples.md
+│   └── daily_input.md
 ├── intelligence/
-│   ├── prompt.py
-│   └── gemini.py
+│   ├── editorial.py       # Shared rules, product scope and source catalog
+│   ├── prompt.py          # Candidate review
+│   ├── gemini.py          # Model review and response handling
+│   ├── report_quality.py  # Date, quality and duplicate checks
+│   ├── selection.py       # Global source selection
+│   ├── batches.py         # Batched model calls
+│   ├── digest.py          # Thematic synthesis
+│   └── overview.py        # Market overview and section summaries
 └── output/
+    ├── digest.py          # Classification, citations and rendering
+    ├── overview.py
     ├── email.py
-    ├── feishu.py
+    ├── feishu.py          # Optional webhook notification
     ├── html.py
+    ├── archive.py
+    ├── preview/
+    │   ├── data.json
+    │   └── index.html
     └── index.html
 ```
 
+`tests/test_editorial.py` and `docs/editorial_requirements.md` are optional maintenance files. Runtime rules are defined in the Python modules.
+
 ## Dashboard Output
 
-Running the script generates:
+The report uses `thematic_digest_v1`, with concrete titles, factual summaries and article citations. Web pages and email share the same classifications and citation rendering.
 
-```text
-output/index.html
-```
+| REPORT_MODE | Input | Collect sources / call model | Send email | Output |
+|---|---|---|---|---|
+| `preview` | Manual material and automatic sources | Yes | Yes | Replace draft JSON and preview HTML |
+| `deploy_only` | Saved draft JSON | No | No | Update preview HTML |
+| `manual_preview` | Saved draft JSON | No | Yes | Update preview HTML |
+| `publish` | Reviewed draft JSON | No | Yes | Update formal dashboard and archive |
 
-GitHub Actions publishes this file to GitHub Pages.
+Draft data: `output/preview/data.json`  
+Preview page: `output/preview/index.html`  
+Formal dashboard: `output/index.html`
 
-Email notification sends a plain-text brief after each GitHub Actions run. It does not send the full HTML dashboard code.
+In GitHub Actions, all four modes deploy the entire `output/` directory to GitHub Pages. The preview page is accessible by URL. Only `publish` updates the formal archive.
 
-```text
-Subject: Digital Commerce Intelligence Brief - YYYY-MM-DD
-
-Today's Focus
-...
-
-Platform Intelligence
-News: ...
-Why this matters: ...
-Trend: ...
-```
+Email is delivered through Resend and includes HTML content, a plain-text version and a dashboard link.
 
 ## GitHub Secrets
 
-Add these repository secrets:
+| Secret | Purpose |
+|---|---|
+| `GEMINI_API_KEY` | Model calls in preview mode |
+| `EMAIL_API_KEY` | Resend email API key |
+| `EMAIL_TO` | Recipient address or addresses |
+| `EMAIL_FROM` | Optional sender address permitted by your Resend account |
 
-- `GEMINI_API_KEY`
-- `EMAIL_TO`
-- `EMAIL_API_KEY`
-- `EMAIL_FROM` optional, depending on your email API sender setup
+Keys are read from environment variables or GitHub Secrets. The default sender is Resend's onboarding address.
 
-The API keys are loaded from environment variables. Do not hard-code them in the project. The existing Feishu module is retained for optional testing with `ENABLE_FEISHU_TEST=true` and `FEISHU_WEBHOOK_URL`.
+`deploy_only` renders saved data without model or email credentials. Optional Feishu notifications are enabled with `ENABLE_FEISHU_TEST=true` and `FEISHU_WEBHOOK_URL`; the preview and publish modes invoke them when enabled.
 
 ## Run Locally
 
-```bash
+Use Python 3.11 and install the dependencies:
+
+```powershell
 pip install -r requirements.txt
-export GEMINI_API_KEY="your-gemini-api-key"
-export EMAIL_TO="Lyra.liu@decathlon.com"
-export EMAIL_API_KEY="your-email-api-key"
-export EMAIL_FROM="Digital Commerce Intelligence <your-verified-sender@example.com>"
-export DASHBOARD_URL="https://your-name.github.io/your-repo/"
+```
+
+Render the saved draft:
+
+```powershell
+$env:REPORT_MODE = "deploy_only"
 python main.py
 ```
 
-Local output will be written to `output/index.html`.
+Generate and email an automatic draft:
+
+```powershell
+$env:REPORT_MODE = "preview"
+$env:GEMINI_API_KEY = "your-model-api-key"
+$env:EMAIL_API_KEY = "your-resend-api-key"
+$env:EMAIL_TO = "recipient@example.com"
+$env:EMAIL_FROM = "verified-sender@example.com"
+$env:DASHBOARD_BASE_URL = "https://your-account.github.io/digital-commerce-intelligence-hub/"
+python main.py
+```
+
+Set `REPORT_MODE` explicitly. When omitted, `python main.py` defaults to publish mode.
+
+Local runs write files; GitHub Actions handles Pages deployment. If the optional tests are present, run `python -m unittest discover -s tests -v`.
 
 ## GitHub Actions
 
-The workflow supports:
+The current workflow supports manual execution through `workflow_dispatch`.
 
-- Manual run through `workflow_dispatch`
-- Weekly scheduled run every Tuesday through cron in UTC
-- GitHub Pages deployment from `output/index.html`
+1. In Settings → Pages, set the deployment source to GitHub Actions.
+2. Upload the week's manual material or reviewed draft JSON.
+3. Open Actions → Digital Commerce Intelligence Brief → Run workflow.
+4. Select the appropriate report_mode from the table above.
+5. Review the preview and run publish when the edition is approved.
 
-Before the first deployment, set repository Pages source to GitHub Actions in GitHub:
+The workflow commits generated files and deploys the full output directory. Preview URLs are deployed alongside the formal dashboard.
 
-Settings -> Pages -> Build and deployment -> Source -> GitHub Actions
-
-See `.github/workflows/daily.yml`.
-
+Scheduled execution requires adding a schedule trigger to `.github/workflows/daily.yml`.
 
 ## History Archive
 
-Each run generates the latest dashboard at `output/index.html` and saves the same day into:
+Publish mode renders the reviewed draft and saves:
 
 ```text
+output/index.html
 output/archive/YYYY-MM-DD/index.html
+output/archive/index.html
 output/data/YYYY-MM-DD.json
 ```
 
-`output/archive/index.html` lists all saved intelligence briefs in reverse date order. GitHub Actions commits `output/archive` and `output/data` back to the repository so GitHub Pages keeps historical pages across runs.
+`output/archive/index.html` lists formal editions in reverse date order. GitHub Actions commits history files back to the repository so archived editions remain available across deployments.
+
