@@ -64,7 +64,6 @@ Editors supply verified facts, publication dates and direct article links. Indep
     ├── digest.py          # Classification, citations and rendering
     ├── overview.py
     ├── email.py
-    ├── feishu.py          # Optional webhook notification
     ├── html.py
     ├── archive.py
     ├── preview/
@@ -105,7 +104,7 @@ Email is delivered through Resend and includes HTML content, a plain-text versio
 
 Keys are read from environment variables or GitHub Secrets. The default sender is Resend's onboarding address.
 
-`deploy_only` renders saved data without model or email credentials. Optional Feishu notifications are enabled with `ENABLE_FEISHU_TEST=true` and `FEISHU_WEBHOOK_URL`; the preview and publish modes invoke them when enabled.
+`deploy_only` renders saved data without model or email credentials.
 
 ## Run Locally
 
