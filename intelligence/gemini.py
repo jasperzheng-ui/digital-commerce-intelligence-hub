@@ -1,9 +1,7 @@
-import os
 import json
 import re
 from urllib.parse import urlparse
 
-from config import MIN_SECTION_CANDIDATES, SECTION_ORDER
 from intelligence.prompt import build_dashboard_prompt
 
 
@@ -110,20 +108,6 @@ def generate_dashboard_data(items):
         if reviewed.get('headline'):
             result['headline'] = reviewed['headline']
     return result
-
-
-def parse_dashboard_json(raw_text):
-    text = _strip_json_fence(raw_text)
-    try:
-        return normalize_dashboard_data(json.loads(text))
-    except json.JSONDecodeError:
-        extracted = _extract_json_object(text)
-        if extracted:
-            try:
-                return normalize_dashboard_data(json.loads(extracted))
-            except json.JSONDecodeError:
-                pass
-        return build_dashboard_fallback(raw_text)
 
 
 def normalize_dashboard_data(data):
@@ -234,55 +218,6 @@ def _normalize_ai_cards(items):
     return cards
 
 
-def build_dashboard_fallback(raw_text):
-    return {
-        "date": "",
-        "headline": "Gemini 返回内容未能解析为标准 JSON",
-        "platform_intelligence": [],
-        "ai_technology": [],
-        "sports_outdoor": [],
-        "retail_innovation": [],
-        "one_thing_worth_watching": "Gemini 返回内容未能解析为标准 JSON，已按 empty 结果处理。",
-        "parse_warning": "Gemini JSON parse failed; rendered empty fallback content.",
-    }
-
-
-def build_source_fallback(source_items, warning):
-    data = build_dashboard_fallback("")
-    data["headline"] = "Gemini 暂时不可用，已基于真实候选来源生成临时预览"
-    data["one_thing_worth_watching"] = data["headline"]
-    data["parse_warning"] = warning
-    return ensure_minimum_dashboard_signals(data, source_items)
-
-
-def ensure_minimum_dashboard_signals(data, source_items):
-    normalized = normalize_dashboard_data(data)
-    items_by_domain = _items_by_domain(source_items)
-
-    for domain in SECTION_ORDER:
-        section_key = _canonical_section_key(domain)
-        cards = normalized.get(section_key, [])
-        minimum = MIN_SECTION_CANDIDATES.get(domain, 0)
-        if len(cards) >= minimum:
-            continue
-
-        used_links = {card.get("link") for card in cards if isinstance(card, dict) and card.get("link")}
-        for item in items_by_domain.get(domain, []):
-            if len(cards) >= minimum:
-                break
-            if item.get("link") in used_links:
-                continue
-            if _is_google_news_redirect(item.get("link")):
-                continue
-            cards.append(_fallback_card_from_item(domain, item))
-            if item.get("link"):
-                used_links.add(item.get("link"))
-
-        normalized[section_key] = cards
-
-    return _sanitize_dashboard_terms(normalized)
-
-
 def _sanitize_dashboard_terms(value):
     if isinstance(value, str):
         text = value
@@ -309,28 +244,6 @@ def _is_google_news_redirect(link):
     return host == "news.google.com"
 
 
-def _items_by_domain(items):
-    grouped = {section: [] for section in SECTION_ORDER}
-    for item in items:
-        domain = item.get("domain")
-        if domain not in grouped:
-            continue
-        grouped[domain].append(item)
-
-    for section_items in grouped.values():
-        section_items.sort(
-            key=lambda item: (
-                1 if item.get("origin_type") == "manual" else 0,
-                item.get("priority", 1),
-                item.get("relevance_score", 0),
-                -(item.get("search_window_days") or 0),
-                item.get("published_date", ""),
-            ),
-            reverse=True,
-        )
-    return grouped
-
-
 def _canonical_section_key(domain):
     return {
         "platform": "platform_intelligence",
@@ -340,84 +253,12 @@ def _canonical_section_key(domain):
     }[domain]
 
 
-def _fallback_card_from_item(domain, item):
-    title = item.get("title") or "Signal"
-    raw_summary = item.get("summary") or title
-    summary = _clean_text(raw_summary)
-    link = item.get("link") or ""
-    trend = _fallback_trend(item)
-    points = _summary_points(raw_summary)
-
-    if domain == "ai":
-        return {
-            "name": _shorten(title, 42),
-            "title": _shorten(_business_ai_title(title), 42),
-            "capability": summary,
-            "summary_points": points,
-            "industry_impact": "",
-            "trend": trend,
-            "link": link,
-        }
-
-    return {
-        "name": _shorten(_company_or_topic(title), 32),
-        "news": summary,
-        "summary_points": points,
-        "why_this_matters": "",
-        "trend": trend,
-        "link": link,
-    }
-
-
-def _business_ai_title(title):
-    lowered = title.lower()
-    if "search" in lowered:
-        return "AI 搜索能力进入业务流程"
-    if "customer service" in lowered or "客服" in title:
-        return "AI 客服能力继续增强"
-    if "shopping" in lowered or "购物" in title:
-        return "AI 购物助手能力继续增强"
-    if "agent" in lowered:
-        return "AI Agent 可处理连续业务任务"
-    if "workflow" in lowered or "operations" in lowered or "运营" in title:
-        return "AI 正在进入企业工作流"
-    return title
-
-
-def _company_or_topic(title):
-    return re.split(r"[-|:：]", title, maxsplit=1)[0].strip() or title
-
-
-def _fallback_trend(item):
-    if item.get("fallback_reason"):
-        return "高相关候选;周度补充"
-    window_days = item.get("search_window_days")
-    if window_days:
-        return f"近{window_days}天;行业情报"
-    return "行业情报"
-
-
 def _strip_json_fence(raw_text):
     text = raw_text.strip()
     if text.startswith("```"):
         text = re.sub(r"^```(?:json)?\s*", "", text)
         text = re.sub(r"\s*```$", "", text)
     return text.strip()
-
-
-def _extract_json_object(text):
-    start = text.find("{")
-    end = text.rfind("}")
-    if start == -1 or end == -1 or end <= start:
-        return ""
-    return text[start : end + 1]
-
-
-def _shorten(text, limit):
-    text = re.sub(r"\s+", " ", str(text)).strip()
-    if len(text) <= limit:
-        return text
-    return text[: limit - 1].rstrip() + "…"
 
 
 def _clean_text(text):
@@ -455,6 +296,5 @@ def _manual_structured_points(text):
         if line:
             points.append(line)
     return points if len(points) > 1 else []
-
 
 
