@@ -9,29 +9,13 @@ HTML_OUTPUT_PATH = BASE_DIR / "output" / "index.html"
 PREVIEW_OUTPUT_PATH = BASE_DIR / "output" / "preview" / "index.html"
 PREVIEW_DATA_PATH = BASE_DIR / "output" / "preview" / "data.json"
 
-MAX_ITEMS_FOR_GEMINI = None  # No total article quota; model requests are batched.
 RSS_ITEMS_PER_FEED = None
 GOOGLE_NEWS_ITEMS_PER_QUERY = 5
 
 SECTION_ORDER = ["platform", "ai", "sports", "retail"]
-MIN_SECTION_SIGNALS = {section: 0 for section in SECTION_ORDER}
-TARGET_SECTION_SIGNALS = {section: 0 for section in SECTION_ORDER}
-MAX_SECTION_SIGNALS = None
-MIN_WECHAT_SHARE = 0.0  # Source mix is descriptive, not an article deletion rule.
 MIN_QUALITY_SCORE = 75
-# Compatibility for old imports; there is no fixed manual count or input ratio.
-MANUAL_SOURCE_MIX = None
-PREFERRED_WECHAT_CHANNELS = {
-    "platform": ["京东黑板报", "京东物流黑板报", "京东健康黑板报", "京东工业黑板报", "阿里妈妈数字营销", "黄青春频道", "首财"],
-    "ai": ["腾讯研究院", "极客公园", "硬核看板", "Founder Park", "雷锋网", "42章经", "海外独角兽", "AGI接口"],
-    "sports": ["懒熊体育", "体育产业生态圈"],
-    "retail": ["联商网", "LadyMax", "时尚商业Daily", "DT商业观察"],
-}
-RESEARCH_CHANNELS = ["贝恩公司", "艾瑞咨询", "艾瑞消费资讯", "36氪未来消费", "虎嗅APP", "晚点LatePost", "刘润", "商业弧光"]
 SEARCH_WINDOWS_DAYS = [7, 14]
 MAX_REPORT_SOURCES = 30
-MIN_SECTION_CANDIDATES = {section: 0 for section in SECTION_ORDER}
-MAX_SECTION_CANDIDATES = None
 
 FEEDS = [
     {"source": "Retail Dive", "url": "https://www.retaildive.com/feeds/news/", "domain": "retail"},
@@ -85,30 +69,7 @@ SEARCH_QUERIES = {
     ],
 }
 
-EXPANDED_SEARCH_QUERIES = {
-    "platform": [
-        "China ecommerce platform strategy", "China digital commerce merchant tools", "China ecommerce logistics fulfillment",
-        "China instant retail platform", "China platform AI ecommerce", "国内 电商 平台 战略", "即时零售 平台 能力",
-    ],
-    "ai": [
-        "business AI adoption retail ecommerce", "enterprise AI customer service workflow", "AI agents business operations",
-        "AI search shopping customer experience", "AI automation marketing operations", "AI productivity enterprise adoption",
-        "企业 AI 应用 零售 电商", "AI 客服 购物 搜索",
-    ],
-    "sports": [
-        "sports outdoor retail industry trends", "sports brand financial results ecommerce", "outdoor retail consumer trend",
-        "sports retail store expansion digital", "fitness wearable consumer trend", "运动户外 零售 趋势", "运动品牌 财报 电商",
-        "sports brand community app commerce", "outdoor lifestyle content commerce", "运动品牌 社群 App 电商", "户外生活方式 内容转化",
-    ],
-    "retail": [
-        "retail innovation store operations", "retail technology inventory supply chain", "omnichannel retail membership",
-        "store digitalization self checkout", "retail consumer behavior innovation", "零售 创新 供应链 门店", "全渠道 会员 门店数字化",
-        "retail loyalty app personalization conversion", "retail closed-loop data commerce conversion", "零售 会员 App 个性化 转化", "零售 闭环数据 电商转化",
-    ],
-}
 
-# Backward-compatible alias for older imports.
-GOOGLE_NEWS_QUERIES = SEARCH_QUERIES
 
 COMMON_EXCLUDED_KEYWORDS = [
     "retail media", "retail media network", "ad network", "ad tech", "ctv", "ctv advertising", "programmatic",
@@ -262,3 +223,4 @@ SEARCH_QUERIES['retail'] += [
 ]
 for _section, _queries in SOURCE_SEARCHES.items():
     SEARCH_QUERIES[_section].extend(_queries)
+
