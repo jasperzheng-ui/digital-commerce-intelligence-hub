@@ -4,7 +4,7 @@ from copy import deepcopy
 
 from intelligence.batches import batches, generate_json
 from output.digest import DOMAINS, SUBCATEGORIES, infer_subcategory, validate_digest, TOPICS, AI_TOPICS, canonical_topic
-from intelligence.editorial import WRITING_GUIDANCE
+from intelligence.editorial import STRUCTURE_GUIDANCE, WRITING_GUIDANCE
 
 
 def parse_digest_batch(response, source_records, section):
@@ -76,7 +76,7 @@ material_type=background是已通过近14天发布日期筛选的人工背景资
 保留来源已有的subcategory，不跨细分类合并。AI、体育与零售必须另输出一个topic，按主题表选主要事实归属，其他维度自然写入正文。来源为unclassified时可据事实明确分类，否则保留unclassified。
 source_ids只能来自本批ID；不得输出新网址，网址由程序回填。
 输出合法JSON：{"items":[{"subcategory":"细分类值","topic":"主题值（平台省略）","title":"具体变化小标题","text":"紧凑事实正文","source_ids":["本批ID"]}]}
-""" + WRITING_GUIDANCE + '\n主题表：' + json.dumps(TOPICS.get(section, {}), ensure_ascii=False) + '\n细分类：' + json.dumps(SUBCATEGORIES[section], ensure_ascii=False) + '\n事实素材：' + json.dumps(batch, ensure_ascii=False)
+""" + STRUCTURE_GUIDANCE + '\n' + WRITING_GUIDANCE + '\n主题表：' + json.dumps(TOPICS.get(section, {}), ensure_ascii=False) + '\n细分类：' + json.dumps(SUBCATEGORIES[section], ensure_ascii=False) + '\n事实素材：' + json.dumps(batch, ensure_ascii=False)
             response = generate_json(prompt, f'{section}第{index}批信息整理')
             try:
                 result[section].extend(parse_digest_batch(response, batch, section))
@@ -85,5 +85,6 @@ source_ids只能来自本批ID；不得输出新网址，网址由程序回填�
     validate_digest(result)
     result['content_format'] = 'thematic_digest_v1'
     return result
+
 
 
