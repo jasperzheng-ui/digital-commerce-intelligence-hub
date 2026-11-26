@@ -407,7 +407,14 @@
       }
     ]
   },
-  "quality_status": "manual_draft",
+  "quality_status": "manually_approved",
   "editorial_notice": "",
-  "rejected_candidates": []
+  "rejected_candidates": [],
+  "source_mix": {
+    "total": 25,
+    "wechat": 0,
+    "required_wechat": 0,
+    "shortfall": 0
+  },
+  "quality_shortfalls": {}
 }

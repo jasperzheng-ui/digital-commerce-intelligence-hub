@@ -1,0 +1,410 @@
+{
+  "date": "2026-11-23",
+  "today_focus": "平台连接内容与成交，AI延伸至购物执行，品牌细分运动场景与零售服务",
+  "platform": [
+    {
+      "name": "闲鱼：AI协助描述非标商品并匹配买家需求",
+      "text": "闲鱼基于千问大模型及平台交易数据，将AI用于商品发布、搜索和交易管理。卖家发布时，AI可识别商品，提醒补充成色、配件并提供价格参考；买家则可用用途和预算描述需求，由AI筛选商品、协助询问细节。11月14日的对外分享列举两宗交易：一台上架923天的相机调整商品信息和价格后约两小时售出，一台损坏播放器在梳理故障与剩余功能后65分钟找到买家。两端工具围绕成色、价格和使用需求，减少非标商品交易中的信息整理与沟通步骤。",
+      "subcategory": "alibaba",
+      "references": [
+        {
+          "title": "闲鱼亮相联合国气候变化大会：AI加速闲置流转，低碳融入日常",
+          "source": "猎云网／新浪财经转载",
+          "date": "2026-11-17",
+          "link": "https://t.cj.sina.com.cn/articles/view/2822771827/a84014730200184ls"
+        }
+      ]
+    },
+    {
+      "name": "天猫超市：AI周期购连接商品复购与授权支付",
+      "text": "11月20日，阿里AI助手千问与天猫超市上线AI周期购，支持超过1.6万件生活消费品，覆盖家庭清洁、日用百货、美妆个护、奶粉辅食和宠物用品。用户在千问App中说明商品和补货频次，可选择7天、14天、30天或60天周期，再通过支付宝AI付设定支付金额、扣款次数及授权期限。系统在自动下单前30分钟提醒，用户可跳过某次购买；遇到涨价时，等待用户指示后再执行。服务把固定商品、补货节奏和支付条件组合成持续执行的购买任务，承接日常消耗品的重复采购。",
+      "subcategory": "alibaba",
+      "references": [
+        {
+          "title": "千问、天猫超市上线AI周期购：纸巾、猫粮等日用品自动补货",
+          "source": "快科技",
+          "date": "2026-11-20",
+          "link": "https://news.mydrivers.com/1/1167/1167331.htm"
+        }
+      ]
+    },
+    {
+      "name": "京东：AI进入选品补货与商家运营，配送衔接即时零售",
+      "text": "亿邦动力11月18日对京东三季度经营情况的报道披露，采购AI助手已参与选品、动态定价和库存补货，早期试点管理的商品累计产生数十亿元成交额；京麦AI商家运营中心覆盖选品、上架、营销、履约和售后。双11期间，数字人直播服务超过10万商家，累计成交额超过18亿元。履约端，京东物流在9月手机新品发售前，通过销量预测和库存规划提前向全国仓及前置仓备货，在核心城市实现分钟级配送，并将履约支持延伸至欧洲电商业务Joybuy。商品经营、内容销售与库存配送成为平台应用AI及供应链能力的不同环节。",
+      "subcategory": "jd",
+      "references": [
+        {
+          "title": "净利增长44%、外卖亏损砍半！京东Q3还有新变化｜财报解析",
+          "source": "亿邦动力",
+          "date": "2026-11-18",
+          "link": "https://www.ebrun.com/20261118/721487.shtml"
+        },
+        {
+          "title": "京东公布2026年第三季度业绩（JD.com Announces Third Quarter 2026 Results）",
+          "source": "京东投资者关系",
+          "date": "2026-11-17",
+          "link": "https://ir.jd.com/news-releases/news-release-details/jdcom-announces-third-quarter-2026-results"
+        }
+      ]
+    },
+    {
+      "name": "抖音服饰：共享库存、店播和成套穿搭承接订单",
+      "text": "抖音电商11月17日披露的双11服饰案例中，男装品牌“黑白男装”打通线上线下库存，店播贡献约七成成交，整体成交额同比增长300%。女装品牌uffie以整套穿搭内容销售商品，女鞋、发饰等非女装品类成交占比提升至30%。产业带商家也在调整展示方式：“表哥绒情”把直播间搬入仓库，双11现货日销售额周环比增长超过300%；工厂商家“禾昊”将展会搬进直播间，直接向消费者展示商品。不同案例分别通过库存协同、关联搭配和供给现场展示组织销售。",
+      "subcategory": "bytedance",
+      "references": [
+        {
+          "title": "【双11战报】抖音电商双11服饰战报：超2万中小商家成交破百万 秋冬夹克增738%",
+          "source": "网经社",
+          "date": "2026-11-17",
+          "link": "https://imgs-b2b.100ec.cn/detail--6665862.html"
+        }
+      ]
+    },
+    {
+      "name": "微信：图文商品卡连接销售分佣与内容加热",
+      "text": "微信11—12月图文带货扶持计划延续至12月31日。带货者绑定公众号或贴图号后，可在图文中插入微信小店优选联盟的商品卡，通过销售获得佣金，并依据有效结算成交获得“电商成长卡”，用于后续内容加热。作者从选品、图文创作到销售和再曝光，可以在微信内连续经营；品牌则通过优选联盟向内容作者提供货品与分佣合作。激励按结算成交计算，把内容带来的购买与下一轮曝光连接起来。",
+      "subcategory": "tencent",
+      "references": [
+        {
+          "title": "微信加码图文带货",
+          "source": "界面新闻",
+          "date": "2026-11-19",
+          "link": "https://www.jiemian.com/article/15351936.html"
+        }
+      ]
+    },
+    {
+      "name": "小红书：店铺分调整物流、品质和售后评价",
+      "text": "小红书11月17日公示的店铺分调整计划于11月24日生效。据市场咨询机构ChaiGlow的规则解读，品质评价将纳入平台判责结果，售后原因优先采用仲裁结果；物流评价调整为物流异常订单占比、支付到揽收平均时长、揽收到签收时效达成率等指标；服务评价由客服好评扩展至客服及售后好评，并增加极差服务扣分。店铺分与流量权益、营销活动及部分功能使用相连接，评价范围覆盖商品质量、发货运输和购买后的服务体验。",
+      "subcategory": "xiaohongshu",
+      "references": [
+        {
+          "title": "小红书店铺分改版拟于11月24日实施：美妆品牌运营指标调整（韩文文章中文译名）",
+          "source": "ChaiGlow市场咨询机构／小红书规则解读",
+          "date": "2026-11-19",
+          "link": "https://chaiglow.kr/insights/xiaohongshu-store-score-revision-nov24-2026"
+        }
+      ]
+    },
+    {
+      "name": "美团：围绕外籍客群补齐注册、支付和发现服务",
+      "text": "美团在深圳推出餐饮主题会场及双语美食地图，结合重点商圈指引帮助境外来宾发现餐厅。App已支持英文、韩文、日文及简繁中文界面，用户可通过境外手机号注册并绑定境外银行卡支付。平台披露，2026年10月深圳外籍用户使用量同比增长51%，外卖订单量增长214%。商家端，美团为外籍经营者提供一对一规则和经营讲解，以及AI袋鼠管家、代运营和首页展示等支持；消费者与商家两端的语言、支付和经营服务同步完善。",
+      "subcategory": "meituan",
+      "references": [
+        {
+          "title": "外国游客深圳外卖点奶茶火了！美团外卖上线主题会场保障消费服务",
+          "source": "南方网·粤学习",
+          "date": "2026-11-18",
+          "link": "https://news.southcn.com/node_810c33d731/ded9bea2ae.shtml"
+        }
+      ]
+    }
+  ],
+  "ai": [
+    {
+      "title": "Daydream：穿搭推荐、虚拟试穿和购买进入同一对话",
+      "text": "美国时尚购物平台Daydream推出个人购物助手，用户可描述出行、聚会等穿着场景，或上传参考图，从超过1万个品牌中寻找单品和整套搭配。助手结合实时价格与库存，记住用户的风格、尺码偏好和预算；上传一次照片后，可对保存的商品反复虚拟试穿。用户授权后，助手可向合作零售商完成购买，也能在对话结束后继续监测降价和新品。用户还可连接已有衣橱与日历，围绕现有衣物和未来活动搭配商品。产品已通过iOS应用和短信开放使用。",
+      "subcategory": "business",
+      "topic": "shopping_discovery",
+      "references": [
+        {
+          "title": "Daydream推出覆盖时尚购物、穿搭和结账的自主助手（Daydream Launches First-Ever Autonomous Agent for Fashion Shopping, Styling and Checkout）",
+          "source": "Daydream官方新闻稿／PR Newswire",
+          "date": "2026-11-17",
+          "link": "https://www.prnewswire.com/news-releases/daydream-launches-first-ever-autonomous-agent-for-fashion-shopping-styling-and-checkout-302941544.html"
+        }
+      ]
+    },
+    {
+      "title": "Google：购物任务连接比价、零售商账户与支付",
+      "text": "Google于11月17日起在美国、日本、韩国等六个市场逐步免费开放Gemini任务模式，使用面向任务执行的Gemini 4 Hydrogen模型，部分高级功能先在美国推出。官方展示了比较商品、追问规格、寻找优惠码并通过Google Pay结账，以及用文字和照片向生鲜购物篮补货。11月20日，美国Search和Gemini进一步接入Target等零售商的Connected Apps（连接零售服务的应用），支持组织采购、建立订单和结账。这些连接采用UCP通用商务协议，在购物助手与商家系统间交换商品和交易信息。",
+      "subcategory": "business",
+      "topic": "shopping_discovery",
+      "references": [
+        {
+          "title": "让Gemini替你完成任务（Put Gemini to work for you）",
+          "source": "Google官方博客",
+          "date": "2026-11-17",
+          "link": "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/"
+        },
+        {
+          "title": "通过新的Connected Apps完成年末采购（Get your year-end tasks done with new Connected Apps）",
+          "source": "Google官方博客",
+          "date": "2026-11-20",
+          "link": "https://blog.google/products-and-platforms/products/search/connected-apps-holiday-errands/"
+        }
+      ]
+    },
+    {
+      "title": "Gemini 4 Neon：综合表格、文档和图表处理复杂任务",
+      "text": "Google于11月18日推出Gemini 4 Neon，一款强调复杂任务处理速度、可同时理解多种资料的模型。它可在一次任务中综合较长的表格、PDF、图表和音视频资料，输出结构化结果，并改进多步骤指令执行及中途纠正的处理。模型逐步开放至开发接口、企业产品和部分付费应用。官方展示的工作方向包括报表与图表分析、表格建模和跨文件软件修改；使用者可按任务难度选择不同推理档位，在分析深度、处理时间与调用成本之间调整。",
+      "subcategory": "technology",
+      "topic": "model_updates",
+      "references": [
+        {
+          "title": "推出Gemini 4 Neon（Introducing Gemini 4 Neon）",
+          "source": "Google DeepMind官方博客",
+          "date": "2026-11-18",
+          "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/"
+        }
+      ]
+    }
+  ],
+  "sports": [
+    {
+      "name": "安踏：材料研发覆盖循环再生、耐温与导湿性能",
+      "text": "11月15日公布的中国纺织工业联合会科学技术奖励中，安踏集团参与的三项成果获得科技进步奖一等奖，涉及废旧涤纶连续化学再生、耐高温高强纤维和快速导湿排汗织物。再生项目连接回收、解聚、纯化、再聚合和纺丝，处理废旧纺织品成分复杂、品质波动的问题；安踏作为应用端参与者，将再生纤维导入运动鞋服开发。另一个项目通过材料改性提高高强纤维的耐温性能，并已实现产业化应用。品牌、高校与材料企业共同推进材料研发及成品应用。",
+      "subcategory": "domestic",
+      "topic": "supply_product",
+      "references": [
+        {
+          "title": "再获突破！安踏集团三项科技成果获中国纺织工业联合会科技进步奖一等奖",
+          "source": "安踏集团官方新闻稿／美通社",
+          "date": "2026-11-19",
+          "link": "https://www.prnasia.com/story/557188-1.shtml"
+        }
+      ]
+    },
+    {
+      "name": "亚玛芬体育：直营和中国市场带动季度增长",
+      "text": "始祖鸟、萨洛蒙等品牌所属的芬兰运动用品集团亚玛芬体育，2026年第三季度收入约21.69亿美元，同比增长24%。直营收入增长36%，快于批发的14.8%；大中华区收入约6.02亿美元，增长30.4%。技术服装业务增长26%，其中始祖鸟全渠道可比销售增长16%，萨洛蒙鞋服也持续增长。集团在披露业绩时上调全年收入、利润率及每股收益指引。本季度的增长同时体现在直营渠道扩张、既有销售表现及重点区域收入，品牌和渠道结构共同支撑集团表现。",
+      "subcategory": "international",
+      "topic": "performance",
+      "references": [
+        {
+          "title": "亚玛芬体育公布2026年第三季度业绩并上调全年指引（Amer Sports Reports Third Quarter 2026 Financial Results; Raises Full-Year Revenue, Margin, and EPS Guidance）",
+          "source": "亚玛芬体育投资者关系",
+          "date": "2026-11-17",
+          "link": "https://investors.amersports.com/financial-news/news-details/2026/Amer-Sports-Reports-Third-Quarter-2026-Financial-Results-Raises-Full-Year-Revenue-Margin-and-EPS-Guidance/default.aspx"
+        }
+      ]
+    },
+    {
+      "name": "耐克：中国整合销售触点，本地开发加快响应",
+      "text": "耐克11月17日投资者日披露的中国调整涉及渠道、开发和城市运营。公司计划2027年1月起整合约2000个分散销售触点，引导消费者至天猫、京东、抖音等官方旗舰店；本土系列从消费者洞察到上市约120天，并计划到2028财年扩大本土源创团队。线下围绕城市重点运动组织门店和社群，约20个重点城市贡献大中华区约一半业务。同期产品规划将训练分为准备、训练和恢复，覆盖力量、混合训练等需求；新训练服及部分鞋款计划2027年上市，扩大训练前后可销售的产品范围。",
+      "subcategory": "international",
+      "topic": "digital_omnichannel",
+      "references": [
+        {
+          "title": "耐克下一个五年，大中华区如何重启增长？",
+          "source": "界面新闻／新浪财经转载",
+          "date": "2026-11-18",
+          "link": "https://finance.sina.com.cn/jjxw/2026-11-18/doc-inizeacc1544384.shtml"
+        },
+        {
+          "title": "耐克训练推出准备、训练与恢复产品体系（Nike Training Introduces Prime, Train, Recover: A Connected System Built Around Athlete Progress）",
+          "source": "耐克官方新闻室",
+          "date": "2026-11-16",
+          "link": "https://about.nike.com/en/newsroom/releases/nike-training-introduces-prime-train-recover-a-connected-system-built-around-athlete-progress"
+        }
+      ]
+    },
+    {
+      "name": "新百伦：赛事展区连接跑鞋试穿、本地商品与跑者社群",
+      "text": "美国运动品牌新百伦（New Balance）在11月19—21日南京马拉松博览会设置跑者肖像、姓名墙和交流区，并提供跑步机试跑。产品覆盖比赛竞速、日常训练和慢跑，同时推出南京限定服饰、配件及跑鞋：图案提取云锦、瓦当和梅花元素，外套采用可收纳兜帽，竞速背心使用轻量速干面料。展区把本地赛事内容、跑者故事和不同用途商品放在同一体验中；品牌还通过后续城市10公里跑步系列赛延续跑者联系。",
+      "subcategory": "international",
+      "topic": "stores_community",
+      "references": [
+        {
+          "title": "每一次出发，都值得被看见 New Balance 精彩亮相 2026 南京马拉松博览会",
+          "source": "新百伦品牌供稿／界面新闻商讯",
+          "date": "2026-11-22",
+          "link": "https://www.jiemian.com/article/15358773.html"
+        }
+      ]
+    },
+    {
+      "name": "迪桑特：雪场体验空间展示滑雪与日常穿着",
+      "text": "日本运动品牌迪桑特（DESCENTE）在吉林松花湖展示专业滑雪、雪后休闲、冬季度假和城市穿着等系列，并向四支中国滑雪国家队交接新队服。活动围绕“阿普瑞风”展开，即滑雪之后衔接休闲社交的穿衣方式，将专业装备与冬日生活造型共同陈列。雪场的“逐雪风格空间”持续至2027年1月6日，户外设置休憩区和互动装置，室内把服饰融入会客与休息场景。展示空间承接滑雪人群的停留、交流及商品浏览，把单次大秀延伸为雪季体验。",
+      "subcategory": "international",
+      "topic": "product_mix",
+      "references": [
+        {
+          "title": "迪桑特于松花湖开启「逐雪而生」大秀 百位逐雪者因热爱集结，共同演绎滑雪阿普瑞风",
+          "source": "迪桑特官方新闻稿／美通社",
+          "date": "2026-11-20",
+          "link": "https://www.prnasia.com/story/557541-1.shtml"
+        }
+      ]
+    }
+  ],
+  "retail": [
+    {
+      "name": "永辉：商品开发与鲜食经营依靠一线能力和激励",
+      "text": "永辉CEO王守诚在11月18日零售创新大会披露，调改后年销售额2亿元以上门店的鲜食占比超过60%，现场加工和服务更依赖一线员工能力。2026年前三季度，永辉推出500多款千万元级单品，定制鸡蛋、三文鱼等达到亿元级。配套组织调整中，工作满一年员工的带薪年假由5天增至10天，预计全年员工利润分红达到1亿元，上年近5000万元。商品开发、鲜食加工和员工激励一同推进，采购与门店团队的专业判断成为调改的重要环节。",
+      "subcategory": "domestic",
+      "topic": "organization",
+      "references": [
+        {
+          "title": "永辉超市CEO王守诚：从卖货架到卖价值，零售未来在人不在AI",
+          "source": "中国基金报／新浪财经转载",
+          "date": "2026-11-19",
+          "link": "https://finance.sina.com.cn/jjxw/2026-11-19/doc-inizfunk7869740.shtml"
+        }
+      ]
+    },
+    {
+      "name": "名创优品：国内同店改善，大型门店和海外直营继续扩展",
+      "text": "2026年第三季度，名创优品中国内地收入同比增长29.6%，同店销售实现高个位数增长。MINISO SPACE、MINISO LAND等大型门店超过120家，覆盖47个城市，以更大空间承载不同主题商品。截至9月30日，集团门店8665家，同比增加527家；海外名创优品直营门店同比增加186家至823家，经销门店减少17家至2341家。国内增长同时包含同店改善和门店扩张，海外渠道则增加直营比重，集团的店型与经营方式持续调整。",
+      "subcategory": "domestic",
+      "topic": "performance",
+      "references": [
+        {
+          "title": "名创优品公布2026年9月季度及前九个月未经审计业绩（MINISO Group Announces 2026 September Quarter and Nine-Month Unaudited Financial Results）",
+          "source": "名创优品投资者关系",
+          "date": "2026-11-17",
+          "link": "https://ir.miniso.com/2026-11-17-MINISO-Group-Announces-2026-September-Quarter-and-Nine-Month-Unaudited-Financial-Results"
+        }
+      ]
+    },
+    {
+      "name": "fudi：跨省扩张同时筹划前置仓和自有品牌供给",
+      "text": "本土生鲜会员店fudi首次跨省布局，签约成都约2万平方米旗舰店，计划2028年4月开业，在售商品预计超过4000个，并拟在成都布局3—5家门店、筹划前置仓和即时零售。其生鲜商品占比长期超过50%，通过产地直采和买断采购统一标准，普通会员年费188元，另有7天体验会员。报道指出，更大销售规模有助于消化自有品牌的工厂起订量，高生鲜占比则要求更快周转和更稳品控。扩张同时涉及本地饮食适配、损耗管理及会员持续复购。",
+      "subcategory": "domestic",
+      "topic": "channels",
+      "references": [
+        {
+          "title": "fudi出京 生鲜会员店直面跨区域挑战",
+          "source": "北京商报",
+          "date": "2026-11-17",
+          "link": "https://www.bbtnews.com.cn/2026/1117/611456.shtml"
+        }
+      ]
+    },
+    {
+      "name": "沃尔玛：电商增长连接门店履约、会员与平台服务",
+      "text": "沃尔玛2027财年第三季度（2026年8—10月）中国净销售额按固定汇率同比增长28.5%，可比销售额增长14.3%，电商增长超过30%。美国电商增长23%，第三方平台及履约服务销售增长49%。盈利改善同时来自履约效率和服务收入：美国超过80%的电商订单由门店完成最后一公里，配送网络加密、供应链自动化及加急配送占比提升推动履约成本下降；Walmart Connect广告收入剔除指定并购业务后增长36%。商品订单、门店配送和广告等业务共同支撑增长。",
+      "subcategory": "international",
+      "topic": "inventory_fulfillment",
+      "references": [
+        {
+          "title": "沃尔玛发布2027财年第三季度业绩（Walmart Releases Q3 FY27 Earnings）",
+          "source": "沃尔玛官方新闻室",
+          "date": "2026-11-19",
+          "link": "https://corporate.walmart.com/news/2026/11/walmart-releases-q3-fy27-earnings"
+        },
+        {
+          "title": "沃尔玛中国三季度净销售额同比增长28.5%：山姆扛起增长主力，质价比成零售赛道竞争主线",
+          "source": "每日经济新闻",
+          "date": "2026-11-20",
+          "link": "https://www.nbd.com.cn/articles/2026-11-20/4654512.html"
+        }
+      ]
+    },
+    {
+      "name": "塔吉特：商品更新、有货率和当日服务共同带动销售",
+      "text": "美国综合零售商塔吉特（Target）2026年第三季度门店可比销售增长4.6%，数字渠道增长9.8%。食品饮料销售增长近7%，第二季度调整商品组合后的零食、糖果和饮料合计增长近10%；美妆增长超过9%，600多家门店引入集中展示新兴和高端品牌的美妆专区。门店人员和培训投入伴随货架有货率同比提高1个百分点。当日服务贡献约三分之二数字业务，上门配送增速为门店自提与车边提货的两倍；广告、会员及平台等非商品销售增长近20%。",
+      "subcategory": "international",
+      "topic": "store_productivity",
+      "references": [
+        {
+          "title": "详看2026年第三季度业绩（A Closer Look at Q3 2026 Results）",
+          "source": "Target官方新闻室",
+          "date": "2026-11-18",
+          "link": "https://corporate.target.com/news-features/article/2026/11/q3-2026-earnings"
+        }
+      ]
+    },
+    {
+      "name": "奥乐齐：精选自有品牌与物流枢纽支持安徽首批六店",
+      "text": "德国折扣超市奥乐齐（ALDI）于11月21—22日在合肥、芜湖陆续开出安徽首批六家门店，选择核心商圈和成熟居住社区，提供近2000种商品，自有品牌占比约90%。商品覆盖家庭餐饮、健康和日用品，冬季另按火锅场景组织锅物、底料、配菜与饮品。品牌通过精选商品集中采购，参与供应商配方和工艺开发；近期启用的南京物流中心支持安徽部分门店周转，并计划加强本地采购。此次跨省布局把区域物流、商品开发及社区需求一并纳入开店安排。",
+      "subcategory": "international",
+      "topic": "product_supply",
+      "references": [
+        {
+          "title": "硬折扣鼻祖正式落地安徽，奥乐齐合肥芜湖双城六店陆续开门迎客",
+          "source": "奥乐齐官方新闻稿／美通社",
+          "date": "2026-11-21",
+          "link": "https://www.prnasia.com/story/557584-1.shtml"
+        }
+      ]
+    }
+  ],
+  "one_thing_worth_watching": "",
+  "weekly_overview": {
+    "macro_analysis": [
+      {
+        "title": "服务消费增长快于商品，政策继续推进品质电商",
+        "text": "商务部11月19日介绍，2026年1—10月社会消费品零售总额同比增长1%，剔除汽车后增长2.8%；服务零售额增长4.9%，增速高于商品零售额4个百分点。服务与商品的增长分化持续，双11也出现线上线下联动、商品和服务共同促销的经营方式。商务部将继续推进品质电商“五优”行动，围绕商品质量、服务体验和线上消费环境落实政策。",
+        "source_ids": [
+          "ov1"
+        ]
+      },
+      {
+        "title": "APEC推进贸易数字化、跨境电商与供应链合作",
+        "text": "11月18—19日举行的亚太经合组织（APEC）领导人会议形成《深圳展望》，官方于21日发布声明。各经济体提出加强供应链韧性和区域经济合作，继续推进亚太自贸区议程，并欢迎《APEC贸易数字化合作框架（2027—2030）》，推动无纸化贸易和跨境电商。数字合作同时涉及跨境数据流动、交易信任及隐私保护；中小企业支持则覆盖融资、技能培训与易用的数字工具。上述内容列入区域合作议程，后续通过成员经济体的政策交流与合作推进。",
+        "source_ids": [
+          "ov5"
+        ]
+      }
+    ],
+    "consumer_insights": [
+      {
+        "title": "降温带动通勤保暖、局部取暖和暖食需求",
+        "text": "证券日报11月19日走访北京商场发现，消费者选择保暖服装时关注轻便、可收纳与防风，兼顾通勤及出行；办公和小户型场景更关注局部取暖，小型取暖设备的静音、节能和温控功能成为选购重点。火锅、热饮等消费也随气温变化升温。同一轮降温对应不同生活任务，商品需求从穿着延伸至工作环境、居家舒适和饮食。",
+        "source_ids": [
+          "ov2"
+        ]
+      },
+      {
+        "title": "宠物食品消费增长，小包装试用与价格选择更突出",
+        "text": "11月22日发布的宠物食品电商报告统计2026年上半年，全国相关电商规模增长13.4%，平均价格下降10.9%，小规格试吃装和促销影响平均成交价格。猫粮仍是主要品类，犬零食增长较快；抖音成为第二大销售平台。养宠需求同时体现在日常主粮和零食选择，消费者通过试吃、小规格及优惠降低尝试和购买成本，品牌销售也更多经由内容平台展开。",
+        "source_ids": [
+          "ov3"
+        ]
+      }
+    ],
+    "channel_competition": [
+      {
+        "title": "网上服务和即时零售增长快于网上商品",
+        "text": "商务部11月20日公布，2026年1—10月全国网上商品和服务零售额增长3.7%，其中商品增长2.9%、服务增长5%，重点监测平台即时零售交易额保持两位数增长。在线旅游、餐饮和生活服务零售额分别增长24.3%、12%和11.5%；10月智能穿戴网上零售额增长42.5%。线上增长来源同时包含服务预订、附近门店即时配送和数字商品，渠道竞争覆盖更多生活场景。",
+        "source_ids": [
+          "ov4"
+        ]
+      }
+    ],
+    "section_overviews": {
+      "platform_intelligence": "平台调整交易工具、商家经营和服务评价：阿里通过闲鱼AI工具及天猫超市周期购支持交易，京东将AI用于选品补货、直播和商家运营。微信连接图文成交与内容加热，小红书调整物流、品质和售后评分，抖音和美团分别完善库存协同及外籍客群服务。",
+      "ai_technology": "AI购物应用集中呈现两种路径：Daydream围绕穿搭、虚拟试穿和授权购买提供个人购物服务，Google将比价、采购任务与零售商账户及支付连接。技术进展保留Gemini 4 Neon，关注表格、文档、图表和音视频资料的综合处理能力。",
+      "sports_outdoor": "运动品牌围绕不同经营主题展开：安踏推进再生及功能材料研发，亚玛芬披露直营和中国市场增长，耐克整合中国销售触点并加快本地开发。新百伦将赛事试跑与跑者社群结合，迪桑特拓展滑雪、雪后休闲和城市穿着商品。",
+      "retail_innovation": "零售经营围绕商品、一线能力和区域履约展开。永辉把鲜食开发与员工激励结合，名创优品调整店型和海外直营结构；fudi、奥乐齐扩展区域供给，沃尔玛和塔吉特以门店配送、商品更新及服务收入支持增长。"
+    },
+    "sources": [
+      {
+        "id": "ov1",
+        "title": "商务部召开例行新闻发布会（2026年11月19日）",
+        "source": "商务部",
+        "date": "2026-11-19",
+        "url": "https://www.mofcom.gov.cn/xwfbzt/2026/swbzklxxwfbh2026n11y19r/index.html"
+      },
+      {
+        "id": "ov2",
+        "title": "冷空气催热“暖经济” 御寒商品和暖食茶饮走俏",
+        "source": "证券日报／东方财富转载",
+        "date": "2026-11-20",
+        "url": "https://finance.eastmoney.com/a/202611203935429884.html"
+      },
+      {
+        "id": "ov3",
+        "title": "上半年全国宠物食品电商规模稳步增长 南和智能化升级跑出加速度",
+        "source": "新华财经／中国金融信息网",
+        "date": "2026-11-22",
+        "url": "https://indices.cnfin.com/jgzs/wenzixiangqingye/detail/20261122/4498724_1.html"
+      },
+      {
+        "id": "ov4",
+        "title": "商务部电子商务司负责人介绍2026年1-10月我国电子商务发展情况",
+        "source": "商务部",
+        "date": "2026-11-20",
+        "url": "https://www.mofcom.gov.cn/syxwfb/art/2026/art_6e553bb7350b4b9baa166993444ebf50.html"
+      },
+      {
+        "id": "ov5",
+        "title": "2026年APEC领导人宣言：深圳展望（2026 APEC Leaders’ Declaration）",
+        "source": "亚太经合组织（APEC）官网",
+        "date": "2026-11-21",
+        "url": "https://www.apec.org/meeting-papers/leaders-declarations/2026/2026-apec-leaders-declaration"
+      }
+    ]
+  }
+}
